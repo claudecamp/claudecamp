@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Camp — Pai, Thailand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+/* ─── RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --jungle-deep:   #060d04;
+  --jungle-mid:    #0a1208;
+  --canopy:        #0f1e0b;
+  --earth:         #1a0d05;
+  --ember:         #2d1208;
+  --amber:         #f59e0b;
+  --amber-glow:    #fbbf24;
+  --amber-dim:     #92610a;
+  --dusk-violet:   #1a0a2e;
+  --text:          #f8fafc;
+  --text-muted:    rgba(248,250,252,0.55);
+  --ease-cinema:   cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow-x: hidden;
+  background: var(--jungle-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── CUSTOM CURSOR ──────────────────────────────────────────── */
+*, *::before, *::after { cursor: none; }
+
+#cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.6);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  will-change: transform;
+  transition: width 0.3s var(--ease-cinema), height 0.3s var(--ease-cinema), border-color 0.3s;
+}
+
+#cursor-ring.hovering {
+  width: 56px; height: 56px;
+  border-color: var(--amber);
+}
+
+/* ─── SCROLL PROGRESS ────────────────────────────────────────── */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--amber), var(--amber-glow));
+  z-index: 9998;
+  will-change: width;
+  transform-origin: left center;
+}
+
+/* ─── LOAD OVERLAY ───────────────────────────────────────────── */
+#load-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+#wordmark-load {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--text);
+  letter-spacing: 0.08em;
+  opacity: 0;
+}
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* ─── BACKGROUND LAYERS ──────────────────────────────────────── */
+.bg-layer {
+  position: absolute;
+  inset: -8%;            /* extra space for parallax travel */
+  width: 116%; height: 116%;
+  top: -8%; left: -8%;
+  will-change: transform;
+}
+
+/* Layer 1 — Deep jungle base */
+#bg-1 {
+  background:
+    radial-gradient(ellipse 120% 80% at 30% 100%, #0a2408 0%, transparent 60%),
+    radial-gradient(ellipse 80%  60% at 70% 90%,  #051203 0%, transparent 55%),
+    radial-gradient(ellipse 100% 50% at 50% 100%, #030a02 0%, transparent 70%),
+    linear-gradient(170deg, #060d04 0%, #0a1208 35%, #0d1a09 65%, #060d04 100%);
+  z-index: 1;
+}
+
+/* Layer 2 — Canopy light shafts */
+#bg-2 {
+  background:
+    radial-gradient(ellipse 40% 70% at 25% 0%,   rgba(180,220,100,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 60% at 75% 0%,   rgba(160,210,80,0.04)  0%, transparent 60%),
+    radial-gradient(ellipse 20% 50% at 50% 0%,   rgba(200,230,120,0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 40% at 15% 20%,  rgba(100,180,60,0.03)  0%, transparent 60%);
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* Layer 3 — Golden hour horizon glow */
+#bg-3 {
+  background:
+    radial-gradient(ellipse 90% 35% at 50% 78%,  rgba(245,158,11,0.18)  0%, transparent 70%),
+    radial-gradient(ellipse 60% 25% at 30% 80%,  rgba(180,80,20,0.14)   0%, transparent 65%),
+    radial-gradient(ellipse 70% 20% at 70% 82%,  rgba(210,100,10,0.10)  0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 50% 72%,  rgba(251,191,36,0.08)  0%, transparent 55%);
+  z-index: 3;
+  mix-blend-mode: screen;
+}
+
+/* Layer 4 — Dusk atmosphere */
+#bg-4 {
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 15%,  rgba(26,10,46,0.5)    0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 5%,   rgba(10,5,25,0.4)     0%, transparent 60%),
+    radial-gradient(ellipse 100% 30% at 50% 0%,  rgba(15,8,35,0.6)     0%, transparent 50%);
+  z-index: 4;
+  mix-blend-mode: multiply;
+}
+
+/* ─── GRAIN TEXTURE ──────────────────────────────────────────── */
+#grain-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  opacity: 0.045;
+  pointer-events: none;
+}
+
+/* SVG noise overlay (fallback) */
+#noise-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ─── FIREFLIES ──────────────────────────────────────────────── */
+.firefly {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--amber-glow);
+  box-shadow: 0 0 6px 2px rgba(251,191,36,0.6);
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* ─── VIGNETTE ───────────────────────────────────────────────── */
+#vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  background: radial-gradient(ellipse 85% 85% at 50% 50%, transparent 40%, rgba(4,8,3,0.7) 100%);
+  pointer-events: none;
+}
+
+/* ─── HERO CONTENT ───────────────────────────────────────────── */
+#hero-content {
+  position: relative;
+  z-index: 20;
+  padding: clamp(2rem, 5vw, 5rem) clamp(1.5rem, 6vw, 6rem) clamp(3rem, 7vh, 5rem);
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* Eyebrow label */
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+/* Headline lines — each clipped individually */
+.hero-headline {
+  overflow: hidden;
+  margin-bottom: 0.05em;
+  line-height: 1;
+}
+
+.hero-headline-inner {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  clip-path: inset(0% 0% 100% 0%);
+  will-change: clip-path;
+}
+
+/* Tagline line */
+.hero-tagline-wrap {
+  overflow: hidden;
+  margin-top: clamp(1.2rem, 2.5vh, 2rem);
+}
+
+.hero-tagline {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: clamp(0.7rem, 1.1vw, 0.9rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--amber);
+  clip-path: inset(0% 0% 100% 0%);
+  will-change: clip-path;
+}
+
+/* Supporting copy */
+.hero-body-wrap {
+  overflow: hidden;
+  margin-top: clamp(1.2rem, 2vh, 1.8rem);
+  max-width: 480px;
+}
+
+.hero-body {
+  display: block;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+  clip-path: inset(0% 0% 100% 0%);
+  will-change: clip-path;
+}
+
+/* CTA row */
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: clamp(2rem, 4vh, 3rem);
+  opacity: 0;
+}
+
+/* Amber pill CTA */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.85em 2.2em;
+  border-radius: 100px;
+  background: transparent;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 20px rgba(245,158,11,0.25),
+    0 0 60px rgba(245,158,11,0.08),
+    inset 0 0 20px rgba(245,158,11,0.05);
+  transition:
+    box-shadow 0.4s var(--ease-cinema),
+    color 0.35s var(--ease-cinema),
+    background 0.35s var(--ease-cinema);
+  cursor: none;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--amber);
+  border-radius: inherit;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-cinema);
+}
+
+.btn-primary:hover {
+  color: var(--jungle-deep);
+  box-shadow:
+    0 0 40px rgba(245,158,11,0.5),
+    0 0 80px rgba(245,158,11,0.2),
+    inset 0 0 30px rgba(245,158,11,0.1);
+}
+
+.btn-primary:hover::before { transform: scaleX(1); }
+
+.btn-primary span { position: relative; z-index: 1; }
+
+.btn-primary .arrow {
+  transition: transform 0.4s var(--ease-cinema);
+}
+.btn-primary:hover .arrow { transform: translateX(4px); }
+
+/* Secondary link */
+.link-secondary {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  position: relative;
+  cursor: none;
+  transition: color 0.3s;
+}
+
+.link-secondary::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--amber);
+  transition: width 0.4s var(--ease-cinema);
+}
+
+.link-secondary:hover { color: var(--text); }
+.link-secondary:hover::after { width: 100%; }
+
+/* ─── SCROLL INDICATOR ───────────────────────────────────────── */
+#scroll-hint {
+  position: absolute;
+  bottom: clamp(1.5rem, 3vh, 2.5rem);
+  right: clamp(1.5rem, 4vw, 3rem);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+}
+
+.scroll-hint-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--amber), transparent);
+  animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(0.6); }
+}
+
+/* ─── AMBIENT BACKGROUND ANIMATION ──────────────────────────── */
+@keyframes ken-burns-1 {
+  0%   { transform: scale(1.0) translate(0%, 0%); }
+  50%  { transform: scale(1.04) translate(-0.8%, 0.5%); }
+  100% { transform: scale(1.0) translate(0%, 0%); }
+}
+
+@keyframes ken-burns-2 {
+  0%   { transform: scale(1.0) translate(0%, 0%); }
+  50%  { transform: scale(1.06) translate(0.6%, -0.4%); }
+  100% { transform: scale(1.0) translate(0%, 0%); }
+}
+
+@keyframes ken-burns-3 {
+  0%   { transform: scale(1.0) translate(0%, 0%); }
+  50%  { transform: scale(1.03) translate(-0.4%, -0.6%); }
+  100% { transform: scale(1.0) translate(0%, 0%); }
+}
+
+#bg-1 { animation: ken-burns-1 28s ease-in-out infinite; }
+#bg-3 { animation: ken-burns-2 34s ease-in-out infinite; }
+#bg-4 { animation: ken-burns-3 22s ease-in-out infinite; }
+
+/* ─── SITE WORDMARK (top-left) ───────────────────────────────── */
+#site-wordmark {
+  position: absolute;
+  top: clamp(1.5rem, 3vh, 2.5rem);
+  left: clamp(1.5rem, 4vw, 3rem);
+  z-index: 20;
+  text-decoration: none;
+  opacity: 0;
+}
+
+.wordmark-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  letter-spacing: 0.12em;
+  color: var(--text);
+}
+
+.wordmark-dot {
+  color: var(--amber);
+}
+
+/* Nav right */
+#site-nav-right {
+  position: absolute;
+  top: clamp(1.5rem, 3vh, 2.5rem);
+  right: clamp(1.5rem, 4vw, 3rem);
+  z-index: 20;
+  display: flex;
+  gap: 2.5rem;
+  opacity: 0;
+}
+
+.nav-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: none;
+  transition: color 0.3s;
+}
+
+.nav-link:hover { color: var(--text); }
+
+/* ─── PRICING BADGE ──────────────────────────────────────────── */
+.pricing-badge {
+  position: absolute;
+  top: clamp(1.5rem, 3vh, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  opacity: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-headline-inner,
+  .hero-tagline,
+  .hero-body {
+    clip-path: none !important;
+  }
+}
+
+/* ─── MOBILE ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #site-nav-right { display: none; }
+  .pricing-badge { display: none; }
+  #hero-content { padding-bottom: clamp(5rem, 10vh, 7rem); }
+  .hero-cta-row { flex-wrap: wrap; }
+  #scroll-hint { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOAD OVERLAY -->
+<div id="load-overlay">
+  <div id="wordmark-load">Claude Camp</div>
+</div>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section id="hero" role="banner">
+
+  <!-- Background layers (parallax targets) -->
+  <div class="bg-layer" id="bg-1" aria-hidden="true"></div>
+  <div class="bg-layer" id="bg-2" aria-hidden="true"></div>
+  <div class="bg-layer" id="bg-3" aria-hidden="true"></div>
+  <div class="bg-layer" id="bg-4" aria-hidden="true"></div>
+
+  <!-- Grain texture canvas -->
+  <canvas id="grain-canvas" aria-hidden="true"></canvas>
+
+  <!-- SVG Noise fallback -->
+  <div id="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Vignette -->
+  <div id="vignette" aria-hidden="true"></div>
+
+  <!-- Fireflies (injected by JS) -->
+
+  <!-- Top bar -->
+  <a href="#" id="site-wordmark" aria-label="Claude Camp home">
+    <span class="wordmark-text">Claude<span class="wordmark-dot">·</span>Camp</span>
+  </a>
+
+  <div class="pricing-badge" aria-hidden="true">฿38,000 — ฿58,000 / week · All-inclusive</div>
+
+  <nav id="site-nav-right" aria-label="Primary navigation">
+    <a href="#" class="nav-link">About</a>
+    <a href="#" class="nav-link">Tracks</a>
+    <a href="#" class="nav-link">Waitlist</a>
+  </nav>
+
+  <!-- Main content — bottom-anchored -->
+  <div id="hero-content">
+
+    <p class="hero-eyebrow" aria-label="Location: 01, Pai Thailand">
+      01 — Pai, Thailand
+    </p>
+
+    <h1>
+      <div class="hero-headline">
+        <span class="hero-headline-inner">A week of</span>
+      </div>
+      <div class="hero-headline">
+        <span class="hero-headline-inner">building.</span>
+      </div>
+    </h1>
+
+    <div class="hero-tagline-wrap">
+      <span class="hero-tagline">Soak&nbsp;&nbsp;·&nbsp;&nbsp;Stretch&nbsp;&nbsp;·&nbsp;&nbsp;Ship</span>
+    </div>
+
+    <div class="hero-body-wrap">
+      <span class="hero-body">7 beds. Jungle mornings. Code that ships. Join Sasha &amp; Ying on their mountain farm for a retreat where the rhythm of the land and deep work coexist.</span>
+    </div>
+
+    <div class="hero-cta-row">
+      <a href="#waitlist" class="btn-primary" aria-label="Join the Claude Camp waitlist">
+        <span>Join the waitlist</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="#tracks" class="link-secondary">Explore tracks</a>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div id="scroll-hint" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <div class="scroll-hint-text">Scroll</div>
+  </div>
+
+</section>
+
+<!-- Below-fold placeholder (for scroll progress demo) -->
+<div style="height:200vh; background: linear-gradient(#060d04, #030804);"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   CLAUDE CAMP — CINEMATIC HERO
+   ═══════════════════════════════════════════════════════════════ */
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* ── Grain canvas ─────────────────────────────────────────────── */
+(function generateGrain() {
+  const canvas = document.getElementById('grain-canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    render();
+  }
+
+  function render() {
+    const { width, height } = canvas;
+    const imageData = ctx.createImageData(width, height);
+    const buf = imageData.data;
+    for (let i = 0; i < buf.length; i += 4) {
+      const v = Math.random() * 255 | 0;
+      buf[i] = buf[i+1] = buf[i+2] = v;
+      buf[i+3] = 255;
+    }
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Animate grain flicker at ~12fps
+  let last = 0;
+  function tick(t) {
+    if (t - last > 80) { render(); last = t; }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+/* ── Fireflies ─────────────────────────────────────────────────── */
+(function spawnFireflies() {
+  const hero = document.getElementById('hero');
+  const count = 7;
+
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    el.className = 'firefly';
+    el.setAttribute('aria-hidden', 'true');
+
+    const x = 10 + Math.random() * 80; // % from left
+    const y = 30 + Math.random() * 55; // % from top (mid-upper area)
+
+    el.style.cssText = `
+      left: ${x}%;
+      top: ${y}%;
+      opacity: 0;
+    `;
+    hero.appendChild(el);
+
+    // Each firefly drifts independently
+    const dur   = 8  + Math.random() * 14;
+    const delay = Math.random() * 6;
+    const rx    = (Math.random() - 0.5) * 120;
+    const ry    = (Math.random() - 0.5) * 80;
+
+    gsap.to(el, {
+      keyframes: [
+        { opacity: 0,    duration: 0 },
+        { opacity: 0.7,  duration: dur * 0.25 },
+        { opacity: 0.3,  duration: dur * 0.5  },
+        { opacity: 0.9,  duration: dur * 0.15 },
+        { opacity: 0,    duration: dur * 0.1  },
+      ],
+      x: rx,
+      y: ry,
+      duration: dur,
+      delay: delay,
+      ease: 'sine.inOut',
+      repeat: -1,
+      repeatDelay: 1 + Math.random() * 4,
+      yoyo: true,
+    });
+  }
+})();
+
+/* ── Cursor ────────────────────────────────────────────────────── */
+(function initCursor() {
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+
+  let mx = -100, my = -100;   // mouse pos
+  let rx = -100, ry = -100;   // ring lerp pos
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX;
+    my = e.clientY;
+    // Dot snaps instantly via GSAP set
+    gsap.set(dot, { x: mx, y: my });
+  });
+
+  // Ring lerps at ~8% per frame
+  (function lerpRing() {
+    rx += (mx - rx) * 0.09;
+    ry += (my - ry) * 0.09;
+    gsap.set(ring, { x: rx, y: ry });
+    requestAnimationFrame(lerpRing);
+  })();
+
+  // Hover states on interactive elements
+  const interactives = document.querySelectorAll('a, button, [role="button"]');
+  interactives.forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+  });
+})();
+
+/* ── Scroll progress bar ──────────────────────────────────────── */
+(function initScrollProgress() {
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (scrolled / max * 100) + '%';
+  }, { passive: true });
+})();
+
+/* ── Mouse parallax ────────────────────────────────────────────── */
+(function initParallax() {
+  const layers = [
+    { el: document.getElementById('bg-1'), depth: 0.012 },
+    { el: document.getElementById('bg-2'), depth: 0.022 },
+    { el: document.getElementById('bg-3'), depth: 0.035 },
+    { el: document.getElementById('bg-4'), depth: 0.018 },
+  ];
+
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+
+  window.addEventListener('mousemove', e => {
+    // Normalize -0.5 to 0.5
+    targetX = (e.clientX / window.innerWidth  - 0.5);
+    targetY = (e.clientY / window.innerHeight - 0.5);
+  }, { passive: true });
+
+  (function animateParallax() {
+    currentX += (targetX - currentX) * 0.04;
+    currentY += (targetY - currentY) * 0.04;
+
+    layers.forEach(({ el, depth }) => {
+      const px = currentX * window.innerWidth  * depth * -1;
+      const py = currentY * window.innerHeight * depth * -1;
+      // Blend with existing ken-burns transform via cssText override isn't clean,
+      // so use a wrapper translate that adds to the ken-burns animation
+      el.style.setProperty('--px', px + 'px');
+      el.style.setProperty('--py', py + 'px');
+      // Apply parallax translation separately; ken-burns still plays via CSS
+      // We can't stack transforms cleanly without a wrapper, so we use GSAP quickSetter
+    });
+
+    requestAnimationFrame(animateParallax);
+  })();
+
+  // Use GSAP quickSetters for smooth stacked transforms
+  const setters = layers.map(({ el, depth }) => ({
+    x: gsap.quickSetter(el, 'x', 'px'),
+    y: gsap.quickSetter(el, 'y', 'px'),
+    depth,
+  }));
+
+  // Override the RAF loop above with quickSetters
+  currentX = 0; currentY = 0;
+
+  (function rafLoop() {
+    currentX += (targetX - currentX) * 0.04;
+    currentY += (targetY - currentY) * 0.04;
+
+    setters.forEach(({ x, y, depth }) => {
+      x(currentX * window.innerWidth  * depth * -1);
+      y(currentY * window.innerHeight * depth * -1);
+    });
+
+    requestAnimationFrame(rafLoop);
+  })();
+})();
+
+/* ── Load sequence ─────────────────────────────────────────────── */
+(function initLoadSequence() {
+  const overlay   = document.getElementById('load-overlay');
+  const wordmark  = document.getElementById('wordmark-load');
+  const headlines = document.querySelectorAll('.hero-headline-inner');
+  const tagline   = document.querySelector('.hero-tagline');
+  const body      = document.querySelector('.hero-body');
+  const eyebrow   = document.querySelector('.hero-eyebrow');
+  const ctaRow    = document.querySelector('.hero-cta-row');
+  const scrollH   = document.getElementById('scroll-hint');
+  const topWmark  = document.getElementById('site-wordmark');
+  const topNav    = document.getElementById('site-nav-right');
+  const priceBadge = document.querySelector('.pricing-badge');
+
+  const ease = 'cubic-bezier(0.76, 0, 0.24, 1)';
+
+  const tl = gsap.timeline({ defaults: { ease } });
+
+  // Phase 1 — Wordmark appears on black
+  tl.to(wordmark, {
+    opacity: 1,
+    duration: 0.9,
+    ease: 'power2.out',
+  }, 0.3);
+
+  // Phase 2 — Wordmark breathes
+  tl.to(wordmark, {
+    scale: 1.04,
+    duration: 0.7,
+    ease: 'power1.inOut',
+    yoyo: true,
+    repeat: 1,
+  }, 1.0);
+
+  // Phase 3 — Overlay wipes away (split reveal: left panel stays, right panel lifts)
+  tl.to(overlay, {
+    clipPath: 'inset(0% 0% 0% 100%)',
+    duration: 1.2,
+    ease,
+    onComplete: () => {
+      overlay.style.pointerEvents = 'none';
+      overlay.style.display = 'none';
+    }
+  }, 2.2);
+
+  // Phase 4 — Top nav elements appear
+  tl.to([topWmark, topNav, priceBadge], {
+    opacity: 1,
+    duration: 0.8,
+    stagger: 0.08,
+    ease: 'power2.out',
+  }, 3.0);
+
+  // Phase 5 — Eyebrow slides in
+  tl.to(eyebrow, {
+    opacity: 1,
+    y: 0,
+    duration: 0.7,
+    ease: 'power2.out',
+  }, 3.15);
+
+  // Phase 6 — Headlines clip-path reveal, staggered
+  tl.to(headlines, {
+    clipPath: 'inset(0% 0% 0% 0%)',
+    duration: 1.1,
+    stagger: 0.14,
+    ease,
+  }, 3.35);
+
+  // Phase 7 — Tagline
+  tl.to(tagline, {
+    clipPath: 'inset(0% 0% 0% 0%)',
+    duration: 0.8,
+    ease,
+  }, 3.85);
+
+  // Phase 8 — Body copy
+  tl.to(body, {
+    clipPath: 'inset(0% 0% 0% 0%)',
+    duration: 0.8,
+    ease,
+  }, 4.05);
+
+  // Phase 9 — CTA row
+  tl.to(ctaRow, {
+    opacity: 1,
+    y: 0,
+    duration: 0.7,
+    ease: 'power2.out',
+  }, 4.3);
+
+  // Phase 10 — Scroll hint
+  tl.to(scrollH, {
+    opacity: 1,
+    duration: 0.6,
+    ease: 'power2.out',
+  }, 4.7);
+
+  // Initial setup for elements that animate in
+  gsap.set(eyebrow, { y: 8 });
+  gsap.set(ctaRow,  { y: 12 });
+
+})();
+</script>
+</body>
+</html>

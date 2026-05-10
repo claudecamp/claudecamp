@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Camp — Soak. Stretch. Ship.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --base: #0d0d0d;
+  --surface: #111318;
+  --surface-2: #1a1d24;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.15);
+  --text: #f8fafc;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+  --accent: #7c3aed;
+  --accent-hover: #6d28d9;
+  --accent-glow: rgba(124,58,237,0.3);
+  --amber: #f59e0b;
+  --amber-dim: rgba(245,158,11,0.15);
+  --green: #10b981;
+  --red: #ef4444;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--base);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Scroll Progress ── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--amber));
+  z-index: 1000;
+  will-change: width;
+}
+
+/* ── Noise Overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ── Nav ── */
+nav {
+  position: fixed;
+  top: 2px; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 24px;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+}
+
+nav.scrolled {
+  background: rgba(13,13,13,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  letter-spacing: -0.02em;
+}
+
+.nav-logo sup {
+  font-size: 0.6em;
+  color: var(--accent);
+  font-weight: 500;
+  vertical-align: super;
+}
+
+.nav-links {
+  display: none;
+  list-style: none;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 0 24px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  background: rgba(124,58,237,0.08);
+  transform: translateY(-1px);
+}
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .hero { grid-template-columns: 1fr 1fr; }
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 24px 64px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .hero-left { padding: 120px 64px 80px; }
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.hero-headline .word {
+  display: inline-block;
+  margin-right: 0.2em;
+}
+
+.headline-accent { color: var(--accent); }
+.headline-amber { color: var(--amber); }
+
+.hero-sub {
+  font-size: 1.125rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+  max-width: 480px;
+  margin-bottom: 40px;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hero-meta-value {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ── Terminal ── */
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 64px;
+  position: relative;
+  background: linear-gradient(135deg, #0a0e1a 0%, #0d0f16 40%, #111a0e 100%);
+}
+
+@media (min-width: 1024px) {
+  .hero-right {
+    padding: 120px 64px 80px;
+    border-left: 1px solid var(--border);
+  }
+}
+
+.jungle-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 70% 30%, rgba(16,45,10,0.6) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 30% 70%, rgba(8,25,35,0.7) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(20,10,40,0.5) 0%, transparent 80%);
+  pointer-events: none;
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 560px;
+  background: #0a0b0e;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(124,58,237,0.15),
+    0 32px 80px rgba(0,0,0,0.7),
+    0 0 60px rgba(124,58,237,0.08);
+  position: relative;
+  z-index: 2;
+  will-change: transform;
+}
+
+.terminal-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #111318;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.terminal-dot.red { background: #ff5f57; }
+.terminal-dot.yellow { background: #febc2e; }
+.terminal-dot.green { background: #28c840; }
+
+.terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: 8px;
+  letter-spacing: 0.02em;
+}
+
+.terminal-body {
+  padding: 20px;
+  min-height: 320px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.t-line { display: block; }
+.t-prompt { color: var(--accent); }
+.t-cmd { color: #e2e8f0; }
+.t-output { color: #94a3b8; }
+.t-success { color: var(--green); }
+.t-warning { color: var(--amber); }
+.t-file { color: #60a5fa; }
+.t-diff-add { color: #34d399; }
+.t-diff-rm { color: #f87171; }
+.t-dim { color: #475569; }
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--accent);
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+  margin-left: 1px;
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ── Section Shared ── */
+section { position: relative; }
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-strong), transparent);
+  max-width: 80px;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  overflow: hidden;
+  clip-path: inset(0 0 100% 0);
+}
+
+.section-heading.revealed {
+  clip-path: inset(0 0 0% 0);
+  transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-sub {
+  font-size: 1.0625rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+  max-width: 560px;
+  margin-bottom: 48px;
+}
+
+/* ── The Setup ── */
+.setup-section {
+  padding: 96px 0;
+  overflow: hidden;
+}
+
+.setup-header {
+  padding: 0 24px;
+  max-width: 1280px;
+  margin: 0 auto 48px;
+}
+
+@media (min-width: 1024px) {
+  .setup-header { padding: 0 64px; }
+}
+
+.setup-track {
+  display: flex;
+  gap: 24px;
+  padding: 0 24px 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.setup-track::-webkit-scrollbar { display: none; }
+
+@media (min-width: 1024px) {
+  .setup-track {
+    padding: 0 64px 24px;
+    overflow-x: visible;
+  }
+}
+
+.day-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: border-color 0.2s, transform 0.2s;
+  will-change: transform;
+}
+
+.day-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+}
+
+.day-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.day-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.day-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.day-slot {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.slot-time {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  padding-top: 2px;
+  min-width: 44px;
+}
+
+.slot-content {}
+
+.slot-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.slot-desc {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.slot-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.dot-violet { background: var(--accent); }
+.dot-amber { background: var(--amber); }
+.dot-green { background: var(--green); }
+
+/* ── Stats ── */
+.stats-section {
+  padding: 64px 24px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.stats-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px 24px;
+}
+
+@media (min-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.stat-item { text-align: center; }
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.stat-number span { color: var(--accent); }
+.stat-number .amber { color: var(--amber); }
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── Tracks ── */
+.tracks-section {
+  padding: 96px 24px;
+}
+
+.tracks-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .tracks-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.track-card {
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+.track-card.track-beginner {
+  background: linear-gradient(135deg, #0f1218 0%, #131620 100%);
+}
+
+.track-card.track-builder {
+  background: linear-gradient(135deg, #0f0c1a 0%, #130f1e 100%);
+  border-color: rgba(124,58,237,0.3);
+}
+
+.track-card.track-builder::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.track-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.badge-beginner {
+  background: var(--amber-dim);
+  color: var(--amber);
+  border: 1px solid rgba(245,158,11,0.2);
+}
+
+.badge-builder {
+  background: rgba(124,58,237,0.15);
+  color: var(--accent);
+  border: 1px solid rgba(124,58,237,0.3);
+}
+
+.track-title {
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.track-tagline {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.track-outcome {
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  border: 1px solid var(--border);
+}
+
+.track-outcome strong {
+  color: var(--text);
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.track-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.track-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.track-list li::before {
+  content: '→';
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Property ── */
+.property-section {
+  padding: 96px 24px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.property-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.property-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .property-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .property-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.property-card {
+  background: var(--base);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: border-color 0.2s, transform 0.2s;
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+.property-card:hover {
+  border-color: rgba(245,158,11,0.3);
+  transform: translateY(-4px);
+}
+
+.property-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--amber-dim);
+  border: 1px solid rgba(245,158,11,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 1.375rem;
+}
+
+.property-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.property-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.property-card .amber-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--amber);
+  background: var(--amber-dim);
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 12px;
+  letter-spacing: 0.05em;
+}
+
+/* ── Hosts ── */
+.hosts-section {
+  padding: 96px 24px;
+}
+
+.hosts-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+}
+
+@media (min-width: 1024px) {
+  .hosts-inner { grid-template-columns: 1fr 1fr; align-items: center; }
+}
+
+.hosts-portrait-container {
+  display: flex;
+  justify-content: center;
+}
+
+.hosts-portrait {
+  width: 280px;
+  height: 360px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+@media (min-width: 768px) {
+  .hosts-portrait { width: 360px; height: 440px; }
+}
+
+.portrait-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a0e2e 0%, #0f1a0e 50%, #1a1205 100%);
+}
+
+.portrait-shape-1 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,58,237,0.3) 0%, transparent 70%);
+  top: 20%; left: 10%;
+}
+
+.portrait-shape-2 {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,158,11,0.2) 0%, transparent 70%);
+  bottom: 15%; right: 10%;
+}
+
+.portrait-shape-3 {
+  position: absolute;
+  width: 120px;
+  height: 300px;
+  border-radius: 60px;
+  background: rgba(255,255,255,0.03);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(20deg);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.portrait-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.hosts-content {}
+
+.hosts-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+  position: relative;
+  padding-left: 24px;
+  border-left: 2px solid var(--accent);
+  font-style: italic;
+}
+
+.hosts-bio {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.hosts-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.credential-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+
+.badge-gold {
+  background: var(--amber-dim);
+  color: var(--amber);
+  border: 1px solid rgba(245,158,11,0.2);
+}
+
+.badge-violet {
+  background: rgba(124,58,237,0.15);
+  color: #a78bfa;
+  border: 1px solid rgba(124,58,237,0.25);
+}
+
+/* ── What You'll Build ── */
+.build-section {
+  padding: 96px 0;
+  overflow: hidden;
+}
+
+.build-header {
+  padding: 0 24px;
+  max-width: 1280px;
+  margin: 0 auto 48px;
+}
+
+@media (min-width: 1024px) {
+  .build-header { padding: 0 64px; }
+}
+
+.build-pinned {
+  /* JS handles this on desktop */
+}
+
+.build-cards-wrapper {
+  display: flex;
+  gap: 24px;
+  padding: 0 24px 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.build-cards-wrapper::-webkit-scrollbar { display: none; }
+
+@media (min-width: 1024px) {
+  .build-cards-wrapper {
+    padding: 0 64px 24px;
+    overflow-x: visible;
+  }
+}
+
+.build-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: border-color 0.2s, transform 0.2s;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.build-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+}
+
+.build-card-number {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.build-card-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.build-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.build-card p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.build-card-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Pricing ── */
+.pricing-section {
+  padding: 96px 24px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.pricing-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.pricing-date-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--amber);
+  background: var(--amber-dim);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin-bottom: 48px;
+  max-width: 520px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .pricing-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.pricing-card {
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid var(--border);
+  background: var(--base);
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+.pricing-card.featured {
+  border-color: rgba(124,58,237,0.4);
+  background: linear-gradient(135deg, #0e0c1a 0%, #110e1e 100%);
+  position: relative;
+}
+
+.pricing-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: white;
+  background: var(--accent);
+  padding: 4px 16px;
+  border-radius: 0 0 8px 8px;
+}
+
+.pricing-tier {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.pricing-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+
+.pricing-price {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 20px 0 4px;
+}
+
+.pricing-price .currency {
+  font-size: 0.5em;
+  vertical-align: super;
+  margin-right: 2px;
+  color: var(--text-muted);
+}
+
+.pricing-per {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.pricing-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 28px 0;
+}
+
+.pricing-includes {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.pricing-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.pricing-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.pricing-list li .check {
+  color: var(--green);
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pricing-list li .x {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── Apply ── */
+.apply-section {
+  padding: 96px 24px;
+  background: linear-gradient(135deg, #0a0014 0%, #0d0d0d 50%, #0a1400 100%);
+  border-top: 1px solid var(--border);
+}
+
+.apply-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.apply-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.apply-sub {
+  font-size: 1.0625rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+  margin-bottom: 8px;
+}
+
+.apply-note {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+}
+
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.form-input, .form-select, .form-textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+}
+
+.form-select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 480px) {
+  .form-row { grid-template-columns: 1fr 1fr; }
+}
+
+.form-submit {
+  margin-top: 8px;
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-fine-print {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* ── Footer ── */
+footer {
+  padding: 48px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--base);
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.footer-logo sup {
+  font-size: 0.6em;
+  color: var(--accent);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--text); }
+
+.footer-made {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.footer-made span { color: var(--amber); }
+
+/* ── Magnetic Button Wrapper ── */
+.magnetic-wrap {
+  display: inline-block;
+  position: relative;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .cursor { animation: none; opacity: 1; }
+}
+
+/* ── Utility ── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div id="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
+
+<!-- ── NAV ── -->
+<nav id="main-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Claude Camp<sup>β</sup></a>
+    <ul class="nav-links">
+      <li><a href="#setup">The Week</a></li>
+      <li><a href="#tracks">Tracks</a></li>
+      <li><a href="#property">The Place</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <div class="magnetic-wrap" id="nav-cta-wrap">
+      <a href="#apply" class="btn-primary" id="nav-cta">Apply for Cohort 1</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Pai, Thailand &nbsp;·&nbsp; Nov 2026 &nbsp;·&nbsp; Cohort 1</div>
+    <h1 class="hero-headline" id="hero-headline">
+      <span class="word">Soak.</span>
+      <span class="word headline-accent">Stretch.</span>
+      <span class="word headline-amber">Ship.</span>
+    </h1>
+    <p class="hero-sub">
+      A 5-day Claude Code retreat in the mountains of Pai. Morning yoga, morning code, afternoon hot springs — and ship something real by Friday.
+    </p>
+    <div class="hero-ctas">
+      <div class="magnetic-wrap" id="hero-cta-wrap">
+        <a href="#apply" class="btn-primary" id="hero-cta">Apply Now — Nov 2026</a>
+      </div>
+      <a href="#setup" class="btn-secondary">See the week →</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Location</span>
+        <span class="hero-meta-value">Pai, Mae Hong Son</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Cohort size</span>
+        <span class="hero-meta-value">Max 7 guests</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">All-inclusive from</span>
+        <span class="hero-meta-value">$1,100 / week</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="jungle-overlay"></div>
+    <div class="terminal-window" id="terminal-window" role="region" aria-label="Example Claude Code session">
+      <div class="terminal-titlebar">
+        <div class="terminal-dot red"></div>
+        <div class="terminal-dot yellow"></div>
+        <div class="terminal-dot green"></div>
+        <span class="terminal-title">claude — ~/camp-project — 82×26</span>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <span class="t-line"><span class="t-dim"># Day 3 at Claude Camp — building a SaaS booking tool</span></span>
+        <span class="t-line">&nbsp;</span>
+        <span id="terminal-content"></span>
+        <span class="cursor" id="terminal-cursor"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE SETUP ── -->
+<section class="setup-section" id="setup" aria-label="A week at Claude Camp">
+  <div class="setup-header">
+    <div class="section-label">The week</div>
+    <h2 class="section-heading" id="setup-heading">Monday to Friday,<br>designed to flow.</h2>
+    <p class="section-sub">Each day has a rhythm. Code when your mind is sharp, soak when you need to think, ship when it all comes together.</p>
+  </div>
+  <div class="setup-track" id="setup-track" role="list">
+    <article class="day-card" role="listitem">
+      <div class="day-label">Day 01 — Monday</div>
+      <div class="day-title">Arrive &amp; Orient</div>
+      <div class="day-slots">
+        <div class="day-slot">
+          <span class="slot-dot dot-amber"></span>
+          <div>
+            <div class="slot-time">07:00</div>
+          </div>
+          <div class="slot-content">
+            <div class="slot-title">Yoga on the deck</div>
+            <div class="slot-desc">Gentle mountain-view flow with Ying. No experience needed.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-violet"></span>
+          <div>
+            <div class="slot-time">09:00</div>
+          </div>
+          <div class="slot-content">
+            <div class="slot-title">Claude Code orientation</div>
+            <div class="slot-desc">Install, configure, first prompts. Beginners and builders split here.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-green"></span>
+          <div>
+            <div class="slot-time">16:00</div>
+          </div>
+          <div class="slot-content">
+            <div class="slot-title">Hot springs soak</div>
+            <div class="slot-desc">Your first session in the on-site Thapai springs. 40°C bliss.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-amber"></span>
+          <div>
+            <div class="slot-time">19:00</div>
+          </div>
+          <div class="slot-content">
+            <div class="slot-title">Project pitch dinner</div>
+            <div class="slot-desc">Everyone shares what they want to build. Communal meal, good rice wine.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card" role="listitem">
+      <div class="day-label">Day 02 — Tuesday</div>
+      <div class="day-title">Foundation Day</div>
+      <div class="day-slots">
+        <div class="day-slot">
+          <span class="slot-dot dot-amber"></span>
+          <div><div class="slot-time">07:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Yoga + breathwork</div>
+            <div class="slot-desc">Pranayama focus. Sets deep focus for the morning session.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-violet"></span>
+          <div><div class="slot-time">09:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Deep build session 1</div>
+            <div class="slot-desc">Project architecture, database schema, first working routes.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-violet"></span>
+          <div><div class="slot-time">13:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Self-directed build</div>
+            <div class="slot-desc">Quiet time in the bungalow or communal workspace. Sasha circulates.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-green"></span>
+          <div><div class="slot-time">16:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Springs + peer review</div>
+            <div class="slot-desc">Soak and talk through blockers in the water. Seriously, it works.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card" role="listitem">
+      <div class="day-label">Day 03 — Wednesday</div>
+      <div class="day-title">Midweek Momentum</div>
+      <div class="day-slots">
+        <div class="day-slot">
+          <span class="slot-dot dot-amber"></span>
+          <div><div class="slot-time">07:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Yoga + walking meditation</div>
+            <div class="slot-desc">Down through the farm. Dew on the banana leaves. No devices.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-violet"></span>
+          <div><div class="slot-time">09:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">MCP &amp; agents workshop</div>
+            <div class="slot-desc">Connect Claude to real tools: APIs, databases, browser automation.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-amber"></span>
+          <div><div class="slot-time">13:30</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Bamboo forest walk</div>
+            <div class="slot-desc">Optional. Ying leads. 45 mins. You'll come back with 3 new ideas.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-green"></span>
+          <div><div class="slot-time">19:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Mid-week demo night</div>
+            <div class="slot-desc">Show what's working. Celebrate small wins. Adjust the plan.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card" role="listitem">
+      <div class="day-label">Day 04 — Thursday</div>
+      <div class="day-title">Deep Water</div>
+      <div class="day-slots">
+        <div class="day-slot">
+          <span class="slot-dot dot-amber"></span>
+          <div><div class="slot-time">07:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Restorative yoga</div>
+            <div class="slot-desc">Longer holds. Recovery and integration. Bodies and code both need it.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-violet"></span>
+          <div><div class="slot-time">09:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Build sprint — full 3hrs</div>
+            <div class="slot-desc">No interruptions. The longest unbroken session of the week.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-violet"></span>
+          <div><div class="slot-time">13:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Deploy &amp; polish</div>
+            <div class="slot-desc">Vercel, Railway, Supabase — get it live before the soak.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-green"></span>
+          <div><div class="slot-time">16:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">The long soak</div>
+            <div class="slot-desc">You've earned it. Private infinity tub. Mountain views. Stars coming out.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card" role="listitem">
+      <div class="day-label">Day 05 — Friday</div>
+      <div class="day-title">Ship Day</div>
+      <div class="day-slots">
+        <div class="day-slot">
+          <span class="slot-dot dot-amber"></span>
+          <div><div class="slot-time">07:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Final morning yoga</div>
+            <div class="slot-desc">Gratitude practice. Gentle. You're about to show the world something real.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-violet"></span>
+          <div><div class="slot-time">09:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Final build + polish</div>
+            <div class="slot-desc">Last tweaks. Write your README. Record a Loom. Make it presentable.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-green"></span>
+          <div><div class="slot-time">15:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Ship Ceremony</div>
+            <div class="slot-desc">Everyone presents. We post to Product Hunt, X, wherever. Champagne optional.</div>
+          </div>
+        </div>
+        <div class="day-slot">
+          <span class="slot-dot dot-amber"></span>
+          <div><div class="slot-time">19:00</div></div>
+          <div class="slot-content">
+            <div class="slot-title">Farewell feast</div>
+            <div class="slot-desc">Ying cooks. Long table. Late night. You've built something real in Pai.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<section class="stats-section" aria-label="Key statistics">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number"><span id="stat-reviews">0</span></div>
+      <div class="stat-label">Workaway Reviews</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span id="stat-rating">0</span><span class="amber">%</span></div>
+      <div class="stat-label">5-Star Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span id="stat-beds">0</span></div>
+      <div class="stat-label">Max Guests Per Cohort</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number"><span id="stat-days">0</span></div>
+      <div class="stat-label">Days to Ship</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TWO TRACKS ── -->
+<section class="tracks-section" id="tracks" aria-label="Learning tracks">
+  <div class="tracks-inner">
+    <div class="section-label">Choose your track</div>
+    <h2 class="section-heading" id="tracks-heading">Two paths.<br>One destination.</h2>
+    <p class="section-sub">Whether you've never seen a terminal or you're shipping agents professionally — there's a track for you. Both tracks work in the same space, at the same pace.</p>
+    <div class="tracks-grid">
+      <div class="track-card track-beginner">
+        <div class="track-badge badge-beginner">▸ Beginner Track</div>
+        <div class="track-title">I've never coded.</div>
+        <div class="track-tagline">No background required. Just curiosity, patience, and the willingness to build slowly.</div>
+        <div class="track-outcome">
+          <strong>By Friday you'll have</strong>
+          A working, deployed web app — a simple SaaS tool, a personal dashboard, or an automated workflow — that you built yourself, understand, and can keep improving.
+        </div>
+        <ul class="track-list">
+          <li>Learn to think in prompts, not syntax</li>
+          <li>Understand file systems, Git basics, and deploy pipelines</li>
+          <li>Ship a real product visible to the world</li>
+          <li>Leave with a working template you can extend after</li>
+          <li>1:1 support from Sasha throughout</li>
+          <li>Community of fellow first-timers</li>
+        </ul>
+      </div>
+      <div class="track-card track-builder">
+        <div class="track-badge badge-builder">⬡ Builder Track</div>
+        <div class="track-title">I'm a developer.</div>
+        <div class="track-tagline">Level up your AI-native workflow. Build agents. Connect MCPs. Ship faster than you ever have.</div>
+        <div class="track-outcome">
+          <strong>By Friday you'll have</strong>
+          A production-grade Claude Code workflow, a working MCP server, and either a shipped agent or a complex automated system — all built in 5 focused days.
+        </div>
+        <ul class="track-list">
+          <li>Master Claude Code for production engineering</li>
+          <li>Build and deploy custom MCP servers</li>
+          <li>Create multi-agent pipelines with tool use</li>
+          <li>Integrate Claude into existing codebases</li>
+          <li>Peer sessions with other senior engineers</li>
+          <li>Benchmark your AI workflow against the cohort</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE PROPERTY ── -->
+<section class="property-section" id="property" aria-label="The property">
+  <div class="property-inner">
+    <div class="section-label">The place</div>
+    <h2 class="section-heading" id="property-heading">Hot springs on-site.<br>Not nearby. On-site.</h2>
+    <p class="section-sub">This isn't a hotel with a pool that happens to be warm. The Thapai Hot Springs feed our infinity tubs directly. 80°C at the source, 40°C in yours.</p>
+    <div class="property-grid">
+      <div class="property-card">
+        <div class="property-icon">♨️</div>
+        <h3>Thapai Hot Springs — On Property</h3>
+        <p>Geothermal water fed directly from the Thapai source at 80°C, cooled to a perfect 40°C in private infinity tubs. Not a shuttle away. Not a short walk. Steps from your bungalow.</p>
+        <span class="amber-tag">80°C source • 40°C soak • On-site</span>
+      </div>
+      <div class="property-card">
+        <div class="property-icon">🎋</div>
+        <h3>Private Bamboo Bungalows</h3>
+        <p>Each guest has their own bamboo bungalow with a writing desk, private outdoor shower, and mountain views. Designed for deep focus and deep rest — not one or the other.</p>
+        <span class="amber-tag">Private • Quiet • Mountain views</span>
+      </div>
+      <div class="property-card">
+        <div class="property-icon">⚡</div>
+        <h3>WiFi Better Than California</h3>
+        <p>Gigabit fiber with redundant 4G/5G failover. We've run live deploys, video calls, and AI workloads simultaneously. Your tools will not be the bottleneck.</p>
+        <span class="amber-tag">1Gbps fiber • 4G backup • Latency tested</span>
+      </div>
+      <div class="property-card">
+        <div class="property-icon">🌄</div>
+        <h3>Mae Hong Son Mountains</h3>
+        <p>Pai sits at 800m elevation in a mountain valley. Morning mist over rice paddies. Cool nights. Clean air. The kind of place your brain has been asking for all year.</p>
+        <span class="amber-tag">800m elevation • Cool dry season • Nov–Feb</span>
+      </div>
+      <div class="property-card">
+        <div class="property-icon">🍚</div>
+        <h3>Communal Meals, Home-Cooked</h3>
+        <p>Ying cooks. Full Thai breakfast, communal lunch, family dinner. All included. All made from the garden or the market that morning. Dietary needs accommodated.</p>
+        <span class="amber-tag">3 meals included • Garden-to-table • Thai &amp; Western</span>
+      </div>
+      <div class="property-card">
+        <div class="property-icon">🛖</div>
+        <h3>The Workspace</h3>
+        <p>An open-air communal desk under bamboo shade, plus the option to work from your bungalow. Natural light, good chairs, external monitor available. Ceiling fans. Silence.</p>
+        <span class="amber-tag">Open-air • External monitors • Natural light</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── YOUR HOSTS ── -->
+<section class="hosts-section" id="hosts" aria-label="Your hosts">
+  <div class="hosts-inner">
+    <div class="hosts-portrait-container">
+      <div class="hosts-portrait" role="img" aria-label="Portrait of Sasha and Ying">
+        <div class="portrait-bg"></div>
+        <div class="portrait-shape-1"></div>
+        <div class="portrait-shape-2"></div>
+        <div class="portrait-shape-3"></div>
+        <div class="portrait-label">Sasha &amp; Ying — Pai, Thailand</div>
+      </div>
+    </div>
+    <div class="hosts-content">
+      <div class="section-label">Your hosts</div>
+      <h2 class="section-heading" id="hosts-heading">Sasha &amp; Ying</h2>
+      <blockquote class="hosts-quote">
+        "I ran a Workaway mountain farm in Pai for years — gardening mornings, hot springs afternoons. Then Claude Code happened. I started building real software here, between watering tomatoes and cutting bamboo. Claude Camp is what happens when we make that intentional."
+        <footer style="margin-top:12px; font-style:normal; font-size:0.8125rem; color:var(--text-muted); font-family:var(--font-mono);">— Sasha, founder</footer>
+      </blockquote>
+      <p class="hosts-bio">
+        Ying and I have hosted hundreds of people at this property over the years — through Workaway, through friends of friends, through word of mouth. We built something that felt genuinely restorative, not just beautiful. When AI tools changed what I was able to build here, I wanted to share that feeling: the moment when the mountain air and the right tools collide, and something real gets made.
+      </p>
+      <p class="hosts-bio" style="margin-top:-8px;">
+        Ying handles the land, the food, and the warmth that holds everything together. I handle the code sessions, the curriculum, and staying up too late with you debugging whatever broke before bed. We both read every application, and we keep the cohort at 7 so we can actually know everyone.
+      </p>
+      <div class="hosts-credentials">
+        <span class="credential-badge badge-gold">⭐ 85 Workaway Reviews</span>
+        <span class="credential-badge badge-gold">100% Rating</span>
+        <span class="credential-badge badge-violet">Top Host Badge</span>
+        <span class="credential-badge badge-violet">Pioneer Badge</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT YOU'LL BUILD ── -->
+<section class="build-section" id="build" aria-label="What you'll build">
+  <div class="build-header">
+    <div class="section-label">Example projects</div>
+    <h2 class="section-heading" id="build-heading">Five days.<br>One thing shipped.</h2>
+    <p class="section-sub">Past and future attendees have built or will build projects like these. Scope depends on your track and how fast you move.</p>
+  </div>
+  <div id="build-pinned">
+    <div class="build-cards-wrapper" id="build-cards" role="list">
+      <article class="build-card" role="listitem">
+        <div class="build-card-number">01 / 05</div>
+        <div class="build-card-icon">🏪</div>
+        <h3>Booking SaaS for Thai Guesthouses</h3>
+        <p>A simple multi-tenant booking platform for small guesthouses in Pai. Owners can manage rooms, set prices, and send WhatsApp confirmations. Guests get a clean booking flow.</p>
+        <div class="build-card-stack">
+          <span class="tech-tag">Next.js</span>
+          <span class="tech-tag">Supabase</span>
+          <span class="tech-tag">Stripe</span>
+          <span class="tech-tag">WhatsApp API</span>
+        </div>
+      </article>
+      <article class="build-card" role="listitem">
+        <div class="build-card-number">02 / 05</div>
+        <div class="build-card-icon">🤖</div>
+        <h3>Personal AI Research Agent</h3>
+        <p>An agent that monitors RSS feeds, Hacker News, and Twitter for topics you care about — summarizes overnight, drops a clean brief into your inbox each morning.</p>
+        <div class="build-card-stack">
+          <span class="tech-tag">Claude API</span>
+          <span class="tech-tag">MCP Tools</span>
+          <span class="tech-tag">Resend</span>
+          <span class="tech-tag">Cron</span>
+        </div>
+      </article>
+      <article class="build-card" role="listitem">
+        <div class="build-card-number">03 / 05</div>
+        <div class="build-card-icon">📊</div>
+        <h3>Client-Facing Analytics Dashboard</h3>
+        <p>A white-labeled dashboard for an agency or consultant to show client data. Pulls from Google Analytics, generates plain-English summaries, exports to PDF.</p>
+        <div class="build-card-stack">
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Recharts</span>
+          <span class="tech-tag">GA4 API</span>
+          <span class="tech-tag">Puppeteer</span>
+        </div>
+      </article>
+      <article class="build-card" role="listitem">
+        <div class="build-card-number">04 / 05</div>
+        <div class="build-card-icon">🔍</div>
+        <h3>Lead Research Scraper</h3>
+        <p>Inputs a company name or domain, outputs a structured profile: decision makers, tech stack, recent news, LinkedIn URLs. Saves 3 hours of manual research per prospect.</p>
+        <div class="build-card-stack">
+          <span class="tech-tag">Playwright</span>
+          <span class="tech-tag">Claude Tool Use</span>
+          <span class="tech-tag">Airtable</span>
+          <span class="tech-tag">Railway</span>
+        </div>
+      </article>
+      <article class="build-card" role="listitem">
+        <div class="build-card-number">05 / 05</div>
+        <div class="build-card-icon">⚙️</div>
+        <h3>Internal Ops Dashboard</h3>
+        <p>A private admin panel for your own business — inventory, orders, tasks, staff messages. Built for your exact workflow, not generic SaaS you'll pay for forever.</p>
+        <div class="build-card-stack">
+          <span class="tech-tag">SvelteKit</span>
+          <span class="tech-tag">PlanetScale</span>
+          <span class="tech-tag">Tailwind</span>
+          <span class="tech-tag">Vercel</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing-section" id="pricing" aria-label="Pricing">
+  <div class="pricing-inner">
+    <div class="section-label">Investment</div>
+    <h2 class="section-heading" id="pricing-heading">One week.<br>All-inclusive.</h2>
+    <p class="section-sub">No hidden costs. Accommodation, all meals, hot springs access, curriculum, and 1:1 support — included. You just get yourself to Pai.</p>
+    <div class="pricing-date-bar">
+      <span>📅</span>
+      <span>Cohort 1: November 10–14, 2026 &nbsp;·&nbsp; Applications open now</span>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">Standard</div>
+        <div class="pricing-name">Shared Bungalow</div>
+        <div class="pricing-price"><span class="currency">$</span>1,100</div>
+        <div class="pricing-per">per person / 5 days / all-inclusive</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-includes">Everything included</div>
+        <ul class="pricing-list">
+          <li><span class="check">✓</span> Shared bamboo bungalow (double occupancy)</li>
+          <li><span class="check">✓</span> All meals (breakfast, lunch, dinner)</li>
+          <li><span class="check">✓</span> Unlimited hot springs access</li>
+          <li><span class="check">✓</span> Morning yoga sessions</li>
+          <li><span class="check">✓</span> Full curriculum (beginner or builder track)</li>
+          <li><span class="check">✓</span> Group code review sessions</li>
+          <li><span class="check">✓</span> Gigabit WiFi + monitor access</li>
+          <li><span class="check">✓</span> Ship ceremony + community</li>
+          <li><span class="x">—</span> Private bungalow</li>
+          <li><span class="x">—</span> 1:1 evening sessions with Sasha</li>
+        </ul>
+        <a href="#apply" class="btn-secondary" style="width:100%; justify-content:center; padding:14px;">Apply for Standard</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-tier">Premium</div>
+        <div class="pricing-name">Private Bungalow</div>
+        <div class="pricing-price"><span class="currency">$</span>1,600</div>
+        <div class="pricing-per">per person / 5 days / all-inclusive</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-includes">Everything included</div>
+        <ul class="pricing-list">
+          <li><span class="check">✓</span> Private bamboo bungalow with desk</li>
+          <li><span class="check">✓</span> All meals (breakfast, lunch, dinner)</li>
+          <li><span class="check">✓</span> Unlimited hot springs access</li>
+          <li><span class="check">✓</span> Morning yoga sessions</li>
+          <li><span class="check">✓</span> Full curriculum (beginner or builder track)</li>
+          <li><span class="check">✓</span> Group code review sessions</li>
+          <li><span class="check">✓</span> Gigabit WiFi + monitor access</li>
+          <li><span class="check">✓</span> Ship ceremony + community</li>
+          <li><span class="check">✓</span> <strong>Private bungalow — your own space</strong></li>
+          <li><span class="check">✓</span> <strong>1:1 evening sessions with Sasha</strong></li>
+        </ul>
+        <a href="#apply" class="btn-primary" style="width:100%; justify-content:center; padding:14px;">Apply for Premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── APPLY ── -->
+<section class="apply-section" id="apply" aria-label="Apply for Claude Camp">
+  <div class="apply-inner">
+    <div class="section-label" style="justify-content:center;">Applications</div>
+    <h2 class="apply-heading">Apply for<br><span style="color:var(--accent)">Cohort 1.</span></h2>
+    <p class="apply-sub">We keep cohorts at 7 so we can be genuinely present with everyone.</p>
+    <p class="apply-note">We read every application. Expect a response within 3 days.</p>
+    <form class="apply-form" id="apply-form" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="field-first">First name <span aria-hidden="true" style="color:var(--accent)">*</span></label>
+          <input class="form-input" type="text" id="field-first" name="first" required autocomplete="given-name" placeholder="Sasha">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="field-last">Last name</label>
+          <input class="form-input" type="text" id="field-last" name="last" autocomplete="family-name" placeholder="Kovac">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="field-email">Email <span aria-hidden="true" style="color:var(--accent)">*</span></label>
+        <input class="form-input" type="email" id="field-email" name="email" required autocomplete="email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="field-track">Which track? <span aria-hidden="true" style="color:var(--accent)">*</span></label>
+        <select class="form-select" id="field-track" name="track" required>
+          <option value="" disabled selected>Select your track</option>
+          <option value="beginner">Beginner — I've never coded</option>
+          <option value="builder">Builder — I'm a developer</option>
+          <option value="unsure">Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="field-tier">Accommodation preference</label>
+        <select class="form-select" id="field-tier" name="tier">
+          <option value="" disabled selected>Standard or Premium?</option>
+          <option value="standard">Standard — Shared bungalow ($1,100)</option>
+          <option value="premium">Premium — Private bungalow ($1,600)</option>
+          <option value="flexible">Flexible / let me know</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="field-why">What do you want to build? <span aria-hidden="true" style="color:var(--accent)">*</span></label>
+        <textarea class="form-textarea" id="field-why" name="why" required placeholder="Tell us what project you have in mind, or what problem you want to solve. Even a rough idea is fine."></textarea>
+      </div>
+      <button type="submit" class="btn-primary form-submit" id="apply-submit">Submit Application</button>
+      <p class="form-fine-print">We read every application personally. Max 7 people per cohort.<br>No coding experience required for the Beginner track.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">Claude Camp<sup>β</sup></a>
+    <ul class="footer-links">
+      <li><a href="#setup">The Week</a></li>
+      <li><a href="#tracks">Tracks</a></li>
+      <li><a href="#property">The Place</a></li>
+      <li><a href="#hosts">Hosts</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="mailto:hello@claudecamp.org">hello@claudecamp.org</a></li>
+    </ul>
+    <div class="footer-made">Made in <span>Pai, Thailand</span> &nbsp;·&nbsp; claudecamp.org</div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  // ── Scroll progress bar ──────────────────────────────────────────
+  const progressBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (scrollTop / docH * 100) + '%';
+  }, { passive: true });
+
+  // ── Nav glassmorphism on scroll ──────────────────────────────────
+  const mainNav = document.getElementById('main-nav');
+  const scrollObserver = new IntersectionObserver(
+    ([entry]) => mainNav.classList.toggle('scrolled', !entry.isIntersecting),
+    { rootMargin: '-64px 0px 0px 0px' }
+  );
+  scrollObserver.observe(document.querySelector('.hero'));
+
+  // ── GSAP Setup ───────────────────────────────────────────────────
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  // ── Terminal typewriter ──────────────────────────────────────────
+  const terminalContent = document.getElementById('terminal-content');
+  const terminalCursor = document.getElementById('terminal-cursor');
+
+  const terminalLines = [
+    { type: 'prompt', text: '> claude' },
+    { type: 'output', text: '  ╔══════════════════════════════════╗' },
+    { type: 'output', text: '  ║     Claude Code  v1.2.14         ║' },
+    { type: 'output', text: '  ╚══════════════════════════════════╝' },
+    { type: 'blank' },
+    { type: 'prompt', text: '> build a booking system for a guesthouse' },
+    { type: 'blank' },
+    { type: 'thinking', text: '  ● Analyzing requirements...' },
+    { type: 'success', text: '  ✓ Created: /src/app/page.tsx' },
+    { type: 'success', text: '  ✓ Created: /src/lib/supabase.ts' },
+    { type: 'success', text: '  ✓ Created: /src/app/api/bookings/route.ts' },
+    { type: 'blank' },
+    { type: 'file', text: '  → /src/app/api/bookings/route.ts' },
+    { type: 'diff_add', text: '  + export async function POST(req: Request) {' },
+    { type: 'diff_add', text: '  +   const { room, checkIn, checkOut, guest } = await req.json()' },
+    { type: 'diff_add', text: '  +   const { data, error } = await supabase' },
+    { type: 'diff_add', text: '  +     .from("bookings").insert([{ room, checkIn, checkOut, guest }])' },
+    { type: 'blank' },
+    { type: 'success', text: '  ✓ Deployed to Vercel: https://pai-stay.vercel.app' },
+    { type: 'warning', text: '  ⚡ Build time: 18s  •  Deploy time: 12s' },
+    { type: 'blank' },
+    { type: 'dim', text: '  # Day 3, 11:42am. Soak at 4pm. Ship tomorrow.' },
+  ];
+
+  let lineIndex = 0;
+  let charIndex = 0;
+  let currentSpan = null;
+  const LINE_DELAY = 60;
+  const CHAR_DELAY = 18;
+  const BLANK_DELAY = 200;
+  const PROMPT_PAUSE = 600;
+
+  function typeNextChar() {
+    if (lineIndex >= terminalLines.length) {
+      terminalCursor.style.display = 'inline-block';
+      return;
+    }
+
+    const line = terminalLines[lineIndex];
+
+    if (line.type === 'blank') {
+      const br = document.createElement('span');
+      br.className = 't-line';
+      br.innerHTML = '&nbsp;';
+      terminalContent.appendChild(br);
+      lineIndex++;
+      charIndex = 0;
+      currentSpan = null;
+      setTimeout(typeNextChar, BLANK_DELAY);
+      return;
+    }
+
+    if (charIndex === 0) {
+      currentSpan = document.createElement('span');
+      currentSpan.className = 't-line';
+      const inner = document.createElement('span');
+      const classMap = {
+        prompt: 't-prompt', output: 't-output', thinking: 't-output',
+        success: 't-success', warning: 't-warning', file: 't-file',
+        diff_add: 't-diff-add', diff_rm: 't-diff-rm', dim: 't-dim'
+      };
+      inner.className = classMap[line.type] || 't-output';
+      currentSpan.appendChild(inner);
+      terminalContent.appendChild(currentSpan);
+    }
+
+    const inner = currentSpan.querySelector('span');
+    if (charIndex < line.text.length) {
+      inner.textContent += line.text[charIndex];
+      charIndex++;
+      const delay = line.type === 'prompt' ? CHAR_DELAY * 1.5 : CHAR_DELAY;
+      setTimeout(typeNextChar, delay);
+    } else {
+      lineIndex++;
+      charIndex = 0;
+      currentSpan = null;
+      const pause = line.type === 'prompt' ? PROMPT_PAUSE : LINE_DELAY;
+      setTimeout(typeNextChar, pause);
+    }
+  }
+
+  // Start terminal after brief delay
+  setTimeout(typeNextChar, 800);
+
+  // ── Terminal noise jitter ────────────────────────────────────────
+  const termWin = document.getElementById('terminal-window');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced) {
+    const jitterTl = gsap.timeline({ repeat: -1, repeatDelay: 3 });
+    jitterTl
+      .to(termWin, { x: 1.5, y: -1, duration: 0.05, ease: 'none' })
+      .to(termWin, { x: -1, y: 1.5, duration: 0.05, ease: 'none' })
+      .to(termWin, { x: 0.5, y: -0.5, duration: 0.05, ease: 'none' })
+      .to(termWin, { x: 0, y: 0, duration: 0.08, ease: 'power2.out' })
+      .to({}, { duration: 8 }); // long pause between jitters
+  }
+
+  // ── SplitText hero headline ──────────────────────────────────────
+  const heroWords = document.querySelectorAll('#hero-headline .word');
+  gsap.set(heroWords, { y: 60, opacity: 0, willChange: 'transform, opacity' });
+  gsap.to(heroWords, {
+    y: 0,
+    opacity: 1,
+    duration: 0.9,
+    stagger: 0.15,
+    ease: 'power3.out',
+    delay: 0.3
+  });
+
+  // Hero sub and meta fade in
+  gsap.from('.hero-sub', { y: 20, opacity: 0, duration: 0.8, delay: 0.8, ease: 'power2.out' });
+  gsap.from('.hero-ctas', { y: 20, opacity: 0, duration: 0.8, delay: 1.0, ease: 'power2.out' });
+  gsap.from('.hero-meta', { y: 20, opacity: 0, duration: 0.8, delay: 1.15, ease: 'power2.out' });
+  gsap.from('.hero-eyebrow', { y: -20, opacity: 0, duration: 0.6, delay: 0.1, ease: 'power2.out' });
+
+  // ── Section heading clip-path reveals ───────────────────────────
+  const sectionHeadings = document.querySelectorAll('.section-heading');
+  sectionHeadings.forEach(heading => {
+    gsap.set(heading, { clipPath: 'inset(0 0 100% 0)', willChange: 'clip-path' });
+    ScrollTrigger.create({
+      trigger: heading,
+      start: 'top 85%',
+      onEnter: () => {
+        gsap.to(heading, {
+          clipPath: 'inset(0 0 0% 0)',
+          duration: 0.9,
+          ease: 'power3.out'
+        });
+      }
+    });
+  });
+
+  // ── Counter animation ────────────────────────────────────────────
+  function animateCounter(el, target, suffix = '') {
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: target,
+      duration: 1.8,
+      ease: 'power2.out',
+      onUpdate: () => {
+        el.textContent = Math.round(obj.val) + suffix;
+      },
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        once: true
+      }
+    });
+  }
+
+  animateCounter(document.getElementById('stat-reviews'), 85);
+  animateCounter(document.getElementById('stat-rating'), 100);
+  animateCounter(document.getElementById('stat-beds'), 7);
+  animateCounter(document.getElementById('stat-days'), 5);
+
+  // ── Track card stagger reveal ────────────────────────────────────
+  gsap.to('.track-card', {
+    y: 0,
+    opacity: 1,
+    duration: 0.8,
+    stagger: 0.12,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.tracks-grid',
+      start: 'top 80%'
+    }
+  });
+
+  // ── Property card stagger reveal ────────────────────────────────
+  gsap.to('.property-card', {
+    y: 0,
+    opacity: 1,
+    duration: 0.7,
+    stagger: 0.08,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '.property-grid',
+      start: 'top 80%'
+    }
+  });
+
+  // ── Pricing card stagger reveal ──────────────────────────────────
+  gsap.to('.pricing-card', {
+    y: 0,
+    opacity: 1,
+    duration: 0.7,
+    stagger: 0.12,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '.pricing-grid',
+      start: 'top 80%'
+    }
+  });
+
+  // ── Build cards stagger reveal ───────────────────────────────────
+  gsap.to('.build-card', {
+    opacity: 1,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '#build-cards',
+      start: 'top 80%'
+    }
+  });
+
+  // ── Horizontal scroll — What You'll Build ───────────────────────
+  // Desktop only
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 1024px)', () => {
+    const buildCards = document.getElementById('build-cards');
+    const totalWidth = buildCards.scrollWidth;
+    const viewW = window.innerWidth;
+    const scrollDist = totalWidth - viewW + 128;
+
+    gsap.to(buildCards, {
+      x: -scrollDist,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#build-pinned',
+        start: 'top top',
+        end: () => '+=' + scrollDist,
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true
+      }
+    });
+  });
+
+  // ── Magnetic CTA buttons ─────────────────────────────────────────
+  function makeMagnetic(wrapId, btnId) {
+    const wrap = document.getElementById(wrapId);
+    const btn = document.getElementById(btnId);
+    if (!wrap || !btn || prefersReduced) return;
+
+    wrap.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) * 0.35;
+      const dy = (e.clientY - cy) * 0.35;
+      gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power2.out' });
+    });
+
+    wrap.addEventListener('mouseleave', () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,0.5)' });
+    });
+  }
+
+  makeMagnetic('nav-cta-wrap', 'nav-cta');
+  makeMagnetic('hero-cta-wrap', 'hero-cta');
+
+  // ── Apply form submit ────────────────────────────────────────────
+  const applyForm = document.getElementById('apply-form');
+  const applySubmit = document.getElementById('apply-submit');
+
+  applyForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(applyForm);
+    const name = formData.get('first') || '';
+    const email = formData.get('email') || '';
+    const track = formData.get('track') || '';
+
+    // Basic validation
+    let valid = true;
+    applyForm.querySelectorAll('[required]').forEach(field => {
+      if (!field.value.trim()) {
+        field.style.borderColor = '#ef4444';
+        field.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.15)';
+        valid = false;
+      } else {
+        field.style.borderColor = '';
+        field.style.boxShadow = '';
+      }
+    });
+
+    if (!valid) return;
+
+    // Simulate submission
+    applySubmit.textContent = 'Sending...';
+    applySubmit.disabled = true;
+
+    setTimeout(() => {
+      applySubmit.textContent = '✓ Application received!';
+      applySubmit.style.background = '#10b981';
+      gsap.from(applySubmit, { scale: 0.97, duration: 0.3, ease: 'back.out(2)' });
+    }, 1200);
+  });
+
+  // ── Day cards scroll hint (desktop) ─────────────────────────────
+  // Day cards use native horizontal scroll on mobile, that's fine.
+
+  // ── Refresh ScrollTrigger on load ───────────────────────────────
+  window.addEventListener('load', () => {
+    ScrollTrigger.refresh();
+  });
+
+})();
+</script>
+</body>
+</html>

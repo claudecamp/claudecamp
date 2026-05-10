@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Claude session files
+.claude/
+
+# Large PNG duplicates (use JPG versions in assets/)
+assets/*.png
+
+# Nodestead (separate product)
+nodestead/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
