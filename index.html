@@ -3077,7 +3077,7 @@ html, body {
 
       <input type="hidden" id="bk-cohort" name="cohort">
 
-      <button type="submit" class="booking-submit" id="booking-submit-btn">Reserve my bed →</button>
+      <button type="submit" class="booking-submit" id="booking-submit-btn">Reserve my bed — pay $420 deposit →</button>
       <p class="booking-status" id="booking-status"></p>
       <p class="booking-fine-print">Sasha reads every application personally and replies within 48 hours from Pai. You'll get a Stripe link to confirm with your deposit.</p>
     </form>
@@ -3923,14 +3923,22 @@ async function submitBooking(e) {
     if (!res.ok || result.error) {
       throw new Error(result.error || 'Booking failed. Try again or WhatsApp us.');
     }
-    document.getElementById('booking-form').style.display = 'none';
-    document.getElementById('booking-success').style.display = '';
-    loadCohortAvailability(); // refresh dots
+
+    if (result.checkoutUrl) {
+      // Stripe configured — redirect to Checkout for $420 deposit
+      btn.textContent = 'Redirecting to payment...';
+      window.location.href = result.checkoutUrl;
+    } else {
+      // Stripe not yet configured — show inline success (manual Stripe link flow)
+      document.getElementById('booking-form').style.display = 'none';
+      document.getElementById('booking-success').style.display = '';
+      loadCohortAvailability();
+    }
   } catch (err) {
     status.textContent = err.message;
     status.className = 'booking-status error';
     btn.disabled = false;
-    btn.textContent = 'Reserve my bed →';
+    btn.textContent = 'Reserve my bed — pay $420 deposit →';
   }
 }
 

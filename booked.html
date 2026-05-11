@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're confirmed — Claude Camp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --jungle-deep: #060d04;
+  --amber:       #f59e0b;
+  --amber-dim:   #92610a;
+  --text:        #f8fafc;
+  --text-muted:  rgba(248,250,252,0.55);
+}
+
+html, body {
+  width: 100%; min-height: 100%;
+  background: var(--jungle-deep);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem);
+}
+
+.page {
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+}
+
+.check {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(245,158,11,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2.5rem;
+}
+
+.check svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--amber);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+  margin-bottom: 1.2rem;
+}
+
+.headline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--text);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.8rem;
+}
+
+.body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+.divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(245,158,11,0.25);
+  margin: 2.5rem auto;
+}
+
+.next-steps {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0 1rem;
+  align-items: start;
+}
+
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--amber-dim);
+  padding-top: 0.3rem;
+  text-align: right;
+}
+
+.step-text {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.step-text strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(248,250,252,0.2);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--amber);
+  border-color: rgba(245,158,11,0.4);
+}
+
+.whatsapp {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.whatsapp a {
+  color: var(--amber);
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="check">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+
+  <p class="eyebrow">Claude Camp · Pai, Thailand</p>
+
+  <h1 class="headline">Your bed is locked.<br>See you in Pai.</h1>
+
+  <p class="body">Your $420 deposit landed. A confirmation is on its way to your inbox right now.</p>
+
+  <div class="divider"></div>
+
+  <div class="next-steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <p class="step-text"><strong>Check your email.</strong> A confirmation with all the details is heading to your inbox. If it doesn't arrive within a few minutes, check spam or WhatsApp Sasha.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <p class="step-text"><strong>Nothing else to do.</strong> One week before camp starts, you'll get a full arrival guide — driver contact, packing list, what time to land in Chiang Mai.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <p class="step-text"><strong>Questions before then?</strong> WhatsApp is fastest. Sasha reads every message personally.</p>
+    </div>
+  </div>
+
+  <a href="/" class="back-link">← Back to claudecamp.org</a>
+
+  <p class="whatsapp">Urgent? <a href="https://wa.me/66922864775" target="_blank" rel="noopener">WhatsApp +66 92 286 4775</a></p>
+
+</div>
+</body>
+</html>

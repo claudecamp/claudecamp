@@ -1,16 +1,18 @@
 /**
- * Claude Camp — bookings + waitlist Worker.
+ * Claude Camp — bookings + waitlist + Stripe Worker.
  *
  * Endpoints
- *   POST /api/booking                     create a booking application
+ *   POST /api/booking                     create a booking → returns Stripe Checkout URL
  *   GET  /api/availability?cohort=xxx     taken beds for a cohort
  *   POST /api/waitlist                    add to a cohort's waitlist
  *   GET  /api/waitlist-count?cohort=xxx   how many people are waiting
  *   GET  /api/bookings?key=ADMIN_KEY      admin: list all bookings
  *   GET  /api/waitlist?key=ADMIN_KEY      admin: list all waitlist entries
  *   PATCH /api/booking/:id                admin: update status/payment (X-Admin-Key header)
+ *   POST /api/stripe-webhook              Stripe webhook → confirm payment
  *
- * Data lives in D1 (sqlite). Emails sent via Resend.
+ * Secrets: RESEND_API_KEY, ADMIN_KEY, STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET
+ * Data: D1 (sqlite). Emails: Resend.
  */
 
 const CORS = {
@@ -49,7 +51,6 @@ async function resend(env, payload) {
 }
 
 function cohortLabel(id) {
-  // Hardcoded labels for current schedule. Worker stays in sync with site COHORTS array.
   const m = {
     'oct-04-2026': 'Oct 4 – 9, 2026',
     'oct-11-2026': 'Oct 11 – 16, 2026',
@@ -69,19 +70,94 @@ function cohortLabel(id) {
   return m[id] || id;
 }
 
-async function sendBookingEmails(env, b) {
+// ─── Stripe helpers ──────────────────────────────────────────────────
+
+async function createStripeCheckout(env, booking) {
+  const cohort = cohortLabel(booking.cohort);
+  const tierLabel = booking.tier === 'premium' ? 'Premium ($1,600)' : 'Standard ($960)';
+
+  const params = new URLSearchParams({
+    'payment_method_types[]': 'card',
+    'line_items[0][price_data][currency]': 'usd',
+    'line_items[0][price_data][product_data][name]': `Claude Camp — ${cohort}`,
+    'line_items[0][price_data][product_data][description]': `${tierLabel} deposit · non-refundable, transferable within 12 months`,
+    'line_items[0][price_data][unit_amount]': '42000', // $420.00
+    'line_items[0][quantity]': '1',
+    'mode': 'payment',
+    'success_url': `${env.SITE_URL}/booked.html?session_id={CHECKOUT_SESSION_ID}`,
+    'cancel_url': `${env.SITE_URL}/#section-cohorts`,
+    'customer_email': booking.email,
+    'metadata[booking_id]': booking.id,
+    'metadata[cohort]': booking.cohort,
+    'metadata[name]': booking.name,
+  });
+
+  const res = await fetch('https://api.stripe.com/v1/checkout/sessions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: params.toString(),
+  });
+
+  if (!res.ok) {
+    const e = await res.json();
+    throw new Error(e.error?.message || 'Stripe checkout failed');
+  }
+
+  return res.json();
+}
+
+async function verifyStripeWebhook(rawBody, sigHeader, secret) {
+  // Parse Stripe-Signature header: t=timestamp,v1=sig,...
+  const parts = {};
+  for (const chunk of sigHeader.split(',')) {
+    const eq = chunk.indexOf('=');
+    if (eq > -1) parts[chunk.slice(0, eq)] = chunk.slice(eq + 1);
+  }
+  const timestamp = parts.t;
+  const v1sigs = sigHeader.split(',')
+    .filter(p => p.startsWith('v1='))
+    .map(p => p.slice(3));
+
+  if (!timestamp || !v1sigs.length) throw new Error('Invalid Stripe-Signature header');
+
+  // Reject events older than 5 minutes
+  const age = Math.abs(Date.now() / 1000 - parseInt(timestamp));
+  if (age > 300) throw new Error('Webhook timestamp too old');
+
+  const signedPayload = `${timestamp}.${rawBody}`;
+  const key = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(secret),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign'],
+  );
+  const mac = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(signedPayload));
+  const expected = Array.from(new Uint8Array(mac))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+
+  if (!v1sigs.includes(expected)) throw new Error('Stripe signature mismatch');
+}
+
+// ─── Emails ──────────────────────────────────────────────────────────
+
+async function sendApplicationEmails(env, b) {
   const cohort = cohortLabel(b.cohort);
   const tier = b.tier === 'premium' ? 'Premium ($1,600)' : 'Standard ($960)';
   const track = b.track === 'builder' ? 'Builder' : 'Beginner';
 
-  // Admin notification
+  // Admin notification (immediate on application)
   await resend(env, {
     from: `Claude Camp <${env.FROM_EMAIL}>`,
     to: [env.NOTIFICATION_EMAIL],
-    subject: `New booking: ${b.name} — ${cohort}`,
+    subject: `New application: ${b.name} — ${cohort}`,
     html: `
       <h2>New booking application</h2>
-      <p><strong>${b.name}</strong> just applied for <strong>${cohort}</strong>.</p>
+      <p><strong>${b.name}</strong> applied for <strong>${cohort}</strong>. Awaiting deposit payment.</p>
       <table style="border-collapse:collapse;font-family:sans-serif;font-size:14px;">
         <tr><td style="padding:4px 12px 4px 0;color:#888;">Email</td><td>${b.email}</td></tr>
         <tr><td style="padding:4px 12px 4px 0;color:#888;">WhatsApp</td><td>${b.phone || '—'}</td></tr>
@@ -94,20 +170,39 @@ async function sendBookingEmails(env, b) {
       <h3>What they're building</h3>
       <p>${(b.building || '—').replace(/</g, '&lt;')}</p>
       ${b.message ? `<h3>Notes</h3><p>${b.message.replace(/</g, '&lt;')}</p>` : ''}
-      <p style="margin-top:24px;color:#888;font-size:12px;">Reply to them at <a href="mailto:${b.email}">${b.email}</a> or WhatsApp ${b.phone || ''}. Send a Stripe link for the $420 deposit.</p>
+      <p style="margin-top:24px;color:#888;font-size:12px;">Payment pending — Stripe will notify when deposit clears.</p>
+    `,
+  });
+}
+
+async function sendConfirmationEmails(env, b) {
+  const cohort = cohortLabel(b.cohort);
+  const tier = b.tier === 'premium' ? 'Premium ($1,600)' : 'Standard ($960)';
+  const track = b.track === 'builder' ? 'Builder' : 'Beginner';
+
+  // Admin — deposit confirmed
+  await resend(env, {
+    from: `Claude Camp <${env.FROM_EMAIL}>`,
+    to: [env.NOTIFICATION_EMAIL],
+    subject: `✓ Deposit paid: ${b.name} — ${cohort}`,
+    html: `
+      <h2>Deposit confirmed</h2>
+      <p><strong>${b.name}</strong> paid the $420 deposit for <strong>${cohort}</strong>. Bed ${b.bed_id} is locked.</p>
+      <p>Email: <a href="mailto:${b.email}">${b.email}</a> · WhatsApp: ${b.phone || '—'}</p>
+      <p style="color:#888;font-size:12px;">${tier} · ${track} track · Booking ID: ${b.id}</p>
     `,
   });
 
-  // Guest confirmation
+  // Guest — confirmed
   await resend(env, {
     from: `Sasha at Claude Camp <${env.FROM_EMAIL}>`,
     to: [b.email],
     reply_to: env.NOTIFICATION_EMAIL,
-    subject: `Got it — your application for ${cohort}`,
+    subject: `You're confirmed for ${cohort} — see you in Pai`,
     html: `
       <p>Hey ${b.name.split(' ')[0]},</p>
-      <p>Got your application for <strong>${cohort}</strong>. I read every one personally and I'll reply from Pai within 48 hours with a Stripe link for the $420 deposit to confirm your bed.</p>
-      <p>If anything's urgent in the meantime, WhatsApp me at <a href="https://wa.me/66922864775">+66 92 286 4775</a>.</p>
+      <p>Your $420 deposit is in — bed ${b.bed_id} is yours for <strong>${cohort}</strong>. Nothing else to do right now.</p>
+      <p>A week before camp starts I'll send you a full arrival guide: driver contact, what to pack, what to leave at home. In the meantime, if anything comes up WhatsApp me at <a href="https://wa.me/66922864775">+66 92 286 4775</a>.</p>
       <p>— Sasha</p>
       <p style="color:#888;font-size:12px;margin-top:32px;">${cohort} · ${tier} · ${track} track · Bed ${b.bed_id}<br>The deposit is non-refundable but transferable to any future cohort within 12 months.</p>
     `,
@@ -154,41 +249,34 @@ export default {
     const { pathname } = url;
 
     try {
-      // POST /api/booking
       if (req.method === 'POST' && pathname === '/api/booking') {
         return await createBooking(req, env);
       }
 
-      // GET /api/availability?cohort=xxx
       if (req.method === 'GET' && pathname === '/api/availability') {
         return await getAvailability(url, env);
       }
 
-      // POST /api/waitlist
       if (req.method === 'POST' && pathname === '/api/waitlist') {
         return await createWaitlist(req, env);
       }
 
-      // GET /api/waitlist-count?cohort=xxx — public, just a count
       if (req.method === 'GET' && pathname === '/api/waitlist-count') {
         return await getWaitlistCount(url, env);
       }
 
-      // GET /api/bookings?key=ADMIN
       if (req.method === 'GET' && pathname === '/api/bookings') {
         if (url.searchParams.get('key') !== env.ADMIN_KEY) return err('unauthorized', 401);
         const { results } = await env.DB.prepare('SELECT * FROM bookings ORDER BY created_at DESC').all();
         return json({ bookings: results });
       }
 
-      // GET /api/waitlist?key=ADMIN
       if (req.method === 'GET' && pathname === '/api/waitlist') {
         if (url.searchParams.get('key') !== env.ADMIN_KEY) return err('unauthorized', 401);
         const { results } = await env.DB.prepare('SELECT * FROM waitlist ORDER BY created_at DESC').all();
         return json({ waitlist: results });
       }
 
-      // PATCH /api/booking/:id (admin)
       if (req.method === 'PATCH' && pathname.startsWith('/api/booking/')) {
         if (req.headers.get('X-Admin-Key') !== env.ADMIN_KEY) return err('unauthorized', 401);
         const id = pathname.replace('/api/booking/', '');
@@ -200,12 +288,19 @@ export default {
         return json({ ok: true });
       }
 
+      // Stripe webhook — must read raw body before any other parsing
+      if (req.method === 'POST' && pathname === '/api/stripe-webhook') {
+        return await handleStripeWebhook(req, env);
+      }
+
       return err('not found', 404);
     } catch (e) {
       return err(e.message || 'server error', 500);
     }
   },
 };
+
+// ─── Handlers ───────────────────────────────────────────────────────
 
 async function createBooking(req, env) {
   const b = await req.json();
@@ -223,6 +318,7 @@ async function createBooking(req, env) {
 
   const id = nanoid();
   const now = Date.now();
+
   await env.DB.prepare(
     `INSERT INTO bookings
      (id, cohort, bed_id, name, email, phone, country, track, tier, building, message, committed, status, payment, created_at)
@@ -233,11 +329,61 @@ async function createBooking(req, env) {
     b.building || null, b.message || null, b.committed ? 1 : 0, now
   ).run();
 
-  // Fire-and-forget email (don't block the response)
-  const booking = { id, ...b };
-  await sendBookingEmails(env, booking);
+  // Send admin notification immediately
+  await sendApplicationEmails(env, { id, ...b });
 
-  return json({ success: true, booking: { id, cohort: b.cohort, bed_id: b.bed_id } });
+  // If Stripe is configured, create Checkout session
+  if (env.STRIPE_SECRET_KEY) {
+    const session = await createStripeCheckout(env, { id, ...b });
+
+    // Store session ID for webhook lookup
+    await env.DB.prepare(
+      'UPDATE bookings SET stripe_session_id=? WHERE id=?'
+    ).bind(session.id, id).run();
+
+    return json({ success: true, checkoutUrl: session.url, bookingId: id });
+  }
+
+  // Fallback: no Stripe configured — old manual flow
+  return json({ success: true, bookingId: id, cohort: b.cohort, bed_id: b.bed_id });
+}
+
+async function handleStripeWebhook(req, env) {
+  if (!env.STRIPE_WEBHOOK_SECRET) return err('webhook not configured', 501);
+
+  const rawBody = await req.text();
+  const sig = req.headers.get('Stripe-Signature');
+  if (!sig) return err('missing signature', 400);
+
+  try {
+    await verifyStripeWebhook(rawBody, sig, env.STRIPE_WEBHOOK_SECRET);
+  } catch (e) {
+    return err(e.message, 400);
+  }
+
+  const event = JSON.parse(rawBody);
+
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object;
+    const bookingId = session.metadata?.booking_id;
+    if (!bookingId) return json({ received: true });
+
+    // Update payment status
+    await env.DB.prepare(
+      "UPDATE bookings SET payment='deposit_paid', status='confirmed' WHERE id=?"
+    ).bind(bookingId).run();
+
+    // Fetch full booking for email
+    const booking = await env.DB.prepare(
+      'SELECT * FROM bookings WHERE id=?'
+    ).bind(bookingId).first();
+
+    if (booking) {
+      await sendConfirmationEmails(env, booking);
+    }
+  }
+
+  return json({ received: true });
 }
 
 async function getAvailability(url, env) {
@@ -255,7 +401,6 @@ async function createWaitlist(req, env) {
   for (const f of required) if (!w[f]) return err(`${f} is required`);
   if (!/^[^@]+@[^@]+\.[^@]+$/.test(w.email)) return err('invalid email');
 
-  // Prevent duplicate signups
   const existing = await env.DB.prepare(
     'SELECT id FROM waitlist WHERE cohort=? AND email=?'
   ).bind(w.cohort, w.email).first();
