@@ -2318,6 +2318,111 @@ html, body {
   .hero-cta-row { flex-wrap: wrap; }
   #scroll-hint { display: none; }
 }
+
+/* ─── SIDE DOT RAIL ──────────────────────────────────────────── */
+#side-rail {
+  position: fixed;
+  right: clamp(1rem, 2vw, 1.8rem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: flex-end;
+}
+
+.rail-dot {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  padding: 2px 0;
+}
+
+.rail-dot-pip {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(248,250,252,0.2);
+  transition: background 0.35s, transform 0.35s, box-shadow 0.35s;
+  flex-shrink: 0;
+  order: 2;
+}
+
+.rail-dot-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(248,250,252,0);
+  white-space: nowrap;
+  transition: color 0.25s;
+  order: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.rail-dot:hover .rail-dot-label { color: rgba(248,250,252,0.55); }
+.rail-dot:hover .rail-dot-pip   { background: rgba(248,250,252,0.5); transform: scale(1.3); }
+
+.rail-dot.active .rail-dot-pip {
+  background: var(--amber);
+  box-shadow: 0 0 7px rgba(245,158,11,0.65);
+  transform: scale(1.5);
+}
+
+.rail-dot.active .rail-dot-label { color: rgba(245,158,11,0.65); }
+
+@media (max-width: 900px) { #side-rail { display: none; } }
+
+/* ─── EXCURSIONS MOBILE CAROUSEL ─────────────────────────────── */
+@media (max-width: 480px) {
+  #section-week .week-inner { padding-left: 0; padding-right: 0; overflow: hidden; }
+  .excursions-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1px;
+    border: none;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1rem;
+    margin-top: clamp(2rem, 5vh, 3.5rem);
+  }
+  .excursions-grid::-webkit-scrollbar { display: none; }
+  .excursion-card {
+    min-width: 75vw;
+    max-width: 75vw;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    border-right: 1px solid rgba(245,158,11,0.1);
+    min-height: 340px;
+  }
+  .excursion-card:last-child { border-right: none; margin-right: 1.5rem; }
+  .excursion-carousel-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--amber-dim);
+    padding: 0 1.5rem;
+    margin-top: 0.9rem;
+    opacity: 0.7;
+  }
+  .excursion-carousel-hint::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--amber-dim);
+  }
+}
+@media (min-width: 481px) { .excursion-carousel-hint { display: none; } }
 </style>
 </head>
 <body>
@@ -2345,6 +2450,20 @@ html, body {
 <!-- CUSTOM CURSOR -->
 <div id="cursor-dot"></div>
 <div id="cursor-ring"></div>
+
+<!-- SIDE DOT RAIL -->
+<nav id="side-rail" aria-label="Section navigation">
+  <div class="rail-dot" data-target="hero"><span class="rail-dot-label">Home</span><span class="rail-dot-pip"></span></div>
+  <div class="rail-dot" data-target="section-day"><span class="rail-dot-label">A Day</span><span class="rail-dot-pip"></span></div>
+  <div class="rail-dot" data-target="section-tracks"><span class="rail-dot-label">Tracks</span><span class="rail-dot-pip"></span></div>
+  <div class="rail-dot" data-target="section-place"><span class="rail-dot-label">The Place</span><span class="rail-dot-pip"></span></div>
+  <div class="rail-dot" data-target="section-week"><span class="rail-dot-label">Excursions</span><span class="rail-dot-pip"></span></div>
+  <div class="rail-dot" data-target="section-pricing"><span class="rail-dot-label">Pricing</span><span class="rail-dot-pip"></span></div>
+  <div class="rail-dot" data-target="section-hosts"><span class="rail-dot-label">Hosts</span><span class="rail-dot-pip"></span></div>
+  <div class="rail-dot" data-target="section-prep"><span class="rail-dot-label">Prep</span><span class="rail-dot-pip"></span></div>
+  <div class="rail-dot" data-target="section-travel"><span class="rail-dot-label">Getting Here</span><span class="rail-dot-pip"></span></div>
+  <div class="rail-dot" data-target="section-cohorts"><span class="rail-dot-label">Reserve</span><span class="rail-dot-pip"></span></div>
+</nav>
 
 <!-- ─── HERO ─────────────────────────────────────────────────── -->
 <section id="hero" role="banner">
@@ -2661,6 +2780,7 @@ html, body {
       </div>
 
     </div>
+    <p class="excursion-carousel-hint">Swipe to explore all five</p>
   </div>
 </section>
 
@@ -3876,6 +3996,30 @@ async function submitWaitlist(e) {
 /* ── Boot calendar ───────────────────────────────────────────── */
 renderCohorts();
 loadCohortAvailability();
+
+/* ── Side dot rail ───────────────────────────────────────────── */
+(function () {
+  const dots     = Array.from(document.querySelectorAll('.rail-dot'));
+  const sections = dots.map(d => document.getElementById(d.dataset.target)).filter(Boolean);
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        dots.forEach(d => d.classList.toggle('active', d.dataset.target === id));
+      }
+    });
+  }, { threshold: 0.25 });
+
+  sections.forEach(s => obs.observe(s));
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const target = document.getElementById(dot.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+})();
 </script>
 </body>
 </html>
