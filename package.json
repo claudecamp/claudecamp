@@ -8,13 +8,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "@studio-freight/lenis": "^1.0.42",
     "gsap": "^3.12.5",
-    "@studio-freight/lenis": "^1.0.42"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
+    "sharp": "^0.34.5",
     "vite": "^5.4.0"
   }
 }

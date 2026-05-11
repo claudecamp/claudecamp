@@ -20,3 +20,8 @@ Thumbs.db
 # Env
 .env
 .env.local
+
+# Temp recovery & local artifacts
+.tmp-*
+.wrangler/
+*.mhtml

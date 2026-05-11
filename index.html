@@ -1491,6 +1491,593 @@ html, body {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   SECTION — BEFORE YOU ARRIVE
+   ═══════════════════════════════════════════════════════════════ */
+
+#section-prep {
+  background: var(--canopy);
+  padding: clamp(5rem, 10vh, 8rem) clamp(1.5rem, 6vw, 6rem);
+  position: relative;
+  overflow: hidden;
+}
+
+#section-prep::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 60% at 50% 100%, rgba(245,158,11,0.05) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.prep-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.prep-intro {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  max-width: 60ch;
+  opacity: 0;
+}
+
+.prep-list {
+  margin-top: clamp(3rem, 6vh, 5rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.prep-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0 2rem;
+  padding: 2.2rem 0;
+  opacity: 0;
+}
+
+.prep-item + .prep-item {
+  border-top: 1px solid rgba(248,250,252,0.06);
+}
+
+.prep-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--amber);
+  padding-top: 0.6rem;
+  text-align: right;
+  padding-right: 1.5rem;
+}
+
+.prep-content {
+  padding-left: 1rem;
+}
+
+.prep-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.85rem;
+  line-height: 1.1;
+}
+
+.prep-desc {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.92rem, 1.05vw, 1rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 0.9rem;
+}
+
+.prep-desc:last-child {
+  margin-bottom: 0;
+}
+
+.prep-desc a {
+  color: var(--amber);
+  text-decoration: underline;
+  text-decoration-color: rgba(245,158,11,0.4);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+
+.prep-desc a:hover {
+  text-decoration-color: var(--amber);
+}
+
+@media (max-width: 600px) {
+  .prep-item { grid-template-columns: 70px 1fr; gap: 0 1rem; padding: 1.8rem 0; }
+  .prep-num { font-size: 0.65rem; padding-right: 1rem; }
+  .prep-content { padding-left: 0.5rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION — GETTING HERE
+   ═══════════════════════════════════════════════════════════════ */
+
+#section-travel {
+  background: var(--jungle-mid);
+  padding: clamp(5rem, 10vh, 8rem) clamp(1.5rem, 6vw, 6rem);
+  position: relative;
+  overflow: hidden;
+}
+
+#section-travel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,158,11,0.04) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.travel-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.travel-lede {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  max-width: 60ch;
+  opacity: 0;
+}
+
+.travel-specs {
+  margin-top: clamp(3rem, 5vh, 4rem);
+}
+
+.travel-specs .place-spec-item {
+  opacity: 1;
+}
+
+.travel-journey {
+  margin-top: clamp(3rem, 6vh, 5rem);
+}
+
+.travel-faq {
+  margin-top: clamp(3rem, 5vh, 4rem);
+  padding-top: clamp(2rem, 4vh, 3rem);
+  border-top: 1px solid rgba(248,250,252,0.06);
+  display: grid;
+  gap: 2.2rem 2.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .travel-faq {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.travel-faq-item {
+  opacity: 0;
+}
+
+.travel-faq-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.55rem;
+}
+
+.travel-faq-desc {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1vw, 0.98rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.travel-faq-desc a {
+  color: var(--amber);
+  text-decoration: underline;
+  text-decoration-color: rgba(245,158,11,0.4);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+
+.travel-faq-desc a:hover {
+  text-decoration-color: var(--amber);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION — RESERVE YOUR WEEK (Cohorts)
+   ═══════════════════════════════════════════════════════════════ */
+
+#section-cohorts {
+  background: #030704;
+  padding: clamp(5rem, 10vh, 8rem) clamp(1.5rem, 6vw, 6rem);
+  position: relative;
+  overflow: hidden;
+}
+
+#section-cohorts::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,158,11,0.05) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.cohorts-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cohorts-intro {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  max-width: 60ch;
+  opacity: 0;
+}
+
+.cohorts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: clamp(3rem, 5vh, 4rem);
+}
+
+.cohort-card-main {
+  border: 1px solid rgba(245,158,11,0.18);
+  background: rgba(26,13,5,0.55);
+  padding: 1.8rem 1.6rem;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+  opacity: 0;
+}
+
+.cohort-card-main:hover {
+  border-color: rgba(245,158,11,0.45);
+  transform: translateY(-2px);
+}
+
+.cohort-card-main.is-full {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.cohort-card-main.is-break {
+  border-color: rgba(248,250,252,0.1);
+  background: rgba(255,255,255,0.02);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 1.6rem;
+}
+
+.cohort-card-main.is-break .cohort-dates-main {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.cohort-card-main.is-break .cohort-break-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(248,250,252,0.4);
+}
+
+.cohort-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+}
+
+.cohort-open-badge {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4ade80;
+  border: 1px solid rgba(74,222,128,0.35);
+  padding: 0.25rem 0.6rem;
+}
+
+.cohort-open-badge.full {
+  color: rgba(248,250,252,0.3);
+  border-color: rgba(248,250,252,0.1);
+}
+
+.cohort-dates-main {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  color: var(--text);
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.cohort-tracks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.cohort-track-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 0.7rem 0.65rem;
+}
+
+.cohort-track-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.cohort-track-avail {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.cohort-dots {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.cohort-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+.cohort-dot.taken {
+  background: rgba(248,250,252,0.12);
+}
+
+.cohort-price {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.cohort-reserve {
+  width: 100%;
+  border: 1px solid var(--amber);
+  background: transparent;
+  color: var(--amber);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cohort-reserve:hover {
+  background: var(--amber);
+  color: #060d04;
+}
+
+/* ─── BOOKING MODAL ──────────────────────────────────── */
+
+#booking-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(3, 8, 5, 0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+#booking-modal.is-open {
+  display: flex;
+}
+
+.booking-modal-card {
+  background: var(--canopy);
+  border: 1px solid rgba(245,158,11,0.25);
+  max-width: 500px;
+  width: 100%;
+  padding: clamp(1.8rem, 4vw, 2.5rem);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.booking-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.3rem 0.5rem;
+}
+
+.booking-modal-close:hover { color: var(--amber); }
+
+.booking-modal-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+}
+
+.booking-modal-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.booking-modal-sub {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+}
+
+.booking-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.booking-form-row label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.booking-form-row input,
+.booking-form-row select,
+.booking-form-row textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(245,158,11,0.18);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.95rem;
+  padding: 0.7rem 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.booking-form-row input:focus,
+.booking-form-row select:focus,
+.booking-form-row textarea:focus {
+  border-color: var(--amber);
+}
+
+.booking-form-row select option {
+  background: var(--canopy);
+  color: var(--text);
+}
+
+.booking-form-row textarea {
+  resize: vertical;
+  min-height: 70px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.booking-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.booking-submit {
+  width: 100%;
+  border: 1px solid var(--amber);
+  background: var(--amber);
+  color: #060d04;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.95rem 1rem;
+  cursor: pointer;
+  margin-top: 0.8rem;
+  transition: opacity 0.2s;
+}
+
+.booking-submit:hover { opacity: 0.88; }
+.booking-submit:disabled { opacity: 0.4; cursor: wait; }
+
+.booking-status {
+  margin-top: 1rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.booking-status.success { color: #4ade80; }
+.booking-status.error { color: #f87171; }
+
+.booking-modal-success {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.booking-modal-success .check {
+  font-size: 2.5rem;
+  color: #4ade80;
+  margin-bottom: 0.8rem;
+}
+
+.booking-modal-success p {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+
+@media (max-width: 480px) {
+  .booking-form-grid { grid-template-columns: 1fr; }
+  .cohorts-grid { gap: 1rem; }
+}
+
 /* ─── MOBILE ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   #site-nav-right { display: none; }
@@ -1520,13 +2107,10 @@ html, body {
 
   <!-- Layer 0 — Real photograph -->
   <div class="bg-layer" id="bg-photo" aria-hidden="true">
-    <img
-      src="assets/the-moment-laptop-steam.jpg"
-      alt=""
-      role="presentation"
-      draggable="false"
-      fetchpriority="high"
-    >
+    <picture>
+      <source srcset="assets/the-moment-laptop-steam.webp" type="image/webp">
+      <img src="assets/the-moment-laptop-steam.jpg" alt="" role="presentation" draggable="false" fetchpriority="high">
+    </picture>
   </div>
 
   <!-- Layer 1 — Deep jungle multiply grade -->
@@ -1554,12 +2138,10 @@ html, body {
 
   <!-- Secondary image — hot springs inset, bottom-right -->
   <div id="img-inset" aria-hidden="true">
-    <img
-      src="assets/hot-springs-dawn-mist.jpg"
-      alt=""
-      role="presentation"
-      draggable="false"
-    >
+    <picture>
+      <source srcset="assets/hot-springs-dawn-mist.webp" type="image/webp">
+      <img src="assets/hot-springs-dawn-mist.jpg" alt="" role="presentation" draggable="false">
+    </picture>
   </div>
   <div id="img-inset-label" aria-hidden="true">
     <span>05:30 — hot springs</span>
@@ -1581,8 +2163,8 @@ html, body {
   <!-- Main content — bottom-anchored -->
   <div id="hero-content">
 
-    <p class="hero-eyebrow" aria-label="Location: 01, Pai Thailand">
-      01 — Pai, Thailand
+    <p class="hero-eyebrow" aria-label="Location: 01, Mae Hong Son Province, Thailand">
+      01 — Mae Hong Son, Thailand
     </p>
 
     <h1>
@@ -1599,7 +2181,7 @@ html, body {
     </div>
 
     <div class="hero-body-wrap">
-      <span class="hero-body">7 beds. Jungle mornings. Code that ships. Join Sasha &amp; Ying on their mountain farm for a retreat where the rhythm of the land and deep work coexist.</span>
+      <span class="hero-body">7 beds on an organic mountain farm in the most remote corner of Thailand. Solar-powered. 200 Mbps fiber. The vegetables on your plate were in the ground this morning. The code on your screen will be live by Friday.</span>
     </div>
 
     <div class="hero-cta-row">
@@ -1632,37 +2214,37 @@ html, body {
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">07:00</div>
-        <div class="timeline-desc">Morning yoga with a local instructor</div>
+        <div class="timeline-desc">Yoga at first light. Valley still in cloud below. Body loose before the screens turn on.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">09:00</div>
-        <div class="timeline-desc">Claude Code session — three hours of deep work</div>
+        <div class="timeline-desc">Three hours of Claude Code while your brain is sharpest — guided sessions, real problems, everyone building something that matters to them.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">12:00</div>
-        <div class="timeline-desc">Communal lunch. Ying cooks.</div>
+        <div class="timeline-desc">Lunch at the long table. The vegetables on your plate were in the ground this morning. Ying cooked everything.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">13:00</div>
-        <div class="timeline-desc">Self-directed building — your project, your pace</div>
+        <div class="timeline-desc">The afternoon is yours. Your project. Your pace. Sasha nearby when you hit a wall.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">16:00</div>
-        <div class="timeline-desc">Walk to the hot springs — 300 baht entry included</div>
+        <div class="timeline-desc">A walk through rice paddies to the hot springs. The kind of reset only geography can give you.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">19:00</div>
-        <div class="timeline-desc">Communal dinner. Demo what you built.</div>
+        <div class="timeline-desc">Dinner together. Someone always demos something they didn't think they could build. The table reacts like it matters — because it does.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">21:00</div>
-        <div class="timeline-desc">Rest. Repeat.</div>
+        <div class="timeline-desc">Sleep well. The farm is quiet. Tomorrow you go further.</div>
       </div>
 
     </div>
@@ -1674,13 +2256,16 @@ html, body {
      ═══════════════════════════════════════════════════════════ -->
 <section id="section-tracks" aria-label="Two Tracks">
   <div class="tracks-bg" aria-hidden="true">
-    <img src="assets/community-night-table.jpg" alt="" role="presentation" draggable="false">
+    <picture>
+      <source srcset="assets/community-night-table.webp" type="image/webp">
+      <img src="assets/community-night-table.jpg" alt="" role="presentation" draggable="false">
+    </picture>
     <div class="tracks-bg-overlay"></div>
   </div>
 
   <div class="tracks-inner">
     <p class="section-eyebrow">03 — Tracks</p>
-    <h2 class="section-headline">Choose your path.</h2>
+    <h2 class="section-headline">Where are you starting from?</h2>
 
     <div class="tracks-grid">
 
@@ -1688,12 +2273,12 @@ html, body {
       <div class="track-card">
         <div class="track-label">Track A</div>
         <div class="track-name">Beginner</div>
-        <p class="track-hook">"You've never written code. By Friday you'll have shipped something real."</p>
+        <p class="track-hook">"You have an idea that has been sitting still for months. By Friday it's running on your machine, built entirely by you."</p>
         <ul class="track-features">
-          <li>Build your first Claude Code project</li>
-          <li>Learn prompting, context management, tool use</li>
-          <li>No prior experience needed</li>
-          <li>Small cohort — max 4 per track</li>
+          <li>Ship your first Claude Code project from scratch</li>
+          <li>Prompting, context, tools — the whole mental model</li>
+          <li>Zero coding background required</li>
+          <li>Four people maximum — you will not get lost</li>
         </ul>
         <a href="#section-waitlist" class="btn-primary">
           <span>Join the waitlist</span>
@@ -1705,12 +2290,12 @@ html, body {
       <div class="track-card">
         <div class="track-label">Track B</div>
         <div class="track-name">Builder</div>
-        <p class="track-hook">"You already ship. Come learn to ship 10× faster."</p>
+        <p class="track-hook">"You already know what you're building. This week you learn to build it 10× faster and hand the repetitive parts to agents."</p>
         <ul class="track-features">
-          <li>Agents, MCPs, and multi-step workflows</li>
-          <li>Claude API integration</li>
-          <li>Real projects, real feedback</li>
-          <li>Max 3 seats</li>
+          <li>Agents, MCPs, multi-step workflows that run while you sleep</li>
+          <li>Claude API wired into your actual stack</li>
+          <li>Bring a real project — leave with it further than you imagined</li>
+          <li>Three seats only — feedback is personal here</li>
         </ul>
         <a href="#section-waitlist" class="btn-primary">
           <span>Join the waitlist</span>
@@ -1732,21 +2317,30 @@ html, body {
 
       <div class="place-images">
         <div class="place-img-wrap">
-          <img src="assets/arrival-dusk-wide.jpg" alt="Arrival at dusk — the farm at golden hour" draggable="false">
+          <picture>
+            <source srcset="assets/arrival-dusk-wide.webp" type="image/webp">
+            <img src="assets/arrival-dusk-wide.jpg" alt="Arrival at dusk — the farm at golden hour" draggable="false">
+          </picture>
         </div>
         <div class="place-img-wrap">
-          <img src="assets/hot-springs-dawn-mist.jpg" alt="Hot springs at dawn, mist rising from the water" draggable="false">
+          <picture>
+            <source srcset="assets/hot-springs-dawn-mist.webp" type="image/webp">
+            <img src="assets/hot-springs-dawn-mist.jpg" alt="Hot springs at dawn, mist rising from the water" draggable="false">
+          </picture>
         </div>
         <div class="place-img-wrap">
-          <img src="assets/bamboo-bungalow.png" alt="Bamboo bungalow exterior on the farm" draggable="false">
+          <picture>
+            <source srcset="assets/bamboo-bungalow.webp" type="image/webp">
+            <img src="assets/bamboo-bungalow.png" alt="Bamboo bungalow exterior on the farm" draggable="false">
+          </picture>
         </div>
       </div>
 
       <div class="place-copy">
         <p class="section-eyebrow">04 — Pai, Thailand</p>
         <h2 class="place-headline">7km from town.<br>A world away.</h2>
-        <p class="place-body">A working mountain farm. Bamboo bungalows. Mountain views. Ying's cooking. Better WiFi than California.</p>
-        <p class="place-body">The farm sits at elevation, above the valley haze, where mornings are cool enough for yoga and afternoons cool enough for a long walk down to the springs.</p>
+        <p class="place-body">Solar-powered bamboo bungalows on a working organic farm in Mae Hong Son — the remotest, quietest corner of Thailand. No city noise. No distractions. Two hundred megabits of fiber, because deep work needs a fast connection.</p>
+        <p class="place-body">The farm sits above the valley haze. Mornings are cool enough to think clearly. Afternoons are cool enough to walk to the hot springs without breaking a sweat. The food on your plate came from the soil twenty meters away — no pesticides, no supply chain, just Ying and the earth. Meat from hill tribe villages up the road. Vegetarian fully catered. Eating well is part of the week.</p>
 
         <div class="place-specs">
           <div class="place-spec-item">
@@ -1759,11 +2353,11 @@ html, body {
           </div>
           <div class="place-spec-item">
             <span class="place-spec-label">Internet</span>
-            <span class="place-spec-value">Fibre · 100Mbps</span>
+            <span class="place-spec-value">Fibre · 200Mbps</span>
           </div>
           <div class="place-spec-item">
             <span class="place-spec-label">Hot springs</span>
-            <span class="place-spec-value">300m walk</span>
+            <span class="place-spec-value">15-min walk</span>
           </div>
         </div>
       </div>
@@ -1782,43 +2376,43 @@ html, body {
 
     <div class="excursions-grid">
 
-      <div class="excursion-card" style="background-image: url(assets/Buddhist_monk.jpg);">
+      <div class="excursion-card" style="background-image: url(assets/Buddhist_monk.webp);">
         <div class="excursion-card-inner">
           <div class="excursion-num">01</div>
           <div class="excursion-name">Sai Sin Blessing</div>
-          <p class="excursion-desc">A local monk ties a sacred white string on arrival. The week begins with intention.</p>
+          <p class="excursion-desc">On your first morning a local monk ties a white Sai Sin thread around your wrist. An old blessing for a new beginning. The week starts with that weight on your arm.</p>
         </div>
       </div>
 
-      <div class="excursion-card" style="background-image: url(assets/pai-canyon.jpg);">
+      <div class="excursion-card" style="background-image: url(assets/pai-canyon.webp);">
         <div class="excursion-card-inner">
           <div class="excursion-num">02</div>
           <div class="excursion-name">Pai Canyon at Sunset</div>
-          <p class="excursion-desc">8km from the farm. Tuesday evening. The valley turns amber below your feet.</p>
+          <p class="excursion-desc">Eight kilometers from the farm. You stand on a knife-edge ridge as the whole valley catches fire beneath you. Tuesday evening. No one is looking at a screen.</p>
         </div>
       </div>
 
-      <div class="excursion-card" style="background-image: url(assets/tham-lot-cave.jpg);">
+      <div class="excursion-card" style="background-image: url(assets/tham-lot-cave.webp);">
         <div class="excursion-card-inner">
           <div class="excursion-num">03</div>
           <div class="excursion-name">Tham Lod Cave</div>
-          <p class="excursion-desc">Underground river. 2,000-year-old teak coffins. Bat exodus at dusk — ten thousand wings.</p>
+          <p class="excursion-desc">Paddle by bamboo raft through an underground river past teak coffins two thousand years old. At dusk, tens of thousands of bats spiral out — a living river above your head.</p>
         </div>
       </div>
 
-      <div class="excursion-card" style="background-image: url(assets/thai-cooking.jpg);">
+      <div class="excursion-card" style="background-image: url(assets/thai-cooking.webp);">
         <div class="excursion-card-inner">
           <div class="excursion-num">04</div>
           <div class="excursion-name">Cooking Class</div>
-          <p class="excursion-desc">Friday afternoon. Mortar-and-pestle curry pastes. The kind of cooking you'll do at home.</p>
+          <p class="excursion-desc">Friday afternoon in a village kitchen. Mortar and pestle, fresh galangal, kaffir lime leaves torn by hand. You leave knowing how to make one dish perfectly, and wanting to make it every week.</p>
         </div>
       </div>
 
-      <div class="excursion-card" style="background-image: url(assets/krathong-closing-ceremony.jpg); background-position: center top;">
+      <div class="excursion-card" style="background-image: url(assets/krathong-closing-ceremony.webp); background-position: center top;">
         <div class="excursion-card-inner">
           <div class="excursion-num">05</div>
           <div class="excursion-name">Closing Dinner &amp; Krathong</div>
-          <p class="excursion-desc">Hand-printed "Claude Camp" certificate on Saa paper. Lanterns on the water.</p>
+          <p class="excursion-desc">The last evening. Hand-printed certificates on Saa paper, names pressed in ink. Krathong on the water, candles drifting downstream. Seven strangers leave as the group who built this thing together.</p>
         </div>
       </div>
 
@@ -1886,12 +2480,12 @@ html, body {
     <div class="hosts-grid">
 
       <blockquote class="host-quote">
-        <span class="host-quote-mark">&ldquo;</span>I ran a Workaway mountain farm in Pai for years — gardening mornings, hot springs afternoons. Then Claude Code happened. I started building real software here, between watering tomatoes and cutting bamboo. Volunteers started doing it with me. Claude Camp is what happens when we make that intentional.&rdquo;
+        <span class="host-quote-mark">&ldquo;</span>For years this farm was my whole life — mornings in the garden, afternoons at the springs, 85 five-star reviews from Workaway volunteers who came and never wanted to leave. Then Claude Code changed what I could build, alone, between the tomatoes and the bamboo. I started teaching it to whoever was staying. They built things they didn't believe were possible. Claude Camp is just what happens when we stop doing that by accident.&rdquo;
       </blockquote>
 
       <div class="host-aside">
         <div class="host-divider"></div>
-        <p class="host-aside-text">Ying keeps the farm running, cooks every meal, and makes the place feel like home. The "Sasha &amp; Ying" welcome is already in 85 five-star Workaway reviews.</p>
+        <p class="host-aside-text">Ying has run this farm from the beginning. She grows it, cooks it, and holds the whole place together with a warmth that shows up in every review anyone has ever left. You'll understand why by the second morning.</p>
         <div class="workaway-badge">85 five-star reviews · Workaway</div>
       </div>
 
@@ -1900,13 +2494,209 @@ html, body {
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     SECTION 7 — WAITLIST
+     SECTION — BEFORE YOU ARRIVE
+     ═══════════════════════════════════════════════════════════ -->
+<section id="section-prep" aria-label="Before You Arrive">
+  <div class="prep-inner">
+    <p class="section-eyebrow">08 — Before You Arrive</p>
+    <h2 class="section-headline">What you bring.</h2>
+    <p class="prep-intro">Two things to sort before camp. Both take ten minutes. We'll help with the rest on Day&nbsp;1.</p>
+
+    <div class="prep-list" role="list">
+
+      <div class="prep-item" role="listitem">
+        <div class="prep-num">01</div>
+        <div class="prep-content">
+          <h3 class="prep-title">A laptop.</h3>
+          <p class="prep-desc">Mac, Windows, or Linux — any modern machine works. Claude Code runs on all three. This is your primary tool for the week. You leave with everything installed and configured on your own machine.</p>
+        </div>
+      </div>
+
+      <div class="prep-item" role="listitem">
+        <div class="prep-num">02</div>
+        <div class="prep-content">
+          <h3 class="prep-title">A Claude Pro account.</h3>
+          <p class="prep-desc">Claude Code requires the Pro plan — $20/month, paid directly to Anthropic. We don't share accounts or provide access. The free tier doesn't include Claude Code. Subscribe at <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> before you arrive, or we'll walk you through it together on Day&nbsp;1.</p>
+          <p class="prep-desc">Anthropic's own data shows 90% of Claude Code users stay well within Pro usage limits — Pro is enough for a week of guided sessions. If you plan to keep building heavily after camp, the Max plan ($100/month) gives you 5× the usage.</p>
+        </div>
+      </div>
+
+      <div class="prep-item" role="listitem">
+        <div class="prep-num">03</div>
+        <div class="prep-content">
+          <h3 class="prep-title">An idea.</h3>
+          <p class="prep-desc">No coding experience required. Claude Code handles the code — you handle the idea. Bring something you've been sitting on: an app, a workflow to automate, a tool you wish existed. By Friday it's running on your machine, built by you.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION — GETTING HERE
+     ═══════════════════════════════════════════════════════════ -->
+<section id="section-travel" aria-label="Getting Here">
+  <div class="travel-inner">
+    <p class="section-eyebrow">09 — Getting Here</p>
+    <h2 class="section-headline">Seven hundred curves,<br>then stillness.</h2>
+    <p class="travel-lede">Fly into Chiang Mai. We meet you at arrivals. Three hours of mountain road later, you're at the farm. Return transfer included. You don't arrange a thing.</p>
+
+    <div class="place-specs travel-specs">
+      <div class="place-spec-item">
+        <span class="place-spec-label">Nearest Airport</span>
+        <span class="place-spec-value">Chiang Mai · CNX</span>
+      </div>
+      <div class="place-spec-item">
+        <span class="place-spec-label">Drive Time</span>
+        <span class="place-spec-value">3 – 3.5 hrs</span>
+      </div>
+      <div class="place-spec-item">
+        <span class="place-spec-label">Distance</span>
+        <span class="place-spec-value">135 km</span>
+      </div>
+      <div class="place-spec-item">
+        <span class="place-spec-label">Airport Transfer</span>
+        <span class="place-spec-value">Included · both ways</span>
+      </div>
+    </div>
+
+    <div class="prep-list travel-journey" role="list">
+
+      <div class="prep-item" role="listitem">
+        <div class="prep-num">01</div>
+        <div class="prep-content">
+          <h3 class="prep-title">Fly into Chiang Mai (CNX).</h3>
+          <p class="prep-desc">Direct connections from Bangkok (BKK/DMK), Singapore, Kuala Lumpur, and most regional Asian hubs. From North America or Europe, route via Bangkok or Singapore. Share your flight details one week before arrival and we group pickups where the timing lines up. Odd hours? WhatsApp Sasha at <a href="https://wa.me/66922864775" target="_blank" rel="noopener">+66 92 286 4775</a> — we work around it.</p>
+        </div>
+      </div>
+
+      <div class="prep-item" role="listitem">
+        <div class="prep-num">02</div>
+        <div class="prep-content">
+          <h3 class="prep-title">We meet you at arrivals.</h3>
+          <p class="prep-desc">Private door-to-door transfer in an air-conditioned vehicle, included both ways. Look for your name on a card; the driver knows where you're going. No taxi haggling, no second leg to figure out, no Grab app at 1am.</p>
+        </div>
+      </div>
+
+      <div class="prep-item" role="listitem">
+        <div class="prep-num">03</div>
+        <div class="prep-content">
+          <h3 class="prep-title">Highway 1095 — 700 curves through Mae Hong Son.</h3>
+          <p class="prep-desc">Three hours of mountain road, jungle either side, villages thinning out as you climb. We stop halfway for coffee at a viewpoint most guests photograph and nobody forgets. Treat the drive as the decompression lap — laptops stay closed.</p>
+          <p class="prep-desc">Honest warning: the road is genuinely winding. If you're prone to motion sickness, bring Dramamine or ginger chews and sit in the front. Most people are fine after twenty minutes. We'd rather warn you than have you surprised.</p>
+        </div>
+      </div>
+
+      <div class="prep-item" role="listitem">
+        <div class="prep-num">04</div>
+        <div class="prep-content">
+          <h3 class="prep-title">Arrival at the farm.</h3>
+          <p class="prep-desc">Cold towel, a pot of butterfly pea tea, your bungalow key. Dinner is already on. You don't need to do anything for the rest of the evening. No car needed for the week — the farm is your base, excursions move as a group, and Pai town is a short hop if you want a night out.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="travel-faq" role="list">
+      <div class="travel-faq-item" role="listitem">
+        <span class="travel-faq-label">Flights</span>
+        <p class="travel-faq-desc">Book into CNX, not BKK. Aim to land before 6pm local time if you can.</p>
+      </div>
+      <div class="travel-faq-item" role="listitem">
+        <span class="travel-faq-label">Visa</span>
+        <p class="travel-faq-desc">Most passports (US, UK, EU, AU, CA, +60 others) get 60 days visa-exempt on arrival in Thailand. Check yours before booking flights.</p>
+      </div>
+      <div class="travel-faq-item" role="listitem">
+        <span class="travel-faq-label">Extending</span>
+        <p class="travel-faq-desc">Staying on in Pai or Chiang Mai after camp? Tell us when you book and we'll drop the return transfer.</p>
+      </div>
+      <div class="travel-faq-item" role="listitem">
+        <span class="travel-faq-label">Direct line</span>
+        <p class="travel-faq-desc">WhatsApp <a href="https://wa.me/66922864775" target="_blank" rel="noopener">+66 92 286 4775</a>. A real human, usually answering within an hour.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION — RESERVE YOUR WEEK
+     ═══════════════════════════════════════════════════════════ -->
+<section id="section-cohorts" aria-label="Reserve Your Week">
+  <div class="cohorts-inner">
+    <p class="section-eyebrow">10 — Reserve</p>
+    <h2 class="section-headline">Pick your week.</h2>
+    <p class="cohorts-intro">Weekly cohorts from October 2026 through January 2027. Sunday to Sunday, seven nights, seven beds per week. Live availability — when a bed shows taken, it really is.</p>
+
+    <div class="cohorts-grid" id="cohorts-grid">
+      <!-- Cohort cards injected by JS below for maintainability -->
+    </div>
+  </div>
+</section>
+
+<!-- Booking modal (opens when a cohort card's Reserve button is clicked) -->
+<div id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+  <div class="booking-modal-card">
+    <button class="booking-modal-close" type="button" aria-label="Close" onclick="closeBookingModal()">×</button>
+    <p class="booking-modal-eyebrow" id="booking-modal-eyebrow">Cohort 01</p>
+    <h3 class="booking-modal-title" id="booking-modal-title">Reserve your bed</h3>
+    <p class="booking-modal-sub" id="booking-modal-sub">Oct 4 – 11, 2026 · 7 nights · all-inclusive</p>
+
+    <form id="booking-form" onsubmit="submitBooking(event)" novalidate>
+      <div class="booking-form-grid">
+        <div class="booking-form-row">
+          <label for="bk-name">Full name</label>
+          <input id="bk-name" name="name" type="text" required>
+        </div>
+        <div class="booking-form-row">
+          <label for="bk-email">Email</label>
+          <input id="bk-email" name="email" type="email" required>
+        </div>
+      </div>
+
+      <div class="booking-form-grid">
+        <div class="booking-form-row">
+          <label for="bk-track">Track</label>
+          <select id="bk-track" name="track" required>
+            <option value="beginner">Beginner — ฿33,000</option>
+            <option value="builder">Builder — ฿48,000</option>
+          </select>
+        </div>
+        <div class="booking-form-row">
+          <label for="bk-phone">WhatsApp (optional)</label>
+          <input id="bk-phone" name="phone" type="tel" placeholder="+66...">
+        </div>
+      </div>
+
+      <div class="booking-form-row">
+        <label for="bk-message">Anything we should know? (optional)</label>
+        <textarea id="bk-message" name="message" rows="2" placeholder="Dietary needs, an idea you want to build, arrival timing..."></textarea>
+      </div>
+
+      <input type="hidden" id="bk-cohort" name="cohort">
+
+      <button type="submit" class="booking-submit" id="booking-submit-btn">Reserve my bed →</button>
+      <p class="booking-status" id="booking-status"></p>
+    </form>
+
+    <div class="booking-modal-success" id="booking-success" style="display:none;">
+      <div class="check">✓</div>
+      <p><strong>Booking confirmed.</strong></p>
+      <p>Check your email — we just sent a confirmation with payment instructions. Sasha will reply on WhatsApp within a day.</p>
+      <p style="font-size:0.78rem; opacity:0.7;">Questions? <a href="https://wa.me/66922864775" style="color:var(--amber);">WhatsApp +66 92 286 4775</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION — WAITLIST (fallback)
      ═══════════════════════════════════════════════════════════ -->
 <section id="section-waitlist" aria-label="Join the Waitlist">
   <div class="waitlist-inner">
-    <p class="section-eyebrow" style="justify-content: center;">08 — Join</p>
-    <h2 class="section-headline" style="text-align: center;">Nov 2026. 7 beds.</h2>
-    <p class="waitlist-sub">First cohort is founding pricing. Won't be this low again.</p>
+    <p class="section-eyebrow" style="justify-content: center;">11 — Or join the waitlist</p>
+    <h2 class="section-headline" style="text-align: center;">Not ready yet?</h2>
+    <p class="waitlist-sub">Leave your email and we'll let you know when new cohorts open. No spam — one email when there's something real to share.</p>
 
     <form class="waitlist-form" onsubmit="handleWaitlist(event)" novalidate>
       <input
@@ -1921,7 +2711,7 @@ html, body {
       </button>
     </form>
 
-    <p class="waitlist-small">No spam. Just a single email when dates are confirmed.</p>
+    <p class="waitlist-small">One email when dates lock in. Nothing else.</p>
   </div>
 </section>
 
@@ -1938,7 +2728,7 @@ html, body {
       </div>
     </div>
     <div class="footer-right">
-      <p class="footer-quote">"Same farm. Same rhythm. Same Ying-cooked breakfasts. Now the morning work is shipping code."</p>
+      <p class="footer-quote">"The farm hasn't changed. The rhythm hasn't changed. Ying still cooks breakfast from what she picked an hour ago. The only difference is what you do with the quiet."</p>
     </div>
   </div>
 </footer>
@@ -1947,6 +2737,31 @@ html, body {
 /* ═══════════════════════════════════════════════════════════════
    CLAUDE CAMP — FULL PAGE v1
    ═══════════════════════════════════════════════════════════════ */
+
+/* ── Plain-JS safety net (no GSAP dependency) ─────────────────
+   If GSAP CDN is slow or blocked on mobile, this fires after
+   6 s and force-reveals every hidden element so content is
+   never permanently invisible. GSAP's onComplete clears it. */
+window._fullRevealTimer = setTimeout(function () {
+  var overlay = document.getElementById('load-overlay');
+  if (overlay) overlay.style.display = 'none';
+  var sel = [
+    '.hero-headline-inner', '.hero-tagline', '.hero-body',
+    '.hero-eyebrow', '.hero-cta-row', '#site-wordmark',
+    '#scroll-hint', '.section-eyebrow', '.section-headline',
+    '.section-body', '.timeline-item', '.track-card',
+    '.place-img-wrap', '.place-headline', '.excursion-card',
+    '.pricing-card', '.host-quote', '.host-aside',
+    '.waitlist-headline', '.waitlist-form',
+    '.prep-intro', '.prep-item',
+    '.travel-lede', '.travel-faq-item',
+  ].join(',');
+  document.querySelectorAll(sel).forEach(function (el) {
+    el.style.opacity = '1';
+    el.style.clipPath = 'none';
+    el.style.transform = 'none';
+  });
+}, 6000);
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -2132,7 +2947,7 @@ gsap.registerPlugin(ScrollTrigger);
 
   const tl = gsap.timeline({
     defaults: { ease },
-    onComplete: () => clearTimeout(safetyTimer),
+    onComplete: () => { clearTimeout(safetyTimer); clearTimeout(window._fullRevealTimer); },
   });
 
   tl.to(wordmark, { opacity: 1, duration: 0.9, ease: 'power2.out' }, 0.3);
@@ -2337,6 +3152,69 @@ gsap.registerPlugin(ScrollTrigger);
   });
   gsap.set(hostAside, { y: 20 });
 
+  /* ── SECTION — Before You Arrive ───────────────────── */
+  const prepEyebrow  = document.querySelector('#section-prep .section-eyebrow');
+  const prepHeadline = document.querySelector('#section-prep .section-headline');
+  const prepIntro    = document.querySelector('.prep-intro');
+  const prepItems    = document.querySelectorAll('#section-prep .prep-item');
+
+  revealOnScroll(prepEyebrow,  { opacity: 1 });
+  revealOnScroll(prepHeadline, { clipPath: 'inset(0% 0% 0% 0%)' });
+  revealOnScroll(prepIntro,    { opacity: 1 });
+
+  prepItems.forEach((item, i) => {
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => gsap.to(item, {
+        opacity: 1, y: 0,
+        duration: 0.7, ease: 'power2.out',
+        delay: i * 0.08,
+      }),
+    });
+    gsap.set(item, { y: 24 });
+  });
+
+  /* ── SECTION — Getting Here ───────────────────────── */
+  const travelEyebrow  = document.querySelector('#section-travel .section-eyebrow');
+  const travelHeadline = document.querySelector('#section-travel .section-headline');
+  const travelLede     = document.querySelector('.travel-lede');
+  const travelSteps    = document.querySelectorAll('#section-travel .prep-item');
+  const travelFaqItems = document.querySelectorAll('.travel-faq-item');
+
+  revealOnScroll(travelEyebrow,  { opacity: 1 });
+  revealOnScroll(travelHeadline, { clipPath: 'inset(0% 0% 0% 0%)' });
+  revealOnScroll(travelLede,     { opacity: 1 });
+
+  travelSteps.forEach((item, i) => {
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => gsap.to(item, {
+        opacity: 1, y: 0,
+        duration: 0.7, ease: 'power2.out',
+        delay: i * 0.08,
+      }),
+    });
+    gsap.set(item, { y: 24 });
+  });
+
+  travelFaqItems.forEach((item, i) => {
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => gsap.to(item, {
+        opacity: 1, y: 0,
+        duration: 0.6, ease: 'power2.out',
+        delay: i * 0.06,
+      }),
+    });
+    gsap.set(item, { y: 16 });
+  });
+
   /* ── SECTION 7 — Waitlist ───────────────────────────── */
   const waitlistEyebrow  = document.querySelector('#section-waitlist .section-eyebrow');
   const waitlistHeadline = document.querySelector('#section-waitlist .section-headline');
@@ -2368,6 +3246,197 @@ function handleWaitlist(e) {
   input.disabled = true;
   btn.disabled = true;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   COHORT CALENDAR + BOOKING — wired to live Worker + Resend
+   ══════════════════════════════════════════════════════════════ */
+
+const WORKER_URL = 'https://claudecamp-bookings.oasistikibarpai.workers.dev';
+const BEDS_PER_TRACK = { beginner: 4, builder: 3 };
+
+const COHORTS = [
+  { id: 'oct-04-2026', label: 'Cohort 01', dates: 'Oct 4 – 11, 2026' },
+  { id: 'oct-11-2026', label: 'Cohort 02', dates: 'Oct 11 – 18, 2026' },
+  { id: 'oct-18-2026', label: 'Cohort 03', dates: 'Oct 18 – 25, 2026' },
+  { id: 'oct-25-2026', label: 'Cohort 04', dates: 'Oct 25 – Nov 1, 2026' },
+  { id: 'nov-01-2026', label: 'Cohort 05', dates: 'Nov 1 – 8, 2026' },
+  { id: 'nov-08-2026', label: 'Cohort 06', dates: 'Nov 8 – 15, 2026' },
+  { id: 'nov-15-2026', label: 'Cohort 07', dates: 'Nov 15 – 22, 2026' },
+  { id: 'nov-22-2026', label: 'Cohort 08', dates: 'Nov 22 – 29, 2026' },
+  { id: 'nov-29-2026', label: 'Cohort 09', dates: 'Nov 29 – Dec 6, 2026' },
+  { id: 'dec-06-2026', label: 'Cohort 10', dates: 'Dec 6 – 13, 2026' },
+  { id: 'dec-13-2026', label: 'Cohort 11', dates: 'Dec 13 – 20, 2026' },
+  { id: 'break', isBreak: true, dates: 'Dec 20 – Jan 10', note: 'Christmas + New Year — farm rests' },
+  { id: 'jan-10-2027', label: 'Cohort 12', dates: 'Jan 10 – 17, 2027' },
+  { id: 'jan-17-2027', label: 'Cohort 13', dates: 'Jan 17 – 24, 2027' },
+  { id: 'jan-24-2027', label: 'Cohort 14', dates: 'Jan 24 – 31, 2027' },
+];
+
+function renderCohorts() {
+  const grid = document.getElementById('cohorts-grid');
+  if (!grid) return;
+  grid.innerHTML = COHORTS.map(c => {
+    if (c.isBreak) {
+      return `
+        <div class="cohort-card-main is-break">
+          <div class="cohort-dates-main">🎄 ${c.dates}</div>
+          <div class="cohort-break-note">${c.note}</div>
+        </div>`;
+    }
+    return `
+      <div class="cohort-card-main" data-cohort="${c.id}" data-label="${c.label}" data-dates="${c.dates}">
+        <div class="cohort-badge">${c.label}</div>
+        <div class="cohort-open-badge" id="badge-${c.id}">Open</div>
+        <div class="cohort-dates-main">${c.dates}</div>
+        <div class="cohort-tracks">
+          <div class="cohort-track-item">
+            <div class="cohort-track-label">Beginner</div>
+            <div class="cohort-track-avail" id="avail-${c.id}-beginner">${BEDS_PER_TRACK.beginner} / ${BEDS_PER_TRACK.beginner} available</div>
+            <div class="cohort-dots" id="dots-${c.id}-beginner">${'<span class="cohort-dot"></span>'.repeat(BEDS_PER_TRACK.beginner)}</div>
+          </div>
+          <div class="cohort-track-item">
+            <div class="cohort-track-label">Builder</div>
+            <div class="cohort-track-avail" id="avail-${c.id}-builder">${BEDS_PER_TRACK.builder} / ${BEDS_PER_TRACK.builder} available</div>
+            <div class="cohort-dots" id="dots-${c.id}-builder">${'<span class="cohort-dot"></span>'.repeat(BEDS_PER_TRACK.builder)}</div>
+          </div>
+        </div>
+        <div class="cohort-price">฿33,000 – ฿48,000 · all-inclusive</div>
+        <button type="button" class="cohort-reserve" onclick="openBookingModal('${c.id}', '${c.label}', '${c.dates}')">
+          <span>Reserve your spot</span><span>→</span>
+        </button>
+      </div>`;
+  }).join('');
+}
+
+async function loadCohortAvailability() {
+  const cohorts = COHORTS.filter(c => !c.isBreak);
+  for (const cohort of cohorts) {
+    try {
+      const res = await fetch(`${WORKER_URL}/api/availability?cohort=${cohort.id}`);
+      if (!res.ok) continue;
+      const data = await res.json();
+      const taken = data.taken_beds || [];
+      const beginnerTaken = taken.filter(b => b.includes('beginner')).length;
+      const builderTaken  = taken.filter(b => b.includes('builder')).length;
+      updateTrack(cohort.id, 'beginner', BEDS_PER_TRACK.beginner, beginnerTaken);
+      updateTrack(cohort.id, 'builder',  BEDS_PER_TRACK.builder,  builderTaken);
+      const badge = document.getElementById(`badge-${cohort.id}`);
+      const card  = document.querySelector(`[data-cohort="${cohort.id}"]`);
+      if (badge && card && beginnerTaken + builderTaken >= BEDS_PER_TRACK.beginner + BEDS_PER_TRACK.builder) {
+        badge.textContent = 'Full';
+        badge.classList.add('full');
+        card.classList.add('is-full');
+      }
+      // Store taken beds on the card for the modal to pick next bed
+      if (card) card.dataset.takenBeds = JSON.stringify(taken);
+    } catch (err) { /* network fail — leave defaults */ }
+  }
+}
+
+function updateTrack(cohortId, track, total, taken) {
+  const avail = total - taken;
+  const availEl = document.getElementById(`avail-${cohortId}-${track}`);
+  const dotsEl  = document.getElementById(`dots-${cohortId}-${track}`);
+  if (availEl) availEl.textContent = `${avail} / ${total} available`;
+  if (dotsEl) {
+    dotsEl.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'cohort-dot' + (i < taken ? ' taken' : '');
+      dotsEl.appendChild(dot);
+    }
+  }
+}
+
+/* ── Booking modal ───────────────────────────────────────────── */
+
+function openBookingModal(cohortId, cohortLabel, cohortDates) {
+  document.getElementById('booking-modal-eyebrow').textContent = cohortLabel;
+  document.getElementById('booking-modal-sub').textContent = `${cohortDates} · 7 nights · all-inclusive`;
+  document.getElementById('bk-cohort').value = cohortId;
+  document.getElementById('booking-form').style.display = '';
+  document.getElementById('booking-success').style.display = 'none';
+  document.getElementById('booking-status').textContent = '';
+  document.getElementById('booking-status').className = 'booking-status';
+  document.getElementById('booking-modal').classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBookingModal() {
+  document.getElementById('booking-modal').classList.remove('is-open');
+  document.body.style.overflow = '';
+  document.getElementById('booking-form').reset();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('booking-modal').classList.contains('is-open')) {
+    closeBookingModal();
+  }
+});
+
+document.getElementById('booking-modal').addEventListener('click', e => {
+  if (e.target.id === 'booking-modal') closeBookingModal();
+});
+
+function pickAvailableBed(cohortId, track) {
+  const card = document.querySelector(`[data-cohort="${cohortId}"]`);
+  const taken = card && card.dataset.takenBeds ? JSON.parse(card.dataset.takenBeds) : [];
+  const total = BEDS_PER_TRACK[track];
+  for (let i = 1; i <= total; i++) {
+    const bedId = `${track}-${i}`;
+    if (!taken.includes(bedId)) return bedId;
+  }
+  return null;
+}
+
+async function submitBooking(e) {
+  e.preventDefault();
+  const status = document.getElementById('booking-status');
+  const btn    = document.getElementById('booking-submit-btn');
+  const data = {
+    name:    document.getElementById('bk-name').value.trim(),
+    email:   document.getElementById('bk-email').value.trim(),
+    phone:   document.getElementById('bk-phone').value.trim(),
+    track:   document.getElementById('bk-track').value,
+    cohort:  document.getElementById('bk-cohort').value,
+    message: document.getElementById('bk-message').value.trim(),
+  };
+  data.bed_id = pickAvailableBed(data.cohort, data.track);
+  if (!data.bed_id) {
+    status.textContent = 'Sorry — that track is full for this week. Try another week.';
+    status.className = 'booking-status error';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Reserving...';
+  status.textContent = '';
+  status.className = 'booking-status';
+
+  try {
+    const res = await fetch(`${WORKER_URL}/api/booking`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (!res.ok || result.error) {
+      throw new Error(result.error || 'Booking failed. Try again or WhatsApp us.');
+    }
+    document.getElementById('booking-form').style.display = 'none';
+    document.getElementById('booking-success').style.display = '';
+    loadCohortAvailability(); // refresh dots
+  } catch (err) {
+    status.textContent = err.message;
+    status.className = 'booking-status error';
+    btn.disabled = false;
+    btn.textContent = 'Reserve my bed →';
+  }
+}
+
+/* ── Boot calendar ───────────────────────────────────────────── */
+renderCohorts();
+loadCohortAvailability();
 </script>
 </body>
 </html>

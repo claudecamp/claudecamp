@@ -875,9 +875,13 @@ html, body {
   aspect-ratio: 16/10;
 }
 
-.place-img-wrap:last-child {
+.place-img-wrap:nth-child(2) {
   aspect-ratio: 16/9;
   margin-left: 2rem;
+}
+
+.place-img-wrap:last-child {
+  aspect-ratio: 4/3;
 }
 
 .place-img-wrap img {
@@ -998,16 +1002,53 @@ html, body {
 .excursion-card {
   background: rgba(10,18,8,0.6);
   border-right: 1px solid rgba(245,158,11,0.1);
-  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.2rem, 2vw, 1.5rem);
+  padding: 0;
   clip-path: inset(0% 0% 100% 0%);
   will-change: clip-path;
   transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .excursion-card:last-child { border-right: none; }
 
-.excursion-card:hover {
-  background: rgba(245,158,11,0.04);
+.excursion-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(4,8,3,0.92) 0%,
+    rgba(4,8,3,0.65) 40%,
+    rgba(4,8,3,0.25) 70%,
+    rgba(4,8,3,0.08) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.3s;
+}
+
+.excursion-card:hover::after {
+  background: linear-gradient(
+    to top,
+    rgba(4,8,3,0.95) 0%,
+    rgba(4,8,3,0.72) 40%,
+    rgba(4,8,3,0.35) 70%,
+    rgba(4,8,3,0.15) 100%
+  );
+}
+
+.excursion-card-inner {
+  position: relative;
+  z-index: 2;
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.2rem, 2vw, 1.5rem);
 }
 
 .excursion-num {
@@ -1480,7 +1521,7 @@ html, body {
   <!-- Layer 0 — Real photograph -->
   <div class="bg-layer" id="bg-photo" aria-hidden="true">
     <img
-      src="assets/the-moment-laptop-steam.png"
+      src="assets/the-moment-laptop-steam.jpg"
       alt=""
       role="presentation"
       draggable="false"
@@ -1696,6 +1737,9 @@ html, body {
         <div class="place-img-wrap">
           <img src="assets/hot-springs-dawn-mist.jpg" alt="Hot springs at dawn, mist rising from the water" draggable="false">
         </div>
+        <div class="place-img-wrap">
+          <img src="assets/bamboo-bungalow.png" alt="Bamboo bungalow exterior on the farm" draggable="false">
+        </div>
       </div>
 
       <div class="place-copy">
@@ -1738,34 +1782,44 @@ html, body {
 
     <div class="excursions-grid">
 
-      <div class="excursion-card">
-        <div class="excursion-num">01</div>
-        <div class="excursion-name">Sai Sin Blessing</div>
-        <p class="excursion-desc">A local monk ties a sacred white string on arrival. The week begins with intention.</p>
+      <div class="excursion-card" style="background-image: url(assets/Buddhist_monk.jpg);">
+        <div class="excursion-card-inner">
+          <div class="excursion-num">01</div>
+          <div class="excursion-name">Sai Sin Blessing</div>
+          <p class="excursion-desc">A local monk ties a sacred white string on arrival. The week begins with intention.</p>
+        </div>
       </div>
 
-      <div class="excursion-card">
-        <div class="excursion-num">02</div>
-        <div class="excursion-name">Pai Canyon at Sunset</div>
-        <p class="excursion-desc">8km from the farm. Tuesday evening. The valley turns amber below your feet.</p>
+      <div class="excursion-card" style="background-image: url(assets/pai-canyon.jpg);">
+        <div class="excursion-card-inner">
+          <div class="excursion-num">02</div>
+          <div class="excursion-name">Pai Canyon at Sunset</div>
+          <p class="excursion-desc">8km from the farm. Tuesday evening. The valley turns amber below your feet.</p>
+        </div>
       </div>
 
-      <div class="excursion-card">
-        <div class="excursion-num">03</div>
-        <div class="excursion-name">Tham Lod Cave</div>
-        <p class="excursion-desc">Underground river. 2,000-year-old teak coffins. Bat exodus at dusk — ten thousand wings.</p>
+      <div class="excursion-card" style="background-image: url(assets/tham-lot-cave.jpg);">
+        <div class="excursion-card-inner">
+          <div class="excursion-num">03</div>
+          <div class="excursion-name">Tham Lod Cave</div>
+          <p class="excursion-desc">Underground river. 2,000-year-old teak coffins. Bat exodus at dusk — ten thousand wings.</p>
+        </div>
       </div>
 
-      <div class="excursion-card">
-        <div class="excursion-num">04</div>
-        <div class="excursion-name">Cooking Class</div>
-        <p class="excursion-desc">Friday afternoon. Mortar-and-pestle curry pastes. The kind of cooking you'll do at home.</p>
+      <div class="excursion-card" style="background-image: url(assets/thai-cooking.jpg);">
+        <div class="excursion-card-inner">
+          <div class="excursion-num">04</div>
+          <div class="excursion-name">Cooking Class</div>
+          <p class="excursion-desc">Friday afternoon. Mortar-and-pestle curry pastes. The kind of cooking you'll do at home.</p>
+        </div>
       </div>
 
-      <div class="excursion-card">
-        <div class="excursion-num">05</div>
-        <div class="excursion-name">Closing Dinner &amp; Krathong</div>
-        <p class="excursion-desc">Hand-printed "Claude Camp" certificate on Saa paper. Lanterns on the water.</p>
+      <div class="excursion-card" style="background-image: url(assets/krathong-closing-ceremony.jpg); background-position: center top;">
+        <div class="excursion-card-inner">
+          <div class="excursion-num">05</div>
+          <div class="excursion-name">Closing Dinner &amp; Krathong</div>
+          <p class="excursion-desc">Hand-printed "Claude Camp" certificate on Saa paper. Lanterns on the water.</p>
+        </div>
       </div>
 
     </div>
