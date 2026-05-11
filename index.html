@@ -71,6 +71,91 @@ html, body {
   border-color: var(--amber);
 }
 
+/* ─── STICKY CTA BAR ─────────────────────────────────────────── */
+#sticky-bar {
+  position: fixed;
+  top: 2px; left: 0; right: 0;
+  z-index: 90;
+  background: rgba(3, 8, 5, 0.78);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid rgba(245,158,11,0.12);
+  transform: translateY(-110%);
+  transition: transform 520ms var(--ease-cinema);
+}
+
+#sticky-bar.is-visible { transform: translateY(0); }
+
+.sticky-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 54px;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sticky-bar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.sticky-bar-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 10px rgba(245,158,11,0.7);
+}
+
+.sticky-bar-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.sticky-bar-name .wordmark-dot { color: var(--amber); }
+
+.sticky-bar-eyebrow {
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  margin-left: 0.3rem;
+  opacity: 0.8;
+}
+
+.sticky-bar-cta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 0.55rem 1rem;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+
+.sticky-bar-cta:hover {
+  background: var(--amber);
+  color: #060d04;
+}
+
+@media (max-width: 600px) {
+  .sticky-bar-eyebrow { display: none; }
+  .sticky-bar-name { font-size: 0.95rem; }
+  .sticky-bar-cta { font-size: 0.62rem; padding: 0.5rem 0.8rem; letter-spacing: 0.12em; }
+  .sticky-bar-inner { height: 48px; padding: 0 1rem; }
+}
+
 /* ─── SCROLL PROGRESS ────────────────────────────────────────── */
 #progress-bar {
   position: fixed;
@@ -1700,6 +1785,72 @@ html, body {
   text-decoration-color: var(--amber);
 }
 
+.travel-fold {
+  margin-top: clamp(3rem, 5vh, 4rem);
+  border-top: 1px solid rgba(248,250,252,0.06);
+  padding-top: 1.5rem;
+}
+
+.travel-fold > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  transition: color 0.2s;
+}
+
+.travel-fold > summary::-webkit-details-marker { display: none; }
+.travel-fold > summary::after {
+  content: "+";
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--amber);
+  margin-left: 1rem;
+  transition: transform 0.3s var(--ease-cinema);
+}
+.travel-fold[open] > summary::after { content: "−"; }
+.travel-fold > summary:hover { color: var(--amber-glow); }
+.travel-fold .travel-faq { margin-top: 1.2rem; border-top: none; padding-top: 0; }
+
+/* ─── PRICING ADDONS + HONEST LINE ─────────────────────────── */
+
+.pricing-addon {
+  border-top: 1px dashed rgba(245,158,11,0.18);
+  margin-top: 0.5rem;
+  padding-top: 0.7rem;
+  color: var(--amber) !important;
+  opacity: 0.85;
+}
+
+.pricing-addon-note {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  opacity: 0.7;
+  margin-top: 0.15rem;
+}
+
+.pricing-honest {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 60ch;
+  margin: 2.5rem auto 0;
+  text-align: center;
+  opacity: 0.75;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    SECTION — RESERVE YOUR WEEK (Cohorts)
    ═══════════════════════════════════════════════════════════════ */
@@ -2045,6 +2196,32 @@ html, body {
 .booking-submit:hover { opacity: 0.88; }
 .booking-submit:disabled { opacity: 0.4; cursor: wait; }
 
+.booking-commit {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  padding: 0.6rem 0;
+  cursor: pointer;
+}
+
+.booking-commit input { margin-top: 0.25rem; flex-shrink: 0; accent-color: var(--amber); }
+.booking-commit strong { color: var(--amber); font-weight: 500; }
+
+.booking-fine-print {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+  line-height: 1.6;
+  margin-top: 0.8rem;
+  text-align: center;
+  font-style: italic;
+}
+
 .booking-status {
   margin-top: 1rem;
   font-family: 'DM Sans', system-ui, sans-serif;
@@ -2097,6 +2274,18 @@ html, body {
 
 <!-- SCROLL PROGRESS BAR -->
 <div id="progress-bar"></div>
+
+<!-- STICKY CTA BAR (appears after hero scrolls past) -->
+<header id="sticky-bar" aria-label="Quick reserve">
+  <div class="sticky-bar-inner">
+    <a href="#hero" class="sticky-bar-brand" aria-label="Claude Camp home">
+      <span class="sticky-bar-dot"></span>
+      <span class="sticky-bar-name">Claude<span class="wordmark-dot">·</span>Camp</span>
+      <span class="sticky-bar-eyebrow">Pai · Nov 2026</span>
+    </a>
+    <a href="#section-cohorts" class="sticky-bar-cta">Reserve a bed →</a>
+  </div>
+</header>
 
 <!-- CUSTOM CURSOR -->
 <div id="cursor-dot"></div>
@@ -2152,7 +2341,7 @@ html, body {
     <span class="wordmark-text">Claude<span class="wordmark-dot">·</span>Camp</span>
   </a>
 
-  <div class="pricing-badge" aria-hidden="true">$1,100 – $1,600 / WEEK · ALL-INCLUSIVE</div>
+  <div class="pricing-badge" aria-hidden="true">FROM $960 / WEEK · 14 COHORTS · OCT 2026 – JAN 2027</div>
 
   <nav id="site-nav-right" aria-label="Primary navigation">
     <a href="#section-tracks" class="nav-link">Tracks</a>
@@ -2427,24 +2616,25 @@ html, body {
   <div class="pricing-inner">
     <p class="section-eyebrow">06 — Invest</p>
     <h2 class="section-headline">One week. Two tiers.</h2>
-    <p class="pricing-note">Founding cohort pricing. Nov 2026.</p>
+    <p class="pricing-note">Founding cohort pricing. 14 weekly cohorts, Oct 2026 – Jan 2027. Airport transfer optional on Standard, included on Premium.</p>
 
     <div class="pricing-cards">
 
       <div class="pricing-card">
         <div class="pricing-tier">Standard</div>
-        <div class="pricing-amount">$1,100</div>
-        <div class="pricing-period">per week · all-inclusive</div>
+        <div class="pricing-amount">$960</div>
+        <div class="pricing-period">per week · room, board, curriculum</div>
         <ul class="pricing-features">
-          <li>7 nights accommodation</li>
-          <li>All meals — Ying cooks</li>
-          <li>Morning yoga daily</li>
+          <li>5 nights bungalow + 2 free hangout days</li>
+          <li>All meals — organic farm + hill-tribe meat</li>
+          <li>Morning yoga daily (optional)</li>
           <li>Hot springs afternoons</li>
           <li>All excursions included</li>
-          <li>Claude Code curriculum</li>
+          <li>Claude Code curriculum + Sasha on call</li>
+          <li class="pricing-addon">Airport transfer +$140 round-trip <span class="pricing-addon-note">— or take the $6 minivan, we'll send the link</span></li>
         </ul>
-        <a href="#section-waitlist" class="btn-primary">
-          <span>Join the waitlist</span>
+        <a href="#section-cohorts" class="btn-primary">
+          <span>Pick your week</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>
@@ -2452,20 +2642,23 @@ html, body {
       <div class="pricing-card premium">
         <div class="pricing-tier">Premium</div>
         <div class="pricing-amount">$1,600</div>
-        <div class="pricing-period">per week · all-inclusive</div>
+        <div class="pricing-period">per week · door-to-door, fully handled</div>
         <ul class="pricing-features">
           <li>Everything in Standard</li>
-          <li>Daily 1-on-1 mentoring sessions</li>
+          <li>Private airport transfer, both ways</li>
+          <li>Daily 1-on-1 mentoring with Sasha</li>
           <li>Priority track placement</li>
-          <li>Extended project review</li>
+          <li>Extended post-camp project review</li>
         </ul>
-        <a href="#section-waitlist" class="btn-primary">
-          <span>Join the waitlist</span>
+        <a href="#section-cohorts" class="btn-primary">
+          <span>Pick your week</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>
 
     </div>
+
+    <p class="pricing-honest">There's a $6 shared minivan from Chiang Mai airport (Aya Service) — we'll send the booking link and tell the driver where to drop you. The $140 transfer is for when you'd rather not think about it.</p>
   </div>
 </section>
 
@@ -2540,7 +2733,7 @@ html, body {
   <div class="travel-inner">
     <p class="section-eyebrow">09 — Getting Here</p>
     <h2 class="section-headline">Seven hundred curves,<br>then stillness.</h2>
-    <p class="travel-lede">Fly into Chiang Mai. We meet you at arrivals. Three hours of mountain road later, you're at the farm. Return transfer included. You don't arrange a thing.</p>
+    <p class="travel-lede">Fly into Chiang Mai. Then three hours of mountain road to the farm. We'll either pick you up in a private car ($140 round-trip on Standard, included on Premium) or point you at the $6 Aya minivan if you'd rather DIY. Either works — we ran it both ways for years.</p>
 
     <div class="place-specs travel-specs">
       <div class="place-spec-item">
@@ -2557,7 +2750,7 @@ html, body {
       </div>
       <div class="place-spec-item">
         <span class="place-spec-label">Airport Transfer</span>
-        <span class="place-spec-value">Included · both ways</span>
+        <span class="place-spec-value">+$140 RT · or DIY minivan</span>
       </div>
     </div>
 
@@ -2575,7 +2768,7 @@ html, body {
         <div class="prep-num">02</div>
         <div class="prep-content">
           <h3 class="prep-title">We meet you at arrivals.</h3>
-          <p class="prep-desc">Private door-to-door transfer in an air-conditioned vehicle, included both ways. Look for your name on a card; the driver knows where you're going. No taxi haggling, no second leg to figure out, no Grab app at 1am.</p>
+          <p class="prep-desc">Private door-to-door transfer in an air-conditioned vehicle — $140 round-trip on Standard, included with Premium. Look for your name on a card; the driver knows where you're going. No taxi haggling, no Grab app at 1am. If you'd rather save the $140, the Aya shared minivan from CNX is $6 and we'll send you the link.</p>
         </div>
       </div>
 
@@ -2598,11 +2791,18 @@ html, body {
 
     </div>
 
+    <details class="travel-fold">
+      <summary>Practical FAQ — flights, visa, extending, direct line</summary>
     <div class="travel-faq" role="list">
       <div class="travel-faq-item" role="listitem">
         <span class="travel-faq-label">Flights</span>
         <p class="travel-faq-desc">Book into CNX, not BKK. Aim to land before 6pm local time if you can.</p>
       </div>
+      <div class="travel-faq-item" role="listitem">
+        <span class="travel-faq-label">DIY option</span>
+        <p class="travel-faq-desc">Aya Service runs shared minivans CNX → Pai for ~200 baht ($6). 3 hours, leaves hourly from in front of the terminal. We'll send the booking link and tell the driver where to drop you. Slower, tighter, totally fine — we did it ourselves for years.</p>
+      </div>
+
       <div class="travel-faq-item" role="listitem">
         <span class="travel-faq-label">Visa</span>
         <p class="travel-faq-desc">Most passports (US, UK, EU, AU, CA, +60 others) get 60 days visa-exempt on arrival in Thailand. Check yours before booking flights.</p>
@@ -2616,6 +2816,7 @@ html, body {
         <p class="travel-faq-desc">WhatsApp <a href="https://wa.me/66922864775" target="_blank" rel="noopener">+66 92 286 4775</a>. A real human, usually answering within an hour.</p>
       </div>
     </div>
+    </details>
 
   </div>
 </section>
@@ -2627,7 +2828,8 @@ html, body {
   <div class="cohorts-inner">
     <p class="section-eyebrow">10 — Reserve</p>
     <h2 class="section-headline">Pick your week.</h2>
-    <p class="cohorts-intro">Weekly cohorts from October 2026 through January 2027. Sunday to Sunday, seven nights, seven beds per week. Live availability — when a bed shows taken, it really is.</p>
+    <p class="cohorts-intro">Sunday arrival, Friday departure — 5 nights of program, the weekend free to linger. Then two days for Sasha and Ying to breathe before the next group arrives. Live availability below — when a bed shows taken, it really is.</p>
+    <p class="cohorts-intro" style="margin-top: 0.6rem; opacity: 0.75; font-style: italic;">Seven seats per week. We'd rather have five who show up than eight who might. A small deposit holds your bed.</p>
 
     <div class="cohorts-grid" id="cohorts-grid">
       <!-- Cohort cards injected by JS below for maintainability -->
@@ -2657,34 +2859,59 @@ html, body {
 
       <div class="booking-form-grid">
         <div class="booking-form-row">
+          <label for="bk-phone">WhatsApp <span style="color:var(--amber);">*</span></label>
+          <input id="bk-phone" name="phone" type="tel" required placeholder="+1 555 / +66 ...">
+        </div>
+        <div class="booking-form-row">
+          <label for="bk-country">Flying from</label>
+          <input id="bk-country" name="country" type="text" required placeholder="Country">
+        </div>
+      </div>
+
+      <div class="booking-form-grid">
+        <div class="booking-form-row">
           <label for="bk-track">Track</label>
           <select id="bk-track" name="track" required>
-            <option value="beginner">Beginner — ฿33,000</option>
-            <option value="builder">Builder — ฿48,000</option>
+            <option value="beginner">Beginner — $960</option>
+            <option value="builder">Builder — $960</option>
           </select>
         </div>
         <div class="booking-form-row">
-          <label for="bk-phone">WhatsApp (optional)</label>
-          <input id="bk-phone" name="phone" type="tel" placeholder="+66...">
+          <label for="bk-tier">Tier</label>
+          <select id="bk-tier" name="tier" required>
+            <option value="standard">Standard — $960 (transfer optional)</option>
+            <option value="premium">Premium — $1,600 (transfer + 1:1)</option>
+          </select>
         </div>
       </div>
 
       <div class="booking-form-row">
-        <label for="bk-message">Anything we should know? (optional)</label>
-        <textarea id="bk-message" name="message" rows="2" placeholder="Dietary needs, an idea you want to build, arrival timing..."></textarea>
+        <label for="bk-building">What are you trying to build or learn? <span style="color:var(--amber);">*</span></label>
+        <textarea id="bk-building" name="building" rows="2" required placeholder="2–3 sentences. The idea, the tool, the workflow — whatever brought you here."></textarea>
       </div>
+
+      <div class="booking-form-row">
+        <label for="bk-message">Anything else? (optional)</label>
+        <textarea id="bk-message" name="message" rows="2" placeholder="Dietary needs, arrival timing, partner joining, etc."></textarea>
+      </div>
+
+      <label class="booking-commit">
+        <input type="checkbox" id="bk-commit" required>
+        <span>I'm committing to this week. A <strong>$420 non-refundable deposit</strong> holds my bed (transferable to a future cohort within 12 months). Balance due 30 days before arrival.</span>
+      </label>
 
       <input type="hidden" id="bk-cohort" name="cohort">
 
       <button type="submit" class="booking-submit" id="booking-submit-btn">Reserve my bed →</button>
       <p class="booking-status" id="booking-status"></p>
+      <p class="booking-fine-print">Sasha reads every application personally and replies within 48 hours from Pai. You'll get a Stripe link to confirm with your deposit.</p>
     </form>
 
     <div class="booking-modal-success" id="booking-success" style="display:none;">
       <div class="check">✓</div>
-      <p><strong>Booking confirmed.</strong></p>
-      <p>Check your email — we just sent a confirmation with payment instructions. Sasha will reply on WhatsApp within a day.</p>
-      <p style="font-size:0.78rem; opacity:0.7;">Questions? <a href="https://wa.me/66922864775" style="color:var(--amber);">WhatsApp +66 92 286 4775</a></p>
+      <p><strong>Application received.</strong></p>
+      <p>Sasha will read this personally and reply within 48 hours from Pai with a Stripe link to confirm your bed with the deposit.</p>
+      <p style="font-size:0.78rem; opacity:0.7;">Anything urgent? <a href="https://wa.me/66922864775" style="color:var(--amber);">WhatsApp +66 92 286 4775</a></p>
     </div>
   </div>
 </div>
@@ -2869,13 +3096,21 @@ gsap.registerPlugin(ScrollTrigger);
   updateInteractives();
 })();
 
-/* ── Scroll progress bar ──────────────────────────────────────── */
+/* ── Scroll progress bar + sticky CTA bar ─────────────────────── */
 (function initScrollProgress() {
   const bar = document.getElementById('progress-bar');
+  const stickyBar = document.getElementById('sticky-bar');
+  const hero = document.getElementById('hero');
+  const heroHeight = () => hero ? hero.offsetHeight - 80 : 600;
+
   window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
+    const scrolled = window.scrollY || document.body.scrollTop || document.documentElement.scrollTop;
     const max = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (scrolled / max * 100) + '%';
+    if (bar) bar.style.width = (scrolled / max * 100) + '%';
+    if (stickyBar) {
+      if (scrolled > heroHeight()) stickyBar.classList.add('is-visible');
+      else stickyBar.classList.remove('is-visible');
+    }
   }, { passive: true });
 })();
 
@@ -3254,22 +3489,24 @@ function handleWaitlist(e) {
 const WORKER_URL = 'https://claudecamp-bookings.oasistikibarpai.workers.dev';
 const BEDS_PER_TRACK = { beginner: 4, builder: 3 };
 
+// Each cohort: arrive Sunday → depart Friday (5-night program, Mon–Fri build days).
+// Sat + Sun are free buffer days — guests welcome to linger at no charge, hosts rest.
 const COHORTS = [
-  { id: 'oct-04-2026', label: 'Cohort 01', dates: 'Oct 4 – 11, 2026' },
-  { id: 'oct-11-2026', label: 'Cohort 02', dates: 'Oct 11 – 18, 2026' },
-  { id: 'oct-18-2026', label: 'Cohort 03', dates: 'Oct 18 – 25, 2026' },
-  { id: 'oct-25-2026', label: 'Cohort 04', dates: 'Oct 25 – Nov 1, 2026' },
-  { id: 'nov-01-2026', label: 'Cohort 05', dates: 'Nov 1 – 8, 2026' },
-  { id: 'nov-08-2026', label: 'Cohort 06', dates: 'Nov 8 – 15, 2026' },
-  { id: 'nov-15-2026', label: 'Cohort 07', dates: 'Nov 15 – 22, 2026' },
-  { id: 'nov-22-2026', label: 'Cohort 08', dates: 'Nov 22 – 29, 2026' },
-  { id: 'nov-29-2026', label: 'Cohort 09', dates: 'Nov 29 – Dec 6, 2026' },
-  { id: 'dec-06-2026', label: 'Cohort 10', dates: 'Dec 6 – 13, 2026' },
-  { id: 'dec-13-2026', label: 'Cohort 11', dates: 'Dec 13 – 20, 2026' },
-  { id: 'break', isBreak: true, dates: 'Dec 20 – Jan 10', note: 'Christmas + New Year — farm rests' },
-  { id: 'jan-10-2027', label: 'Cohort 12', dates: 'Jan 10 – 17, 2027' },
-  { id: 'jan-17-2027', label: 'Cohort 13', dates: 'Jan 17 – 24, 2027' },
-  { id: 'jan-24-2027', label: 'Cohort 14', dates: 'Jan 24 – 31, 2027' },
+  { id: 'oct-04-2026', label: 'Cohort 01', dates: 'Oct 4 – 9, 2026' },
+  { id: 'oct-11-2026', label: 'Cohort 02', dates: 'Oct 11 – 16, 2026' },
+  { id: 'oct-18-2026', label: 'Cohort 03', dates: 'Oct 18 – 23, 2026' },
+  { id: 'oct-25-2026', label: 'Cohort 04', dates: 'Oct 25 – 30, 2026' },
+  { id: 'nov-01-2026', label: 'Cohort 05', dates: 'Nov 1 – 6, 2026' },
+  { id: 'nov-08-2026', label: 'Cohort 06', dates: 'Nov 8 – 13, 2026' },
+  { id: 'nov-15-2026', label: 'Cohort 07', dates: 'Nov 15 – 20, 2026' },
+  { id: 'nov-22-2026', label: 'Cohort 08', dates: 'Nov 22 – 27, 2026' },
+  { id: 'nov-29-2026', label: 'Cohort 09', dates: 'Nov 29 – Dec 4, 2026' },
+  { id: 'dec-06-2026', label: 'Cohort 10', dates: 'Dec 6 – 11, 2026' },
+  { id: 'dec-13-2026', label: 'Cohort 11', dates: 'Dec 13 – 18, 2026' },
+  { id: 'break', isBreak: true, dates: 'Dec 19 – Jan 9', note: 'Christmas + New Year — farm rests' },
+  { id: 'jan-10-2027', label: 'Cohort 12', dates: 'Jan 10 – 15, 2027' },
+  { id: 'jan-17-2027', label: 'Cohort 13', dates: 'Jan 17 – 22, 2027' },
+  { id: 'jan-24-2027', label: 'Cohort 14', dates: 'Jan 24 – 29, 2027' },
 ];
 
 function renderCohorts() {
@@ -3394,12 +3631,16 @@ async function submitBooking(e) {
   const status = document.getElementById('booking-status');
   const btn    = document.getElementById('booking-submit-btn');
   const data = {
-    name:    document.getElementById('bk-name').value.trim(),
-    email:   document.getElementById('bk-email').value.trim(),
-    phone:   document.getElementById('bk-phone').value.trim(),
-    track:   document.getElementById('bk-track').value,
-    cohort:  document.getElementById('bk-cohort').value,
-    message: document.getElementById('bk-message').value.trim(),
+    name:     document.getElementById('bk-name').value.trim(),
+    email:    document.getElementById('bk-email').value.trim(),
+    phone:    document.getElementById('bk-phone').value.trim(),
+    country:  document.getElementById('bk-country').value.trim(),
+    track:    document.getElementById('bk-track').value,
+    tier:     document.getElementById('bk-tier').value,
+    cohort:   document.getElementById('bk-cohort').value,
+    building: document.getElementById('bk-building').value.trim(),
+    message:  document.getElementById('bk-message').value.trim(),
+    committed: document.getElementById('bk-commit').checked ? 1 : 0,
   };
   data.bed_id = pickAvailableBed(data.cohort, data.track);
   if (!data.bed_id) {
