@@ -1,0 +1,16 @@
+name = "claudecamp-bookings"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "claudecamp-bookings"
+database_id = "d9f3c5fc-1015-4cf8-85ff-b1cc5c385d95"
+
+[vars]
+NOTIFICATION_EMAIL = "info@claudecamp.org"
+FROM_EMAIL = "bookings@claudecamp.org"
+SITE_URL = "https://claudecamp.org"
+
+# Secrets set via: npx wrangler secret put RESEND_API_KEY
+# Secrets set via: npx wrangler secret put ADMIN_KEY

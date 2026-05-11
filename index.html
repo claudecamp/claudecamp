@@ -2054,9 +2054,63 @@ html, body {
   color: #060d04;
 }
 
+/* Waitlist button shown when cohort is full */
+.cohort-waitlist {
+  width: 100%;
+  border: 1px solid rgba(248,250,252,0.25);
+  background: transparent;
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cohort-waitlist:hover {
+  border-color: var(--text);
+  color: var(--amber-glow);
+}
+
+/* "X waiting" mini-badge — surfaced only when cohort is full */
+.cohort-waiting-count {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 0.6rem;
+  opacity: 0.85;
+}
+
+.cohort-waiting-count strong {
+  color: var(--amber);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Visible only when full — override the is-full opacity dimming */
+.cohort-card-main.is-full {
+  opacity: 1;                /* keep card readable */
+  pointer-events: auto;      /* allow waitlist click */
+}
+
+.cohort-card-main.is-full .cohort-dates-main,
+.cohort-card-main.is-full .cohort-tracks,
+.cohort-card-main.is-full .cohort-price {
+  opacity: 0.45;             /* dim everything except the waitlist CTA */
+}
+
 /* ─── BOOKING MODAL ──────────────────────────────────── */
 
-#booking-modal {
+#booking-modal,
+#waitlist-modal {
   position: fixed;
   inset: 0;
   z-index: 1000;
@@ -2070,7 +2124,8 @@ html, body {
   overflow-y: auto;
 }
 
-#booking-modal.is-open {
+#booking-modal.is-open,
+#waitlist-modal.is-open {
   display: flex;
 }
 
@@ -2916,6 +2971,55 @@ html, body {
   </div>
 </div>
 
+<!-- Cohort waitlist modal (opens when a Full cohort's "Join waitlist" is clicked) -->
+<div id="waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-modal-title">
+  <div class="booking-modal-card">
+    <button class="booking-modal-close" type="button" aria-label="Close" onclick="closeWaitlistModal()">×</button>
+    <p class="booking-modal-eyebrow" id="waitlist-modal-eyebrow">Cohort 01</p>
+    <h3 class="booking-modal-title" id="waitlist-modal-title">Join the waitlist</h3>
+    <p class="booking-modal-sub" id="waitlist-modal-sub">Oct 4 – 9, 2026 · we'll reach out if a bed opens</p>
+
+    <form id="waitlist-form" onsubmit="submitWaitlist(event)" novalidate>
+      <div class="booking-form-grid">
+        <div class="booking-form-row">
+          <label for="wl-name">Full name</label>
+          <input id="wl-name" name="name" type="text" required>
+        </div>
+        <div class="booking-form-row">
+          <label for="wl-email">Email</label>
+          <input id="wl-email" name="email" type="email" required>
+        </div>
+      </div>
+      <div class="booking-form-grid">
+        <div class="booking-form-row">
+          <label for="wl-phone">WhatsApp</label>
+          <input id="wl-phone" name="phone" type="tel" placeholder="+1 / +66 ...">
+        </div>
+        <div class="booking-form-row">
+          <label for="wl-country">Flying from</label>
+          <input id="wl-country" name="country" type="text" placeholder="Country">
+        </div>
+      </div>
+      <div class="booking-form-row">
+        <label for="wl-message">A note for Sasha (optional)</label>
+        <textarea id="wl-message" name="message" rows="2" placeholder="Flexible on other weeks? What are you hoping to build? Anything else?"></textarea>
+      </div>
+
+      <input type="hidden" id="wl-cohort" name="cohort">
+
+      <button type="submit" class="booking-submit" id="waitlist-submit-btn">Add me to the waitlist →</button>
+      <p class="booking-status" id="waitlist-status"></p>
+      <p class="booking-fine-print">No deposit, no commitment. If a bed opens, Sasha will reach out personally on WhatsApp or email — first come, first served.</p>
+    </form>
+
+    <div class="booking-modal-success" id="waitlist-success" style="display:none;">
+      <div class="check">✓</div>
+      <p><strong>You're on the list.</strong></p>
+      <p>If someone drops out, Sasha will reach out personally. If your dates are flexible, <a href="#section-cohorts" style="color:var(--amber);" onclick="closeWaitlistModal()">other weeks may still be open</a>.</p>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════════════════════════════════════════════════
      SECTION — WAITLIST (fallback)
      ═══════════════════════════════════════════════════════════ -->
@@ -3537,12 +3641,23 @@ function renderCohorts() {
             <div class="cohort-dots" id="dots-${c.id}-builder">${'<span class="cohort-dot"></span>'.repeat(BEDS_PER_TRACK.builder)}</div>
           </div>
         </div>
-        <div class="cohort-price">฿33,000 – ฿48,000 · all-inclusive</div>
-        <button type="button" class="cohort-reserve" onclick="openBookingModal('${c.id}', '${c.label}', '${c.dates}')">
-          <span>Reserve your spot</span><span>→</span>
-        </button>
+        <div class="cohort-price">$960 – $1,600 · 5 nights + free weekend</div>
+        <div class="cohort-cta-slot" id="cta-${c.id}">
+          <button type="button" class="cohort-reserve" onclick="openBookingModal('${c.id}', '${c.label}', '${c.dates}')">
+            <span>Reserve your spot</span><span>→</span>
+          </button>
+        </div>
+        <p class="cohort-waiting-count" id="waiting-${c.id}" style="display:none;"></p>
       </div>`;
   }).join('');
+}
+
+function bucketWaitingCount(n) {
+  if (n <= 0) return null;
+  if (n === 1) return '<strong>1</strong> person waiting';
+  if (n <= 3) return `<strong>${n}</strong> waiting`;
+  if (n <= 6) return '<strong>several</strong> waiting';
+  return '<strong>many</strong> waiting';
 }
 
 async function loadCohortAvailability() {
@@ -3559,15 +3674,39 @@ async function loadCohortAvailability() {
       updateTrack(cohort.id, 'builder',  BEDS_PER_TRACK.builder,  builderTaken);
       const badge = document.getElementById(`badge-${cohort.id}`);
       const card  = document.querySelector(`[data-cohort="${cohort.id}"]`);
-      if (badge && card && beginnerTaken + builderTaken >= BEDS_PER_TRACK.beginner + BEDS_PER_TRACK.builder) {
+      const full  = beginnerTaken + builderTaken >= BEDS_PER_TRACK.beginner + BEDS_PER_TRACK.builder;
+
+      if (full && badge && card) {
         badge.textContent = 'Full';
         badge.classList.add('full');
         card.classList.add('is-full');
+        swapToWaitlist(cohort);
       }
       // Store taken beds on the card for the modal to pick next bed
       if (card) card.dataset.takenBeds = JSON.stringify(taken);
     } catch (err) { /* network fail — leave defaults */ }
   }
+}
+
+async function swapToWaitlist(cohort) {
+  const slot = document.getElementById(`cta-${cohort.id}`);
+  if (slot) {
+    slot.innerHTML = `
+      <button type="button" class="cohort-waitlist" onclick="openWaitlistModal('${cohort.id}', '${cohort.label}', '${cohort.dates}')">
+        <span>Join the waitlist</span><span>→</span>
+      </button>`;
+  }
+  try {
+    const res = await fetch(`${WORKER_URL}/api/waitlist-count?cohort=${cohort.id}`);
+    if (!res.ok) return;
+    const { count } = await res.json();
+    const label = bucketWaitingCount(count);
+    const el = document.getElementById(`waiting-${cohort.id}`);
+    if (label && el) {
+      el.innerHTML = label;
+      el.style.display = 'block';
+    }
+  } catch {}
 }
 
 function updateTrack(cohortId, track, total, taken) {
@@ -3606,9 +3745,9 @@ function closeBookingModal() {
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && document.getElementById('booking-modal').classList.contains('is-open')) {
-    closeBookingModal();
-  }
+  if (e.key !== 'Escape') return;
+  if (document.getElementById('booking-modal').classList.contains('is-open')) closeBookingModal();
+  if (document.getElementById('waitlist-modal').classList.contains('is-open')) closeWaitlistModal();
 });
 
 document.getElementById('booking-modal').addEventListener('click', e => {
@@ -3672,6 +3811,65 @@ async function submitBooking(e) {
     status.className = 'booking-status error';
     btn.disabled = false;
     btn.textContent = 'Reserve my bed →';
+  }
+}
+
+/* ── Waitlist modal ──────────────────────────────────────────── */
+
+function openWaitlistModal(cohortId, cohortLabel, cohortDates) {
+  document.getElementById('waitlist-modal-eyebrow').textContent = cohortLabel;
+  document.getElementById('waitlist-modal-sub').textContent = `${cohortDates} · we'll reach out if a bed opens`;
+  document.getElementById('wl-cohort').value = cohortId;
+  document.getElementById('waitlist-form').style.display = '';
+  document.getElementById('waitlist-success').style.display = 'none';
+  document.getElementById('waitlist-status').textContent = '';
+  document.getElementById('waitlist-status').className = 'booking-status';
+  document.getElementById('waitlist-modal').classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeWaitlistModal() {
+  document.getElementById('waitlist-modal').classList.remove('is-open');
+  document.body.style.overflow = '';
+  document.getElementById('waitlist-form').reset();
+}
+
+document.getElementById('waitlist-modal').addEventListener('click', e => {
+  if (e.target.id === 'waitlist-modal') closeWaitlistModal();
+});
+
+async function submitWaitlist(e) {
+  e.preventDefault();
+  const status = document.getElementById('waitlist-status');
+  const btn    = document.getElementById('waitlist-submit-btn');
+  const data = {
+    name:    document.getElementById('wl-name').value.trim(),
+    email:   document.getElementById('wl-email').value.trim(),
+    phone:   document.getElementById('wl-phone').value.trim(),
+    country: document.getElementById('wl-country').value.trim(),
+    message: document.getElementById('wl-message').value.trim(),
+    cohort:  document.getElementById('wl-cohort').value,
+  };
+
+  btn.disabled = true;
+  btn.textContent = 'Adding you...';
+
+  try {
+    const res = await fetch(`${WORKER_URL}/api/waitlist`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (!res.ok || result.error) throw new Error(result.error || 'Could not add you. Try WhatsApp.');
+    document.getElementById('waitlist-form').style.display = 'none';
+    document.getElementById('waitlist-success').style.display = '';
+    loadCohortAvailability(); // refresh waitlist counts
+  } catch (err) {
+    status.textContent = err.message;
+    status.className = 'booking-status error';
+    btn.disabled = false;
+    btn.textContent = 'Add me to the waitlist →';
   }
 }
 
