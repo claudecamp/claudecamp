@@ -210,6 +210,17 @@
 /* ─── RESET ─────────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ─── VISUALLY HIDDEN (crawlable) ───────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
 :root {
   --jungle-deep:   #060d04;
   --jungle-mid:    #0a1208;
@@ -3176,6 +3187,9 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
   <div class="rail-dot" data-target="section-cohorts"><span class="rail-dot-label">Reserve</span><span class="rail-dot-pip"></span></div>
 </nav>
 
+<!-- ─── SEO H1 (visually hidden, crawlable) ───────────────── -->
+<h1 class="sr-only">Claude Camp: 7-Day Claude Code Bootcamp &amp; Retreat in Pai, Thailand</h1>
+
 <!-- ─── HERO ─────────────────────────────────────────────────── -->
 <section id="hero" role="banner">
 
@@ -3243,7 +3257,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
       01 — Mae Hong Son, Thailand
     </p>
 
-    <h1>
+    <div role="heading" aria-level="2" aria-label="Wake up in the jungle. Build your company with AI. Launch before you leave.">
       <div class="hero-headline">
         <span class="hero-headline-inner" data-i18n="hero.line1">Wake up in the jungle.</span>
       </div>
@@ -3253,7 +3267,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
       <div class="hero-headline">
         <span class="hero-headline-inner" data-i18n="hero.line3">Launch before you leave.</span>
       </div>
-    </h1>
+    </div>
 
     <div class="hero-tagline-wrap">
       <span class="hero-tagline" data-i18n="hero.tagline">7-day Claude Code bootcamp + retreat in Pai, Thailand.</span>
@@ -3971,6 +3985,53 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
     </form>
 
     <p class="waitlist-small" data-i18n="waitlist.small">One email when dates lock in. Nothing else.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION — FAQ (static HTML for AIO + crawlers)
+     ═══════════════════════════════════════════════════════════ -->
+<section id="faq" aria-labelledby="faq-heading" style="max-width:780px;margin:0 auto;padding:clamp(4rem,8vw,6rem) clamp(1.5rem,5vw,3rem);">
+  <h2 id="faq-heading" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-style:italic;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--text);margin-bottom:2.5rem;">Frequently Asked Questions</h2>
+
+  <div class="faq-item" style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(248,250,252,0.08);">
+    <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:1rem;color:var(--text);margin-bottom:0.6rem;">What is Claude Camp?</h3>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:0.93rem;line-height:1.75;color:var(--text-muted);">Claude Camp is a 7-day intensive bootcamp and retreat in Pai, Thailand, where founders, indie hackers, and developers use Claude Code — Anthropic's AI coding tool — to build and launch a working app. Cohorts are capped at 7 participants and hosted on an organic farm with solar power, 200 Mbps fiber, and daily guided building sessions.</p>
+  </div>
+
+  <div class="faq-item" style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(248,250,252,0.08);">
+    <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:1rem;color:var(--text);margin-bottom:0.6rem;">Do I need to know how to code to attend?</h3>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:0.93rem;line-height:1.75;color:var(--text-muted);">No prior coding experience is required. Claude Code handles the code — participants supply the idea. Claude Camp runs separate tracks for non-technical founders and experienced developers, so both can work at the right depth.</p>
+  </div>
+
+  <div class="faq-item" style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(248,250,252,0.08);">
+    <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:1rem;color:var(--text);margin-bottom:0.6rem;">What is Claude Code?</h3>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:0.93rem;line-height:1.75;color:var(--text-muted);">Claude Code is an AI coding tool made by Anthropic that lets you build software by describing what you want in plain language. It writes, debugs, and iterates on code in real time. A Claude Pro subscription ($20/month from Anthropic) is required to use it.</p>
+  </div>
+
+  <div class="faq-item" style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(248,250,252,0.08);">
+    <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:1rem;color:var(--text);margin-bottom:0.6rem;">What will I build at Claude Camp?</h3>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:0.93rem;line-height:1.75;color:var(--text-muted);">You bring the idea; the camp provides the structure, instruction, and environment to ship it. Past participants have built SaaS tools, internal automation, client-facing apps, and personal projects they had been planning for years. By the end of the week, you have a working, deployed product.</p>
+  </div>
+
+  <div class="faq-item" style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(248,250,252,0.08);">
+    <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:1rem;color:var(--text);margin-bottom:0.6rem;">Where exactly is Claude Camp located?</h3>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:0.93rem;line-height:1.75;color:var(--text-muted);">Claude Camp is hosted on an organic mountain farm 7km outside Pai, in Mae Hong Son Province, northern Thailand — 3 to 3.5 hours by road from Chiang Mai International Airport (CNX). The farm is solar-powered, has 200 Mbps fiber internet, and operates as a working garden.</p>
+  </div>
+
+  <div class="faq-item" style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(248,250,252,0.08);">
+    <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:1rem;color:var(--text);margin-bottom:0.6rem;">How much does Claude Camp cost?</h3>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:0.93rem;line-height:1.75;color:var(--text-muted);">Standard pricing starts at $1,490 for the full 7-day program, which is all-inclusive: accommodation, meals, instruction, and ground transport. A Premium tier includes private airport transfers and other upgrades. A deposit holds your seat; the remainder is due 30 days before arrival.</p>
+  </div>
+
+  <div class="faq-item" style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(248,250,252,0.08);">
+    <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:1rem;color:var(--text);margin-bottom:0.6rem;">How is Claude Camp different from an online AI coding course?</h3>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:0.93rem;line-height:1.75;color:var(--text-muted);">Claude Camp is a residential retreat, not a digital course. You live and work alongside 6 other builders for 7 days in northern Thailand. The immersive, distraction-free environment is the product: no Slack, no commute, no context-switching. You ship something real because there is nothing else to do.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3 style="font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:1rem;color:var(--text);margin-bottom:0.6rem;">Do I need a visa to travel to Thailand?</h3>
+    <p style="font-family:'DM Sans',system-ui,sans-serif;font-weight:300;font-size:0.93rem;line-height:1.75;color:var(--text-muted);">Most nationalities — including US, UK, EU, Australian, and Canadian passport holders — receive a 60-day visa exemption on arrival in Thailand. Check your specific passport at the Thai Ministry of Foreign Affairs website before booking.</p>
   </div>
 </section>
 
