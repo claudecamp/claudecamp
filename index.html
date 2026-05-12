@@ -890,8 +890,7 @@ html, body {
   cursor: pointer;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.6s ease, transform 0.6s ease, color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-  will-change: opacity, transform;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 #jungle-toggle.is-ready { opacity: 1; transform: translateY(0); }
 #jungle-toggle:hover {
@@ -926,6 +925,7 @@ html, body {
   0%, 100% { opacity: 0; transform: scale(1); }
   50%      { opacity: 1; transform: scale(1.06); }
 }
+#jungle-toggle.is-loading { opacity: 0.5; pointer-events: none; }
 @media (max-width: 600px) {
   #jungle-toggle {
     bottom: 1rem; left: 1rem;
@@ -3016,9 +3016,6 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
   <div id="vignette" aria-hidden="true"></div>
 
   <!-- Jungle ambience (subtle bottom-left toggle) -->
-  <audio id="jungle-audio" loop preload="none" playsinline>
-    <source src="assets/jungle-ambient.mp3" type="audio/mpeg">
-  </audio>
   <button id="jungle-toggle" type="button" aria-label="Toggle jungle ambient sound" aria-pressed="false">
     <span class="jungle-toggle-icon" aria-hidden="true">
       <svg class="ji-off" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>
@@ -5118,79 +5115,121 @@ async function submitWaitlist(e) {
 renderCohorts();
 loadCohortAvailability();
 
-/* ── Jungle ambient audio — subtle toggle, localStorage memory ── */
+/* ── Jungle ambient audio — Web Audio API for seamless gapless loop ── */
 (function initJungleAudio() {
-  const audio  = document.getElementById('jungle-audio');
   const toggle = document.getElementById('jungle-toggle');
-  if (!audio || !toggle) return;
+  if (!toggle) return;
 
   const STORAGE = 'claudecamp.jungle';
-  const FADE_MS = 1200;
-  const TARGET_VOL = 0.42;
+  const AUDIO_SRC = 'assets/jungle-ambient.mp3';
+  const TARGET_GAIN = 0.42;
+  const FADE_IN_S  = 1.4;
+  const FADE_OUT_S = 0.7;
 
-  const getPref = () => { try { return localStorage.getItem(STORAGE); } catch (e) { return null; } };
-  const setPref = (v) => { try { localStorage.setItem(STORAGE, v); } catch (e) {} };
+  const getPref = () => { try { return localStorage.getItem(STORAGE); } catch(e) { return null; } };
+  const setPref = (v) => { try { localStorage.setItem(STORAGE, v); } catch(e) {} };
 
-  audio.volume = 0;
+  let actx = null;
+  let gainNode = null;
+  let source = null;
+  let audioBuffer = null;
+  let isOn = false;
+  let loading = false;
 
-  function fadeTo(target, ms) {
-    const start = audio.volume;
-    const diff = target - start;
-    const t0 = performance.now();
-    return new Promise(resolve => {
-      function step(now) {
-        const t = Math.min(1, (now - t0) / ms);
-        audio.volume = Math.max(0, Math.min(1, start + diff * t));
-        if (t < 1) requestAnimationFrame(step); else resolve();
-      }
-      requestAnimationFrame(step);
-    });
+  function getCtx() {
+    if (!actx) {
+      actx = new (window.AudioContext || window.webkitAudioContext)();
+      gainNode = actx.createGain();
+      gainNode.gain.value = 0;
+      gainNode.connect(actx.destination);
+    }
+    return actx;
   }
 
-  async function turnOn(savePref = true) {
-    audio.muted = false;
+  async function loadBuffer() {
+    if (audioBuffer) return audioBuffer;
+    const ctx = getCtx();
+    const resp = await fetch(AUDIO_SRC);
+    if (!resp.ok) throw new Error('Audio fetch failed: ' + resp.status);
+    const raw = await resp.arrayBuffer();
+    audioBuffer = await ctx.decodeAudioData(raw);
+    return audioBuffer;
+  }
+
+  function startSource(buf) {
+    if (source) { try { source.stop(); } catch(e) {} }
+    source = actx.createBufferSource();
+    source.buffer = buf;
+    source.loop = true;
+    source.connect(gainNode);
+    source.start(0);
+  }
+
+  async function turnOn() {
+    if (isOn || loading) return;
+    loading = true;
+    toggle.classList.add('is-loading');
     try {
-      await audio.play();
-      fadeTo(TARGET_VOL, FADE_MS);
+      const ctx = getCtx();
+      if (ctx.state === 'suspended') await ctx.resume();
+      const buf = await loadBuffer();
+      startSource(buf);
+      // Fade in
+      gainNode.gain.cancelScheduledValues(ctx.currentTime);
+      gainNode.gain.setValueAtTime(0, ctx.currentTime);
+      gainNode.gain.linearRampToValueAtTime(TARGET_GAIN, ctx.currentTime + FADE_IN_S);
+      isOn = true;
       toggle.classList.add('is-on');
       toggle.setAttribute('aria-pressed', 'true');
-      if (savePref) setPref('on');
-    } catch (e) {
-      // Autoplay blocked — just leave it off and wait for user gesture
-      toggle.classList.remove('is-on');
-      toggle.setAttribute('aria-pressed', 'false');
+      setPref('on');
+    } catch(e) {
+      console.warn('Jungle audio error:', e);
     }
+    loading = false;
+    toggle.classList.remove('is-loading');
   }
 
-  async function turnOff(savePref = true) {
-    await fadeTo(0, FADE_MS / 2);
-    audio.pause();
+  function turnOff() {
+    if (!isOn || !actx) return;
+    const ctx = actx;
+    gainNode.gain.cancelScheduledValues(ctx.currentTime);
+    gainNode.gain.setValueAtTime(gainNode.gain.value, ctx.currentTime);
+    gainNode.gain.linearRampToValueAtTime(0, ctx.currentTime + FADE_OUT_S);
+    setTimeout(() => {
+      if (source) { try { source.stop(); } catch(e) {} source = null; }
+    }, (FADE_OUT_S + 0.05) * 1000);
+    isOn = false;
     toggle.classList.remove('is-on');
     toggle.setAttribute('aria-pressed', 'false');
-    if (savePref) setPref('off');
+    setPref('off');
   }
 
-  toggle.addEventListener('click', () => {
-    if (toggle.classList.contains('is-on')) turnOff(); else turnOn();
-  });
+  toggle.addEventListener('click', () => { isOn ? turnOff() : turnOn(); });
 
-  // Pause when tab is hidden, resume when visible (only if user had it on)
+  // Pause when tab hidden, resume when visible
   document.addEventListener('visibilitychange', () => {
+    if (!actx) return;
     if (document.hidden) {
-      if (!audio.paused) audio.pause();
-    } else if (toggle.classList.contains('is-on')) {
-      audio.play().catch(() => {});
+      if (isOn) actx.suspend();
+    } else if (isOn) {
+      actx.resume();
     }
   });
 
-  // Show the toggle after the hero load sequence settles
-  const showToggle = () => toggle.classList.add('is-ready');
-  setTimeout(showToggle, 3200);
-
-  // If returning user opted in last time, try to autoplay (will likely fail without gesture but worth a try)
-  if (getPref() === 'on') {
-    turnOn(false);
-  }
+  // Show toggle — kill transition + will-change first (compositor layer trap), then set visible
+  setTimeout(() => {
+    toggle.style.transition = 'none';
+    toggle.style.willChange = 'auto';
+    void toggle.offsetHeight;
+    toggle.style.opacity = '1';
+    toggle.style.transform = 'translateY(0)';
+    toggle.classList.add('is-ready');
+    // Restore CSS hover transitions (remove inline overrides after paint settles)
+    setTimeout(() => {
+      toggle.style.removeProperty('transition');
+      toggle.style.removeProperty('will-change');
+    }, 100);
+  }, 1500);
 })();
 
 /* ── Mobile reveal — IntersectionObserver fade-up (replaces unreliable GSAP ScrollTrigger on iOS) ── */
