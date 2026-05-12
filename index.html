@@ -5115,15 +5115,15 @@ async function submitWaitlist(e) {
 renderCohorts();
 loadCohortAvailability();
 
-/* ── Jungle ambient audio — Web Audio API for seamless gapless loop ── */
+/* ── Jungle ambient audio — autoplay on first interaction, gapless Web Audio loop ── */
 (function initJungleAudio() {
   const toggle = document.getElementById('jungle-toggle');
   if (!toggle) return;
 
-  const STORAGE = 'claudecamp.jungle';
-  const AUDIO_SRC = 'assets/jungle-ambient.mp3';
-  const TARGET_GAIN = 0.42;
-  const FADE_IN_S  = 1.4;
+  const STORAGE    = 'claudecamp.jungle';
+  const AUDIO_SRC  = 'assets/jungle-ambient.mp3';
+  const TARGET_GAIN = 0.38;
+  const FADE_IN_S  = 2.0;   // slow fade so it creeps in gently
   const FADE_OUT_S = 0.7;
 
   const getPref = () => { try { return localStorage.getItem(STORAGE); } catch(e) { return null; } };
@@ -5135,6 +5135,7 @@ loadCohortAvailability();
   let audioBuffer = null;
   let isOn = false;
   let loading = false;
+  let autoplayAttempted = false;
 
   function getCtx() {
     if (!actx) {
@@ -5146,14 +5147,15 @@ loadCohortAvailability();
     return actx;
   }
 
-  async function loadBuffer() {
-    if (audioBuffer) return audioBuffer;
+  // Start fetching + decoding immediately so it's ready when we need it
+  function prefetchBuffer() {
     const ctx = getCtx();
-    const resp = await fetch(AUDIO_SRC);
-    if (!resp.ok) throw new Error('Audio fetch failed: ' + resp.status);
-    const raw = await resp.arrayBuffer();
-    audioBuffer = await ctx.decodeAudioData(raw);
-    return audioBuffer;
+    if (audioBuffer || loading) return;
+    fetch(AUDIO_SRC)
+      .then(r => r.arrayBuffer())
+      .then(raw => ctx.decodeAudioData(raw))
+      .then(buf => { audioBuffer = buf; })
+      .catch(() => {});
   }
 
   function startSource(buf) {
@@ -5165,43 +5167,46 @@ loadCohortAvailability();
     source.start(0);
   }
 
-  async function turnOn() {
+  async function turnOn(savePref = true) {
     if (isOn || loading) return;
     loading = true;
     toggle.classList.add('is-loading');
     try {
       const ctx = getCtx();
       if (ctx.state === 'suspended') await ctx.resume();
-      const buf = await loadBuffer();
-      startSource(buf);
-      // Fade in
+      if (!audioBuffer) {
+        const resp = await fetch(AUDIO_SRC);
+        if (!resp.ok) throw new Error('fetch ' + resp.status);
+        const raw = await resp.arrayBuffer();
+        audioBuffer = await ctx.decodeAudioData(raw);
+      }
+      startSource(audioBuffer);
       gainNode.gain.cancelScheduledValues(ctx.currentTime);
       gainNode.gain.setValueAtTime(0, ctx.currentTime);
       gainNode.gain.linearRampToValueAtTime(TARGET_GAIN, ctx.currentTime + FADE_IN_S);
       isOn = true;
       toggle.classList.add('is-on');
       toggle.setAttribute('aria-pressed', 'true');
-      setPref('on');
+      if (savePref) setPref('on');
     } catch(e) {
-      console.warn('Jungle audio error:', e);
+      // Autoplay blocked or fetch failed — stay silent, let user click toggle
     }
     loading = false;
     toggle.classList.remove('is-loading');
   }
 
-  function turnOff() {
+  function turnOff(savePref = true) {
     if (!isOn || !actx) return;
-    const ctx = actx;
-    gainNode.gain.cancelScheduledValues(ctx.currentTime);
-    gainNode.gain.setValueAtTime(gainNode.gain.value, ctx.currentTime);
-    gainNode.gain.linearRampToValueAtTime(0, ctx.currentTime + FADE_OUT_S);
+    gainNode.gain.cancelScheduledValues(actx.currentTime);
+    gainNode.gain.setValueAtTime(gainNode.gain.value, actx.currentTime);
+    gainNode.gain.linearRampToValueAtTime(0, actx.currentTime + FADE_OUT_S);
     setTimeout(() => {
       if (source) { try { source.stop(); } catch(e) {} source = null; }
     }, (FADE_OUT_S + 0.05) * 1000);
     isOn = false;
     toggle.classList.remove('is-on');
     toggle.setAttribute('aria-pressed', 'false');
-    setPref('off');
+    if (savePref) setPref('off');
   }
 
   toggle.addEventListener('click', () => { isOn ? turnOff() : turnOn(); });
@@ -5209,14 +5214,43 @@ loadCohortAvailability();
   // Pause when tab hidden, resume when visible
   document.addEventListener('visibilitychange', () => {
     if (!actx) return;
-    if (document.hidden) {
-      if (isOn) actx.suspend();
-    } else if (isOn) {
-      actx.resume();
-    }
+    if (document.hidden) { if (isOn) actx.suspend(); }
+    else if (isOn) actx.resume();
   });
 
-  // Show toggle — kill transition + will-change first (compositor layer trap), then set visible
+  // ── Autoplay strategy ──────────────────────────────────────────
+  // 1. If user previously opted out, stay silent — respect their choice.
+  // 2. Otherwise: try immediate autoplay (works on some browsers / return visitors).
+  // 3. If blocked, hook the first interaction (scroll / tap / click) and try again.
+  // This feels like ambient sound appearing naturally rather than a button hunt.
+
+  function tryAutoplay() {
+    if (autoplayAttempted || isOn || getPref() === 'off') return;
+    autoplayAttempted = true;
+    turnOn(false); // don't save pref on autoplay attempt — let first explicit toggle save it
+  }
+
+  function onFirstInteraction() {
+    ['scroll','touchstart','pointerdown','keydown'].forEach(evt =>
+      window.removeEventListener(evt, onFirstInteraction, { capture: true })
+    );
+    if (!isOn && getPref() !== 'off') turnOn(false);
+  }
+
+  // Prefetch audio during hero load (non-blocking)
+  setTimeout(prefetchBuffer, 800);
+
+  // Try immediate autoplay after hero settles
+  setTimeout(tryAutoplay, 1800);
+
+  // Fallback: first interaction triggers it if autoplay was blocked
+  if (getPref() !== 'off') {
+    ['scroll','touchstart','pointerdown','keydown'].forEach(evt =>
+      window.addEventListener(evt, onFirstInteraction, { capture: true, passive: true, once: true })
+    );
+  }
+
+  // Show toggle button
   setTimeout(() => {
     toggle.style.transition = 'none';
     toggle.style.willChange = 'auto';
@@ -5224,7 +5258,6 @@ loadCohortAvailability();
     toggle.style.opacity = '1';
     toggle.style.transform = 'translateY(0)';
     toggle.classList.add('is-ready');
-    // Restore CSS hover transitions (remove inline overrides after paint settles)
     setTimeout(() => {
       toggle.style.removeProperty('transition');
       toggle.style.removeProperty('will-change');
