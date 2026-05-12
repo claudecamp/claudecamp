@@ -74,7 +74,7 @@ function cohortLabel(id) {
 
 async function createStripeCheckout(env, booking) {
   const cohort = cohortLabel(booking.cohort);
-  const tierLabel = booking.tier === 'premium' ? 'Premium ($1,600)' : 'Standard ($960)';
+  const tierLabel = booking.tier === 'premium' ? 'Premium ($1,990)' : 'Standard ($1,490)';
 
   const params = new URLSearchParams({
     'payment_method_types[]': 'card',
@@ -147,7 +147,7 @@ async function verifyStripeWebhook(rawBody, sigHeader, secret) {
 
 async function sendApplicationEmails(env, b) {
   const cohort = cohortLabel(b.cohort);
-  const tier = b.tier === 'premium' ? 'Premium ($1,600)' : 'Standard ($960)';
+  const tier = b.tier === 'premium' ? 'Premium ($1,990)' : 'Standard ($1,490)';
   const track = b.track === 'builder' ? 'Builder' : 'Beginner';
 
   // Admin notification (immediate on application)
@@ -177,7 +177,7 @@ async function sendApplicationEmails(env, b) {
 
 async function sendConfirmationEmails(env, b) {
   const cohort = cohortLabel(b.cohort);
-  const tier = b.tier === 'premium' ? 'Premium ($1,600)' : 'Standard ($960)';
+  const tier = b.tier === 'premium' ? 'Premium ($1,990)' : 'Standard ($1,490)';
   const track = b.track === 'builder' ? 'Builder' : 'Beginner';
 
   // Admin — deposit confirmed

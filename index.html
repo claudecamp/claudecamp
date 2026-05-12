@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
@@ -213,24 +214,35 @@ html, body {
 
 #bg-photo { z-index: 0; }
 
+#bg-photo picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 #bg-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center 55%;
   display: block;
-  filter: saturate(0.82) brightness(0.85);
+  filter: saturate(1.05) brightness(0.95) contrast(1.05);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@media (max-width: 768px) {
+  #bg-photo img { object-position: 68% 55%; }
 }
 
 #bg-1 {
+  /* Bottom-weighted darkening so the sunset stays luminous up top
+     but the hero text at the bottom keeps its contrast. */
   background:
-    radial-gradient(ellipse 120% 80% at 30% 100%, #0a2408 0%, transparent 60%),
-    radial-gradient(ellipse 80%  60% at 70% 90%,  #051203 0%, transparent 55%),
-    radial-gradient(ellipse 100% 50% at 50% 100%, #030a02 0%, transparent 70%),
-    linear-gradient(170deg, #060d04 0%, #0a1208 35%, #0d1a09 65%, #060d04 100%);
+    linear-gradient(to top, rgba(4,12,3,0.85) 0%, rgba(4,12,3,0.55) 28%, rgba(4,12,3,0.18) 55%, rgba(4,12,3,0.05) 100%),
+    radial-gradient(ellipse 90% 60% at 50% 100%, rgba(6,13,4,0.5) 0%, transparent 70%);
   z-index: 1;
-  opacity: 0.82;
-  mix-blend-mode: multiply;
+  opacity: 1;
+  mix-blend-mode: normal;
 }
 
 #bg-2 {
@@ -255,9 +267,9 @@ html, body {
 
 #bg-4 {
   background:
-    radial-gradient(ellipse 80% 60% at 85% 15%,  rgba(26,10,46,0.5)    0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 10% 5%,   rgba(10,5,25,0.4)     0%, transparent 60%),
-    radial-gradient(ellipse 100% 30% at 50% 0%,  rgba(15,8,35,0.6)     0%, transparent 50%);
+    radial-gradient(ellipse 80% 60% at 85% 15%,  rgba(26,10,46,0.18)   0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 5%,   rgba(10,5,25,0.14)    0%, transparent 60%),
+    radial-gradient(ellipse 100% 30% at 50% 0%,  rgba(15,8,35,0.20)    0%, transparent 50%);
   z-index: 4;
   mix-blend-mode: multiply;
 }
@@ -296,60 +308,6 @@ html, body {
   z-index: 7;
   background: radial-gradient(ellipse 85% 85% at 50% 50%, transparent 40%, rgba(4,8,3,0.7) 100%);
   pointer-events: none;
-}
-
-#img-inset {
-  position: absolute;
-  bottom: clamp(2rem, 4vh, 3.5rem);
-  right: clamp(4rem, 8vw, 7rem);
-  z-index: 18;
-  width: clamp(120px, 14vw, 200px);
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  opacity: 0;
-  outline: 1px solid rgba(245,158,11,0.35);
-  outline-offset: -1px;
-  will-change: opacity, transform;
-}
-
-#img-inset img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  display: block;
-  filter: saturate(0.7) brightness(0.8);
-  animation: inset-kb 30s ease-in-out infinite alternate;
-}
-
-@keyframes inset-kb {
-  0%   { transform: scale(1.0) translateY(0%); }
-  100% { transform: scale(1.08) translateY(-3%); }
-}
-
-#img-inset-label {
-  position: absolute;
-  bottom: clamp(2rem, 4vh, 3.5rem);
-  right: clamp(4rem, 8vw, 7rem);
-  width: clamp(120px, 14vw, 200px);
-  z-index: 19;
-  opacity: 0;
-  margin-top: 0.5rem;
-  transform: translateY(calc(clamp(120px, 14vw, 200px) * 4/3 + 0.5rem));
-  text-align: center;
-}
-
-#img-inset-label span {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.52rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(245,158,11,0.55);
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  #img-inset, #img-inset-label { display: none; }
 }
 
 #hero-content {
@@ -394,11 +352,12 @@ html, body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 300;
   font-style: italic;
-  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-size: clamp(2.2rem, 5.2vw, 4.6rem);
   color: var(--text);
   letter-spacing: -0.02em;
   line-height: 1.05;
   clip-path: inset(0% 0% 100% 0%);
+  -webkit-clip-path: inset(0% 0% 100% 0%);
   will-change: clip-path;
 }
 
@@ -422,7 +381,7 @@ html, body {
 .hero-body-wrap {
   overflow: hidden;
   margin-top: clamp(1.2rem, 2vh, 1.8rem);
-  max-width: 480px;
+  max-width: 520px;
 }
 
 .hero-body {
@@ -434,6 +393,238 @@ html, body {
   color: var(--text-muted);
   clip-path: inset(0% 0% 100% 0%);
   will-change: clip-path;
+}
+
+/* ── PROMISE STRIP (below hero) ─────────────────────────── */
+#section-promise {
+  position: relative;
+  background: var(--jungle-deep);
+  padding: clamp(5rem, 11vh, 9rem) clamp(1.5rem, 6vw, 6rem);
+  border-top: 1px solid rgba(245,158,11,0.08);
+  overflow: hidden;
+}
+
+#section-promise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 12% 20%, rgba(245,158,11,0.045) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 90% 90%, rgba(26,10,46,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 40% at 50% 100%, rgba(10,18,8,0.6) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#section-promise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+}
+
+.promise-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.promise-header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vh, 4.5rem);
+}
+
+.promise-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8em;
+  opacity: 0;
+}
+
+.promise-eyebrow::before,
+.promise-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--amber);
+}
+
+.promise-headline-wrap {
+  overflow: hidden;
+}
+
+.promise-headline {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.7rem, 3.4vw, 2.7rem);
+  color: var(--text);
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  clip-path: inset(0% 0% 100% 0%);
+  will-change: clip-path;
+}
+
+.promise-headline em {
+  color: var(--amber);
+  font-style: italic;
+}
+
+.promise-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
+}
+
+.promise-divider {
+  align-self: stretch;
+  width: 1px;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(245,158,11,0.18) 18%,
+    rgba(245,158,11,0.18) 82%,
+    transparent 100%);
+  transform-origin: top center;
+  transform: scaleY(0);
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .promise-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .promise-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent 0%,
+      rgba(245,158,11,0.18) 18%,
+      rgba(245,158,11,0.18) 82%,
+      transparent 100%);
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+}
+
+.promise-col {
+  position: relative;
+}
+
+.promise-col-index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.8rem;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.promise-col-index::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--amber);
+}
+
+.promise-col-title-wrap {
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.promise-col-title {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  clip-path: inset(0% 0% 100% 0%);
+  will-change: clip-path;
+}
+
+.promise-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.promise-list li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.95rem 0;
+  border-top: 1px solid rgba(248,250,252,0.06);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.98rem, 1.25vw, 1.12rem);
+  line-height: 1.45;
+  color: var(--text);
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.promise-list li:last-child {
+  border-bottom: 1px solid rgba(248,250,252,0.06);
+}
+
+.promise-list li .promise-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--amber-dim);
+  padding-top: 0.25em;
+}
+
+.promise-list li .promise-text {
+  position: relative;
+}
+
+.promise-list li .promise-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.2em;
+  width: 0;
+  height: 1px;
+  background: var(--amber);
+  transition: width 0.6s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.promise-list li:hover .promise-text::after { width: 1.8rem; }
+
+@media (max-width: 480px) {
+  .promise-list li {
+    grid-template-columns: 2rem 1fr;
+    font-size: 1rem;
+  }
 }
 
 .hero-cta-row {
@@ -624,6 +815,176 @@ html, body {
 
 .nav-link:hover { color: var(--text); }
 
+/* ─── LANGUAGE PICKER ────────────────────────────────────────── */
+.lang-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 100px;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
+.lang-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  padding: 0.3rem 0.55rem;
+  border-radius: 100px;
+  cursor: none;
+  transition: color 0.2s, background 0.2s;
+}
+.lang-btn:hover { color: var(--text); }
+.lang-btn.active {
+  color: #060d04;
+  background: var(--amber);
+}
+.lang-picker.in-bar {
+  margin-right: 0.6rem;
+  padding: 0.2rem 0.3rem;
+}
+.lang-picker.in-bar .lang-btn {
+  font-size: 0.55rem;
+  padding: 0.25rem 0.45rem;
+}
+@media (max-width: 600px) {
+  .lang-picker.in-bar { display: none; }
+}
+/* When site-nav-right is hidden on mobile, surface the picker by itself */
+.lang-picker.mobile-pin {
+  position: absolute;
+  top: clamp(1.5rem, 3vh, 2.5rem);
+  right: clamp(1.5rem, 4vw, 3rem);
+  z-index: 21;
+  display: none;
+}
+@media (max-width: 900px) {
+  .lang-picker.mobile-pin { display: inline-flex; }
+}
+
+/* ─── JUNGLE AUDIO TOGGLE ───────────────────────────────────── */
+#jungle-toggle {
+  position: fixed;
+  bottom: clamp(1.2rem, 2.5vh, 2rem);
+  left: clamp(1.2rem, 2.5vw, 2rem);
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.95rem 0.55rem 0.75rem;
+  background: rgba(6,13,4,0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245,158,11,0.28);
+  border-radius: 999px;
+  color: rgba(248,250,252,0.78);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.6s ease, transform 0.6s ease, color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  will-change: opacity, transform;
+}
+#jungle-toggle.is-ready { opacity: 1; transform: translateY(0); }
+#jungle-toggle:hover {
+  color: var(--amber, #f59e0b);
+  border-color: rgba(245,158,11,0.55);
+  background: rgba(8,18,5,0.7);
+}
+#jungle-toggle .jungle-toggle-icon {
+  display: inline-flex;
+  width: 14px; height: 14px;
+  align-items: center;
+  justify-content: center;
+}
+#jungle-toggle .ji-on { display: none; }
+#jungle-toggle.is-on .ji-off { display: none; }
+#jungle-toggle.is-on .ji-on { display: inline; }
+#jungle-toggle.is-on {
+  color: var(--amber, #f59e0b);
+  border-color: rgba(245,158,11,0.5);
+}
+/* Subtle pulse halo when sound is on */
+#jungle-toggle.is-on::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 1px solid rgba(245,158,11,0.25);
+  animation: jungle-pulse 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes jungle-pulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50%      { opacity: 1; transform: scale(1.06); }
+}
+@media (max-width: 600px) {
+  #jungle-toggle {
+    bottom: 1rem; left: 1rem;
+    padding: 0.45rem 0.8rem 0.45rem 0.65rem;
+    font-size: 0.55rem;
+  }
+}
+html[dir="rtl"] #jungle-toggle { left: auto; right: clamp(1.2rem, 2.5vw, 2rem); }
+
+/* ─── HEBREW / RTL ──────────────────────────────────────────── */
+[lang="he"] .hero-headline-inner,
+[lang="he"] .promise-headline,
+[lang="he"] .promise-col-title,
+[lang="he"] .place-headline,
+[lang="he"] .section-headline,
+[lang="he"] .booking-modal-title,
+[lang="he"] .sticky-bar-name,
+[lang="he"] .footer-wordmark,
+[lang="he"] #wordmark-load,
+[lang="he"] .wordmark-text {
+  font-family: 'Frank Ruhl Libre', 'Cormorant Garamond', Georgia, serif;
+  font-style: normal;
+}
+[lang="he"] body,
+[lang="he"] .hero-body,
+[lang="he"] .hero-tagline,
+[lang="he"] .promise-list li,
+[lang="he"] .booking-modal-sub,
+[lang="he"] .pricing-features li,
+[lang="he"] .nav-link,
+[lang="he"] .lang-btn,
+[lang="he"] .cohort-dates-main,
+[lang="he"] input, [lang="he"] textarea, [lang="he"] select, [lang="he"] button,
+[lang="he"] .section-eyebrow,
+[lang="he"] .pricing-amount,
+[lang="he"] .pricing-tier,
+[lang="he"] .pricing-period {
+  font-family: 'Heebo', 'DM Sans', system-ui, sans-serif;
+}
+html[dir="rtl"] .sticky-bar-inner,
+html[dir="rtl"] #site-nav-right,
+html[dir="rtl"] .hero-cta-row,
+html[dir="rtl"] .footer-inner {
+  flex-direction: row-reverse;
+}
+html[dir="rtl"] .hero-eyebrow { flex-direction: row-reverse; }
+html[dir="rtl"] .promise-eyebrow { flex-direction: row-reverse; }
+html[dir="rtl"] .booking-form-grid input,
+html[dir="rtl"] .booking-form-grid textarea,
+html[dir="rtl"] .booking-form-grid select,
+html[dir="rtl"] .booking-form-row input,
+html[dir="rtl"] .booking-form-row textarea {
+  text-align: right;
+  direction: rtl;
+}
+html[dir="rtl"] .lang-picker.mobile-pin { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
+html[dir="rtl"] #site-wordmark { left: auto; right: clamp(1.5rem, 4vw, 3rem); }
+html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
+
 .pricing-badge {
   position: absolute;
   top: clamp(1.5rem, 3vh, 2.5rem);
@@ -796,6 +1157,11 @@ html, body {
   z-index: 0;
 }
 
+.tracks-bg picture {
+  display: block;
+  width: 100%; height: 100%;
+}
+
 .tracks-bg img {
   width: 100%; height: 100%;
   object-fit: cover;
@@ -953,6 +1319,7 @@ html, body {
   overflow: hidden;
   position: relative;
   clip-path: inset(100% 0% 0% 0%);
+  -webkit-clip-path: inset(100% 0% 0% 0%);
   will-change: clip-path;
 }
 
@@ -967,6 +1334,19 @@ html, body {
 
 .place-img-wrap:last-child {
   aspect-ratio: 4/3;
+}
+
+@media (max-width: 900px) {
+  .place-img-wrap:nth-child(2) { margin-left: 0; }
+  .place-img-wrap:first-child,
+  .place-img-wrap:nth-child(2),
+  .place-img-wrap:last-child { aspect-ratio: 16/10; }
+}
+
+.place-img-wrap picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .place-img-wrap img {
@@ -1089,20 +1469,37 @@ html, body {
   border-right: 1px solid rgba(245,158,11,0.1);
   padding: 0;
   clip-path: inset(0% 0% 100% 0%);
+  -webkit-clip-path: inset(0% 0% 100% 0%);
   will-change: clip-path;
   transition: background 0.3s;
   position: relative;
   overflow: hidden;
-  min-height: 280px;
+  min-height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .excursion-card:last-child { border-right: none; }
+
+.excursion-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.excursion-photo picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.excursion-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--focal, center center);
+  display: block;
+}
 
 .excursion-card::after {
   content: '';
@@ -1110,10 +1507,10 @@ html, body {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(4,8,3,0.92) 0%,
-    rgba(4,8,3,0.65) 40%,
-    rgba(4,8,3,0.25) 70%,
-    rgba(4,8,3,0.08) 100%
+    rgba(4,8,3,0.85) 0%,
+    rgba(4,8,3,0.45) 35%,
+    rgba(4,8,3,0.10) 60%,
+    rgba(4,8,3,0.00) 100%
   );
   pointer-events: none;
   z-index: 1;
@@ -1123,10 +1520,10 @@ html, body {
 .excursion-card:hover::after {
   background: linear-gradient(
     to top,
-    rgba(4,8,3,0.95) 0%,
-    rgba(4,8,3,0.72) 40%,
-    rgba(4,8,3,0.35) 70%,
-    rgba(4,8,3,0.15) 100%
+    rgba(4,8,3,0.92) 0%,
+    rgba(4,8,3,0.55) 35%,
+    rgba(4,8,3,0.20) 60%,
+    rgba(4,8,3,0.05) 100%
   );
 }
 
@@ -1554,6 +1951,94 @@ html, body {
 @media (max-width: 600px) {
   .footer-right { text-align: left; }
   .footer-quote { margin-left: 0; }
+}
+
+/* ─── iOS / NO-JS SAFETY NET ──────────────────────────────────
+   If GSAP/ScrollTrigger fails to fire on iOS Safari (or any browser),
+   ensure images are still visible after a short delay. Animations
+   still play normally when JS runs — gsap.set() overrides these. */
+.no-js .place-img-wrap,
+.no-js .excursion-card,
+.no-js .track-card,
+.no-js .pricing-card,
+.no-js .hero-headline-inner,
+.no-js .hero-tagline,
+.no-js .hero-body,
+.no-js .place-headline,
+.no-js .promise-headline,
+.no-js .section-headline {
+  -webkit-clip-path: inset(0% 0% 0% 0%) !important;
+  clip-path: inset(0% 0% 0% 0%) !important;
+  opacity: 1 !important;
+}
+
+/* iOS Safari mobile reveal — IntersectionObserver-driven fade-in.
+   GSAP ScrollTrigger is unreliable on iOS momentum scroll, so on mobile
+   we override clip-path to none and use a simple IO-triggered fade-up.
+   JS adds .io-visible when the element enters the viewport. */
+@media (max-width: 900px) {
+  /* Keep desktop clip-path initial states intact, but transition them via CSS
+     instead of GSAP. IntersectionObserver adds .io-visible to trigger the wipe. */
+  .place-img-wrap,
+  .excursion-card,
+  .track-card,
+  .pricing-card,
+  .timeline-item,
+  .promise-list li,
+  .place-headline,
+  .promise-headline,
+  .promise-col-title,
+  .section-headline,
+  .section-eyebrow,
+  .promise-eyebrow,
+  .promise-col-index,
+  .prep-item,
+  .travel-faq-item,
+  .host-quote,
+  .host-aside,
+  .place-copy,
+  .pricing-note,
+  .travel-lede,
+  .prep-intro {
+    opacity: 0;
+    transition:
+      clip-path 0.9s cubic-bezier(0.65, 0, 0.35, 1),
+      -webkit-clip-path 0.9s cubic-bezier(0.65, 0, 0.35, 1),
+      opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: clip-path, opacity, transform;
+  }
+
+  /* Elements that don't have a clip-path initial state in desktop CSS
+     get a subtle fade-up so they don't pop. */
+  .section-eyebrow,
+  .promise-eyebrow,
+  .promise-col-index,
+  .promise-col-title,
+  .promise-list li,
+  .pricing-note,
+  .travel-lede,
+  .prep-intro,
+  .host-aside,
+  .place-copy,
+  .timeline-item {
+    transform: translateY(24px);
+  }
+
+  /* When IO fires .io-visible, fully reveal — clip-path wipe + fade + settle */
+  .io-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    clip-path: inset(0% 0% 0% 0%) !important;
+    -webkit-clip-path: inset(0% 0% 0% 0%) !important;
+  }
+
+  /* Place image: keep the subtle scale-down on reveal so it matches desktop */
+  .place-img-wrap img {
+    transform: scale(1.06);
+    transition: transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .place-img-wrap.io-visible img { transform: scale(1.0); }
 }
 
 /* ─── REDUCED MOTION ─────────────────────────────────────────── */
@@ -2384,7 +2869,7 @@ html, body {
     flex-wrap: nowrap;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 1px;
+    gap: 1rem;
     border: none;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -2395,14 +2880,44 @@ html, body {
   }
   .excursions-grid::-webkit-scrollbar { display: none; }
   .excursion-card {
-    min-width: 75vw;
-    max-width: 75vw;
+    min-width: 78vw;
+    max-width: 78vw;
     flex-shrink: 0;
     scroll-snap-align: start;
-    border-right: 1px solid rgba(245,158,11,0.1);
-    min-height: 340px;
+    border: 1px solid rgba(245,158,11,0.12);
+    border-radius: 4px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    background: rgba(10,18,8,0.85);
   }
-  .excursion-card:last-child { border-right: none; margin-right: 1.5rem; }
+  .excursion-card:last-child { margin-right: 1.5rem; }
+
+  /* Image: full landscape block at the top — 16:10 aspect */
+  .excursion-card .excursion-photo {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    flex-shrink: 0;
+  }
+  .excursion-card .excursion-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Drop the dark gradient overlay — text now sits below the image, not over it */
+  .excursion-card::after { display: none; }
+
+  /* Text panel below the image */
+  .excursion-card .excursion-card-inner {
+    padding: 1.2rem 1.2rem 1.4rem;
+    z-index: auto;
+  }
   .excursion-carousel-hint {
     display: flex;
     align-items: center;
@@ -2441,9 +2956,10 @@ html, body {
     <a href="#hero" class="sticky-bar-brand" aria-label="Claude Camp home">
       <span class="sticky-bar-dot"></span>
       <span class="sticky-bar-name">Claude<span class="wordmark-dot">·</span>Camp</span>
-      <span class="sticky-bar-eyebrow">Pai · Nov 2026</span>
+      <span class="sticky-bar-eyebrow" data-i18n="sticky.eyebrow">Pai · Oct 2026</span>
     </a>
-    <a href="#section-cohorts" class="sticky-bar-cta">Reserve a bed →</a>
+    <div class="lang-picker in-bar" data-lang-picker></div>
+    <a href="#section-cohorts" class="sticky-bar-cta" data-i18n="sticky.cta">Reserve a bed →</a>
   </div>
 </header>
 
@@ -2471,8 +2987,10 @@ html, body {
   <!-- Layer 0 — Real photograph -->
   <div class="bg-layer" id="bg-photo" aria-hidden="true">
     <picture>
-      <source srcset="assets/the-moment-laptop-steam.webp" type="image/webp">
-      <img src="assets/the-moment-laptop-steam.jpg" alt="" role="presentation" draggable="false" fetchpriority="high">
+      <source media="(max-width: 768px)" type="image/webp" srcset="assets/hero-bungalow-sunset-mobile.webp">
+      <source media="(max-width: 768px)" type="image/jpeg" srcset="assets/hero-bungalow-sunset-mobile.jpg">
+      <source srcset="assets/hero-bungalow-sunset.webp" type="image/webp">
+      <img src="assets/hero-bungalow-sunset.jpg" alt="" role="presentation" draggable="false" fetchpriority="high" width="1536" height="1024">
     </picture>
   </div>
 
@@ -2497,62 +3015,65 @@ html, body {
   <!-- Vignette -->
   <div id="vignette" aria-hidden="true"></div>
 
-  <!-- Fireflies (injected by JS) -->
+  <!-- Jungle ambience (subtle bottom-left toggle) -->
+  <audio id="jungle-audio" loop preload="none" playsinline>
+    <source src="assets/jungle-ambient.mp3" type="audio/mpeg">
+  </audio>
+  <button id="jungle-toggle" type="button" aria-label="Toggle jungle ambient sound" aria-pressed="false">
+    <span class="jungle-toggle-icon" aria-hidden="true">
+      <svg class="ji-off" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>
+      <svg class="ji-on" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+    </span>
+    <span class="jungle-toggle-text" data-i18n="audio.toggle">Hear the jungle</span>
+  </button>
 
-  <!-- Secondary image — hot springs inset, bottom-right -->
-  <div id="img-inset" aria-hidden="true">
-    <picture>
-      <source srcset="assets/hot-springs-dawn-mist.webp" type="image/webp">
-      <img src="assets/hot-springs-dawn-mist.jpg" alt="" role="presentation" draggable="false">
-    </picture>
-  </div>
-  <div id="img-inset-label" aria-hidden="true">
-    <span>05:30 — hot springs</span>
-  </div>
+  <!-- Fireflies (injected by JS) -->
 
   <!-- Top bar -->
   <a href="#" id="site-wordmark" aria-label="Claude Camp home">
     <span class="wordmark-text">Claude<span class="wordmark-dot">·</span>Camp</span>
   </a>
 
-  <div class="pricing-badge" aria-hidden="true">FROM $960 / WEEK · 14 COHORTS · OCT 2026 – JAN 2027</div>
+  <div class="pricing-badge" aria-hidden="true" data-i18n="hero.badge">FROM $1,490 / WEEK · 14 COHORTS · OCT 2026 – JAN 2027</div>
 
   <nav id="site-nav-right" aria-label="Primary navigation">
-    <a href="#section-tracks" class="nav-link">Tracks</a>
-    <a href="#section-pricing" class="nav-link">Pricing</a>
-    <a href="#section-waitlist" class="nav-link">Waitlist</a>
+    <a href="#section-tracks" class="nav-link" data-i18n="nav.tracks">Tracks</a>
+    <a href="#section-pricing" class="nav-link" data-i18n="nav.pricing">Pricing</a>
+    <a href="#section-cohorts" class="nav-link" data-i18n="nav.book">Book</a>
+    <div class="lang-picker" data-lang-picker></div>
   </nav>
+  <div class="lang-picker mobile-pin" data-lang-picker></div>
 
   <!-- Main content — bottom-anchored -->
   <div id="hero-content">
 
-    <p class="hero-eyebrow" aria-label="Location: 01, Mae Hong Son Province, Thailand">
+    <p class="hero-eyebrow" aria-label="Location: 01, Mae Hong Son Province, Thailand" data-i18n="hero.eyebrow">
       01 — Mae Hong Son, Thailand
     </p>
 
     <h1>
       <div class="hero-headline">
-        <span class="hero-headline-inner">A week of</span>
+        <span class="hero-headline-inner" data-i18n="hero.line1">Wake up in the jungle.</span>
       </div>
       <div class="hero-headline">
-        <span class="hero-headline-inner">building.</span>
+        <span class="hero-headline-inner" data-i18n="hero.line2">Build your company with AI.</span>
+      </div>
+      <div class="hero-headline">
+        <span class="hero-headline-inner" data-i18n="hero.line3">Launch before you leave.</span>
       </div>
     </h1>
 
     <div class="hero-tagline-wrap">
-      <span class="hero-tagline">Soak&nbsp;&nbsp;·&nbsp;&nbsp;Stretch&nbsp;&nbsp;·&nbsp;&nbsp;Ship</span>
+      <span class="hero-tagline" data-i18n="hero.tagline">7-day Claude Code bootcamp + retreat in Pai, Thailand.</span>
     </div>
 
-    <div class="hero-body-wrap">
-      <span class="hero-body">7 beds on an organic mountain farm in the most remote corner of Thailand. Solar-powered. 200 Mbps fiber. The vegetables on your plate were in the ground this morning. The code on your screen will be live by Friday.</span>
-    </div>
 
     <div class="hero-cta-row">
-      <a href="#section-waitlist" class="btn-primary" aria-label="Join the Claude Camp waitlist">
-        <span>Join the waitlist</span>
+      <a href="#section-cohorts" class="btn-primary" aria-label="Reserve your week at Claude Camp">
+        <span data-i18n="hero.ctaPrimary">Reserve your week</span>
         <span class="arrow" aria-hidden="true">→</span>
       </a>
-      <a href="#section-tracks" class="link-secondary">Explore tracks</a>
+      <a href="#section-tracks" class="link-secondary" data-i18n="hero.ctaSecondary">Explore tracks</a>
     </div>
 
   </div>
@@ -2560,9 +3081,57 @@ html, body {
   <!-- Scroll indicator -->
   <div id="scroll-hint" aria-hidden="true">
     <div class="scroll-line"></div>
-    <div class="scroll-hint-text">Scroll</div>
+    <div class="scroll-hint-text" data-i18n="hero.scroll">Scroll</div>
   </div>
 
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION — PROMISE
+     ═══════════════════════════════════════════════════════════ -->
+<section id="section-promise" aria-label="The promise">
+  <div class="promise-inner">
+
+    <header class="promise-header">
+      <p class="promise-eyebrow" data-i18n="promise.eyebrow">The Promise</p>
+      <div class="promise-headline-wrap">
+        <h2 class="promise-headline" data-i18n-html="promise.headline">A place to <em>land</em>. A week to <em>ship</em>.</h2>
+      </div>
+    </header>
+
+    <div class="promise-grid">
+
+      <div class="promise-col promise-where">
+        <p class="promise-col-index">01 — Where</p>
+        <div class="promise-col-title-wrap">
+          <h3 class="promise-col-title">Where you'll be.</h3>
+        </div>
+        <ul class="promise-list">
+          <li><span class="promise-num">01</span><span class="promise-text">Organic mountain farm</span></li>
+          <li><span class="promise-num">02</span><span class="promise-text">Solar-powered campus</span></li>
+          <li><span class="promise-num">03</span><span class="promise-text">200 Mbps fiber</span></li>
+          <li><span class="promise-num">04</span><span class="promise-text">Daily building sessions</span></li>
+          <li><span class="promise-num">05</span><span class="promise-text">Hot springs nearby</span></li>
+        </ul>
+      </div>
+
+      <div class="promise-divider" aria-hidden="true"></div>
+
+      <div class="promise-col promise-leave">
+        <p class="promise-col-index">02 — Outcome</p>
+        <div class="promise-col-title-wrap">
+          <h3 class="promise-col-title">Leave with.</h3>
+        </div>
+        <ul class="promise-list">
+          <li><span class="promise-num">01</span><span class="promise-text">A working app</span></li>
+          <li><span class="promise-num">02</span><span class="promise-text">A live website</span></li>
+          <li><span class="promise-num">03</span><span class="promise-text">Deployed infrastructure</span></li>
+          <li><span class="promise-num">04</span><span class="promise-text">A repeatable AI workflow</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -2570,19 +3139,19 @@ html, body {
      ═══════════════════════════════════════════════════════════ -->
 <section id="section-day" aria-label="A Day in Pai">
   <div class="day-inner">
-    <p class="section-eyebrow">02 — The Rhythm</p>
-    <h2 class="section-headline">Every day has a shape.</h2>
+    <p class="section-eyebrow" data-i18n="day.eyebrow">02 — The Rhythm</p>
+    <h2 class="section-headline" data-i18n="day.headline">Seven days have a shape. This is it.</h2>
 
     <div class="timeline" role="list">
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">07:00</div>
-        <div class="timeline-desc">Yoga at first light. Valley still in cloud below. Body loose before the screens turn on.</div>
+        <div class="timeline-desc">Yoga while the valley is still in cloud. You're loose and awake before a single screen turns on.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">09:00</div>
-        <div class="timeline-desc">Three hours of Claude Code while your brain is sharpest — guided sessions, real problems, everyone building something that matters to them.</div>
+        <div class="timeline-desc">Three hours of Claude Code at peak focus. Guided, but building your actual product — not someone else's demo.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
@@ -2592,22 +3161,22 @@ html, body {
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">13:00</div>
-        <div class="timeline-desc">The afternoon is yours. Your project. Your pace. Sasha nearby when you hit a wall.</div>
+        <div class="timeline-desc">Your project. Your pace. The afternoon belongs to your build. Sasha is close when you hit a wall.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">16:00</div>
-        <div class="timeline-desc">A walk through rice paddies to the hot springs. The kind of reset only geography can give you.</div>
+        <div class="timeline-desc">Rice paddies to hot springs. The kind of reset that geography does better than any productivity system.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">19:00</div>
-        <div class="timeline-desc">Dinner together. Someone always demos something they didn't think they could build. The table reacts like it matters — because it does.</div>
+        <div class="timeline-desc">Dinner, then someone demos what they shipped today. Last week it was a live SaaS app. The week before, an AI workflow that replaced a $400/month tool. The table reacts like it matters — because it does.</div>
       </div>
 
       <div class="timeline-item" role="listitem">
         <div class="timeline-time">21:00</div>
-        <div class="timeline-desc">Sleep well. The farm is quiet. Tomorrow you go further.</div>
+        <div class="timeline-desc">Sleep in a bamboo bungalow in the jungle quiet. Tomorrow you go further than today.</div>
       </div>
 
     </div>
@@ -2620,15 +3189,17 @@ html, body {
 <section id="section-tracks" aria-label="Two Tracks">
   <div class="tracks-bg" aria-hidden="true">
     <picture>
+      <source media="(max-width: 768px)" type="image/webp" srcset="assets/community-night-table-mobile.webp">
+      <source media="(max-width: 768px)" type="image/jpeg" srcset="assets/community-night-table-mobile.jpg">
       <source srcset="assets/community-night-table.webp" type="image/webp">
-      <img src="assets/community-night-table.jpg" alt="" role="presentation" draggable="false">
+      <img src="assets/community-night-table.jpg" alt="" role="presentation" draggable="false" loading="lazy" width="1920" height="1280">
     </picture>
     <div class="tracks-bg-overlay"></div>
   </div>
 
   <div class="tracks-inner">
-    <p class="section-eyebrow">03 — Tracks</p>
-    <h2 class="section-headline">Where are you starting from?</h2>
+    <p class="section-eyebrow" data-i18n="tracks.eyebrow">03 — Tracks</p>
+    <h2 class="section-headline" data-i18n="tracks.headline">Where are you starting from?</h2>
 
     <div class="tracks-grid">
 
@@ -2636,15 +3207,15 @@ html, body {
       <div class="track-card">
         <div class="track-label">Track A</div>
         <div class="track-name">Beginner</div>
-        <p class="track-hook">"You have an idea that has been sitting still for months. By Friday it's running on your machine, built entirely by you."</p>
+        <p class="track-hook">"You have an idea that has been sitting still for months. By Friday it is deployed, it is yours, and you built it — no prior code required."</p>
         <ul class="track-features">
-          <li>Ship your first Claude Code project from scratch</li>
-          <li>Prompting, context, tools — the whole mental model</li>
-          <li>Zero coding background required</li>
-          <li>Four people maximum — you will not get lost</li>
+          <li>Ship your first real product with Claude Code, start to finish</li>
+          <li>Build the mental model: prompting, context, tools — in that order</li>
+          <li>No coding background needed. No exceptions required.</li>
+          <li>Four founders maximum — you will not fall through the cracks</li>
         </ul>
-        <a href="#section-waitlist" class="btn-primary">
-          <span>Join the waitlist</span>
+        <a href="#section-cohorts" class="btn-primary">
+          <span data-i18n="hero.ctaPrimary">Reserve your week</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>
@@ -2653,15 +3224,15 @@ html, body {
       <div class="track-card">
         <div class="track-label">Track B</div>
         <div class="track-name">Builder</div>
-        <p class="track-hook">"You already know what you're building. This week you learn to build it 10× faster and hand the repetitive parts to agents."</p>
+        <p class="track-hook">"You know what you're building. This week you stop doing it slowly. Agents handle the repetitive work. You make the decisions."</p>
         <ul class="track-features">
-          <li>Agents, MCPs, multi-step workflows that run while you sleep</li>
-          <li>Claude API wired into your actual stack</li>
-          <li>Bring a real project — leave with it further than you imagined</li>
-          <li>Three seats only — feedback is personal here</li>
+          <li>Deploy agents and multi-step workflows that run while you sleep</li>
+          <li>Wire the Claude API directly into your actual stack</li>
+          <li>Arrive with a real project — leave with it further than you thought possible</li>
+          <li>Three seats only — feedback is personal and direct</li>
         </ul>
-        <a href="#section-waitlist" class="btn-primary">
-          <span>Join the waitlist</span>
+        <a href="#section-cohorts" class="btn-primary">
+          <span data-i18n="hero.ctaPrimary">Reserve your week</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>
@@ -2681,27 +3252,31 @@ html, body {
       <div class="place-images">
         <div class="place-img-wrap">
           <picture>
+            <source media="(max-width: 768px)" type="image/webp" srcset="assets/arrival-dusk-wide-mobile.webp">
+            <source media="(max-width: 768px)" type="image/jpeg" srcset="assets/arrival-dusk-wide-mobile.jpg">
             <source srcset="assets/arrival-dusk-wide.webp" type="image/webp">
-            <img src="assets/arrival-dusk-wide.jpg" alt="Arrival at dusk — the farm at golden hour" draggable="false">
+            <img src="assets/arrival-dusk-wide.jpg" alt="Arrival at dusk — the farm at golden hour" draggable="false" loading="lazy" width="1600" height="1000">
           </picture>
         </div>
         <div class="place-img-wrap">
           <picture>
+            <source media="(max-width: 768px)" type="image/webp" srcset="assets/hot-springs-dawn-mist-mobile.webp">
+            <source media="(max-width: 768px)" type="image/jpeg" srcset="assets/hot-springs-dawn-mist-mobile.jpg">
             <source srcset="assets/hot-springs-dawn-mist.webp" type="image/webp">
-            <img src="assets/hot-springs-dawn-mist.jpg" alt="Hot springs at dawn, mist rising from the water" draggable="false">
+            <img src="assets/hot-springs-dawn-mist.jpg" alt="Hot springs at dawn, mist rising from the water" draggable="false" loading="lazy" width="1600" height="900">
           </picture>
         </div>
         <div class="place-img-wrap">
           <picture>
             <source srcset="assets/bamboo-bungalow.webp" type="image/webp">
-            <img src="assets/bamboo-bungalow.png" alt="Bamboo bungalow exterior on the farm" draggable="false">
+            <img src="assets/bamboo-bungalow.png" alt="Bamboo bungalow exterior on the farm" draggable="false" loading="lazy" width="1200" height="900">
           </picture>
         </div>
       </div>
 
       <div class="place-copy">
-        <p class="section-eyebrow">04 — Pai, Thailand</p>
-        <h2 class="place-headline">7km from town.<br>A world away.</h2>
+        <p class="section-eyebrow" data-i18n="place.eyebrow">04 — Pai, Thailand</p>
+        <h2 class="place-headline" data-i18n-html="place.headline">7km from town.<br>A world away.</h2>
         <p class="place-body">Solar-powered bamboo bungalows on a working organic farm in Mae Hong Son — the remotest, quietest corner of Thailand. No city noise. No distractions. Two hundred megabits of fiber, because deep work needs a fast connection.</p>
         <p class="place-body">The farm sits above the valley haze. Mornings are cool enough to think clearly. Afternoons are cool enough to walk to the hot springs without breaking a sweat. The food on your plate came from the soil twenty meters away — no pesticides, no supply chain, just Ying and the earth. Meat from hill tribe villages up the road. Vegetarian fully catered. Eating well is part of the week.</p>
 
@@ -2734,12 +3309,20 @@ html, body {
      ═══════════════════════════════════════════════════════════ -->
 <section id="section-week" aria-label="The Week">
   <div class="week-inner">
-    <p class="section-eyebrow">05 — Excursions</p>
-    <h2 class="section-headline">Five moments you'll carry home.</h2>
+    <p class="section-eyebrow" data-i18n="excursions.eyebrow">05 — Excursions</p>
+    <h2 class="section-headline" data-i18n="excursions.headline">Five moments you'll carry home.</h2>
 
     <div class="excursions-grid">
 
-      <div class="excursion-card" style="background-image: url(assets/Buddhist_monk.webp);">
+      <div class="excursion-card" style="--focal: center 35%;">
+        <div class="excursion-photo">
+          <picture>
+            <source media="(max-width: 768px)" type="image/webp" srcset="assets/Buddhist_monk-mobile.webp">
+            <source media="(max-width: 768px)" type="image/jpeg" srcset="assets/Buddhist_monk-mobile.jpg">
+            <source type="image/webp" srcset="assets/Buddhist_monk.webp">
+            <img src="assets/Buddhist_monk.jpg" alt="A monk's hands tying a white Sai Sin blessing thread" loading="lazy" width="1600" height="1063">
+          </picture>
+        </div>
         <div class="excursion-card-inner">
           <div class="excursion-num">01</div>
           <div class="excursion-name">Sai Sin Blessing</div>
@@ -2747,7 +3330,15 @@ html, body {
         </div>
       </div>
 
-      <div class="excursion-card" style="background-image: url(assets/pai-canyon.webp);">
+      <div class="excursion-card" style="--focal: center 45%;">
+        <div class="excursion-photo">
+          <picture>
+            <source media="(max-width: 768px)" type="image/webp" srcset="assets/pai-canyon-mobile.webp">
+            <source media="(max-width: 768px)" type="image/jpeg" srcset="assets/pai-canyon-mobile.jpg">
+            <source type="image/webp" srcset="assets/pai-canyon.webp">
+            <img src="assets/pai-canyon.jpg" alt="Pai Canyon ridge at sunset" loading="lazy" width="1600" height="1067">
+          </picture>
+        </div>
         <div class="excursion-card-inner">
           <div class="excursion-num">02</div>
           <div class="excursion-name">Pai Canyon at Sunset</div>
@@ -2755,7 +3346,15 @@ html, body {
         </div>
       </div>
 
-      <div class="excursion-card" style="background-image: url(assets/tham-lot-cave.webp);">
+      <div class="excursion-card" style="--focal: center 40%;">
+        <div class="excursion-photo">
+          <picture>
+            <source media="(max-width: 768px)" type="image/webp" srcset="assets/tham-lot-cave-mobile.webp">
+            <source media="(max-width: 768px)" type="image/jpeg" srcset="assets/tham-lot-cave-mobile.jpg">
+            <source type="image/webp" srcset="assets/tham-lot-cave.webp">
+            <img src="assets/tham-lot-cave.jpg" alt="Tham Lod Cave entrance with bamboo raft" loading="lazy" width="1600" height="1067">
+          </picture>
+        </div>
         <div class="excursion-card-inner">
           <div class="excursion-num">03</div>
           <div class="excursion-name">Tham Lod Cave</div>
@@ -2763,7 +3362,15 @@ html, body {
         </div>
       </div>
 
-      <div class="excursion-card" style="background-image: url(assets/thai-cooking.webp);">
+      <div class="excursion-card" style="--focal: center 55%;">
+        <div class="excursion-photo">
+          <picture>
+            <source media="(max-width: 768px)" type="image/webp" srcset="assets/thai-cooking-mobile.webp">
+            <source media="(max-width: 768px)" type="image/jpeg" srcset="assets/thai-cooking-mobile.jpg">
+            <source type="image/webp" srcset="assets/thai-cooking.webp">
+            <img src="assets/thai-cooking.jpg" alt="Hands using a mortar and pestle in a Thai village kitchen" loading="lazy" width="1600" height="1067">
+          </picture>
+        </div>
         <div class="excursion-card-inner">
           <div class="excursion-num">04</div>
           <div class="excursion-name">Cooking Class</div>
@@ -2771,7 +3378,15 @@ html, body {
         </div>
       </div>
 
-      <div class="excursion-card" style="background-image: url(assets/krathong-closing-ceremony.webp); background-position: center top;">
+      <div class="excursion-card" style="--focal: center 30%;">
+        <div class="excursion-photo">
+          <picture>
+            <source media="(max-width: 768px)" type="image/webp" srcset="assets/krathong-closing-ceremony-mobile.webp">
+            <source media="(max-width: 768px)" type="image/jpeg" srcset="assets/krathong-closing-ceremony-mobile.jpg">
+            <source type="image/webp" srcset="assets/krathong-closing-ceremony.webp">
+            <img src="assets/krathong-closing-ceremony.jpg" alt="Krathong candles floating on water at the closing ceremony" loading="lazy" width="1600" height="2400">
+          </picture>
+        </div>
         <div class="excursion-card-inner">
           <div class="excursion-num">05</div>
           <div class="excursion-name">Closing Dinner &amp; Krathong</div>
@@ -2780,7 +3395,7 @@ html, body {
       </div>
 
     </div>
-    <p class="excursion-carousel-hint">Swipe to explore all five</p>
+    <p class="excursion-carousel-hint" data-i18n="excursions.swipe">Swipe to explore all five</p>
   </div>
 </section>
 
@@ -2789,51 +3404,51 @@ html, body {
      ═══════════════════════════════════════════════════════════ -->
 <section id="section-pricing" aria-label="Pricing">
   <div class="pricing-inner">
-    <p class="section-eyebrow">06 — Invest</p>
-    <h2 class="section-headline">One week. Two tiers.</h2>
-    <p class="pricing-note">Founding cohort pricing. 14 weekly cohorts, Oct 2026 – Jan 2027. Airport transfer optional on Standard, included on Premium.</p>
+    <p class="section-eyebrow" data-i18n="pricing.eyebrow">06 — Invest</p>
+    <h2 class="section-headline" data-i18n="pricing.headline">Seven days. One decision.</h2>
+    <p class="pricing-note" data-i18n="pricing.note">Founding cohort pricing — the lowest this will ever be. 14 cohorts running weekly, Oct 2026 – Jan 2027. Seven beds per cohort.</p>
 
     <div class="pricing-cards">
 
       <div class="pricing-card">
-        <div class="pricing-tier">Standard</div>
-        <div class="pricing-amount">$960</div>
-        <div class="pricing-period">per week · room, board, curriculum</div>
+        <div class="pricing-tier" data-i18n="pricing.standard.tier">Standard</div>
+        <div class="pricing-amount">$1,490</div>
+        <div class="pricing-period" data-i18n="pricing.standard.period">per week · room, board, curriculum</div>
         <ul class="pricing-features">
-          <li>5 nights bungalow + 2 free hangout days</li>
-          <li>All meals — organic farm + hill-tribe meat</li>
-          <li>Morning yoga daily (optional)</li>
-          <li>Hot springs afternoons</li>
-          <li>All excursions included</li>
-          <li>Claude Code curriculum + Sasha on call</li>
-          <li class="pricing-addon">Airport transfer +$140 round-trip <span class="pricing-addon-note">— or take the $6 minivan, we'll send the link</span></li>
+          <li data-i18n="pricing.standard.f1">Five nights in your bungalow + two free-range days to stay, explore, or keep building</li>
+          <li data-i18n="pricing.standard.f2">All meals: organic farm produce and hill-tribe meat, cooked by Ying daily</li>
+          <li data-i18n="pricing.standard.f3">Morning yoga (optional, but you'll go)</li>
+          <li data-i18n="pricing.standard.f4">Hot springs every afternoon</li>
+          <li data-i18n="pricing.standard.f5">All excursions included — canyon, cave, cooking, the full Pai circuit</li>
+          <li data-i18n="pricing.standard.f6">Full Claude Code program with Sasha available throughout</li>
+          <li class="pricing-addon" data-i18n-html="pricing.standard.f7">Airport transfer +$140 round-trip <span class="pricing-addon-note">— or take the $6 minivan, we'll send the link</span></li>
         </ul>
         <a href="#section-cohorts" class="btn-primary">
-          <span>Pick your week</span>
+          <span data-i18n="pricing.pickWeek">Pick your week</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>
 
       <div class="pricing-card premium">
-        <div class="pricing-tier">Premium</div>
-        <div class="pricing-amount">$1,600</div>
-        <div class="pricing-period">per week · door-to-door, fully handled</div>
+        <div class="pricing-tier" data-i18n="pricing.premium.tier">Premium</div>
+        <div class="pricing-amount">$1,990</div>
+        <div class="pricing-period" data-i18n="pricing.premium.period">per week · door-to-door, fully handled</div>
         <ul class="pricing-features">
-          <li>Everything in Standard</li>
-          <li>Private airport transfer, both ways</li>
-          <li>Daily 1-on-1 mentoring with Sasha</li>
-          <li>Priority track placement</li>
-          <li>Extended post-camp project review</li>
+          <li data-i18n="pricing.premium.f1">Everything in Standard</li>
+          <li data-i18n="pricing.premium.f2">Private airport transfer both ways — door to bungalow, handled</li>
+          <li data-i18n="pricing.premium.f3">Daily 1-on-1 with Sasha — your product, your blockers, your roadmap</li>
+          <li data-i18n="pricing.premium.f4">Priority track placement — first pick on project focus and session pairings</li>
+          <li data-i18n="pricing.premium.f5">Extended post-camp review — Sasha looks at your build after you leave and tells you exactly what to do next</li>
         </ul>
         <a href="#section-cohorts" class="btn-primary">
-          <span>Pick your week</span>
+          <span data-i18n="pricing.pickWeek">Pick your week</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>
 
     </div>
 
-    <p class="pricing-honest">There's a $6 shared minivan from Chiang Mai airport (Aya Service) — we'll send the booking link and tell the driver where to drop you. The $140 transfer is for when you'd rather not think about it.</p>
+    <p class="pricing-honest" data-i18n="pricing.honest">There's a $6 shared minivan from Chiang Mai airport (Aya Service) — we'll send the booking link and tell the driver where to drop you. The $140 transfer is for when you'd rather not think about it.</p>
   </div>
 </section>
 
@@ -2842,18 +3457,18 @@ html, body {
      ═══════════════════════════════════════════════════════════ -->
 <section id="section-hosts" aria-label="Your Hosts">
   <div class="hosts-inner">
-    <p class="section-eyebrow">07 — Your Hosts</p>
-    <h2 class="section-headline">Sasha &amp; Ying.</h2>
+    <p class="section-eyebrow" data-i18n="hosts.eyebrow">07 — Your Hosts</p>
+    <h2 class="section-headline" data-i18n="hosts.headline">Sasha &amp; Ying.</h2>
 
     <div class="hosts-grid">
 
       <blockquote class="host-quote">
-        <span class="host-quote-mark">&ldquo;</span>For years this farm was my whole life — mornings in the garden, afternoons at the springs, 85 five-star reviews from Workaway volunteers who came and never wanted to leave. Then Claude Code changed what I could build, alone, between the tomatoes and the bamboo. I started teaching it to whoever was staying. They built things they didn't believe were possible. Claude Camp is just what happens when we stop doing that by accident.&rdquo;
+        <span class="host-quote-mark">&ldquo;</span>I came here three years ago to disappear into something real. Ying had already been building this farm for years before I arrived — foreigners can&rsquo;t own land in Thailand, and honestly, she&rsquo;d have done it without me. Together we&rsquo;ve gathered 85 five-star Workaway reviews and a garden we&rsquo;re genuinely proud of. Then Claude Code arrived and I started shipping software I had no business being able to build — between harvests, on a farm with no engineering staff. I showed it to the people staying here. They built things in a week that they&rsquo;d been trying to figure out for years. Claude Camp is just what that became once I stopped pretending it was accidental.&rdquo;
       </blockquote>
 
       <div class="host-aside">
         <div class="host-divider"></div>
-        <p class="host-aside-text">Ying has run this farm from the beginning. She grows it, cooks it, and holds the whole place together with a warmth that shows up in every review anyone has ever left. You'll understand why by the second morning.</p>
+        <p class="host-aside-text">Ying has run this farm since the beginning — the garden, the kitchen, the whole living texture of the place. She's the reason every review mentions the food and the warmth in the same sentence. You'll understand why by the second morning.</p>
         <div class="workaway-badge">85 five-star reviews · Workaway</div>
       </div>
 
@@ -2866,9 +3481,9 @@ html, body {
      ═══════════════════════════════════════════════════════════ -->
 <section id="section-prep" aria-label="Before You Arrive">
   <div class="prep-inner">
-    <p class="section-eyebrow">08 — Before You Arrive</p>
-    <h2 class="section-headline">What you bring.</h2>
-    <p class="prep-intro">Two things to sort before camp. Both take ten minutes. We'll help with the rest on Day&nbsp;1.</p>
+    <p class="section-eyebrow" data-i18n="prep.eyebrow">08 — Before You Arrive</p>
+    <h2 class="section-headline" data-i18n="prep.headline">Three things. That's it.</h2>
+    <p class="prep-intro" data-i18n="prep.intro">Two take ten minutes. One you already have. Everything else gets handled on Day&nbsp;1.</p>
 
     <div class="prep-list" role="list">
 
@@ -2876,7 +3491,7 @@ html, body {
         <div class="prep-num">01</div>
         <div class="prep-content">
           <h3 class="prep-title">A laptop.</h3>
-          <p class="prep-desc">Mac, Windows, or Linux — any modern machine works. Claude Code runs on all three. This is your primary tool for the week. You leave with everything installed and configured on your own machine.</p>
+          <p class="prep-desc">Mac, Windows, or Linux. Any modern machine. Claude Code runs on all three, and you leave with a fully configured development environment on your own hardware — nothing borrowed, nothing shared, nothing that stops working when you get home.</p>
         </div>
       </div>
 
@@ -2884,8 +3499,8 @@ html, body {
         <div class="prep-num">02</div>
         <div class="prep-content">
           <h3 class="prep-title">A Claude Pro account.</h3>
-          <p class="prep-desc">Claude Code requires the Pro plan — $20/month, paid directly to Anthropic. We don't share accounts or provide access. The free tier doesn't include Claude Code. Subscribe at <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> before you arrive, or we'll walk you through it together on Day&nbsp;1.</p>
-          <p class="prep-desc">Anthropic's own data shows 90% of Claude Code users stay well within Pro usage limits — Pro is enough for a week of guided sessions. If you plan to keep building heavily after camp, the Max plan ($100/month) gives you 5× the usage.</p>
+          <p class="prep-desc">Claude Code requires Anthropic's Pro plan at $20/month, billed directly to Anthropic. We don't provide access or share accounts. Subscribe at <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> before you arrive — or show up and we'll set it up together on Day&nbsp;1. Either way, you're building by morning.</p>
+          <p class="prep-desc">Anthropic's own data shows 90% of Claude Code users stay well within Pro limits — it's enough for a full week of intensive building. If you plan to keep going hard after camp, the Max plan ($100/month) gives you 5× the usage.</p>
         </div>
       </div>
 
@@ -2893,7 +3508,7 @@ html, body {
         <div class="prep-num">03</div>
         <div class="prep-content">
           <h3 class="prep-title">An idea.</h3>
-          <p class="prep-desc">No coding experience required. Claude Code handles the code — you handle the idea. Bring something you've been sitting on: an app, a workflow to automate, a tool you wish existed. By Friday it's running on your machine, built by you.</p>
+          <p class="prep-desc">Not code. An idea. Claude Code writes the code — you supply the problem worth solving. Bring the app you've been putting off, the workflow you keep doing manually, the tool your business needs that doesn't exist yet. By Friday it runs. You built it.</p>
         </div>
       </div>
 
@@ -2906,8 +3521,8 @@ html, body {
      ═══════════════════════════════════════════════════════════ -->
 <section id="section-travel" aria-label="Getting Here">
   <div class="travel-inner">
-    <p class="section-eyebrow">09 — Getting Here</p>
-    <h2 class="section-headline">Seven hundred curves,<br>then stillness.</h2>
+    <p class="section-eyebrow" data-i18n="travel.eyebrow">09 — Getting Here</p>
+    <h2 class="section-headline" data-i18n-html="travel.headline">Seven hundred curves,<br>then stillness.</h2>
     <p class="travel-lede">Fly into Chiang Mai. Then three hours of mountain road to the farm. We'll either pick you up in a private car ($140 round-trip on Standard, included on Premium) or point you at the $6 Aya minivan if you'd rather DIY. Either works — we ran it both ways for years.</p>
 
     <div class="place-specs travel-specs">
@@ -3001,10 +3616,10 @@ html, body {
      ═══════════════════════════════════════════════════════════ -->
 <section id="section-cohorts" aria-label="Reserve Your Week">
   <div class="cohorts-inner">
-    <p class="section-eyebrow">10 — Reserve</p>
-    <h2 class="section-headline">Pick your week.</h2>
-    <p class="cohorts-intro">Sunday arrival, Friday departure — 5 nights of program, the weekend free to linger. Then two days for Sasha and Ying to breathe before the next group arrives. Live availability below — when a bed shows taken, it really is.</p>
-    <p class="cohorts-intro" style="margin-top: 0.6rem; opacity: 0.75; font-style: italic;">Seven seats per week. We'd rather have five who show up than eight who might. A small deposit holds your bed.</p>
+    <p class="section-eyebrow" data-i18n="cohorts.eyebrow">10 — Reserve</p>
+    <h2 class="section-headline" data-i18n="cohorts.headline">Claim your week.</h2>
+    <p class="cohorts-intro" data-i18n="cohorts.intro">Sunday arrival, Friday departure — five nights of focused building, with the weekend free if you want to linger in the hills. Then two days for Sasha and Ying to reset before the next cohort lands. Availability below is live and honest: a bed marked taken is gone.</p>
+    <p class="cohorts-intro" style="margin-top: 0.6rem; opacity: 0.75; font-style: italic;" data-i18n="cohorts.intro2">Seven seats per cohort. Deliberately. A small deposit holds your spot — first come, first confirmed.</p>
 
     <div class="cohorts-grid" id="cohorts-grid">
       <!-- Cohort cards injected by JS below for maintainability -->
@@ -3017,69 +3632,69 @@ html, body {
   <div class="booking-modal-card">
     <button class="booking-modal-close" type="button" aria-label="Close" onclick="closeBookingModal()">×</button>
     <p class="booking-modal-eyebrow" id="booking-modal-eyebrow">Cohort 01</p>
-    <h3 class="booking-modal-title" id="booking-modal-title">Reserve your bed</h3>
-    <p class="booking-modal-sub" id="booking-modal-sub">Oct 4 – 11, 2026 · 7 nights · all-inclusive</p>
+    <h3 class="booking-modal-title" id="booking-modal-title" data-i18n="form.title">Reserve your bed</h3>
+    <p class="booking-modal-sub" id="booking-modal-sub">Oct 4 – 9, 2026 · 5 nights · all-inclusive</p>
 
     <form id="booking-form" onsubmit="submitBooking(event)" novalidate>
       <div class="booking-form-grid">
         <div class="booking-form-row">
-          <label for="bk-name">Full name</label>
+          <label for="bk-name" data-i18n="form.name">Full name</label>
           <input id="bk-name" name="name" type="text" required>
         </div>
         <div class="booking-form-row">
-          <label for="bk-email">Email</label>
+          <label for="bk-email" data-i18n="form.email">Email</label>
           <input id="bk-email" name="email" type="email" required>
         </div>
       </div>
 
       <div class="booking-form-grid">
         <div class="booking-form-row">
-          <label for="bk-phone">WhatsApp <span style="color:var(--amber);">*</span></label>
+          <label for="bk-phone" data-i18n-html="form.phone">WhatsApp <span style="color:var(--amber);">*</span></label>
           <input id="bk-phone" name="phone" type="tel" required placeholder="+1 555 / +66 ...">
         </div>
         <div class="booking-form-row">
-          <label for="bk-country">Flying from</label>
-          <input id="bk-country" name="country" type="text" required placeholder="Country">
+          <label for="bk-country" data-i18n="form.country">Flying from</label>
+          <input id="bk-country" name="country" type="text" required placeholder="Country" data-i18n-attr="placeholder:form.countryPh">
         </div>
       </div>
 
       <div class="booking-form-grid">
         <div class="booking-form-row">
-          <label for="bk-track">Track</label>
+          <label for="bk-track" data-i18n="form.track">Track</label>
           <select id="bk-track" name="track" required>
-            <option value="beginner">Beginner — $960</option>
-            <option value="builder">Builder — $960</option>
+            <option value="beginner" data-i18n="form.trackBeginner">Beginner — $1,490</option>
+            <option value="builder" data-i18n="form.trackBuilder">Builder — $1,490</option>
           </select>
         </div>
         <div class="booking-form-row">
-          <label for="bk-tier">Tier</label>
+          <label for="bk-tier" data-i18n="form.tier">Tier</label>
           <select id="bk-tier" name="tier" required>
-            <option value="standard">Standard — $960 (transfer optional)</option>
-            <option value="premium">Premium — $1,600 (transfer + 1:1)</option>
+            <option value="standard" data-i18n="form.tierStandard">Standard — $1,490 (transfer optional)</option>
+            <option value="premium" data-i18n="form.tierPremium">Premium — $1,990 (transfer + 1:1)</option>
           </select>
         </div>
       </div>
 
       <div class="booking-form-row">
-        <label for="bk-building">What are you trying to build or learn? <span style="color:var(--amber);">*</span></label>
-        <textarea id="bk-building" name="building" rows="2" required placeholder="2–3 sentences. The idea, the tool, the workflow — whatever brought you here."></textarea>
+        <label for="bk-building" data-i18n-html="form.building">What are you trying to build or learn? <span style="color:var(--amber);">*</span></label>
+        <textarea id="bk-building" name="building" rows="2" required placeholder="2–3 sentences. The idea, the tool, the workflow — whatever brought you here." data-i18n-attr="placeholder:form.buildingPh"></textarea>
       </div>
 
       <div class="booking-form-row">
-        <label for="bk-message">Anything else? (optional)</label>
-        <textarea id="bk-message" name="message" rows="2" placeholder="Dietary needs, arrival timing, partner joining, etc."></textarea>
+        <label for="bk-message" data-i18n="form.more">Anything else? (optional)</label>
+        <textarea id="bk-message" name="message" rows="2" placeholder="Dietary needs, arrival timing, partner joining, etc." data-i18n-attr="placeholder:form.morePh"></textarea>
       </div>
 
       <label class="booking-commit">
         <input type="checkbox" id="bk-commit" required>
-        <span>I'm committing to this week. A <strong>$420 non-refundable deposit</strong> holds my bed (transferable to a future cohort within 12 months). Balance due 30 days before arrival.</span>
+        <span data-i18n-html="form.policy">I'm committing to this week. A <strong>$420 non-refundable deposit</strong> holds my bed (transferable to a future cohort within 12 months). Balance due 30 days before arrival. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Full policy →</a></span>
       </label>
 
       <input type="hidden" id="bk-cohort" name="cohort">
 
-      <button type="submit" class="booking-submit" id="booking-submit-btn">Reserve my bed — pay $420 deposit →</button>
+      <button type="submit" class="booking-submit" id="booking-submit-btn" data-i18n="form.submit">Reserve my bed — pay $420 deposit →</button>
       <p class="booking-status" id="booking-status"></p>
-      <p class="booking-fine-print">Sasha reads every application personally and replies within 48 hours from Pai. You'll get a Stripe link to confirm with your deposit.</p>
+      <p class="booking-fine-print" data-i18n="form.fine">Sasha reads every application personally and replies within 48 hours from Pai. You'll get a Stripe link to confirm with your deposit.</p>
     </form>
 
     <div class="booking-modal-success" id="booking-success" style="display:none;">
@@ -3145,9 +3760,9 @@ html, body {
      ═══════════════════════════════════════════════════════════ -->
 <section id="section-waitlist" aria-label="Join the Waitlist">
   <div class="waitlist-inner">
-    <p class="section-eyebrow" style="justify-content: center;">11 — Or join the waitlist</p>
-    <h2 class="section-headline" style="text-align: center;">Not ready yet?</h2>
-    <p class="waitlist-sub">Leave your email and we'll let you know when new cohorts open. No spam — one email when there's something real to share.</p>
+    <p class="section-eyebrow" style="justify-content: center;" data-i18n="waitlist.eyebrow">11 — Or join the waitlist</p>
+    <h2 class="section-headline" style="text-align: center;" data-i18n="waitlist.headline">Not ready yet?</h2>
+    <p class="waitlist-sub" data-i18n="waitlist.sub">Leave your email and we'll let you know when new cohorts open. No spam — one email when there's something real to share.</p>
 
     <form class="waitlist-form" onsubmit="handleWaitlist(event)" novalidate>
       <input
@@ -3156,13 +3771,14 @@ html, body {
         placeholder="your@email.com"
         required
         aria-label="Email address"
+        data-i18n-attr="placeholder:waitlist.placeholder"
       >
-      <button type="submit" class="waitlist-btn">
+      <button type="submit" class="waitlist-btn" data-i18n="waitlist.btn">
         Join the waitlist →
       </button>
     </form>
 
-    <p class="waitlist-small">One email when dates lock in. Nothing else.</p>
+    <p class="waitlist-small" data-i18n="waitlist.small">One email when dates lock in. Nothing else.</p>
   </div>
 </section>
 
@@ -3173,9 +3789,10 @@ html, body {
   <div class="footer-inner">
     <div class="footer-left">
       <div class="footer-wordmark">Claude Camp</div>
-      <div class="footer-meta">
+      <div class="footer-meta" data-i18n-html="footer.meta">
         Pai, Thailand · claudecamp.org<br>
-        Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a>
+        Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+        <a href="/policy.html">Booking &amp; Cancellation Policy</a>
       </div>
     </div>
     <div class="footer-right">
@@ -3189,6 +3806,439 @@ html, body {
    CLAUDE CAMP — FULL PAGE v1
    ═══════════════════════════════════════════════════════════════ */
 
+/* ─── i18n: 4-language conversion-path translation ─────────── */
+const I18N = {
+  en: {
+    'nav.tracks': 'Tracks', 'nav.pricing': 'Pricing', 'nav.book': 'Book',
+    'sticky.eyebrow': 'Pai · Oct 2026', 'sticky.cta': 'Reserve a bed →',
+    'hero.badge': 'FROM $1,490 / WEEK · 14 COHORTS · OCT 2026 – JAN 2027',
+    'hero.eyebrow': '01 — Mae Hong Son, Thailand',
+    'hero.line1': 'Wake up in the jungle.',
+    'hero.line2': 'Build your company with AI.',
+    'hero.line3': 'Launch before you leave.',
+    'hero.tagline': '7-day Claude Code bootcamp + retreat in Pai, Thailand.',
+    'hero.ctaPrimary': 'Reserve your week',
+    'hero.ctaSecondary': 'Explore tracks',
+    'hero.scroll': 'Scroll',
+    'audio.toggle': 'Hear the jungle',
+    'promise.eyebrow': 'The Promise',
+    'promise.headline': 'A place to <em>land</em>. A week to <em>ship</em>.',
+    'day.eyebrow': '02 — The Rhythm',
+    'day.headline': 'Seven days have a shape. This is it.',
+    'tracks.eyebrow': '03 — Tracks',
+    'tracks.headline': 'Where are you starting from?',
+    'place.eyebrow': '04 — Pai, Thailand',
+    'place.headline': '7km from town.<br>A world away.',
+    'excursions.eyebrow': '05 — Excursions',
+    'excursions.headline': "Five moments you'll carry home.",
+    'excursions.swipe': 'Swipe to explore all five',
+    'pricing.eyebrow': '06 — Invest',
+    'pricing.headline': 'Seven days. One decision.',
+    'pricing.note': 'Founding cohort pricing — the lowest this will ever be. 14 cohorts running weekly, Oct 2026 – Jan 2027. Seven beds per cohort.',
+    'pricing.standard.tier': 'Standard',
+    'pricing.standard.period': 'per week · room, board, curriculum',
+    'pricing.standard.f1': 'Five nights in your bungalow + two free-range days to stay, explore, or keep building',
+    'pricing.standard.f2': 'All meals: organic farm produce and hill-tribe meat, cooked by Ying daily',
+    'pricing.standard.f3': "Morning yoga (optional, but you'll go)",
+    'pricing.standard.f4': 'Hot springs every afternoon',
+    'pricing.standard.f5': 'All excursions included — canyon, cave, cooking, the full Pai circuit',
+    'pricing.standard.f6': 'Full Claude Code program with Sasha available throughout',
+    'pricing.standard.f7': 'Airport transfer +$140 round-trip <span class="pricing-addon-note">— or take the $6 minivan, we\'ll send the link</span>',
+    'pricing.premium.tier': 'Premium',
+    'pricing.premium.period': 'per week · door-to-door, fully handled',
+    'pricing.premium.f1': 'Everything in Standard',
+    'pricing.premium.f2': 'Private airport transfer both ways — door to bungalow, handled',
+    'pricing.premium.f3': 'Daily 1-on-1 with Sasha — your product, your blockers, your roadmap',
+    'pricing.premium.f4': 'Priority track placement — first pick on project focus and session pairings',
+    'pricing.premium.f5': 'Extended post-camp review — Sasha looks at your build after you leave and tells you exactly what to do next',
+    'pricing.pickWeek': 'Pick your week',
+    'pricing.honest': "There's a $6 shared minivan from Chiang Mai airport (Aya Service) — we'll send the booking link and tell the driver where to drop you. The $140 transfer is for when you'd rather not think about it.",
+    'hosts.eyebrow': '07 — Your Hosts',
+    'hosts.headline': 'Sasha & Ying.',
+    'prep.eyebrow': '08 — Before You Arrive',
+    'prep.headline': "Three things. That's it.",
+    'prep.intro': 'Two take ten minutes. One you already have. Everything else gets handled on Day 1.',
+    'travel.eyebrow': '09 — Getting Here',
+    'travel.headline': 'Seven hundred curves,<br>then stillness.',
+    'cohorts.eyebrow': '10 — Reserve',
+    'cohorts.headline': 'Claim your week.',
+    'cohorts.intro': 'Sunday arrival, Friday departure — five nights of focused building, with the weekend free if you want to linger in the hills. Then two days for Sasha and Ying to reset before the next cohort lands. Availability below is live and honest: a bed marked taken is gone.',
+    'cohorts.intro2': 'Seven seats per cohort. Deliberately. A small deposit holds your spot — first come, first confirmed.',
+    'cohort.open': 'Open', 'cohort.full': 'Full',
+    'cohort.beginner': 'Beginner', 'cohort.builder': 'Builder',
+    'cohort.available': 'available',
+    'cohort.price': '$1,490 – $1,990 · 5 nights + free weekend',
+    'cohort.reserve': 'Reserve your spot',
+    'cohort.joinWaitlist': 'Join the waitlist',
+    'form.title': 'Reserve your bed',
+    'form.allInclusive': '5 nights · all-inclusive',
+    'form.name': 'Full name', 'form.email': 'Email',
+    'form.phone': 'WhatsApp <span style="color:var(--amber);">*</span>',
+    'form.country': 'Flying from', 'form.countryPh': 'Country',
+    'form.track': 'Track',
+    'form.trackBeginner': 'Beginner — $1,490', 'form.trackBuilder': 'Builder — $1,490',
+    'form.tier': 'Tier',
+    'form.tierStandard': 'Standard — $1,490 (transfer optional)',
+    'form.tierPremium': 'Premium — $1,990 (transfer + 1:1)',
+    'form.building': 'What are you trying to build or learn? <span style="color:var(--amber);">*</span>',
+    'form.buildingPh': '2–3 sentences. The idea, the tool, the workflow — whatever brought you here.',
+    'form.more': 'Anything else? (optional)',
+    'form.morePh': 'Dietary needs, arrival timing, partner joining, etc.',
+    'form.policy': "I'm committing to this week. A <strong>$420 non-refundable deposit</strong> holds my bed (transferable to a future cohort within 12 months). Balance due 30 days before arrival. <a href=\"/policy.html\" target=\"_blank\" style=\"color:inherit;opacity:0.6;text-underline-offset:2px;\">Full policy →</a>",
+    'form.submit': 'Reserve my bed — pay $420 deposit →',
+    'form.fine': "Sasha reads every application personally and replies within 48 hours from Pai. You'll get a Stripe link to confirm with your deposit.",
+    'waitlist.eyebrow': '11 — Or join the waitlist',
+    'waitlist.headline': 'Not ready yet?',
+    'waitlist.sub': "Leave your email and we'll let you know when new cohorts open. No spam — one email when there's something real to share.",
+    'waitlist.placeholder': 'your@email.com',
+    'waitlist.btn': 'Join the waitlist →',
+    'waitlist.small': 'One email when dates lock in. Nothing else.',
+    'footer.meta': 'Pai, Thailand · claudecamp.org<br>Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">Booking &amp; Cancellation Policy</a>',
+  },
+  de: {
+    'nav.tracks': 'Tracks', 'nav.pricing': 'Preise', 'nav.book': 'Buchen',
+    'sticky.eyebrow': 'Pai · Okt 2026', 'sticky.cta': 'Bett sichern →',
+    'hero.badge': 'AB $1.490 / WOCHE · 14 KOHORTEN · OKT 2026 – JAN 2027',
+    'hero.eyebrow': '01 — Mae Hong Son, Thailand',
+    'hero.line1': 'Wach im Dschungel auf.',
+    'hero.line2': 'Bau dein Unternehmen mit AI.',
+    'hero.line3': 'Launch, bevor du abreist.',
+    'hero.tagline': '7-Tage Claude-Code-Bootcamp + Retreat in Pai, Thailand.',
+    'hero.ctaPrimary': 'Sichere dir deine Woche',
+    'hero.ctaSecondary': 'Tracks ansehen',
+    'hero.scroll': 'Scrollen',
+    'audio.toggle': 'Dschungel hören',
+    'promise.eyebrow': 'Das Versprechen',
+    'promise.headline': 'Ein Ort zum <em>Ankommen</em>. Eine Woche zum <em>Launchen</em>.',
+    'day.eyebrow': '02 — Der Rhythmus',
+    'day.headline': 'Sieben Tage haben eine Form. Das ist sie.',
+    'tracks.eyebrow': '03 — Tracks',
+    'tracks.headline': 'Wo stehst du gerade?',
+    'place.eyebrow': '04 — Pai, Thailand',
+    'place.headline': '7 km vom Ort entfernt.<br>Eine Welt für sich.',
+    'excursions.eyebrow': '05 — Excursions',
+    'excursions.headline': 'Fünf Momente, die bleiben.',
+    'excursions.swipe': 'Wische, um alle fünf zu sehen',
+    'pricing.eyebrow': '06 — Investieren',
+    'pricing.headline': 'Sieben Tage. Eine Entscheidung.',
+    'pricing.note': 'Founding-Cohort-Preise — günstiger wird es nie wieder. 14 Kohorten wöchentlich, Okt 2026 – Jan 2027. Sieben Betten pro Kohorte.',
+    'pricing.standard.tier': 'Standard',
+    'pricing.standard.period': 'pro Woche · Unterkunft, Verpflegung, Curriculum',
+    'pricing.standard.f1': 'Fünf Nächte in deinem Bungalow + zwei freie Tage zum Bleiben, Erkunden oder Weiterbauen',
+    'pricing.standard.f2': 'Alle Mahlzeiten: Bio aus eigener Farm, Fleisch aus Bergdörfern, täglich von Ying gekocht',
+    'pricing.standard.f3': 'Morgen-Yoga (optional, aber du wirst gehen)',
+    'pricing.standard.f4': 'Heiße Quellen jeden Nachmittag',
+    'pricing.standard.f5': 'Alle Excursions inklusive — Canyon, Höhle, Kochkurs, das ganze Pai-Programm',
+    'pricing.standard.f6': 'Komplettes Claude-Code-Programm, Sasha durchgehend verfügbar',
+    'pricing.standard.f7': 'Flughafen-Transfer +$140 Hin & Zurück <span class="pricing-addon-note">— oder nimm den $6-Minivan, wir schicken dir den Link</span>',
+    'pricing.premium.tier': 'Premium',
+    'pricing.premium.period': 'pro Woche · Tür-zu-Tür, alles geregelt',
+    'pricing.premium.f1': 'Alles aus Standard',
+    'pricing.premium.f2': 'Privater Flughafen-Transfer beide Wege — Tür bis Bungalow, geregelt',
+    'pricing.premium.f3': 'Tägliches 1-zu-1 mit Sasha — dein Produkt, deine Blocker, deine Roadmap',
+    'pricing.premium.f4': 'Bevorzugte Track-Wahl — erste Wahl bei Projektfokus und Session-Pairings',
+    'pricing.premium.f5': 'Verlängertes Post-Camp-Review — Sasha schaut sich nach der Abreise dein Build an und sagt dir genau, was als Nächstes ansteht',
+    'pricing.pickWeek': 'Wähle deine Woche',
+    'pricing.honest': 'Vom Flughafen Chiang Mai gibt es einen $6-Sammeltransfer (Aya Service) — wir schicken dir den Buchungslink und sagen dem Fahrer, wo er dich absetzen soll. Der $140-Transfer ist für die Tage, an denen du einfach nicht nachdenken willst.',
+    'hosts.eyebrow': '07 — Deine Gastgeber',
+    'hosts.headline': 'Sasha & Ying.',
+    'prep.eyebrow': '08 — Vor deiner Ankunft',
+    'prep.headline': 'Drei Dinge. Mehr nicht.',
+    'prep.intro': 'Zwei davon dauern zehn Minuten. Eines hast du schon. Alles andere wird an Tag 1 erledigt.',
+    'travel.eyebrow': '09 — Anreise',
+    'travel.headline': 'Siebenhundert Kurven,<br>dann Stille.',
+    'cohorts.eyebrow': '10 — Reservieren',
+    'cohorts.headline': 'Hol dir deine Woche.',
+    'cohorts.intro': 'Anreise Sonntag, Abreise Freitag — fünf Nächte fokussiertes Bauen, das Wochenende frei, falls du in den Bergen bleiben willst. Danach zwei Tage Reset für Sasha und Ying, bevor die nächste Kohorte landet. Verfügbarkeit unten ist live und ehrlich: Ein als belegt markiertes Bett ist weg.',
+    'cohorts.intro2': 'Sieben Plätze pro Kohorte. Bewusst. Eine kleine Anzahlung sichert deinen Platz — wer zuerst kommt, wird zuerst bestätigt.',
+    'cohort.open': 'Frei', 'cohort.full': 'Voll',
+    'cohort.beginner': 'Beginner', 'cohort.builder': 'Builder',
+    'cohort.available': 'verfügbar',
+    'cohort.price': '$1.490 – $1.990 · 5 Nächte + freies Wochenende',
+    'cohort.reserve': 'Platz sichern',
+    'cohort.joinWaitlist': 'Auf die Warteliste',
+    'form.title': 'Bett reservieren',
+    'form.allInclusive': '5 Nächte · all-inclusive',
+    'form.name': 'Voller Name', 'form.email': 'E-Mail',
+    'form.phone': 'WhatsApp <span style="color:var(--amber);">*</span>',
+    'form.country': 'Anreise aus', 'form.countryPh': 'Land',
+    'form.track': 'Track',
+    'form.trackBeginner': 'Beginner — $1.490', 'form.trackBuilder': 'Builder — $1.490',
+    'form.tier': 'Stufe',
+    'form.tierStandard': 'Standard — $1.490 (Transfer optional)',
+    'form.tierPremium': 'Premium — $1.990 (Transfer + 1:1)',
+    'form.building': 'Was willst du bauen oder lernen? <span style="color:var(--amber);">*</span>',
+    'form.buildingPh': '2–3 Sätze. Die Idee, das Tool, der Workflow — was dich hierher gebracht hat.',
+    'form.more': 'Sonst noch etwas? (optional)',
+    'form.morePh': 'Ernährung, Ankunftszeit, Partner kommt mit, etc.',
+    'form.policy': 'Ich verbindlich diese Woche. Eine <strong>nicht erstattbare Anzahlung von $420</strong> sichert mein Bett (übertragbar auf eine andere Kohorte innerhalb von 12 Monaten). Restbetrag 30 Tage vor Anreise fällig. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Volle Policy →</a>',
+    'form.submit': 'Bett reservieren — $420 Anzahlung →',
+    'form.fine': 'Sasha liest jede Bewerbung persönlich und antwortet innerhalb von 48 Stunden aus Pai. Du bekommst einen Stripe-Link, um mit deiner Anzahlung zu bestätigen.',
+    'waitlist.eyebrow': '11 — Oder auf die Warteliste',
+    'waitlist.headline': 'Noch nicht bereit?',
+    'waitlist.sub': 'Lass uns deine E-Mail da und wir melden uns, wenn neue Kohorten öffnen. Kein Spam — eine E-Mail, wenn es etwas Echtes zu teilen gibt.',
+    'waitlist.placeholder': 'deine@email.com',
+    'waitlist.btn': 'Auf die Warteliste →',
+    'waitlist.small': 'Eine E-Mail, wenn die Termine stehen. Nichts weiter.',
+    'footer.meta': 'Pai, Thailand · claudecamp.org<br>Fragen? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">Buchungs- &amp; Stornobedingungen</a>',
+  },
+  fr: {
+    'nav.tracks': 'Parcours', 'nav.pricing': 'Tarifs', 'nav.book': 'Réserver',
+    'sticky.eyebrow': 'Pai · Oct 2026', 'sticky.cta': 'Réserver un lit →',
+    'hero.badge': 'À PARTIR DE $1 490 / SEMAINE · 14 COHORTES · OCT 2026 – JANV 2027',
+    'hero.eyebrow': '01 — Mae Hong Son, Thaïlande',
+    'hero.line1': 'Réveille-toi dans la jungle.',
+    'hero.line2': 'Construis ta startup avec l\'IA.',
+    'hero.line3': 'Lance avant de partir.',
+    'hero.tagline': 'Bootcamp Claude Code + retraite de 7 jours à Pai, Thaïlande.',
+    'hero.ctaPrimary': 'Réserve ta semaine',
+    'hero.ctaSecondary': 'Voir les parcours',
+    'hero.scroll': 'Défiler',
+    'audio.toggle': 'Écouter la jungle',
+    'promise.eyebrow': 'La Promesse',
+    'promise.headline': 'Un lieu où <em>atterrir</em>. Une semaine pour <em>livrer</em>.',
+    'day.eyebrow': '02 — Le Rythme',
+    'day.headline': 'Sept jours ont une forme. La voici.',
+    'tracks.eyebrow': '03 — Parcours',
+    'tracks.headline': 'D\'où pars-tu ?',
+    'place.eyebrow': '04 — Pai, Thaïlande',
+    'place.headline': 'À 7 km du village.<br>Un autre monde.',
+    'excursions.eyebrow': '05 — Excursions',
+    'excursions.headline': 'Cinq moments à ramener chez toi.',
+    'excursions.swipe': 'Glisse pour voir les cinq',
+    'pricing.eyebrow': '06 — Investir',
+    'pricing.headline': 'Sept jours. Une décision.',
+    'pricing.note': 'Tarif cohorte fondatrice — il ne sera jamais aussi bas. 14 cohortes hebdomadaires, oct 2026 – janv 2027. Sept lits par cohorte.',
+    'pricing.standard.tier': 'Standard',
+    'pricing.standard.period': 'par semaine · logement, repas, programme',
+    'pricing.standard.f1': 'Cinq nuits dans ton bungalow + deux jours libres pour rester, explorer ou continuer à construire',
+    'pricing.standard.f2': 'Tous les repas : produits bio de la ferme et viande des villages des montagnes, cuisinés par Ying chaque jour',
+    'pricing.standard.f3': 'Yoga le matin (optionnel, mais tu iras)',
+    'pricing.standard.f4': 'Sources chaudes chaque après-midi',
+    'pricing.standard.f5': 'Toutes les excursions incluses — canyon, grotte, cuisine, le tour complet de Pai',
+    'pricing.standard.f6': 'Programme Claude Code complet avec Sasha disponible tout au long',
+    'pricing.standard.f7': 'Transfert aéroport +$140 aller-retour <span class="pricing-addon-note">— ou prends le minibus à $6, on t\'envoie le lien</span>',
+    'pricing.premium.tier': 'Premium',
+    'pricing.premium.period': 'par semaine · porte-à-porte, tout pris en charge',
+    'pricing.premium.f1': 'Tout ce qu\'il y a en Standard',
+    'pricing.premium.f2': 'Transfert aéroport privé aller-retour — porte au bungalow, géré',
+    'pricing.premium.f3': '1-à-1 quotidien avec Sasha — ton produit, tes blocages, ta feuille de route',
+    'pricing.premium.f4': 'Placement prioritaire — premier choix sur le focus projet et les binômes',
+    'pricing.premium.f5': 'Suivi post-camp étendu — Sasha regarde ton build après ton départ et te dit exactement quoi faire ensuite',
+    'pricing.pickWeek': 'Choisis ta semaine',
+    'pricing.honest': 'Il y a un minibus partagé à $6 depuis l\'aéroport de Chiang Mai (Aya Service) — on t\'envoie le lien de réservation et on dit au chauffeur où te déposer. Le transfert à $140, c\'est pour les jours où tu ne veux plus y penser.',
+    'hosts.eyebrow': '07 — Tes Hôtes',
+    'hosts.headline': 'Sasha & Ying.',
+    'prep.eyebrow': '08 — Avant d\'arriver',
+    'prep.headline': 'Trois choses. C\'est tout.',
+    'prep.intro': 'Deux prennent dix minutes. Une que tu as déjà. Tout le reste est géré le Jour 1.',
+    'travel.eyebrow': '09 — Comment venir',
+    'travel.headline': 'Sept cents virages,<br>puis le calme.',
+    'cohorts.eyebrow': '10 — Réserver',
+    'cohorts.headline': 'Réserve ta semaine.',
+    'cohorts.intro': 'Arrivée dimanche, départ vendredi — cinq nuits de construction concentrée, week-end libre si tu veux rester dans les collines. Puis deux jours de repos pour Sasha et Ying avant la prochaine cohorte. Les disponibilités ci-dessous sont en direct et honnêtes : un lit marqué pris est pris.',
+    'cohorts.intro2': 'Sept places par cohorte. Volontairement. Un petit acompte garde ta place — premier arrivé, premier confirmé.',
+    'cohort.open': 'Libre', 'cohort.full': 'Complet',
+    'cohort.beginner': 'Débutant', 'cohort.builder': 'Builder',
+    'cohort.available': 'disponibles',
+    'cohort.price': '$1 490 – $1 990 · 5 nuits + week-end libre',
+    'cohort.reserve': 'Réserver',
+    'cohort.joinWaitlist': 'Rejoindre la liste d\'attente',
+    'form.title': 'Réserve ton lit',
+    'form.allInclusive': '5 nuits · tout inclus',
+    'form.name': 'Nom complet', 'form.email': 'E-mail',
+    'form.phone': 'WhatsApp <span style="color:var(--amber);">*</span>',
+    'form.country': 'Tu pars de', 'form.countryPh': 'Pays',
+    'form.track': 'Parcours',
+    'form.trackBeginner': 'Débutant — $1 490', 'form.trackBuilder': 'Builder — $1 490',
+    'form.tier': 'Niveau',
+    'form.tierStandard': 'Standard — $1 490 (transfert optionnel)',
+    'form.tierPremium': 'Premium — $1 990 (transfert + 1:1)',
+    'form.building': 'Qu\'est-ce que tu veux construire ou apprendre ? <span style="color:var(--amber);">*</span>',
+    'form.buildingPh': '2 à 3 phrases. L\'idée, l\'outil, le workflow — ce qui t\'amène ici.',
+    'form.more': 'Autre chose ? (optionnel)',
+    'form.morePh': 'Régime, horaire d\'arrivée, partenaire qui vient, etc.',
+    'form.policy': 'Je m\'engage pour cette semaine. Un <strong>acompte non-remboursable de $420</strong> garde mon lit (transférable à une cohorte future dans les 12 mois). Solde dû 30 jours avant l\'arrivée. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Politique complète →</a>',
+    'form.submit': 'Réserver mon lit — verser $420 d\'acompte →',
+    'form.fine': 'Sasha lit chaque candidature personnellement et répond sous 48 heures depuis Pai. Tu recevras un lien Stripe pour confirmer avec ton acompte.',
+    'waitlist.eyebrow': '11 — Ou rejoins la liste d\'attente',
+    'waitlist.headline': 'Pas encore prêt ?',
+    'waitlist.sub': 'Laisse ton e-mail et on te prévient quand de nouvelles cohortes ouvrent. Pas de spam — un e-mail quand il y a vraiment quelque chose à partager.',
+    'waitlist.placeholder': 'ton@email.com',
+    'waitlist.btn': 'Rejoindre la liste →',
+    'waitlist.small': 'Un e-mail quand les dates sont fixées. Rien d\'autre.',
+    'footer.meta': 'Pai, Thaïlande · claudecamp.org<br>Questions ? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">Conditions de réservation &amp; annulation</a>',
+  },
+  he: {
+    'nav.tracks': 'מסלולים', 'nav.pricing': 'מחירים', 'nav.book': 'הזמנה',
+    'sticky.eyebrow': 'פאי · אוקטובר 2026', 'sticky.cta': '← שריין מיטה',
+    'hero.badge': 'החל מ-$1,490 לשבוע · 14 מחזורים · אוק 2026 – ינו 2027',
+    'hero.eyebrow': '01 — מאי הונג סון, תאילנד',
+    'hero.line1': 'תתעורר בג׳ונגל.',
+    'hero.line2': 'בנה את החברה שלך עם AI.',
+    'hero.line3': 'תשיק לפני שאתה עוזב.',
+    'hero.tagline': 'בוטקאמפ Claude Code + ריטריט של 7 ימים בפאי, תאילנד.',
+    'hero.ctaPrimary': 'שריין את השבוע שלך',
+    'hero.ctaSecondary': 'גלה מסלולים',
+    'hero.scroll': 'גלול',
+    'audio.toggle': 'תשמע את הג׳ונגל',
+    'promise.eyebrow': 'ההבטחה',
+    'promise.headline': 'מקום <em>לנחות</em>. שבוע <em>לשגר</em>.',
+    'day.eyebrow': '02 — הקצב',
+    'day.headline': 'לשבעה ימים יש צורה. זאת היא.',
+    'tracks.eyebrow': '03 — מסלולים',
+    'tracks.headline': 'מאיפה אתה מתחיל?',
+    'place.eyebrow': '04 — פאי, תאילנד',
+    'place.headline': '7 ק״מ מהעיירה.<br>עולם אחר.',
+    'excursions.eyebrow': '05 — טיולים',
+    'excursions.headline': 'חמישה רגעים שתיקח איתך הביתה.',
+    'excursions.swipe': 'החלק כדי לראות את כל החמישה',
+    'pricing.eyebrow': '06 — להשקיע',
+    'pricing.headline': 'שבעה ימים. החלטה אחת.',
+    'pricing.note': 'מחיר מחזור הקמה — נמוך מזה זה לא יהיה. 14 מחזורים שבועיים, אוק 2026 – ינו 2027. שבע מיטות במחזור.',
+    'pricing.standard.tier': 'סטנדרט',
+    'pricing.standard.period': 'לשבוע · מגורים, אוכל, תוכנית',
+    'pricing.standard.f1': 'חמישה לילות בבונגלו + שני ימים חופשיים להישאר, לטייל או להמשיך לבנות',
+    'pricing.standard.f2': 'כל הארוחות: תוצרת אורגנית מהחווה ובשר משבטי ההרים, יינג מבשלת כל יום',
+    'pricing.standard.f3': 'יוגה בבוקר (לא חובה, אבל תלך)',
+    'pricing.standard.f4': 'מעיינות חמים בכל אחר צהריים',
+    'pricing.standard.f5': 'כל הטיולים כלולים — קניון, מערה, בישול, כל מסלול פאי',
+    'pricing.standard.f6': 'תוכנית Claude Code מלאה, סשה זמין לאורך כל הדרך',
+    'pricing.standard.f7': 'הסעת שדה תעופה +$140 הלוך-חזור <span class="pricing-addon-note">— או קח את המיניוואן ב-$6, נשלח לך לינק</span>',
+    'pricing.premium.tier': 'פרימיום',
+    'pricing.premium.period': 'לשבוע · דלת לדלת, הכל מטופל',
+    'pricing.premium.f1': 'הכל מסטנדרט',
+    'pricing.premium.f2': 'הסעת שדה תעופה פרטית בשני הכיוונים — מהדלת לבונגלו, מטופל',
+    'pricing.premium.f3': '1:1 יומי עם סשה — המוצר שלך, החסמים שלך, מפת הדרכים שלך',
+    'pricing.premium.f4': 'מיקום עדיפות במסלול — בחירה ראשונה בפוקוס פרויקט וזיווג מפגשים',
+    'pricing.premium.f5': 'סקירה מורחבת אחרי הקאמפ — סשה מסתכל על הבילד שלך אחרי שאתה עוזב ואומר לך בדיוק מה לעשות הלאה',
+    'pricing.pickWeek': 'בחר את השבוע שלך',
+    'pricing.honest': 'יש מיניוואן משותף ב-$6 משדה התעופה צ׳יאנג מאי (Aya Service) — נשלח לך לינק להזמנה ונאמר לנהג איפה להוריד אותך. ההסעה ב-$140 היא בשביל הימים שאתה לא רוצה לחשוב על זה.',
+    'hosts.eyebrow': '07 — המארחים שלך',
+    'hosts.headline': 'סשה ויינג.',
+    'prep.eyebrow': '08 — לפני שאתה מגיע',
+    'prep.headline': 'שלושה דברים. זהו.',
+    'prep.intro': 'שניים לוקחים עשר דקות. אחד יש לך כבר. כל היתר מטופל ביום 1.',
+    'travel.eyebrow': '09 — איך מגיעים',
+    'travel.headline': 'שבע מאות פיתולים,<br>ואז שקט.',
+    'cohorts.eyebrow': '10 — שריין',
+    'cohorts.headline': 'תפוס את השבוע שלך.',
+    'cohorts.intro': 'הגעה ביום ראשון, יציאה ביום שישי — חמישה לילות של בנייה ממוקדת, סוף השבוע חופשי אם אתה רוצה להישאר בהרים. אחר כך יומיים שסשה ויינג מתאוששים לפני שהמחזור הבא נוחת. הזמינות למטה היא חיה וכנה: מיטה מסומנת תפוסה היא תפוסה.',
+    'cohorts.intro2': 'שבע מקומות במחזור. במכוון. הפקדה קטנה שומרת את המקום שלך — הראשון שמגיע, הראשון שמאושר.',
+    'cohort.open': 'פנוי', 'cohort.full': 'מלא',
+    'cohort.beginner': 'מתחיל', 'cohort.builder': 'בילדר',
+    'cohort.available': 'פנויות',
+    'cohort.price': '$1,490 – $1,990 · 5 לילות + סוף שבוע חופשי',
+    'cohort.reserve': 'שריין מקום',
+    'cohort.joinWaitlist': 'הצטרף לרשימת המתנה',
+    'form.title': 'שריין מיטה',
+    'form.allInclusive': '5 לילות · הכל כלול',
+    'form.name': 'שם מלא', 'form.email': 'אימייל',
+    'form.phone': 'WhatsApp <span style="color:var(--amber);">*</span>',
+    'form.country': 'טס מ', 'form.countryPh': 'מדינה',
+    'form.track': 'מסלול',
+    'form.trackBeginner': 'מתחיל — $1,490', 'form.trackBuilder': 'בילדר — $1,490',
+    'form.tier': 'דרגה',
+    'form.tierStandard': 'סטנדרט — $1,490 (הסעה אופציונלית)',
+    'form.tierPremium': 'פרימיום — $1,990 (הסעה + 1:1)',
+    'form.building': 'מה אתה מנסה לבנות או ללמוד? <span style="color:var(--amber);">*</span>',
+    'form.buildingPh': '2–3 משפטים. הרעיון, הכלי, הוורקפלו — מה שהביא אותך לכאן.',
+    'form.more': 'משהו נוסף? (אופציונלי)',
+    'form.morePh': 'דרישות תזונה, זמן הגעה, פרטנר מצטרף וכו׳.',
+    'form.policy': 'אני מתחייב לשבוע הזה. <strong>הפקדה לא ניתנת להחזר של $420</strong> שומרת את המיטה שלי (ניתנת להעברה למחזור עתידי תוך 12 חודשים). היתרה לתשלום 30 ימים לפני ההגעה. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">מדיניות מלאה →</a>',
+    'form.submit': '← שריין את המיטה — שלם הפקדה של $420',
+    'form.fine': 'סשה קורא כל בקשה אישית ועונה תוך 48 שעות מפאי. תקבל לינק Stripe לאישור עם ההפקדה.',
+    'waitlist.eyebrow': '11 — או הצטרף לרשימת ההמתנה',
+    'waitlist.headline': 'עדיין לא מוכן?',
+    'waitlist.sub': 'השאר את המייל שלך ונעדכן אותך כשמחזורים חדשים נפתחים. בלי ספאם — מייל אחד כשיש משהו אמיתי לשתף.',
+    'waitlist.placeholder': 'your@email.com',
+    'waitlist.btn': '← הצטרף לרשימת ההמתנה',
+    'waitlist.small': 'מייל אחד כשהתאריכים ננעלים. כלום נוסף.',
+    'footer.meta': 'פאי, תאילנד · claudecamp.org<br>שאלות? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">מדיניות הזמנה וביטול</a>',
+  },
+};
+
+(function initI18n() {
+  const SUPPORTED = ['en', 'de', 'fr', 'he'];
+  const STORAGE_KEY = 'claudecamp.lang';
+
+  function detect() {
+    try {
+      const url = new URLSearchParams(location.search).get('lang');
+      if (url && SUPPORTED.includes(url)) return url;
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored && SUPPORTED.includes(stored)) return stored;
+      const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+      if (SUPPORTED.includes(nav)) return nav;
+    } catch {}
+    return 'en';
+  }
+
+  let currentLang = detect();
+  window.__t = (key) => (I18N[currentLang] && I18N[currentLang][key]) || (I18N.en[key]) || key;
+
+  function applyTranslations() {
+    const dict = I18N[currentLang] || I18N.en;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const v = dict[key]; if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      const v = dict[key]; if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+      const spec = el.getAttribute('data-i18n-attr');
+      spec.split(',').forEach(pair => {
+        const [attr, key] = pair.split(':').map(s => s.trim());
+        const v = dict[key]; if (v != null) el.setAttribute(attr, v);
+      });
+    });
+    // Re-render dynamic availability strings
+    document.querySelectorAll('.cohort-track-avail').forEach(el => {
+      const left = el.dataset.availLeft, total = el.dataset.availTotal;
+      if (left != null && total != null) {
+        el.textContent = `${left} / ${total} ${dict['cohort.available'] || 'available'}`;
+      }
+    });
+  }
+  window.__applyI18n = applyTranslations;
+
+  function setLang(lang) {
+    if (!SUPPORTED.includes(lang)) return;
+    currentLang = lang;
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
+    const html = document.documentElement;
+    html.lang = lang;
+    html.dir = (lang === 'he') ? 'rtl' : 'ltr';
+    applyTranslations();
+    renderPickers();
+  }
+  window.__setLang = setLang;
+  window.__getLang = () => currentLang;
+
+  function renderPickers() {
+    const labels = { en: 'EN', de: 'DE', fr: 'FR', he: 'עב' };
+    document.querySelectorAll('[data-lang-picker]').forEach(picker => {
+      picker.innerHTML = SUPPORTED.map(l =>
+        `<button type="button" class="lang-btn ${l === currentLang ? 'active' : ''}" data-lang="${l}">${labels[l]}</button>`
+      ).join('');
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.lang-btn');
+    if (btn && btn.dataset.lang) setLang(btn.dataset.lang);
+  });
+
+  // Initial pass — synchronous so animations operate on translated text
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = (currentLang === 'he') ? 'rtl' : 'ltr';
+  applyTranslations();
+  renderPickers();
+})();
+
+
 /* ── Plain-JS safety net (no GSAP dependency) ─────────────────
    If GSAP CDN is slow or blocked on mobile, this fires after
    6 s and force-reveals every hidden element so content is
@@ -3197,8 +4247,8 @@ window._fullRevealTimer = setTimeout(function () {
   var overlay = document.getElementById('load-overlay');
   if (overlay) overlay.style.display = 'none';
   var sel = [
-    '.hero-headline-inner', '.hero-tagline', '.hero-body',
-    '.hero-eyebrow', '.hero-cta-row', '#site-wordmark',
+    '.hero-headline-inner', '.hero-tagline', '.hero-eyebrow', '.hero-cta-row',
+    '#site-wordmark', '#site-nav-right', '.pricing-badge',
     '#scroll-hint', '.section-eyebrow', '.section-headline',
     '.section-body', '.timeline-item', '.track-card',
     '.place-img-wrap', '.place-headline', '.excursion-card',
@@ -3206,6 +4256,9 @@ window._fullRevealTimer = setTimeout(function () {
     '.waitlist-headline', '.waitlist-form',
     '.prep-intro', '.prep-item',
     '.travel-lede', '.travel-faq-item',
+    '.promise-eyebrow', '.promise-headline', '.promise-col-index',
+    '.promise-col-title', '.promise-list li', '.place-copy',
+    '.host-aside', '.pricing-note',
   ].join(',');
   document.querySelectorAll(sel).forEach(function (el) {
     el.style.opacity = '1';
@@ -3386,22 +4439,15 @@ gsap.registerPlugin(ScrollTrigger);
   const topWmark   = document.getElementById('site-wordmark');
   const topNav     = document.getElementById('site-nav-right');
   const priceBadge = document.querySelector('.pricing-badge');
-  const imgInset   = document.getElementById('img-inset');
-  const imgLabel   = document.getElementById('img-inset-label');
 
   const ease = 'cubic-bezier(0.76, 0, 0.24, 1)';
 
   const safetyTimer = setTimeout(() => {
     overlay.style.display = 'none';
     document.querySelectorAll('.hero-headline-inner').forEach(el => el.style.clipPath = 'none');
-    document.querySelector('.hero-tagline').style.clipPath = 'none';
-    document.querySelector('.hero-body').style.clipPath = 'none';
-    document.querySelector('.hero-eyebrow').style.opacity = '1';
-    document.querySelector('.hero-cta-row').style.opacity = '1';
-    document.getElementById('site-wordmark').style.opacity = '1';
-    document.getElementById('site-nav-right').style.opacity = '1';
-    document.querySelector('.pricing-badge').style.opacity = '1';
-    document.getElementById('scroll-hint').style.opacity = '1';
+    const revealEl = (sel) => { const el = document.querySelector(sel); if (el) { el.style.opacity = '1'; el.style.clipPath = 'none'; } };
+    revealEl('.hero-tagline'); revealEl('.hero-eyebrow'); revealEl('.hero-cta-row');
+    revealEl('#site-wordmark'); revealEl('#site-nav-right'); revealEl('.pricing-badge'); revealEl('#scroll-hint');
   }, 8000);
 
   const tl = gsap.timeline({
@@ -3423,8 +4469,6 @@ gsap.registerPlugin(ScrollTrigger);
   tl.to(body,      { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease }, 4.05);
   tl.to(ctaRow,    { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 4.3);
   tl.to(scrollH,   { opacity: 1, duration: 0.6, ease: 'power2.out' }, 4.7);
-  tl.fromTo(imgInset,  { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: 'power2.out' }, 4.9);
-  tl.fromTo(imgLabel,  { opacity: 0 },         { opacity: 1, duration: 0.6, ease: 'power2.out' }, 5.4);
 
   gsap.set(eyebrow, { y: 8 });
   gsap.set(ctaRow,  { y: 12 });
@@ -3448,6 +4492,66 @@ gsap.registerPlugin(ScrollTrigger);
       ...triggerVars,
     });
   }
+
+  /* ── SECTION — Promise ─────────────────────────────── */
+  const promiseEyebrow   = document.querySelector('#section-promise .promise-eyebrow');
+  const promiseHeadline  = document.querySelector('#section-promise .promise-headline');
+  const promiseColIndex  = document.querySelectorAll('#section-promise .promise-col-index');
+  const promiseColTitles = document.querySelectorAll('#section-promise .promise-col-title');
+  const promiseDivider   = document.querySelector('#section-promise .promise-divider');
+  const promiseItems     = document.querySelectorAll('#section-promise .promise-list li');
+
+  revealOnScroll(promiseEyebrow,  { opacity: 1 });
+  revealOnScroll(promiseHeadline, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1 });
+
+  promiseColIndex.forEach((el, i) => {
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => gsap.to(el, { opacity: 1, duration: 0.7, ease: 'power2.out', delay: i * 0.08 }),
+    });
+  });
+
+  promiseColTitles.forEach((el, i) => {
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => gsap.to(el, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.0, ease, delay: 0.1 + i * 0.1 }),
+    });
+  });
+
+  if (promiseDivider) {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    ScrollTrigger.create({
+      trigger: promiseDivider,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => gsap.to(promiseDivider, {
+        [isMobile ? 'scaleX' : 'scaleY']: 1,
+        duration: 1.2,
+        ease,
+        delay: 0.2,
+      }),
+    });
+  }
+
+  promiseItems.forEach((item, i) => {
+    gsap.set(item, { y: 14 });
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => gsap.to(item, {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power2.out',
+        delay: i * 0.06,
+      }),
+    });
+  });
 
   /* ── SECTION 1 — Day in Pai ─────────────────────────── */
   const dayEyebrow  = document.querySelector('#section-day .section-eyebrow');
@@ -3747,29 +4851,30 @@ function renderCohorts() {
     return `
       <div class="cohort-card-main" data-cohort="${c.id}" data-label="${c.label}" data-dates="${c.dates}">
         <div class="cohort-badge">${c.label}</div>
-        <div class="cohort-open-badge" id="badge-${c.id}">Open</div>
+        <div class="cohort-open-badge" id="badge-${c.id}" data-i18n="cohort.open">Open</div>
         <div class="cohort-dates-main">${c.dates}</div>
         <div class="cohort-tracks">
           <div class="cohort-track-item">
-            <div class="cohort-track-label">Beginner</div>
-            <div class="cohort-track-avail" id="avail-${c.id}-beginner">${BEDS_PER_TRACK.beginner} / ${BEDS_PER_TRACK.beginner} available</div>
+            <div class="cohort-track-label" data-i18n="cohort.beginner">Beginner</div>
+            <div class="cohort-track-avail" id="avail-${c.id}-beginner" data-avail-total="${BEDS_PER_TRACK.beginner}" data-avail-left="${BEDS_PER_TRACK.beginner}">${BEDS_PER_TRACK.beginner} / ${BEDS_PER_TRACK.beginner} available</div>
             <div class="cohort-dots" id="dots-${c.id}-beginner">${'<span class="cohort-dot"></span>'.repeat(BEDS_PER_TRACK.beginner)}</div>
           </div>
           <div class="cohort-track-item">
-            <div class="cohort-track-label">Builder</div>
-            <div class="cohort-track-avail" id="avail-${c.id}-builder">${BEDS_PER_TRACK.builder} / ${BEDS_PER_TRACK.builder} available</div>
+            <div class="cohort-track-label" data-i18n="cohort.builder">Builder</div>
+            <div class="cohort-track-avail" id="avail-${c.id}-builder" data-avail-total="${BEDS_PER_TRACK.builder}" data-avail-left="${BEDS_PER_TRACK.builder}">${BEDS_PER_TRACK.builder} / ${BEDS_PER_TRACK.builder} available</div>
             <div class="cohort-dots" id="dots-${c.id}-builder">${'<span class="cohort-dot"></span>'.repeat(BEDS_PER_TRACK.builder)}</div>
           </div>
         </div>
-        <div class="cohort-price">$960 – $1,600 · 5 nights + free weekend</div>
+        <div class="cohort-price" data-i18n="cohort.price">$1,490 – $1,990 · 5 nights + free weekend</div>
         <div class="cohort-cta-slot" id="cta-${c.id}">
           <button type="button" class="cohort-reserve" onclick="openBookingModal('${c.id}', '${c.label}', '${c.dates}')">
-            <span>Reserve your spot</span><span>→</span>
+            <span data-i18n="cohort.reserve">Reserve your spot</span><span>→</span>
           </button>
         </div>
         <p class="cohort-waiting-count" id="waiting-${c.id}" style="display:none;"></p>
       </div>`;
   }).join('');
+  if (window.__applyI18n) window.__applyI18n();
 }
 
 function bucketWaitingCount(n) {
@@ -3797,7 +4902,8 @@ async function loadCohortAvailability() {
       const full  = beginnerTaken + builderTaken >= BEDS_PER_TRACK.beginner + BEDS_PER_TRACK.builder;
 
       if (full && badge && card) {
-        badge.textContent = 'Full';
+        badge.textContent = (window.__t && window.__t('cohort.full')) || 'Full';
+        badge.setAttribute('data-i18n', 'cohort.full');
         badge.classList.add('full');
         card.classList.add('is-full');
         swapToWaitlist(cohort);
@@ -3813,8 +4919,9 @@ async function swapToWaitlist(cohort) {
   if (slot) {
     slot.innerHTML = `
       <button type="button" class="cohort-waitlist" onclick="openWaitlistModal('${cohort.id}', '${cohort.label}', '${cohort.dates}')">
-        <span>Join the waitlist</span><span>→</span>
+        <span data-i18n="cohort.joinWaitlist">Join the waitlist</span><span>→</span>
       </button>`;
+    if (window.__applyI18n) window.__applyI18n();
   }
   try {
     const res = await fetch(`${WORKER_URL}/api/waitlist-count?cohort=${cohort.id}`);
@@ -3833,7 +4940,12 @@ function updateTrack(cohortId, track, total, taken) {
   const avail = total - taken;
   const availEl = document.getElementById(`avail-${cohortId}-${track}`);
   const dotsEl  = document.getElementById(`dots-${cohortId}-${track}`);
-  if (availEl) availEl.textContent = `${avail} / ${total} available`;
+  if (availEl) {
+    availEl.dataset.availLeft = avail;
+    availEl.dataset.availTotal = total;
+    const word = (window.__t && window.__t('cohort.available')) || 'available';
+    availEl.textContent = `${avail} / ${total} ${word}`;
+  }
   if (dotsEl) {
     dotsEl.innerHTML = '';
     for (let i = 0; i < total; i++) {
@@ -3848,7 +4960,8 @@ function updateTrack(cohortId, track, total, taken) {
 
 function openBookingModal(cohortId, cohortLabel, cohortDates) {
   document.getElementById('booking-modal-eyebrow').textContent = cohortLabel;
-  document.getElementById('booking-modal-sub').textContent = `${cohortDates} · 7 nights · all-inclusive`;
+  const allInc = (window.__t && window.__t('form.allInclusive')) || '5 nights · all-inclusive';
+  document.getElementById('booking-modal-sub').textContent = `${cohortDates} · ${allInc}`;
   document.getElementById('bk-cohort').value = cohortId;
   document.getElementById('booking-form').style.display = '';
   document.getElementById('booking-success').style.display = 'none';
@@ -3938,7 +5051,7 @@ async function submitBooking(e) {
     status.textContent = err.message;
     status.className = 'booking-status error';
     btn.disabled = false;
-    btn.textContent = 'Reserve my bed — pay $420 deposit →';
+    btn.textContent = (window.__t && window.__t('form.submit')) || 'Reserve my bed — pay $420 deposit →';
   }
 }
 
@@ -4004,6 +5117,104 @@ async function submitWaitlist(e) {
 /* ── Boot calendar ───────────────────────────────────────────── */
 renderCohorts();
 loadCohortAvailability();
+
+/* ── Jungle ambient audio — subtle toggle, localStorage memory ── */
+(function initJungleAudio() {
+  const audio  = document.getElementById('jungle-audio');
+  const toggle = document.getElementById('jungle-toggle');
+  if (!audio || !toggle) return;
+
+  const STORAGE = 'claudecamp.jungle';
+  const FADE_MS = 1200;
+  const TARGET_VOL = 0.42;
+
+  const getPref = () => { try { return localStorage.getItem(STORAGE); } catch (e) { return null; } };
+  const setPref = (v) => { try { localStorage.setItem(STORAGE, v); } catch (e) {} };
+
+  audio.volume = 0;
+
+  function fadeTo(target, ms) {
+    const start = audio.volume;
+    const diff = target - start;
+    const t0 = performance.now();
+    return new Promise(resolve => {
+      function step(now) {
+        const t = Math.min(1, (now - t0) / ms);
+        audio.volume = Math.max(0, Math.min(1, start + diff * t));
+        if (t < 1) requestAnimationFrame(step); else resolve();
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  async function turnOn(savePref = true) {
+    audio.muted = false;
+    try {
+      await audio.play();
+      fadeTo(TARGET_VOL, FADE_MS);
+      toggle.classList.add('is-on');
+      toggle.setAttribute('aria-pressed', 'true');
+      if (savePref) setPref('on');
+    } catch (e) {
+      // Autoplay blocked — just leave it off and wait for user gesture
+      toggle.classList.remove('is-on');
+      toggle.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  async function turnOff(savePref = true) {
+    await fadeTo(0, FADE_MS / 2);
+    audio.pause();
+    toggle.classList.remove('is-on');
+    toggle.setAttribute('aria-pressed', 'false');
+    if (savePref) setPref('off');
+  }
+
+  toggle.addEventListener('click', () => {
+    if (toggle.classList.contains('is-on')) turnOff(); else turnOn();
+  });
+
+  // Pause when tab is hidden, resume when visible (only if user had it on)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (!audio.paused) audio.pause();
+    } else if (toggle.classList.contains('is-on')) {
+      audio.play().catch(() => {});
+    }
+  });
+
+  // Show the toggle after the hero load sequence settles
+  const showToggle = () => toggle.classList.add('is-ready');
+  setTimeout(showToggle, 3200);
+
+  // If returning user opted in last time, try to autoplay (will likely fail without gesture but worth a try)
+  if (getPref() === 'on') {
+    turnOn(false);
+  }
+})();
+
+/* ── Mobile reveal — IntersectionObserver fade-up (replaces unreliable GSAP ScrollTrigger on iOS) ── */
+(function initMobileReveal() {
+  if (!window.matchMedia('(max-width: 900px)').matches) return;
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.io-target').forEach(el => el.classList.add('io-visible'));
+    return;
+  }
+  const sel = '.place-img-wrap, .excursion-card, .track-card, .pricing-card, .timeline-item, ' +
+              '.promise-list li, .place-headline, .promise-headline, .promise-col-title, ' +
+              '.section-headline, .section-eyebrow, .promise-eyebrow, .promise-col-index, ' +
+              '.prep-item, .travel-faq-item, .host-quote, .host-aside, .place-copy, ' +
+              '.pricing-note, .travel-lede, .prep-intro';
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('io-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  document.querySelectorAll(sel).forEach(el => io.observe(el));
+})();
 
 /* ── Side dot rail ───────────────────────────────────────────── */
 (function () {
