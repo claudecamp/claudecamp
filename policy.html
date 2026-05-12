@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Policy — Claude Camp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --jungle-deep: #060d04;
+  --amber:       #f59e0b;
+  --amber-dim:   #92610a;
+  --text:        #f8fafc;
+  --text-muted:  rgba(248,250,252,0.55);
+  --border:      rgba(248,250,252,0.08);
+}
+
+html, body {
+  width: 100%; min-height: 100%;
+  background: var(--jungle-deep);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 5vw, 3rem) clamp(4rem, 8vw, 6rem);
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  max-width: 640px;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+  margin-bottom: 1.4rem;
+}
+
+.headline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--text);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8rem;
+}
+
+.subhead {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(245,158,11,0.25);
+  margin: 2.5rem 0;
+}
+
+.section {
+  margin-bottom: 2.8rem;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  color: var(--text);
+  margin-bottom: 0.9rem;
+  line-height: 1.25;
+}
+
+.body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.88rem, 1.1vw, 0.96rem);
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.body + .body {
+  margin-top: 0.75rem;
+}
+
+.body strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.highlight-box {
+  border: 1px solid rgba(245,158,11,0.18);
+  border-left: 2px solid rgba(245,158,11,0.5);
+  padding: 1.2rem 1.4rem;
+  margin: 1.4rem 0;
+  border-radius: 2px;
+}
+
+.highlight-box .body {
+  font-size: 0.9rem;
+}
+
+.rule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.rule {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr;
+  gap: 0 0.8rem;
+  align-items: start;
+}
+
+.rule-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--amber-dim);
+  margin-top: 0.55rem;
+  justify-self: center;
+}
+
+.rule-text {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.87rem, 1.1vw, 0.94rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.rule-text strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(248,250,252,0.2);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+  margin-top: 0.5rem;
+}
+
+.back-link:hover {
+  color: var(--amber);
+  border-color: rgba(245,158,11,0.4);
+}
+
+.contact-line {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+}
+
+.contact-line a {
+  color: var(--amber);
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <p class="eyebrow">Claude Camp · Pai, Thailand</p>
+
+  <h1 class="headline">Booking &amp; Cancellation Policy</h1>
+  <p class="subhead">Simple, fair terms. If anything is unclear, WhatsApp Sasha directly — that's always faster than email.</p>
+
+  <div class="section">
+    <p class="section-label">01</p>
+    <h2 class="section-title">The Deposit</h2>
+    <p class="body">Booking is confirmed with a <strong>฿15,000 (~$420 USD) deposit</strong> paid via Stripe at the time of reservation. This deposit holds your specific bed and cohort date.</p>
+    <div class="highlight-box">
+      <p class="body"><strong>The deposit is non-refundable.</strong> If you cancel, we cannot return it — but it can be transferred (see below).</p>
+    </div>
+    <p class="body">The deposit is charged in USD. Exact Baht equivalent may vary slightly with exchange rates at time of payment.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <p class="section-label">02</p>
+    <h2 class="section-title">Balance Payment</h2>
+    <p class="body">The remaining balance is due <strong>30 days before your cohort start date</strong>. Sasha will contact you with a payment link when the time comes.</p>
+    <div class="rule-list">
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">If payment isn't received within 7 days of the 30-day deadline, your bed may be released to the waitlist.</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">If you need a payment plan or have a cash flow issue, just ask — we'd rather work something out than lose a good fit.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <p class="section-label">03</p>
+    <h2 class="section-title">Cancellations by You</h2>
+    <div class="rule-list">
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text"><strong>More than 30 days before arrival:</strong> Deposit is non-refundable but fully transferable to any future cohort within 12 months, or to another person.</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text"><strong>Within 30 days of arrival:</strong> Deposit and any balance paid are non-refundable. Transfer to a future cohort is at Sasha's discretion depending on circumstances.</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text"><strong>No-show:</strong> No refund or transfer.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <p class="section-label">04</p>
+    <h2 class="section-title">Transfers</h2>
+    <p class="body">Your deposit can be transferred in two ways:</p>
+    <div class="rule-list">
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text"><strong>To a future cohort</strong> — valid for any cohort within 12 months of your original booking date, subject to availability.</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text"><strong>To another person</strong> — send their name and email to Sasha and we'll update the booking. They take your spot, your bed, your track.</p>
+      </div>
+    </div>
+    <p class="body" style="margin-top:1rem;">To initiate a transfer, WhatsApp Sasha at least 14 days before your cohort starts.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <p class="section-label">05</p>
+    <h2 class="section-title">Cancellation by Claude Camp</h2>
+    <p class="body">In the rare event we need to cancel a cohort (natural disaster, health emergency, minimum numbers not met), you will receive:</p>
+    <div class="rule-list">
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">A <strong>full refund</strong> of your deposit and any balance paid — no questions, no fees.</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">First choice of any remaining cohort dates, at the same price.</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">As much notice as we can possibly give — we will not wait until the last minute.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <p class="section-label">06</p>
+    <h2 class="section-title">What's Included &amp; What Isn't</h2>
+    <p class="body"><strong>Included in your booking:</strong></p>
+    <div class="rule-list">
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">7 nights accommodation in a bamboo bungalow with valley view</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">All meals — 3 per day, mostly grown on-site by Ying</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">Hot springs entry (all group visits)</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">Pai Canyon excursion</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">Full Claude Code curriculum + daily sessions with Sasha</p>
+      </div>
+      <div class="rule">
+        <span class="rule-dot"></span>
+        <p class="rule-text">Airport transfer from Chiang Mai (if selected during booking)</p>
+      </div>
+    </div>
+    <p class="body" style="margin-top:1.2rem;"><strong>Not included:</strong> flights, travel insurance, personal drinks &amp; shopping, optional solo excursions, visa fees.</p>
+    <p class="body" style="margin-top:0.6rem;">Travel insurance is strongly recommended. We are not responsible for costs arising from travel disruption, illness, or personal circumstances.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <p class="section-label">07</p>
+    <h2 class="section-title">Questions</h2>
+    <p class="body">These policies are meant to be fair, not fine print. If your situation doesn't fit neatly into the above, just reach out — we'll figure it out together.</p>
+  </div>
+
+  <a href="/" class="back-link">← Back to claudecamp.org</a>
+
+  <p class="contact-line">WhatsApp: <a href="https://wa.me/66922864775" target="_blank" rel="noopener">+66 92 286 4775</a> &nbsp;·&nbsp; Email: <a href="mailto:info@claudecamp.org">info@claudecamp.org</a></p>
+
+</div>
+</body>
+</html>
