@@ -5135,7 +5135,6 @@ loadCohortAvailability();
   let audioBuffer = null;
   let isOn = false;
   let loading = false;
-  let autoplayAttempted = false;
 
   function getCtx() {
     if (!actx) {
@@ -5219,33 +5218,23 @@ loadCohortAvailability();
   });
 
   // ── Autoplay strategy ──────────────────────────────────────────
-  // 1. If user previously opted out, stay silent — respect their choice.
-  // 2. Otherwise: try immediate autoplay (works on some browsers / return visitors).
-  // 3. If blocked, hook the first interaction (scroll / tap / click) and try again.
-  // This feels like ambient sound appearing naturally rather than a button hunt.
-
-  function tryAutoplay() {
-    if (autoplayAttempted || isOn || getPref() === 'off') return;
-    autoplayAttempted = true;
-    turnOn(false); // don't save pref on autoplay attempt — let first explicit toggle save it
-  }
+  // Chrome only allows AudioContext.resume() from trusted gestures:
+  // click, pointerdown, touchstart, keydown — NOT scroll or mousemove.
+  // Strategy: hook the first trusted interaction anywhere on the page.
+  // On mobile this fires on first tap (even a scroll-tap). On desktop,
+  // first click. Either way, audio starts without the user finding the button.
 
   function onFirstInteraction() {
-    ['scroll','touchstart','pointerdown','keydown'].forEach(evt =>
-      window.removeEventListener(evt, onFirstInteraction, { capture: true })
-    );
-    if (!isOn && getPref() !== 'off') turnOn(false);
+    if (isOn || getPref() === 'off') return;
+    turnOn(false); // don't save pref — explicit toggle click saves it
   }
 
-  // Prefetch audio during hero load (non-blocking)
-  setTimeout(prefetchBuffer, 800);
+  // Prefetch raw audio bytes early so buffer decodes fast on first interaction
+  setTimeout(prefetchBuffer, 600);
 
-  // Try immediate autoplay after hero settles
-  setTimeout(tryAutoplay, 1800);
-
-  // Fallback: first interaction triggers it if autoplay was blocked
+  // Hook first trusted interaction — each listener auto-removes after firing once
   if (getPref() !== 'off') {
-    ['scroll','touchstart','pointerdown','keydown'].forEach(evt =>
+    ['pointerdown', 'touchstart', 'keydown'].forEach(evt =>
       window.addEventListener(evt, onFirstInteraction, { capture: true, passive: true, once: true })
     );
   }
