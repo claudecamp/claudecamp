@@ -32,7 +32,7 @@
   "description": "Claude Code is Anthropic's AI coding tool that lets you build real software by describing what you want in plain language.",
   "url": "https://claudecamp.org/what-is-claude-code.html",
   "datePublished": "2025-01-01",
-  "dateModified": "2026-05-12",
+  "dateModified": "2026-05-13",
   "author": {
     "@type": "Organization",
     "name": "Claude Camp",
@@ -105,6 +105,30 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Claude Code installs via npm: run 'npm install -g @anthropic-ai/claude-code' in your terminal. You will need Node.js 18 or later and a Claude Pro subscription or Anthropic API key. Once installed, run 'claude' in any project directory to start."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What programming languages does Claude Code support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code works across all major programming languages including Python, TypeScript, JavaScript, Go, Ruby, Rust, PHP, Java, C++, and more. It also handles HTML, CSS, SQL, shell scripts, and configuration files. Language choice does not meaningfully affect its capabilities."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Claude Code safe to use on my codebase?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code asks for confirmation before taking actions that are hard to reverse — deleting files, running destructive commands, or pushing to remote repositories. It works inside your local environment and does not send your codebase to third parties beyond the Anthropic API, which processes your prompts to generate responses. Using it inside a git repository means you can always review and roll back changes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Claude Code worth it for non-programmers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, for people with a clear product idea. Claude Code can take a plain-English brief and produce a working, deployed web application — including the database, backend, and UI — without the person running it writing any code. The main skill required is knowing what you want to build and being able to review the output critically. People who struggle with Claude Code are usually unclear on their own requirements, not blocked by technical ability."
       }
     }
   ]
@@ -595,6 +619,38 @@ footer {
   <h2>How quickly can I actually ship something?</h2>
   <p>A motivated first-time user can build and deploy a working web app in a single day. Most of the time cost is <em>deciding what to build</em> and learning how to frame tasks effectively — not waiting for the AI to write code.</p>
   <p>The learning curve is real: Claude Code is most powerful when you know how to give it clear scope, review diffs critically, and break large goals into sequential tasks. These are skills that take a few days of practice to develop, not months.</p>
+
+  <hr class="divider">
+
+  <h2>Real-world use cases</h2>
+  <p>Here is what people actually build with Claude Code in practice:</p>
+  <ul>
+    <li><strong>SaaS tools</strong> — subscription apps with Stripe payments, user accounts, and dashboards, built in days not months</li>
+    <li><strong>Internal tools</strong> — inventory systems, CRM replacements, booking managers, ops dashboards for small businesses</li>
+    <li><strong>Landing pages with checkout</strong> — marketing pages connected to payment processors, often live within a few hours</li>
+    <li><strong>APIs and automations</strong> — connecting services together, processing data, scheduled jobs, webhook handlers</li>
+    <li><strong>Personal projects</strong> — portfolio sites, tools built for a specific workflow problem, apps that never would have been built without an AI coding agent</li>
+  </ul>
+  <p>The pattern across all of these: the bottleneck shifted from writing code to making product decisions. Claude Code removed the implementation barrier, which means the constraint became clarity of idea.</p>
+
+  <hr class="divider">
+
+  <h2>Tips for getting the most out of Claude Code</h2>
+  <p>Claude Code is most effective when you treat it like a skilled contractor, not a magic box:</p>
+  <ul>
+    <li><strong>Be specific about scope.</strong> "Build a login system" is harder to execute well than "Add email/password authentication using NextAuth, store sessions in the existing Postgres database, redirect to /dashboard on success."</li>
+    <li><strong>Review every diff.</strong> Claude Code shows you what it changed before committing. Read it. One review step catches 90% of issues before they compound.</li>
+    <li><strong>Break large goals into sequential tasks.</strong> "Build the whole app" produces worse results than a series of focused tasks — schema first, then API, then UI.</li>
+    <li><strong>Use a CLAUDE.md file.</strong> A short project context file (stack, conventions, what not to touch) eliminates repeated re-explanation and keeps Claude Code working within your constraints.</li>
+    <li><strong>Stay in git.</strong> Commit after each working task. If something goes wrong, you have a clean rollback point and a clear history of what changed.</li>
+  </ul>
+
+  <hr class="divider">
+
+  <h2>Is Claude Code worth it?</h2>
+  <p>For experienced developers, Claude Code is a 5–10x speed multiplier on implementation tasks. It handles the boilerplate, the plumbing, the debugging loops — the parts that consume time without requiring judgment. Engineers who use it regularly report spending more time on architecture and product decisions and less on syntax and stack traces.</p>
+  <p>For non-technical founders and product builders, the question is different. Claude Code does not replace product thinking — it removes the coding barrier between an idea and a working version of it. People who have always wanted to build something but couldn't justify hiring a developer, or couldn't afford one, now can. At $20/month, the cost of entry is lower than any alternative.</p>
+  <p>The honest caveat: there is a learning curve. The first few sessions feel slow while you develop a sense for how to frame tasks. By day three or four, most people find a rhythm. Claude Camp exists specifically to compress that learning curve into a structured week.</p>
 
   <!-- CTA BLOCK -->
   <div class="cta-block">
