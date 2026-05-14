@@ -3,47 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Claude Camp — Sasha & Ying Goldsmith, Pai, Thailand</title>
-<meta name="description" content="Claude Camp is run by Sasha and Ying Goldsmith on their organic farm in Pai, Thailand. Sasha built his first app in 9 days using Claude Code. Ying keeps the place running perfectly.">
+<title>About Claude Camp — Ying Goldsmith & the Farm in Pai, Thailand</title>
+<meta name="description" content="Claude Camp started when our founder built a working app in 9 days on this farm — no city distractions, just jungle and focus. Ying runs the place. Here's how it works.">
 <link rel="canonical" href="https://claudecamp.org/about.html">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
 <!-- Open Graph -->
 <meta property="og:type" content="profile">
-<meta property="og:title" content="About Claude Camp — Sasha & Ying Goldsmith">
-<meta property="og:description" content="Sasha built his first app in 9 days using Claude Code — no coding background. Now he runs Claude Camp on the organic farm he shares with Ying in Pai, Thailand.">
+<meta property="og:title" content="About Claude Camp — Ying Goldsmith & the Farm in Pai">
+<meta property="og:description" content="Our founder built their first working app in 9 days on this farm in the jungle outside Pai. No city distractions. Just nature, focus, and Claude Code.">
 <meta property="og:url" content="https://claudecamp.org/about.html">
 <meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
 <meta property="og:site_name" content="Claude Camp">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="About Claude Camp — Sasha & Ying Goldsmith">
-<meta name="twitter:description" content="Sasha built his first app in 9 days with Claude Code and launched a site selling borosilicate lampworking videos. Now he teaches it in Pai, Thailand.">
+<meta name="twitter:title" content="About Claude Camp — Ying Goldsmith & the Farm in Pai">
+<meta name="twitter:description" content="First app built in 9 days — no coding background, no city noise. Just jungle, nature sounds, and Claude Code. That's how Claude Camp was born.">
 <meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
-
-<!-- JSON-LD: Person — Sasha -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://claudecamp.org/about.html#sasha",
-  "name": "Sasha Goldsmith",
-  "givenName": "Sasha",
-  "familyName": "Goldsmith",
-  "jobTitle": "Founder & Instructor",
-  "description": "Sasha Goldsmith built his first working web application in 9 days using Claude Code, with no prior coding background. He is the founder and lead instructor of Claude Camp, a 7-day immersive bootcamp on Claude Code held on an organic farm in Pai, northern Thailand.",
-  "url": "https://claudecamp.org/about.html",
-  "worksFor": {
-    "@type": "Organization",
-    "@id": "https://claudecamp.org/#organization"
-  },
-  "knowsAbout": ["Claude Code", "Anthropic", "AI-assisted software development", "vibe coding", "non-technical founders"],
-  "sameAs": [
-    "https://claudecamp.org"
-  ]
-}
-</script>
 
 <!-- JSON-LD: Person — Ying -->
 <script type="application/ld+json">
@@ -54,8 +31,8 @@
   "name": "Ying Goldsmith",
   "givenName": "Ying",
   "familyName": "Goldsmith",
-  "jobTitle": "Co-Founder & Host",
-  "description": "Ying Goldsmith runs day-to-day life at Claude Camp. She cooks traditional Thai food from produce grown on the farm and ensures every cohort has the environment they need to focus.",
+  "jobTitle": "Host & Co-Founder",
+  "description": "Ying Goldsmith hosts Claude Camp on the organic farm she runs with her family outside Pai, Thailand. She cooks traditional Thai food from produce grown on-site and makes sure every cohort has the environment they need to focus and build.",
   "url": "https://claudecamp.org/about.html",
   "worksFor": {
     "@type": "Organization",
@@ -149,6 +126,18 @@ nav {
 }
 
 .nav-wordmark:hover { color: var(--amber); }
+
+.nav-about {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-about:hover { color: var(--text); }
 
 .nav-cta {
   font-family: 'JetBrains Mono', monospace;
@@ -278,6 +267,24 @@ article ul li strong {
   border: none;
   border-top: 1px solid rgba(245,158,11,0.12);
   margin: 3rem 0;
+}
+
+/* ── ORIGIN BLOCK ────────────────────────────────────────── */
+.origin-block {
+  border-left: 2px solid var(--amber);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0 2.5rem;
+  background: rgba(245,158,11,0.03);
+}
+
+.origin-block p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0;
 }
 
 /* ── STAT STRIP ──────────────────────────────────────────── */
@@ -480,6 +487,7 @@ footer {
 <nav aria-label="Site navigation">
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
     <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
   </div>
 </nav>
@@ -493,24 +501,29 @@ footer {
 
 <!-- HERO -->
 <header class="hero">
-  <p class="hero-eyebrow">Pai, Thailand · The people behind it</p>
-  <h1>Built by people who learned the hard way</h1>
-  <p class="hero-lede">Sasha and Ying Goldsmith run Claude Camp on their organic farm outside Pai. Sasha built his first working app in 9 days using Claude Code — no coding background. Ying makes sure everyone is fed, comfortable, and can actually focus.</p>
+  <p class="hero-eyebrow">Pai, Thailand · The place behind it</p>
+  <h1>The jungle removes every excuse not to build</h1>
+  <p class="hero-lede">Claude Camp exists because of what happens when you take away the noise. No city distractions, no endless errands, no reason to stop. Just tools, nature, and the work. Our founder built a working app in 9 days here. The camp is built on that experience.</p>
 </header>
 
 <!-- ARTICLE -->
 <article>
 
-  <h2>Sasha — how Claude Camp started</h2>
-  <p>Sasha came to Claude Code the same way most people do: skeptical, curious, and with a project he'd been putting off for years. Nine days later he had a working, deployed website selling borosilicate lampworking instructional videos — something that had felt impossible the week before.</p>
-  <!-- TODO: add lampworking site URL as a link in the sentence above once available -->
-  <p>The experience was disorienting. Not because it was hard, but because the bottleneck had completely shifted. Writing code was no longer the constraint. <strong>Knowing what you wanted to build</strong> was the constraint. That gap — between having an idea and having something real — had just collapsed.</p>
-  <p>Claude Camp is built on that 9-day experience. The program exists to give other people the same compressed discovery: a structured week, a working app, and the clarity that comes from actually shipping something.</p>
+  <h2>How it started</h2>
+
+  <div class="origin-block">
+    <p>"Nine days. First app. No coding background. The sounds of the jungle outside, fresh food from the farm, nothing pulling me back to a city schedule. I didn't know it was possible until I did it."</p>
+  </div>
+
+  <p>Claude Camp's founder came to Pai with no technical background and a project they'd been putting off. Nine days later — using Claude Code and nothing else — they had a working, deployed website selling borosilicate lampworking instructional videos. Something that had felt out of reach the week before.</p>
+  <!-- TODO: add lampworking site URL as a link once available -->
+  <p>The insight wasn't just about the tool. It was about the environment. In the city there are a hundred reasons to stop. Here there aren't. <strong>The jungle is the productivity system.</strong> The sounds of nature, the rhythm of farm life, the absence of the usual noise — these things compound over a week in a way that a weekend retreat or an online course never could.</p>
+  <p>Claude Camp is built on that 9-day proof. The program exists to give others the same compressed window: a structured week, the right tools, the right environment, and something deployed before you leave.</p>
 
   <div class="stat-strip">
     <div class="stat">
       <span class="stat-number">9</span>
-      <span class="stat-label">days to first app</span>
+      <span class="stat-label">days — first app built here</span>
     </div>
     <div class="stat">
       <span class="stat-number">7</span>
@@ -522,53 +535,51 @@ footer {
     </div>
   </div>
 
-  <p>Sasha teaches both tracks at Claude Camp: the non-technical founder track, where no prior coding knowledge is assumed, and the developer track, where the focus is on how Claude Code changes the way experienced engineers actually work. The common thread in both is getting something built and deployed before you leave.</p>
-
   <hr class="divider">
 
   <h2>Ying — the reason the place works</h2>
-  <p>Ying Goldsmith grew up in northern Thailand and has cooked Thai food her entire life. At Claude Camp she cooks all meals from produce grown on the farm — the kitchen produces more than the household needs, so guests eat what's in season, picked that day. Her food is the reason people stop talking about their apps at dinner.</p>
-  <p>Beyond cooking, Ying runs everything that keeps a retreat functioning: the bungalows, the schedule, the details that make a place feel easy to be in rather than effortful. Claude Camp has a high focus-to-friction ratio because of her.</p>
+  <p>Ying Goldsmith grew up in northern Thailand and has cooked Thai food her entire life. At Claude Camp she cooks all meals from produce grown on the farm — the kitchen produces more than the household needs, so guests eat what's in season, picked that morning. Her food is the reason people stop talking about their apps at dinner.</p>
+  <p>Beyond cooking, Ying runs everything that makes the retreat function: the bungalows, the schedule, the small details that make a place feel easy rather than effortful. Claude Camp has a high focus-to-friction ratio because of her.</p>
 
   <hr class="divider">
 
   <h2>The place</h2>
-  <p>The farm sits on the outskirts of Pai, in Mae Hong Son province — <strong>Pai Canyon is directly across the road</strong>. The bungalows are open-air with no walls, built for the views and the climate. There are three standard bungalows and one penthouse bungalow, all with mountain sightlines.</p>
+  <p>The farm sits on the outskirts of Pai in Mae Hong Son province. <strong>Pai Canyon is directly across the road.</strong> The bungalows are open-air with no walls — built for the mountain views and the climate. Three standard bungalows and one penthouse bungalow, all with sightlines over the valley.</p>
 
   <div class="place-grid">
     <div class="place-item">
       <div class="place-item-label">Accommodation</div>
-      <div class="place-item-value">3 open-air bungalows + 1 penthouse — no walls, mountain &amp; canyon views</div>
+      <div class="place-item-value">3 open-air bungalows + 1 penthouse — no walls, mountain &amp; Pai Canyon views</div>
     </div>
     <div class="place-item">
       <div class="place-item-label">Food</div>
-      <div class="place-item-value">All meals included — Thai cooking, fresh farm vegetables, grown on-site</div>
+      <div class="place-item-value">All meals included — Thai cooking by Ying, fresh vegetables grown on the farm</div>
     </div>
     <div class="place-item">
       <div class="place-item-label">Hot springs</div>
-      <div class="place-item-value">Natural hot springs across the street, open until midnight</div>
+      <div class="place-item-value">Natural hot springs directly across the street, open until midnight</div>
     </div>
     <div class="place-item">
       <div class="place-item-label">Getting around</div>
-      <div class="place-item-value">Extra scooters available — Pai town is a short ride away</div>
+      <div class="place-item-value">Extra scooters on-site — Pai town is a short ride, easy to explore between sessions</div>
     </div>
     <div class="place-item">
       <div class="place-item-label">Bar</div>
       <div class="place-item-value">Full bar on-site. Drinks included in your stay</div>
     </div>
     <div class="place-item">
-      <div class="place-item-label">Location</div>
-      <div class="place-item-value">Outskirts of Pai — quiet enough to work, close enough to explore</div>
+      <div class="place-item-label">Environment</div>
+      <div class="place-item-value">Jungle sounds, no city noise, organic farm — the conditions that made the 9-day build possible</div>
     </div>
   </div>
 
-  <p>The setup is deliberate. Good food, a comfortable place to sleep, the ability to get somewhere when you need a change of scene — these things matter when you're asking people to work hard for a week. The hot springs across the road help too.</p>
+  <p>The setting is the point. When there's nothing pulling you away — no commute, no errands, no city rhythm — a week of focused building becomes genuinely possible. The hot springs across the road help you decompress. The food keeps you going. The views remind you where you are.</p>
 
   <hr class="divider">
 
   <h2>Why 7 people</h2>
-  <p>Each cohort is capped at 7 participants. That's not a marketing constraint — it's the number where Sasha can give everyone enough attention without the dynamic becoming a classroom. Small enough that people actually talk to each other. Large enough that you're not working in isolation.</p>
-  <p>Separate tracks for non-technical founders and experienced developers means the pace is right for the person in front of you, not some average of the group. By the end of the week, both groups ship something. The projects are different; the outcome is the same.</p>
+  <p>Each cohort is capped at 7 participants. That's the number where everyone gets real attention without it becoming a classroom. Small enough that people actually talk to each other and share what's working. Large enough that the energy of a group is real.</p>
+  <p>Separate tracks for non-technical founders and experienced developers mean the pace fits the person, not some average of the group. By the end of the week, both groups ship something. The projects are different — the outcome is the same.</p>
 
   <!-- RELATED ARTICLES -->
   <nav class="related-articles" aria-label="Related guides">
@@ -585,7 +596,7 @@ footer {
   <div class="cta-block">
     <p class="cta-block-eyebrow">Claude Camp · Cohort 01 · Pai, Thailand</p>
     <h2>Seven spots. One week. One working app.</h2>
-    <p>All-inclusive: accommodation in an open-air bungalow, all meals from the farm, full bar, hot springs across the street. You bring the idea — you leave with something deployed.</p>
+    <p>All-inclusive: open-air bungalow, all meals from the farm, full bar, hot springs across the street. You bring the idea — you leave with something deployed.</p>
     <a href="/" class="btn-amber">See dates &amp; apply →</a>
   </div>
 
