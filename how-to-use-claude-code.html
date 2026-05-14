@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Use Claude Code — A Practical Step-by-Step Guide</title>
+<meta name="description" content="A practical guide to using Claude Code: installation, your first task, CLAUDE.md setup, and the workflows that experienced builders use every day.">
+<link rel="canonical" href="https://claudecamp.org/how-to-use-claude-code.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Use Claude Code — A Practical Step-by-Step Guide">
+<meta property="og:description" content="Installation, first tasks, CLAUDE.md setup, and the workflows that experienced Claude Code builders use every day.">
+<meta property="og:url" content="https://claudecamp.org/how-to-use-claude-code.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Use Claude Code — Step-by-Step Guide">
+<meta name="twitter:description" content="Installation, first tasks, CLAUDE.md, and the workflows experienced builders use with Claude Code.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<!-- JSON-LD: Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/how-to-use-claude-code.html#article",
+  "headline": "How to Use Claude Code — A Practical Step-by-Step Guide",
+  "description": "A practical guide to using Claude Code: installation, your first task, CLAUDE.md setup, and the workflows experienced builders use every day.",
+  "url": "https://claudecamp.org/how-to-use-claude-code.html",
+  "datePublished": "2026-05-14",
+  "dateModified": "2026-05-14",
+  "author": {
+    "@type": "Organization",
+    "name": "Claude Camp",
+    "url": "https://claudecamp.org"
+  },
+  "publisher": {
+    "@id": "https://claudecamp.org/#organization"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Claude Code",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "macOS, Windows, Linux",
+    "creator": {
+      "@type": "Organization",
+      "name": "Anthropic",
+      "url": "https://anthropic.com"
+    }
+  }
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I install Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Install Claude Code with npm: run 'npm install -g @anthropic-ai/claude-code' in your terminal. You need Node.js 18 or later and a Claude Pro subscription ($20/month) or an Anthropic API key. After installation, run 'claude' inside any project directory to start a session."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a CLAUDE.md file and should I use one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CLAUDE.md is a plain-text context file you place in your project root. Claude Code reads it automatically at the start of every session. It should contain your tech stack, coding conventions, what files not to touch, and any project-specific rules. A good CLAUDE.md file eliminates repeated re-explanation and dramatically improves the quality of Claude Code's output on larger projects."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I give Claude Code good instructions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Effective Claude Code prompts are specific about scope and outcome. Instead of 'build a login system', say 'add email/password login using NextAuth, store sessions in Postgres, redirect to /dashboard on success, and add a /logout route that clears the session'. Include what success looks like and any constraints upfront. The more context you give, the less back-and-forth you need."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use Claude Code on an existing codebase?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Claude Code is designed to work with existing projects. It reads your file structure, imports, and recent git history to understand your codebase before making changes. Running it inside a git repository is strongly recommended so you can review diffs and roll back any change that isn't right."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I stop Claude Code mid-task?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Press Escape to interrupt Claude Code at any point. It will stop the current action and return to the prompt. If it has already made file changes you want to undo, you can use 'git checkout .' to revert all uncommitted changes, or 'git diff' to review what changed before deciding."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do when Claude Code makes a mistake?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "First, check the diff with 'git diff' to understand exactly what changed. If the change is wrong, revert with 'git checkout .' and give Claude Code a more specific instruction. If the change is partially right, you can describe what's still wrong and ask it to continue from there. Committing after each working task gives you clean rollback points throughout a session."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to learn Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most people find a working rhythm within 2 to 4 days of regular use. The first few sessions feel slow while you learn how to frame tasks, review diffs, and break goals into sequential steps. By the end of the first week, the bottleneck shifts from 'how do I use this tool' to 'what should I build next'. Claude Camp is designed to compress this learning into a single structured week."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Claude Camp",
+      "item": "https://claudecamp.org/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "How to Use Claude Code",
+      "item": "https://claudecamp.org/how-to-use-claude-code.html"
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --jungle-deep:  #060d04;
+  --jungle-mid:   #0a1208;
+  --canopy:       #0f1e0b;
+  --amber:        #f59e0b;
+  --amber-glow:   #fbbf24;
+  --amber-dim:    #92610a;
+  --text:         #f8fafc;
+  --text-muted:   rgba(248,250,252,0.55);
+  --text-faint:   rgba(248,250,252,0.25);
+  --ease-cinema:  cubic-bezier(0.76, 0, 0.24, 1);
+  --col:          680px;
+}
+
+html, body {
+  width: 100%;
+  background: var(--jungle-deep);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(6,13,4,0.85);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid rgba(245,158,11,0.1);
+  padding: 0 clamp(1.5rem, 6vw, 6rem);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-wordmark {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-wordmark:hover { color: var(--amber); }
+
+.nav-cta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-decoration: none;
+  border: 1px solid rgba(245,158,11,0.35);
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  transition: background 0.3s, border-color 0.3s;
+}
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+
+.breadcrumb {
+  max-width: var(--col);
+  margin: 2.5rem auto 0;
+  padding: 0 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+
+.hero {
+  max-width: var(--col);
+  margin: 2.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.hero-lede {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.75;
+  color: var(--text-muted);
+  border-left: 2px solid rgba(245,158,11,0.3);
+  padding-left: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+article {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+}
+
+article h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  line-height: 1.2;
+  color: var(--text);
+  margin: 3.5rem 0 1rem;
+}
+
+article h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  color: var(--text-muted);
+  margin: 2rem 0 0.75rem;
+}
+
+article p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+article ul, article ol {
+  margin: 0.5rem 0 1.5rem 0;
+  padding-left: 1.25rem;
+}
+
+article li {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+article strong { color: var(--text); font-weight: 400; }
+
+article code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82em;
+  color: var(--amber-glow);
+  background: rgba(245,158,11,0.08);
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+}
+
+.code-block {
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(245,158,11,0.12);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0 1.75rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--amber-glow);
+  background: none;
+  padding: 0;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(245,158,11,0.08);
+  margin: 3rem 0;
+}
+
+.step-list {
+  counter-reset: steps;
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0 2rem;
+}
+
+.step-list li {
+  counter-increment: steps;
+  padding-left: 2.75rem;
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+
+.step-list li::before {
+  content: counter(steps);
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--amber);
+  background: rgba(245,158,11,0.08);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 2px;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tip-box {
+  background: rgba(245,158,11,0.04);
+  border-left: 3px solid rgba(245,158,11,0.4);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.tip-box p {
+  margin-bottom: 0;
+  font-size: clamp(0.88rem, 1.2vw, 0.96rem);
+}
+
+.tip-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.faq-section { margin-top: 4rem; }
+
+.faq-section h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+
+.faq-item { margin-bottom: 2rem; }
+
+.faq-item h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  color: var(--text);
+  margin-bottom: 0.6rem;
+}
+
+.faq-item p {
+  margin-bottom: 0;
+}
+
+.cta-block {
+  margin: 4rem 0 0;
+  padding: 2.5rem 2rem;
+  background: rgba(245,158,11,0.04);
+  border: 1px solid rgba(245,158,11,0.15);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.cta-block-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+  margin-bottom: 1rem;
+}
+
+.cta-block h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0 0 1rem;
+}
+
+.cta-block p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  color: var(--text-muted);
+  max-width: 440px;
+  margin: 0 auto 1.75rem;
+}
+
+.btn-amber {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--jungle-deep);
+  background: var(--amber);
+  padding: 0.9rem 2rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.3s var(--ease-cinema);
+}
+.btn-amber:hover { background: var(--amber-glow); }
+
+footer {
+  background: #030704;
+  border-top: 1px solid rgba(245,158,11,0.08);
+  padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 6rem);
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-wordmark {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(248,250,252,0.2);
+  line-height: 2;
+  text-align: right;
+}
+
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-meta { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">How to Use Claude Code</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Anthropic · Claude Code Guide</p>
+  <h1>How to Use Claude Code</h1>
+  <p class="hero-lede">Claude Code is Anthropic's agentic coding tool — it runs in your terminal, reads your codebase, and ships code autonomously. This guide covers installation, your first session, and the workflows that experienced builders use to move fast.</p>
+</div>
+
+<article>
+
+  <h2>Step 1 — Install Claude Code</h2>
+  <p>Claude Code installs as a global npm package. You need <strong>Node.js 18 or later</strong> on your machine. Run this in your terminal:</p>
+  <div class="code-block"><code>npm install -g @anthropic-ai/claude-code</code></div>
+  <p>Once installed, verify it worked:</p>
+  <div class="code-block"><code>claude --version</code></div>
+  <p>You also need a <strong>Claude Pro subscription</strong> ($20/month from Anthropic) or an Anthropic API key. On first run, Claude Code will prompt you to authenticate with your Anthropic account.</p>
+
+  <div class="tip-box">
+    <span class="tip-label">Note</span>
+    <p>If you're on a team or building something serious, the Anthropic API with per-token pricing removes the rate limits that come with a Pro subscription. For individual learners, Pro is the right starting point.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Step 2 — Start your first session</h2>
+  <p>Navigate to any project directory and run:</p>
+  <div class="code-block"><code>claude</code></div>
+  <p>Claude Code opens an interactive session in your terminal. You're now talking directly to Claude with full access to your project files, shell, and git history.</p>
+  <p>For your first task, start small and specific. Something like:</p>
+  <div class="code-block"><code>Add a /health endpoint to this Express app that returns {"status": "ok"} and a 200 status code.</code></div>
+  <p>Claude Code will read your project structure, find the right file, make the change, and show you the diff before confirming. Review it, press Enter to accept, and you're done.</p>
+
+  <hr class="divider">
+
+  <h2>Step 3 — Set up a CLAUDE.md file</h2>
+  <p>The single biggest improvement you can make to your Claude Code workflow is a <code>CLAUDE.md</code> file in your project root. Claude Code reads this automatically at the start of every session — think of it as a briefing document.</p>
+  <p>A good <code>CLAUDE.md</code> covers:</p>
+  <ul>
+    <li><strong>Tech stack</strong> — language, framework, database, deployment target</li>
+    <li><strong>Conventions</strong> — naming patterns, folder structure, code style</li>
+    <li><strong>What not to touch</strong> — files or areas that are off-limits</li>
+    <li><strong>How to run the project</strong> — build command, test command, dev server</li>
+    <li><strong>Current focus</strong> — what you're building right now (update this often)</li>
+  </ul>
+  <p>Example:</p>
+  <div class="code-block"><code># Project: Booking system
+Stack: Next.js 14, TypeScript, Supabase (Postgres), Tailwind
+Tests: vitest, run with `npm test`
+Do not modify: /legacy/* — kept for reference only
+Current task: adding stripe payment flow to /checkout</code></div>
+  <p>A <code>CLAUDE.md</code> file eliminates the need to re-explain your project at the start of every session. On a larger codebase, it's the difference between Claude Code making sensible decisions and making generic ones.</p>
+
+  <hr class="divider">
+
+  <h2>Step 4 — Learn to frame tasks well</h2>
+  <p>The quality of Claude Code's output is directly proportional to the quality of your instructions. This is the skill that separates fast builders from frustrated ones.</p>
+
+  <h3>Vague vs specific</h3>
+  <p><strong>Vague:</strong> "Add authentication"<br>
+  <strong>Specific:</strong> "Add email/password sign-in using NextAuth v5. Store sessions in the existing Postgres database using the users table. On success, redirect to /dashboard. Add a /logout route that clears the session and redirects to /."</p>
+  <p>The specific version tells Claude Code the library, the data layer, the success state, and the edge case. It will produce a better result in fewer iterations.</p>
+
+  <h3>Break large goals into sequential tasks</h3>
+  <p>"Build the whole app" produces worse output than a series of focused sessions. A reliable pattern:</p>
+  <ol>
+    <li>Data model first — schema, migrations, types</li>
+    <li>Backend / API layer — routes, queries, validation</li>
+    <li>UI — components, forms, error states</li>
+    <li>Integration — wire the UI to the API, test the full flow</li>
+    <li>Edge cases — empty states, error handling, loading states</li>
+  </ol>
+  <p>Committing at the end of each step gives you clean rollback points and keeps each task small enough for Claude Code to reason about clearly.</p>
+
+  <hr class="divider">
+
+  <h2>Step 5 — Review every diff</h2>
+  <p>Claude Code shows you exactly what it changed before applying. Get into the habit of reading every diff, every time. This one habit catches the vast majority of errors before they compound into something harder to fix.</p>
+  <p>If something looks wrong, press <strong>Escape</strong> to interrupt, revert with <code>git checkout .</code>, and give a more specific instruction. If the change is partially right, describe what's still wrong and let Claude Code continue from that point.</p>
+
+  <div class="tip-box">
+    <span class="tip-label">Workflow tip</span>
+    <p>Run <code>git diff</code> after each accepted change. A diff that spans 10 files is a sign the task scope was too broad — break it down next time.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>Useful Claude Code commands</h2>
+  <p>Beyond just typing tasks, Claude Code has a few built-in commands worth knowing:</p>
+  <ul>
+    <li><code>/help</code> — list all available slash commands</li>
+    <li><code>/clear</code> — clear the conversation context (useful when starting a new task)</li>
+    <li><code>/compact</code> — compress the conversation to free up context space without losing key information</li>
+    <li><code>/memory</code> — view and edit your persistent memory across sessions</li>
+    <li><code>Escape</code> — interrupt the current task at any point</li>
+    <li><code>Escape Escape</code> — exit Claude Code entirely</li>
+  </ul>
+
+  <hr class="divider">
+
+  <h2>Common mistakes and how to avoid them</h2>
+  <ul>
+    <li><strong>Working outside git.</strong> Always initialise a git repo before starting. It's your undo button. Claude Code without git is Claude Code without a safety net.</li>
+    <li><strong>Too-large tasks.</strong> If a task touches more than 5–6 files, it's usually too big. Break it down.</li>
+    <li><strong>Skipping the diff review.</strong> The one time you skip it is the one time something subtle breaks.</li>
+    <li><strong>No CLAUDE.md on a bigger project.</strong> Without context, Claude Code makes generic decisions. A five-minute setup file pays back in every subsequent session.</li>
+    <li><strong>Ignoring test failures.</strong> If Claude Code runs your tests and they fail, fix it before continuing. Building on a broken foundation compounds quickly.</li>
+  </ul>
+
+  <hr class="divider">
+
+  <!-- FAQ -->
+  <section class="faq-section" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <h3>How do I install Claude Code?</h3>
+      <p>Install Claude Code with npm: run <code>npm install -g @anthropic-ai/claude-code</code> in your terminal. You need Node.js 18 or later and a Claude Pro subscription or Anthropic API key. After installation, run <code>claude</code> inside any project directory to start a session.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is a CLAUDE.md file and should I use one?</h3>
+      <p>CLAUDE.md is a plain-text context file you place in your project root. Claude Code reads it automatically at the start of every session. It should contain your tech stack, coding conventions, what files not to touch, and any project-specific rules. A good CLAUDE.md file eliminates repeated re-explanation and dramatically improves output quality on larger projects.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I stop Claude Code mid-task?</h3>
+      <p>Press <strong>Escape</strong> to interrupt Claude Code at any point. It will stop the current action and return to the prompt. If it has already made changes you want to undo, run <code>git checkout .</code> to revert all uncommitted changes.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I use Claude Code on an existing codebase?</h3>
+      <p>Yes. Claude Code is designed to work with existing projects. It reads your file structure, imports, and recent git history to understand the codebase before making changes. Running it inside a git repository is strongly recommended.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How long does it take to learn Claude Code?</h3>
+      <p>Most people find a working rhythm within 2 to 4 days of regular use. The first few sessions feel slow while you develop the task-framing skill. By the end of the first week, the bottleneck shifts from tool proficiency to product decisions. Claude Camp is designed to compress this learning into a single structured week in Pai, Thailand.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>Master Claude Code in 7 days</h2>
+    <p>Claude Camp is a residential retreat in northern Thailand where you build and ship a real app using Claude Code, with other founders and developers, in one focused week.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

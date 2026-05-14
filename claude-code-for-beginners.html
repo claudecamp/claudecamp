@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code for Beginners — Build Your First App With No Coding Experience</title>
+<meta name="description" content="Claude Code for beginners: how to build a real app with no prior coding experience, what to expect, and the mindset that separates people who ship from people who stall.">
+<link rel="canonical" href="https://claudecamp.org/claude-code-for-beginners.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code for Beginners — Build Your First App With No Coding Experience">
+<meta property="og:description" content="How to build a real app with Claude Code and no coding background. What to expect, what to prepare, and how to ship in your first week.">
+<meta property="og:url" content="https://claudecamp.org/claude-code-for-beginners.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code for Beginners — No Coding Experience Needed">
+<meta name="twitter:description" content="How to build a real app with Claude Code, no coding background required. What to expect and how to ship in your first week.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<!-- JSON-LD: Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/claude-code-for-beginners.html#article",
+  "headline": "Claude Code for Beginners — Build Your First App With No Coding Experience",
+  "description": "How to build a real app with Claude Code and no coding background. What to expect, what to prepare, and how to ship in your first week.",
+  "url": "https://claudecamp.org/claude-code-for-beginners.html",
+  "datePublished": "2026-05-14",
+  "dateModified": "2026-05-14",
+  "author": {
+    "@type": "Organization",
+    "name": "Claude Camp",
+    "url": "https://claudecamp.org"
+  },
+  "publisher": {
+    "@id": "https://claudecamp.org/#organization"
+  }
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can a complete beginner use Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Claude Code handles the code — you provide the idea, the direction, and the decisions about what to build. Non-technical founders, product managers, and first-time builders regularly use it to ship working apps. You do not need to understand how the code works to use Claude Code effectively, though being able to read output critically helps you catch mistakes early."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I need before I start using Claude Code as a beginner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three things: a clear idea of what you want to build, Node.js installed on your computer, and a Claude Pro subscription ($20/month). Beyond that, the most important preparation is writing a one-page description of what your app should do — the clearer your idea, the better Claude Code performs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take a beginner to build their first app with Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A motivated beginner with a clear idea can have a working web app within one to three days. The bottleneck is almost never the code — it's deciding what to build, how features should work, and what to cut. Claude Code removes the implementation barrier; product clarity is the remaining variable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of apps can beginners build with Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beginners regularly build landing pages with email capture, simple SaaS tools with user accounts and Stripe payments, booking systems, internal dashboards, portfolio sites, and automation scripts. The constraint is usually product complexity (how many moving parts), not technical skill."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the hardest part of learning Claude Code as a beginner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The hardest part for beginners is learning to write specific, well-scoped task descriptions. Claude Code is powerful but not psychic — vague instructions produce mediocre results. The skill of breaking a goal into clear, sequential steps is what separates people who ship from people who spin. This skill takes a few days of practice to develop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to understand the code Claude Code writes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not to use it, but it helps. Claude Code will explain anything it wrote if you ask. As a beginner, a useful habit is asking Claude Code to explain changes you don't understand — not because you need to memorise them, but because understanding what your app does helps you give better instructions in the next task."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Claude Camp",
+      "item": "https://claudecamp.org/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Claude Code for Beginners",
+      "item": "https://claudecamp.org/claude-code-for-beginners.html"
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --jungle-deep:  #060d04;
+  --jungle-mid:   #0a1208;
+  --amber:        #f59e0b;
+  --amber-glow:   #fbbf24;
+  --amber-dim:    #92610a;
+  --text:         #f8fafc;
+  --text-muted:   rgba(248,250,252,0.55);
+  --text-faint:   rgba(248,250,252,0.25);
+  --ease-cinema:  cubic-bezier(0.76, 0, 0.24, 1);
+  --col:          680px;
+}
+
+html, body {
+  width: 100%;
+  background: var(--jungle-deep);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(6,13,4,0.85);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid rgba(245,158,11,0.1);
+  padding: 0 clamp(1.5rem, 6vw, 6rem);
+}
+.nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-wordmark { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
+.nav-wordmark:hover { color: var(--amber); }
+.nav-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s, border-color 0.3s; }
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+
+.breadcrumb { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+
+.hero { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; }
+.hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.5rem; }
+.hero-lede { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.75; color: var(--text-muted); border-left: 2px solid rgba(245,158,11,0.3); padding-left: 1.25rem; margin-bottom: 3rem; }
+
+article { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 6rem; }
+article h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.5rem, 2.8vw, 2rem); line-height: 1.2; color: var(--text); margin: 3.5rem 0 1rem; }
+article h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-style: italic; font-size: clamp(1.1rem, 1.8vw, 1.3rem); color: var(--text-muted); margin: 2rem 0 0.75rem; }
+article p { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.95rem, 1.4vw, 1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem; }
+article ul, article ol { margin: 0.5rem 0 1.5rem 0; padding-left: 1.25rem; }
+article li { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.95rem, 1.4vw, 1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 0.4rem; }
+article strong { color: var(--text); font-weight: 400; }
+article code { font-family: 'JetBrains Mono', monospace; font-size: 0.82em; color: var(--amber-glow); background: rgba(245,158,11,0.08); padding: 0.15em 0.4em; border-radius: 2px; }
+
+.divider { border: none; border-top: 1px solid rgba(245,158,11,0.08); margin: 3rem 0; }
+
+.tip-box { background: rgba(245,158,11,0.04); border-left: 3px solid rgba(245,158,11,0.4); padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+.tip-box p { margin-bottom: 0; font-size: clamp(0.88rem, 1.2vw, 0.96rem); }
+.tip-label { font-family: 'JetBrains Mono', monospace; font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 0.4rem; }
+
+.reality-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0 2rem; }
+.reality-card { padding: 1.25rem; border-radius: 4px; }
+.reality-card.myth { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
+.reality-card.truth { background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); }
+.reality-card-label { font-family: 'JetBrains Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.reality-card.myth .reality-card-label { color: rgba(248,250,252,0.25); }
+.reality-card.truth .reality-card-label { color: var(--amber); }
+.reality-card p { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.9rem; line-height: 1.65; color: var(--text-muted); margin: 0; }
+@media (max-width: 600px) { .reality-grid { grid-template-columns: 1fr; } }
+
+.faq-section { margin-top: 4rem; }
+.faq-section h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.5rem, 2.8vw, 2rem); color: var(--text); margin-bottom: 2rem; }
+.faq-item { margin-bottom: 2rem; }
+.faq-item h3 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-style: normal; font-size: clamp(0.95rem, 1.4vw, 1.05rem); color: var(--text); margin-bottom: 0.6rem; }
+.faq-item p { margin-bottom: 0; }
+
+.cta-block { margin: 4rem 0 0; padding: 2.5rem 2rem; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); border-radius: 4px; text-align: center; }
+.cta-block-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.cta-block h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2; color: var(--text); margin: 0 0 1rem; }
+.cta-block p { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.9rem, 1.3vw, 1rem); color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; }
+.btn-amber { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
+.btn-amber:hover { background: var(--amber-glow); }
+
+footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 6rem); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-wordmark { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+.footer-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,250,252,0.2); line-height: 2; text-align: right; }
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">Claude Code for Beginners</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Anthropic · Claude Code for Beginners</p>
+  <h1>Claude Code for Beginners</h1>
+  <p class="hero-lede">No coding background. No developer queue. Just you, an idea, and an AI agent that writes and ships the code. This page is for people who want to build something real with Claude Code — and have never written a line of code in their life.</p>
+</div>
+
+<article>
+
+  <h2>The honest answer: can a beginner actually do this?</h2>
+  <p>Yes — with one important condition. Claude Code removes the coding barrier, but it does not remove the need for a clear idea of what you want to build. If you can describe your app the way you'd describe it to a developer you'd hired — what it should do, who it's for, what happens when a user clicks each button — Claude Code can build it.</p>
+  <p>What it cannot do is make product decisions for you. If you're unclear on what you want, no amount of AI capability closes that gap. The good news: getting clarity on what to build is much more accessible than learning to code.</p>
+
+  <hr class="divider">
+
+  <h2>What you need to get started</h2>
+  <p>Three things, in order of importance:</p>
+  <ol>
+    <li><strong>A clear idea.</strong> Write a one-page description of what your app does, who uses it, and what the core workflow is. This is the most important preparation you can do — it shapes everything downstream.</li>
+    <li><strong>Node.js installed</strong> on your computer (free, takes 5 minutes). Claude Code installs via npm.</li>
+    <li><strong>A Claude Pro subscription</strong> ($20/month from Anthropic). This is the model that powers Claude Code.</li>
+  </ol>
+  <p>You do not need: a computer science degree, prior coding experience, a technical co-founder, or any development environment beyond a terminal window.</p>
+
+  <hr class="divider">
+
+  <h2>What beginners actually build</h2>
+  <p>Here are the kinds of projects that first-time Claude Code users regularly ship:</p>
+  <ul>
+    <li><strong>Landing pages with waitlist or payment</strong> — a marketing page connected to Stripe or a mailing list, live within a few hours</li>
+    <li><strong>Simple SaaS tools</strong> — user accounts, a core workflow, a dashboard, Stripe subscription billing</li>
+    <li><strong>Booking systems</strong> — calendar-based availability, reservation forms, email confirmations</li>
+    <li><strong>Internal business tools</strong> — inventory trackers, CRM-lite systems, ops dashboards for a specific workflow</li>
+    <li><strong>Portfolio sites</strong> — personal sites, project showcases, blog-style content sites</li>
+    <li><strong>Automation scripts</strong> — tools that connect APIs, process spreadsheet data, send scheduled notifications</li>
+  </ul>
+  <p>The pattern: these are all apps that previously required hiring a developer or spending months learning to code. For many of them, Claude Code compresses the build time to days.</p>
+
+  <hr class="divider">
+
+  <h2>Common beginner myths — vs what's actually true</h2>
+  <div class="reality-grid">
+    <div class="reality-card myth">
+      <div class="reality-card-label">Myth</div>
+      <p>You need to understand the code Claude Code writes to use it effectively.</p>
+    </div>
+    <div class="reality-card truth">
+      <div class="reality-card-label">Reality</div>
+      <p>You need to understand what your app should do. Claude Code handles the code. Asking it to explain anything you're unsure about is always an option.</p>
+    </div>
+    <div class="reality-card myth">
+      <div class="reality-card-label">Myth</div>
+      <p>If something breaks, you're stuck.</p>
+    </div>
+    <div class="reality-card truth">
+      <div class="reality-card-label">Reality</div>
+      <p>Describe what broke to Claude Code and it will fix it. Error messages are just more instructions. Copy-paste the error and ask what to do.</p>
+    </div>
+    <div class="reality-card myth">
+      <div class="reality-card-label">Myth</div>
+      <p>You need to plan the whole app before starting.</p>
+    </div>
+    <div class="reality-card truth">
+      <div class="reality-card-label">Reality</div>
+      <p>Start with the core workflow. Build the most important thing first, get it working, then add features. Iterating is faster and cleaner than over-planning upfront.</p>
+    </div>
+    <div class="reality-card myth">
+      <div class="reality-card-label">Myth</div>
+      <p>Claude Code will do everything if you just describe the whole app.</p>
+    </div>
+    <div class="reality-card truth">
+      <div class="reality-card-label">Reality</div>
+      <p>Claude Code works best on focused, sequential tasks. Break your idea into steps: data model → backend → UI → integration. Each step builds on the last.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2>The beginner workflow that actually works</h2>
+  <p>After working with first-time builders, a clear pattern emerges for what helps people ship versus what causes them to stall:</p>
+
+  <h3>Write before you build</h3>
+  <p>Before opening your terminal, write a one-page spec. Describe the app: what it does, who logs in, what the main screen shows, what happens when the user clicks the primary button. The more concrete this document, the better Claude Code performs. It's not a formal specification — a few paragraphs is enough.</p>
+
+  <h3>Start with a working skeleton</h3>
+  <p>Ask Claude Code to scaffold the project first: "Create a Next.js app with Tailwind CSS and a Postgres database connected via Prisma. Set up the folder structure, install dependencies, and create a homepage that displays 'Hello World'." Get it running locally before adding any features. A working foundation is worth more than a half-built ambitious one.</p>
+
+  <h3>One feature at a time</h3>
+  <p>Add features sequentially. Finish one thing before starting the next. Commit after each working feature. This keeps the codebase clean, gives you rollback points, and keeps Claude Code's context focused on the specific task at hand.</p>
+
+  <h3>When it breaks, describe what you see</h3>
+  <p>Error messages are not dead ends — they're instructions. When something breaks, paste the error message into Claude Code and describe what you expected to happen. It will diagnose and fix the issue in the same session.</p>
+
+  <div class="tip-box">
+    <span class="tip-label">Beginner tip</span>
+    <p>The fastest way to learn Claude Code is to build something you actually want to exist. Motivation keeps you going through the learning curve. A toy project built out of boredom usually stops at the first friction point.</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>What the learning curve actually looks like</h2>
+  <p><strong>Day 1:</strong> Installation, first session, first working feature. Probably feels slow and uncertain. You're learning the rhythm of give-instruction → review-diff → accept-or-correct.</p>
+  <p><strong>Day 2–3:</strong> You start to develop a sense for how specific to be. You notice when a task is too big and break it down before giving it. You're reviewing diffs faster.</p>
+  <p><strong>Day 4–5:</strong> The tool starts feeling natural. You're spending more time thinking about what to build next than how to instruct Claude Code. The bottleneck is product clarity, not tool proficiency.</p>
+  <p><strong>End of week 1:</strong> Most people have something working they're genuinely proud of. The question shifts from "can I build this?" to "what should I build next?"</p>
+  <p>This is the arc that Claude Camp is built around: compress that week into a structured, supported environment, surrounded by other first-time builders, in a place where the only distractions are good ones.</p>
+
+  <hr class="divider">
+
+  <section class="faq-section" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <h3>Can a complete beginner use Claude Code?</h3>
+      <p>Yes. Claude Code handles the code — you provide the idea, the direction, and the decisions about what to build. Non-technical founders and first-time builders regularly use it to ship working apps without writing a single line of code themselves.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What do I need before I start?</h3>
+      <p>A clear idea of what you want to build, Node.js installed on your computer, and a Claude Pro subscription ($20/month). The most important preparation is writing a brief description of what your app should do — the clearer your idea, the better Claude Code performs.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How long does it take to build a first app?</h3>
+      <p>A motivated beginner with a clear idea can have a working web app within one to three days. The bottleneck is almost never the code — it's deciding what to build and how features should work. Claude Code removes the implementation barrier; product clarity is the remaining variable.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the hardest part for beginners?</h3>
+      <p>Learning to write specific, well-scoped task descriptions. Vague instructions produce mediocre results. The skill of breaking a goal into clear, sequential steps is what separates people who ship from people who stall — and it takes a few days of practice to develop.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Do I need to understand the code it writes?</h3>
+      <p>Not to use it, but it helps. Claude Code will explain anything it wrote if you ask. A useful habit is asking for explanations of changes you don't understand — not to memorise them, but because understanding what your app does helps you give better instructions in the next task.</p>
+    </div>
+  </section>
+
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>Ship your first app in 7 days</h2>
+    <p>Claude Camp is a residential retreat for first-time builders and founders. You arrive with an idea, and leave with something working — guided by structured sessions, surrounded by other people doing the same thing, in northern Thailand.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

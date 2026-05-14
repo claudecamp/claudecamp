@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code vs Cursor — Which AI Coding Tool Is Right for You?</title>
+<meta name="description" content="Claude Code vs Cursor: a direct comparison of features, workflow, pricing, and the kind of builder each tool is built for. Which one should you use?">
+<link rel="canonical" href="https://claudecamp.org/claude-code-vs-cursor.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code vs Cursor — Which AI Coding Tool Is Right for You?">
+<meta property="og:description" content="Direct comparison of Claude Code and Cursor: features, workflow, pricing, and which tool suits which kind of builder.">
+<meta property="og:url" content="https://claudecamp.org/claude-code-vs-cursor.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code vs Cursor — AI Coding Tool Comparison">
+<meta name="twitter:description" content="Features, workflow, pricing, and which tool suits which kind of developer. A direct comparison of Claude Code and Cursor.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<!-- JSON-LD: Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/claude-code-vs-cursor.html#article",
+  "headline": "Claude Code vs Cursor — Which AI Coding Tool Is Right for You?",
+  "description": "A direct comparison of Claude Code and Cursor: features, workflow, pricing, and the kind of builder each tool is built for.",
+  "url": "https://claudecamp.org/claude-code-vs-cursor.html",
+  "datePublished": "2026-05-14",
+  "dateModified": "2026-05-14",
+  "author": {
+    "@type": "Organization",
+    "name": "Claude Camp",
+    "url": "https://claudecamp.org"
+  },
+  "publisher": {
+    "@id": "https://claudecamp.org/#organization"
+  }
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between Claude Code and Cursor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code is a terminal-native agentic tool made by Anthropic — it runs commands, edits files across your whole codebase, and executes tasks autonomously without requiring a specific editor. Cursor is an AI-native IDE (code editor) built on VS Code that integrates AI assistance directly into the editing experience. Claude Code focuses on autonomous task execution; Cursor focuses on an enhanced editing workflow."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Claude Code better than Cursor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Neither is universally better — they suit different workflows. Claude Code is stronger for end-to-end autonomous tasks: you describe a feature and it implements it across multiple files, runs tests, and fixes errors without you staying in the loop. Cursor is stronger for developers who prefer to stay in an editor, review AI suggestions inline, and maintain tighter moment-to-moment control. Many experienced developers use both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use Claude Code inside Cursor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code runs in the terminal and does not require any specific editor. You can run it in Cursor's integrated terminal, and switch between Claude Code's autonomous mode and Cursor's inline editing as needed. The two tools are complementary rather than exclusive."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Cursor cost compared to Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cursor offers a free tier with limited usage and a Pro plan at $20/month. Claude Code requires a Claude Pro subscription at $20/month or Anthropic API access with per-token pricing. Both tools cost approximately the same at the personal subscription level, though heavy API usage with Claude Code can exceed the flat monthly fee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI coding tool is best for non-technical founders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code is generally more accessible for non-technical builders because it operates through plain-English instructions in a terminal rather than requiring familiarity with an IDE. You describe what you want in natural language, and Claude Code handles the implementation. Cursor assumes more editor familiarity and is better suited to developers who already have a workflow they want to augment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about Claude Code vs GitHub Copilot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GitHub Copilot is an autocomplete tool — it suggests code as you type, one line or block at a time, within your editor. Claude Code is an agent — it takes a task, plans across your whole codebase, executes multiple steps, and reports back when done. Copilot augments your typing; Claude Code replaces the typing entirely for well-defined tasks. They operate at fundamentally different levels of abstraction."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Claude Camp",
+      "item": "https://claudecamp.org/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Claude Code vs Cursor",
+      "item": "https://claudecamp.org/claude-code-vs-cursor.html"
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --jungle-deep:  #060d04;
+  --amber:        #f59e0b;
+  --amber-glow:   #fbbf24;
+  --amber-dim:    #92610a;
+  --text:         #f8fafc;
+  --text-muted:   rgba(248,250,252,0.55);
+  --text-faint:   rgba(248,250,252,0.25);
+  --ease-cinema:  cubic-bezier(0.76, 0, 0.24, 1);
+  --col:          720px;
+}
+
+html, body { width: 100%; background: var(--jungle-deep); color: var(--text); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+
+nav { position: sticky; top: 0; z-index: 90; background: rgba(6,13,4,0.85); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid rgba(245,158,11,0.1); padding: 0 clamp(1.5rem, 6vw, 6rem); }
+.nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-wordmark { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
+.nav-wordmark:hover { color: var(--amber); }
+.nav-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s, border-color 0.3s; }
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+
+.breadcrumb { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+
+.hero { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; }
+.hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.5rem; }
+.hero-lede { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.75; color: var(--text-muted); border-left: 2px solid rgba(245,158,11,0.3); padding-left: 1.25rem; margin-bottom: 3rem; }
+
+article { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 6rem; }
+article h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.5rem, 2.8vw, 2rem); line-height: 1.2; color: var(--text); margin: 3.5rem 0 1rem; }
+article h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-style: italic; font-size: clamp(1.1rem, 1.8vw, 1.3rem); color: var(--text-muted); margin: 2rem 0 0.75rem; }
+article p { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.95rem, 1.4vw, 1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem; }
+article ul, article ol { margin: 0.5rem 0 1.5rem 0; padding-left: 1.25rem; }
+article li { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.95rem, 1.4vw, 1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 0.4rem; }
+article strong { color: var(--text); font-weight: 400; }
+article code { font-family: 'JetBrains Mono', monospace; font-size: 0.82em; color: var(--amber-glow); background: rgba(245,158,11,0.08); padding: 0.15em 0.4em; border-radius: 2px; }
+
+.divider { border: none; border-top: 1px solid rgba(245,158,11,0.08); margin: 3rem 0; }
+
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-family: 'DM Sans', sans-serif; font-size: clamp(0.85rem, 1.2vw, 0.95rem); }
+.compare-table th { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.compare-table td { padding: 0.75rem 1rem; color: var(--text-muted); font-weight: 300; border-bottom: 1px solid rgba(248,250,252,0.04); vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { color: var(--text); font-weight: 400; width: 28%; }
+.compare-table .highlight-row td { background: rgba(245,158,11,0.03); }
+
+.verdict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0 2rem; }
+.verdict-card { padding: 1.5rem; border-radius: 4px; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.12); }
+.verdict-card-title { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.75rem; }
+.verdict-card p { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.9rem; line-height: 1.65; color: var(--text-muted); margin: 0; }
+@media (max-width: 600px) { .verdict-grid { grid-template-columns: 1fr; } }
+
+.faq-section { margin-top: 4rem; }
+.faq-section h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.5rem, 2.8vw, 2rem); color: var(--text); margin-bottom: 2rem; }
+.faq-item { margin-bottom: 2rem; }
+.faq-item h3 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-style: normal; font-size: clamp(0.95rem, 1.4vw, 1.05rem); color: var(--text); margin-bottom: 0.6rem; }
+.faq-item p { margin-bottom: 0; }
+
+.cta-block { margin: 4rem 0 0; padding: 2.5rem 2rem; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); border-radius: 4px; text-align: center; }
+.cta-block-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.cta-block h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2; color: var(--text); margin: 0 0 1rem; }
+.cta-block p { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.9rem, 1.3vw, 1rem); color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; }
+.btn-amber { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
+.btn-amber:hover { background: var(--amber-glow); }
+
+footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 6rem); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-wordmark { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+.footer-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,250,252,0.2); line-height: 2; text-align: right; }
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">Claude Code vs Cursor</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Anthropic · AI Coding Tool Comparison</p>
+  <h1>Claude Code vs Cursor</h1>
+  <p class="hero-lede">Two of the most widely used AI coding tools — but they work very differently. This comparison covers how each tool operates, what it's best at, pricing, and how to decide which one belongs in your workflow.</p>
+</div>
+
+<article>
+
+  <h2>The core difference</h2>
+  <p><strong>Claude Code</strong> is a terminal-native agent made by Anthropic. You run it in your terminal, describe a task in plain English, and it autonomously reads your codebase, writes files, runs commands, fixes errors, and reports back when done. It operates at the project level.</p>
+  <p><strong>Cursor</strong> is an AI-native code editor — a fork of VS Code with deep AI assistance built in. You write code in an editor as usual, and AI features (inline completions, chat, multi-file edits) are layered into the editing experience. It operates at the file and selection level.</p>
+  <p>The fundamental distinction: Claude Code thinks in tasks and executes them end-to-end. Cursor augments the act of writing code.</p>
+
+  <hr class="divider">
+
+  <h2>Feature comparison</h2>
+  <table class="compare-table" aria-label="Claude Code vs Cursor comparison">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Claude Code</th>
+        <th>Cursor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Interface</td>
+        <td>Terminal (also works inside VS Code / JetBrains terminals)</td>
+        <td>Desktop code editor (VS Code fork)</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Task execution</td>
+        <td>Fully autonomous — reads files, runs commands, edits multiple files, reruns tests</td>
+        <td>Assisted — AI suggests or applies edits; you control each step</td>
+      </tr>
+      <tr>
+        <td>Codebase awareness</td>
+        <td>Full project context — reads your entire repo before acting</td>
+        <td>Context window — you choose what files to include in each conversation</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Inline autocomplete</td>
+        <td>No</td>
+        <td>Yes — suggests code as you type</td>
+      </tr>
+      <tr>
+        <td>Model options</td>
+        <td>Claude (Anthropic) only</td>
+        <td>Multiple models: Claude, GPT-4o, Gemini, and others</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Shell / command execution</td>
+        <td>Yes — runs build tools, tests, installs packages</td>
+        <td>No — edits files only, does not run commands</td>
+      </tr>
+      <tr>
+        <td>Best for</td>
+        <td>End-to-end feature implementation, autonomous debugging, building from scratch</td>
+        <td>Active coding sessions with AI pair-programming, tight editorial control</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Pricing</td>
+        <td>Claude Pro $20/month or Anthropic API (pay-per-token)</td>
+        <td>Free tier available; Pro $20/month</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <h2>When to use Claude Code</h2>
+  <p>Claude Code is the right choice when you want to describe a feature and have it implemented end-to-end while you do something else. It excels at:</p>
+  <ul>
+    <li><strong>Greenfield builds</strong> — scaffolding a new project, setting up the stack, wiring up the database, building the first features</li>
+    <li><strong>Large refactors</strong> — changing a pattern across a whole codebase, renaming things consistently, extracting components</li>
+    <li><strong>Debugging loops</strong> — paste an error, describe the expected behaviour, let Claude Code find and fix the root cause</li>
+    <li><strong>Non-technical builders</strong> — people who want to build software but don't want to be in an editor, reviewing AI suggestions line-by-line</li>
+    <li><strong>Speed-focused developers</strong> — engineers who want to offload implementation work and stay focused on architecture and product decisions</li>
+  </ul>
+
+  <hr class="divider">
+
+  <h2>When to use Cursor</h2>
+  <p>Cursor is the right choice when you want to stay in an editor with AI assistance that augments — rather than replaces — your moment-to-moment coding:</p>
+  <ul>
+    <li><strong>Code you're actively authoring</strong> — when you want inline suggestions as you type, not a separate agent executing in the background</li>
+    <li><strong>Tight review loops</strong> — when you want to see and approve each AI change at the line level before it lands</li>
+    <li><strong>Multi-model flexibility</strong> — when you want to switch between Claude, GPT-4o, or Gemini depending on the task</li>
+    <li><strong>Developers who live in VS Code</strong> — if your muscle memory and workflow is editor-centric, Cursor is a drop-in upgrade</li>
+  </ul>
+
+  <hr class="divider">
+
+  <h2>Can you use both?</h2>
+  <p>Yes — and many experienced developers do. A common pattern:</p>
+  <ul>
+    <li>Use Claude Code for large, defined tasks: "implement the checkout flow", "add Stripe webhooks", "refactor the auth layer"</li>
+    <li>Use Cursor (or VS Code with Copilot) for active editing sessions where you're in the code, making smaller changes and want inline suggestions</li>
+  </ul>
+  <p>Claude Code runs in any terminal, including Cursor's integrated terminal. The tools don't conflict — they operate at different levels of the development workflow.</p>
+
+  <hr class="divider">
+
+  <h2>Claude Code vs GitHub Copilot</h2>
+  <p>Copilot is worth addressing separately since it's often mentioned alongside both tools. Copilot is an autocomplete tool — it suggests the next line or block as you type, inside your editor. It does not read your whole codebase autonomously, run commands, or execute multi-step tasks.</p>
+  <p>Claude Code operates at a fundamentally different level: it's a task executor, not a typing assistant. Copilot augments coding. Claude Code replaces coding for well-defined tasks. The comparison is less "which is better" and more "these do different things."</p>
+
+  <hr class="divider">
+
+  <h2>Verdict: which should you choose?</h2>
+  <div class="verdict-grid">
+    <div class="verdict-card">
+      <div class="verdict-card-title">Choose Claude Code if…</div>
+      <p>You want to describe a task and have it fully implemented. You're building something new, you're not a developer by background, or you want to move at maximum speed without staying in an editor.</p>
+    </div>
+    <div class="verdict-card">
+      <div class="verdict-card-title">Choose Cursor if…</div>
+      <p>You're an active coder who wants AI embedded in your editing workflow. You want inline completions, tight control over each change, and the option to switch between models.</p>
+    </div>
+  </div>
+  <p>If you're new to AI coding tools and you want to ship something fast, start with Claude Code. The learning curve is lower for non-technical users, the autonomous execution model removes more friction, and it was purpose-built by Anthropic for exactly this use case.</p>
+
+  <hr class="divider">
+
+  <section class="faq-section" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <h3>What is the difference between Claude Code and Cursor?</h3>
+      <p>Claude Code is a terminal-native agent that executes tasks autonomously across your entire codebase — it reads files, runs commands, and implements features end-to-end. Cursor is an AI-native code editor built on VS Code, where AI assists your editing workflow with inline suggestions and chat. Claude Code focuses on autonomous execution; Cursor focuses on augmented editing.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is Claude Code better than Cursor?</h3>
+      <p>Neither is universally better — they suit different workflows. Claude Code is stronger for end-to-end autonomous implementation. Cursor is stronger for developers who prefer to stay in an editor with tight control over each change. Many experienced developers use both.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I use Claude Code inside Cursor?</h3>
+      <p>Yes. Claude Code runs in any terminal, including Cursor's integrated terminal. You can switch between Claude Code's autonomous mode and Cursor's inline editing as needed — they're complementary, not exclusive.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How much does Cursor cost compared to Claude Code?</h3>
+      <p>Cursor offers a free tier and a Pro plan at $20/month. Claude Code requires a Claude Pro subscription at $20/month or Anthropic API access with per-token pricing. Both cost approximately the same at the personal subscription level.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Which is better for non-technical founders?</h3>
+      <p>Claude Code is generally more accessible for non-technical builders. It operates through plain-English instructions in a terminal rather than requiring editor familiarity. You describe what you want in natural language and Claude Code handles the implementation without requiring you to be in the code.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What about Claude Code vs GitHub Copilot?</h3>
+      <p>GitHub Copilot is an autocomplete tool — it suggests code as you type, one block at a time. Claude Code is an agent — it takes a task, plans across your whole codebase, executes multiple steps, and reports back. Copilot augments your typing; Claude Code replaces the typing entirely for well-defined tasks. They operate at fundamentally different levels.</p>
+    </div>
+  </section>
+
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>Learn Claude Code in 7 days, in the mountains of Pai</h2>
+    <p>Claude Camp is a residential retreat where you build and ship a real project using Claude Code, with other founders and developers, in northern Thailand. No prior coding experience required.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
