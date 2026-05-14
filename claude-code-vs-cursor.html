@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claude Code vs Cursor — Which AI Coding Tool Is Right for You?</title>
+<title>Claude Code vs Cursor — Which AI Coding Tool Is Right for You</title>
 <meta name="description" content="Claude Code vs Cursor: a direct comparison of features, workflow, pricing, and the kind of builder each tool is built for. Which one should you use?">
 <link rel="canonical" href="https://claudecamp.org/claude-code-vs-cursor.html">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -40,7 +40,41 @@
   },
   "publisher": {
     "@id": "https://claudecamp.org/#organization"
-  }
+  },
+  "about": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Claude Code",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Windows, Linux",
+      "creator": {"@type": "Organization", "name": "Anthropic", "url": "https://anthropic.com"}
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Cursor",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Windows, Linux"
+    }
+  ]
+}
+</script>
+
+<!-- JSON-LD: ItemList (comparison table) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Claude Code vs Cursor: Feature Comparison",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Interface: Claude Code runs in the terminal; Cursor is a desktop code editor (VS Code fork)"},
+    {"@type": "ListItem", "position": 2, "name": "Task execution: Claude Code is fully autonomous — reads files, runs commands, edits multiple files; Cursor is assisted — AI suggests edits, you control each step"},
+    {"@type": "ListItem", "position": 3, "name": "Codebase awareness: Claude Code reads your entire repo before acting; Cursor uses a context window you configure per conversation"},
+    {"@type": "ListItem", "position": 4, "name": "Inline autocomplete: Claude Code has none; Cursor suggests code as you type"},
+    {"@type": "ListItem", "position": 5, "name": "Model options: Claude Code uses Claude (Anthropic) only; Cursor supports Claude, GPT-4o, Gemini, and others"},
+    {"@type": "ListItem", "position": 6, "name": "Shell execution: Claude Code runs build tools, tests, and installs packages; Cursor edits files only"},
+    {"@type": "ListItem", "position": 7, "name": "Best for: Claude Code excels at end-to-end feature implementation and building from scratch; Cursor excels at active coding with AI pair-programming"},
+    {"@type": "ListItem", "position": 8, "name": "Pricing: Claude Code requires Claude Pro at $20/month or Anthropic API; Cursor has a free tier and Pro at $20/month"}
+  ]
 }
 </script>
 
@@ -199,6 +233,12 @@ article code { font-family: 'JetBrains Mono', monospace; font-size: 0.82em; colo
 .btn-amber { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
 .btn-amber:hover { background: var(--amber-glow); }
 
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.88rem, 1.2vw, 0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s, border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
 footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 6rem); }
 .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
 .footer-wordmark { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
@@ -380,6 +420,16 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
       <p>GitHub Copilot is an autocomplete tool — it suggests code as you type, one block at a time. Claude Code is an agent — it takes a task, plans across your whole codebase, executes multiple steps, and reports back. Copilot augments your typing; Claude Code replaces the typing entirely for well-defined tasks. They operate at fundamentally different levels.</p>
     </div>
   </section>
+
+  <!-- RELATED ARTICLES -->
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
+      <li><a href="/how-to-use-claude-code.html">How to Use Claude Code →</a></li>
+      <li><a href="/claude-code-for-beginners.html">Claude Code for Beginners →</a></li>
+    </ul>
+  </nav>
 
   <div class="cta-block">
     <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>

@@ -121,6 +121,48 @@
 }
 </script>
 
+<!-- JSON-LD: HowTo -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Use Claude Code",
+  "description": "A step-by-step guide to installing and using Claude Code to build software with AI.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Install Claude Code",
+      "text": "Run npm install -g @anthropic-ai/claude-code in your terminal. You need Node.js 18 or later and a Claude Pro subscription ($20/month) or Anthropic API key. Verify with claude --version."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Start your first session",
+      "text": "Navigate to any project directory and run 'claude'. Claude Code opens an interactive session with full access to your project files, shell, and git history. Start with a small, specific task."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Set up a CLAUDE.md file",
+      "text": "Create a CLAUDE.md file in your project root with your tech stack, coding conventions, what not to touch, and current focus. Claude Code reads this automatically at the start of every session."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Learn to frame tasks well",
+      "text": "Write specific, scoped task descriptions. Include the library, data layer, success state, and edge cases. Break large goals into sequential tasks — data model, API, UI, integration, edge cases."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Review every diff",
+      "text": "Claude Code shows you exactly what it changed before applying. Read every diff every time. Press Escape to interrupt, or run git checkout . to revert if something looks wrong."
+    }
+  ]
+}
+</script>
+
 <!-- JSON-LD: BreadcrumbList -->
 <script type="application/ld+json">
 {
@@ -484,6 +526,13 @@ article code {
 }
 .btn-amber:hover { background: var(--amber-glow); }
 
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.88rem, 1.2vw, 0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s, border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
+
 footer {
   background: #030704;
   border-top: 1px solid rgba(245,158,11,0.08);
@@ -681,6 +730,16 @@ Current task: adding stripe payment flow to /checkout</code></div>
       <p>Most people find a working rhythm within 2 to 4 days of regular use. The first few sessions feel slow while you develop the task-framing skill. By the end of the first week, the bottleneck shifts from tool proficiency to product decisions. Claude Camp is designed to compress this learning into a single structured week in Pai, Thailand.</p>
     </div>
   </section>
+
+  <!-- RELATED ARTICLES -->
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
+      <li><a href="/claude-code-for-beginners.html">Claude Code for Beginners →</a></li>
+      <li><a href="/claude-code-vs-cursor.html">Claude Code vs Cursor →</a></li>
+    </ul>
+  </nav>
 
   <!-- CTA -->
   <div class="cta-block">

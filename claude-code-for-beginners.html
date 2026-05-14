@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claude Code for Beginners — Build Your First App With No Coding Experience</title>
-<meta name="description" content="Claude Code for beginners: how to build a real app with no prior coding experience, what to expect, and the mindset that separates people who ship from people who stall.">
+<title>Claude Code for Beginners — Build an App With No Coding Experience</title>
+<meta name="description" content="Claude Code for beginners: build a real app with no coding experience. What to expect, what to prepare, and the mindset that separates people who ship from those who stall.">
 <link rel="canonical" href="https://claudecamp.org/claude-code-for-beginners.html">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
@@ -40,7 +40,54 @@
   },
   "publisher": {
     "@id": "https://claudecamp.org/#organization"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Claude Code",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "macOS, Windows, Linux",
+    "creator": {
+      "@type": "Organization",
+      "name": "Anthropic",
+      "url": "https://anthropic.com"
+    }
   }
+}
+</script>
+
+<!-- JSON-LD: HowTo -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Use Claude Code as a Beginner",
+  "description": "The beginner workflow for building your first app with Claude Code — no coding experience required.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Write before you build",
+      "text": "Before opening your terminal, write a one-page spec describing what the app does, who logs in, what the main screen shows, and what happens when the user clicks the primary button."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Start with a working skeleton",
+      "text": "Ask Claude Code to scaffold the project first — get it running locally before adding any features. A working foundation is worth more than a half-built ambitious one."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Add one feature at a time",
+      "text": "Add features sequentially. Finish one thing before starting the next. Commit after each working feature to keep the codebase clean and give yourself rollback points."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "When it breaks, describe what you see",
+      "text": "Error messages are not dead ends — they are instructions. Paste the error message into Claude Code and describe what you expected to happen. It will diagnose and fix the issue in the same session."
+    }
+  ]
 }
 </script>
 
@@ -217,6 +264,12 @@ article code { font-family: 'JetBrains Mono', monospace; font-size: 0.82em; colo
 .btn-amber { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
 .btn-amber:hover { background: var(--amber-glow); }
 
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.88rem, 1.2vw, 0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s, border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
 footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 6rem); }
 .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
 .footer-wordmark { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
@@ -377,6 +430,16 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
       <p>Not to use it, but it helps. Claude Code will explain anything it wrote if you ask. A useful habit is asking for explanations of changes you don't understand — not to memorise them, but because understanding what your app does helps you give better instructions in the next task.</p>
     </div>
   </section>
+
+  <!-- RELATED ARTICLES -->
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
+      <li><a href="/how-to-use-claude-code.html">How to Use Claude Code →</a></li>
+      <li><a href="/claude-code-vs-cursor.html">Claude Code vs Cursor →</a></li>
+    </ul>
+  </nav>
 
   <div class="cta-block">
     <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
