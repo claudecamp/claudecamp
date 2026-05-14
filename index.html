@@ -446,14 +446,14 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 55%;
+  object-position: center 38%;
   display: block;
   filter: saturate(1.05) brightness(0.95) contrast(1.05);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
 @media (max-width: 768px) {
-  #bg-photo img { object-position: center 25%; }
+  #bg-photo img { object-position: center 35%; }
 }
 
 #bg-1 {
@@ -3213,8 +3213,10 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
   <!-- Layer 0 — Real photograph -->
   <div class="bg-layer" id="bg-photo" aria-hidden="true">
     <picture>
-      <source srcset="assets/bamboo-bungalow.webp" type="image/webp">
-      <img src="assets/bamboo-bungalow.webp" alt="" role="presentation" draggable="false" fetchpriority="high">
+      <source media="(max-width: 768px)" srcset="assets/arrival-dusk-wide-mobile.webp" type="image/webp">
+      <source media="(max-width: 768px)" srcset="assets/arrival-dusk-wide-mobile.jpg">
+      <source srcset="assets/arrival-dusk-wide.webp" type="image/webp">
+      <img src="assets/arrival-dusk-wide.jpg" alt="" role="presentation" draggable="false" fetchpriority="high">
     </picture>
   </div>
 
