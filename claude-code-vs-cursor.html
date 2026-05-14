@@ -34,9 +34,10 @@
   "datePublished": "2026-05-14",
   "dateModified": "2026-05-14",
   "author": {
-    "@type": "Organization",
-    "name": "Claude Camp",
-    "url": "https://claudecamp.org"
+    "@type": "Person",
+    "@id": "https://claudecamp.org/about.html#sasha",
+    "name": "Sasha Goldsmith",
+    "url": "https://claudecamp.org/about.html"
   },
   "publisher": {
     "@id": "https://claudecamp.org/#organization"
@@ -183,6 +184,8 @@ nav { position: sticky; top: 0; z-index: 90; background: rgba(6,13,4,0.85); back
 .nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
 .nav-wordmark { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
 .nav-wordmark:hover { color: var(--amber); }
+.nav-about { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-about:hover { color: var(--text); }
 .nav-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s, border-color 0.3s; }
 .nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
 
@@ -253,6 +256,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
 <nav aria-label="Site navigation">
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
     <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
   </div>
 </nav>

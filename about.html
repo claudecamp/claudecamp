@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Claude Camp — Sasha & Ying Goldsmith, Pai, Thailand</title>
+<meta name="description" content="Claude Camp is run by Sasha and Ying Goldsmith on their organic farm in Pai, Thailand. Sasha built his first app in 9 days using Claude Code. Ying keeps the place running perfectly.">
+<link rel="canonical" href="https://claudecamp.org/about.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="About Claude Camp — Sasha & Ying Goldsmith">
+<meta property="og:description" content="Sasha built his first app in 9 days using Claude Code — no coding background. Now he runs Claude Camp on the organic farm he shares with Ying in Pai, Thailand.">
+<meta property="og:url" content="https://claudecamp.org/about.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Claude Camp — Sasha & Ying Goldsmith">
+<meta name="twitter:description" content="Sasha built his first app in 9 days with Claude Code and launched a site selling borosilicate lampworking videos. Now he teaches it in Pai, Thailand.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<!-- JSON-LD: Person — Sasha -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://claudecamp.org/about.html#sasha",
+  "name": "Sasha Goldsmith",
+  "givenName": "Sasha",
+  "familyName": "Goldsmith",
+  "jobTitle": "Founder & Instructor",
+  "description": "Sasha Goldsmith built his first working web application in 9 days using Claude Code, with no prior coding background. He is the founder and lead instructor of Claude Camp, a 7-day immersive bootcamp on Claude Code held on an organic farm in Pai, northern Thailand.",
+  "url": "https://claudecamp.org/about.html",
+  "worksFor": {
+    "@type": "Organization",
+    "@id": "https://claudecamp.org/#organization"
+  },
+  "knowsAbout": ["Claude Code", "Anthropic", "AI-assisted software development", "vibe coding", "non-technical founders"],
+  "sameAs": [
+    "https://claudecamp.org"
+  ]
+}
+</script>
+
+<!-- JSON-LD: Person — Ying -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://claudecamp.org/about.html#ying",
+  "name": "Ying Goldsmith",
+  "givenName": "Ying",
+  "familyName": "Goldsmith",
+  "jobTitle": "Co-Founder & Host",
+  "description": "Ying Goldsmith runs day-to-day life at Claude Camp. She cooks traditional Thai food from produce grown on the farm and ensures every cohort has the environment they need to focus.",
+  "url": "https://claudecamp.org/about.html",
+  "worksFor": {
+    "@type": "Organization",
+    "@id": "https://claudecamp.org/#organization"
+  }
+}
+</script>
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Claude Camp",
+      "item": "https://claudecamp.org/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "About",
+      "item": "https://claudecamp.org/about.html"
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --jungle-deep:  #060d04;
+  --jungle-mid:   #0a1208;
+  --canopy:       #0f1e0b;
+  --amber:        #f59e0b;
+  --amber-glow:   #fbbf24;
+  --amber-dim:    #92610a;
+  --text:         #f8fafc;
+  --text-muted:   rgba(248,250,252,0.55);
+  --text-faint:   rgba(248,250,252,0.25);
+  --ease-cinema:  cubic-bezier(0.76, 0, 0.24, 1);
+  --col:          680px;
+}
+
+html, body {
+  width: 100%;
+  background: var(--jungle-deep);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(6,13,4,0.85);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid rgba(245,158,11,0.1);
+  padding: 0 clamp(1.5rem, 6vw, 6rem);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-wordmark {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-wordmark:hover { color: var(--amber); }
+
+.nav-cta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-decoration: none;
+  border: 1px solid rgba(245,158,11,0.35);
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.nav-cta:hover {
+  background: rgba(245,158,11,0.08);
+  border-color: var(--amber);
+}
+
+/* ── BREADCRUMB ──────────────────────────────────────────── */
+.breadcrumb {
+  max-width: var(--col);
+  margin: 2.5rem auto 0;
+  padding: 0 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.breadcrumb a {
+  color: rgba(245,158,11,0.45);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero {
+  max-width: var(--col);
+  margin: 2.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-lede {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 560px;
+}
+
+/* ── ARTICLE BODY ────────────────────────────────────────── */
+article {
+  max-width: var(--col);
+  margin: 4rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+article h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+  margin-top: 3.5rem;
+}
+
+article h2:first-child { margin-top: 0; }
+
+article p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+article p strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+article ul {
+  margin: 0 0 1.5rem 0;
+  padding-left: 1.25rem;
+}
+
+article ul li {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+article ul li strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(245,158,11,0.12);
+  margin: 3rem 0;
+}
+
+/* ── STAT STRIP ──────────────────────────────────────────── */
+.stat-strip {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem 0 2.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stat-number {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: 2.2rem;
+  color: var(--amber);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ── PLACE GRID ──────────────────────────────────────────── */
+.place-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(245,158,11,0.1);
+  border: 1px solid rgba(245,158,11,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 2rem 0 2.5rem;
+}
+
+.place-item {
+  background: var(--jungle-mid);
+  padding: 1.25rem 1.5rem;
+}
+
+.place-item-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.4rem;
+}
+
+.place-item-value {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 520px) {
+  .place-grid { grid-template-columns: 1fr; }
+}
+
+/* ── RELATED ARTICLES ────────────────────────────────────── */
+.related-articles {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(245,158,11,0.1);
+}
+
+.related-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+.related-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.related-list a {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--amber);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.related-list a:hover { color: var(--amber-glow); }
+
+/* ── CTA BLOCK ───────────────────────────────────────────── */
+.cta-block {
+  margin-top: 3.5rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 4px;
+  background: rgba(245,158,11,0.03);
+}
+
+.cta-block-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+
+.cta-block h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.cta-block p {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-amber {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--jungle-deep);
+  background: var(--amber);
+  padding: 0.75rem 1.75rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-amber:hover { background: var(--amber-glow); }
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid rgba(245,158,11,0.1);
+  padding: 2.5rem clamp(1.5rem, 6vw, 6rem);
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-wordmark {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+}
+
+.footer-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  line-height: 1.8;
+  text-align: right;
+}
+
+.footer-meta a {
+  color: rgba(245,158,11,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-meta a:hover { color: var(--amber); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span>›</span>
+  About
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="hero-eyebrow">Pai, Thailand · The people behind it</p>
+  <h1>Built by people who learned the hard way</h1>
+  <p class="hero-lede">Sasha and Ying Goldsmith run Claude Camp on their organic farm outside Pai. Sasha built his first working app in 9 days using Claude Code — no coding background. Ying makes sure everyone is fed, comfortable, and can actually focus.</p>
+</header>
+
+<!-- ARTICLE -->
+<article>
+
+  <h2>Sasha — how Claude Camp started</h2>
+  <p>Sasha came to Claude Code the same way most people do: skeptical, curious, and with a project he'd been putting off for years. Nine days later he had a working, deployed website selling borosilicate lampworking instructional videos — something that had felt impossible the week before.</p>
+  <!-- TODO: add lampworking site URL as a link in the sentence above once available -->
+  <p>The experience was disorienting. Not because it was hard, but because the bottleneck had completely shifted. Writing code was no longer the constraint. <strong>Knowing what you wanted to build</strong> was the constraint. That gap — between having an idea and having something real — had just collapsed.</p>
+  <p>Claude Camp is built on that 9-day experience. The program exists to give other people the same compressed discovery: a structured week, a working app, and the clarity that comes from actually shipping something.</p>
+
+  <div class="stat-strip">
+    <div class="stat">
+      <span class="stat-number">9</span>
+      <span class="stat-label">days to first app</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">7</span>
+      <span class="stat-label">participants per cohort</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">2</span>
+      <span class="stat-label">tracks — founder &amp; dev</span>
+    </div>
+  </div>
+
+  <p>Sasha teaches both tracks at Claude Camp: the non-technical founder track, where no prior coding knowledge is assumed, and the developer track, where the focus is on how Claude Code changes the way experienced engineers actually work. The common thread in both is getting something built and deployed before you leave.</p>
+
+  <hr class="divider">
+
+  <h2>Ying — the reason the place works</h2>
+  <p>Ying Goldsmith grew up in northern Thailand and has cooked Thai food her entire life. At Claude Camp she cooks all meals from produce grown on the farm — the kitchen produces more than the household needs, so guests eat what's in season, picked that day. Her food is the reason people stop talking about their apps at dinner.</p>
+  <p>Beyond cooking, Ying runs everything that keeps a retreat functioning: the bungalows, the schedule, the details that make a place feel easy to be in rather than effortful. Claude Camp has a high focus-to-friction ratio because of her.</p>
+
+  <hr class="divider">
+
+  <h2>The place</h2>
+  <p>The farm sits on the outskirts of Pai, in Mae Hong Son province — <strong>Pai Canyon is directly across the road</strong>. The bungalows are open-air with no walls, built for the views and the climate. There are three standard bungalows and one penthouse bungalow, all with mountain sightlines.</p>
+
+  <div class="place-grid">
+    <div class="place-item">
+      <div class="place-item-label">Accommodation</div>
+      <div class="place-item-value">3 open-air bungalows + 1 penthouse — no walls, mountain &amp; canyon views</div>
+    </div>
+    <div class="place-item">
+      <div class="place-item-label">Food</div>
+      <div class="place-item-value">All meals included — Thai cooking, fresh farm vegetables, grown on-site</div>
+    </div>
+    <div class="place-item">
+      <div class="place-item-label">Hot springs</div>
+      <div class="place-item-value">Natural hot springs across the street, open until midnight</div>
+    </div>
+    <div class="place-item">
+      <div class="place-item-label">Getting around</div>
+      <div class="place-item-value">Extra scooters available — Pai town is a short ride away</div>
+    </div>
+    <div class="place-item">
+      <div class="place-item-label">Bar</div>
+      <div class="place-item-value">Full bar on-site. Drinks included in your stay</div>
+    </div>
+    <div class="place-item">
+      <div class="place-item-label">Location</div>
+      <div class="place-item-value">Outskirts of Pai — quiet enough to work, close enough to explore</div>
+    </div>
+  </div>
+
+  <p>The setup is deliberate. Good food, a comfortable place to sleep, the ability to get somewhere when you need a change of scene — these things matter when you're asking people to work hard for a week. The hot springs across the road help too.</p>
+
+  <hr class="divider">
+
+  <h2>Why 7 people</h2>
+  <p>Each cohort is capped at 7 participants. That's not a marketing constraint — it's the number where Sasha can give everyone enough attention without the dynamic becoming a classroom. Small enough that people actually talk to each other. Large enough that you're not working in isolation.</p>
+  <p>Separate tracks for non-technical founders and experienced developers means the pace is right for the person in front of you, not some average of the group. By the end of the week, both groups ship something. The projects are different; the outcome is the same.</p>
+
+  <!-- RELATED ARTICLES -->
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Learn more</p>
+    <ul class="related-list">
+      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
+      <li><a href="/claude-code-for-beginners.html">Claude Code for Beginners →</a></li>
+      <li><a href="/how-to-use-claude-code.html">How to Use Claude Code →</a></li>
+      <li><a href="/claude-code-vs-cursor.html">Claude Code vs Cursor →</a></li>
+    </ul>
+  </nav>
+
+  <!-- CTA BLOCK -->
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Cohort 01 · Pai, Thailand</p>
+    <h2>Seven spots. One week. One working app.</h2>
+    <p>All-inclusive: accommodation in an open-air bungalow, all meals from the farm, full bar, hot springs across the street. You bring the idea — you leave with something deployed.</p>
+    <a href="/" class="btn-amber">See dates &amp; apply →</a>
+  </div>
+
+</article>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -34,9 +34,10 @@
   "datePublished": "2026-05-14",
   "dateModified": "2026-05-14",
   "author": {
-    "@type": "Organization",
-    "name": "Claude Camp",
-    "url": "https://claudecamp.org"
+    "@type": "Person",
+    "@id": "https://claudecamp.org/about.html#sasha",
+    "name": "Sasha Goldsmith",
+    "url": "https://claudecamp.org/about.html"
   },
   "publisher": {
     "@id": "https://claudecamp.org/#organization"
@@ -246,6 +247,18 @@ nav {
   transition: color 0.3s;
 }
 .nav-wordmark:hover { color: var(--amber); }
+
+.nav-about {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-about:hover { color: var(--text); }
 
 .nav-cta {
   font-family: 'JetBrains Mono', monospace;
@@ -583,6 +596,7 @@ footer {
 <nav aria-label="Site navigation">
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
     <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
   </div>
 </nav>
