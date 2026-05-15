@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code vs ChatGPT: Which Is Better for Building Software?</title>
+<meta name="description" content="ChatGPT can write code snippets. Claude Code builds, runs, and ships entire products. Here's a clear comparison for founders and developers in 2026.">
+<link rel="canonical" href="https://claudecamp.org/claude-code-vs-chatgpt.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code vs ChatGPT: Which Is Better for Building Software?">
+<meta property="og:description" content="ChatGPT can write code snippets. Claude Code builds, runs, and ships entire products. Here's a clear comparison for founders and developers in 2026.">
+<meta property="og:url" content="https://claudecamp.org/claude-code-vs-chatgpt.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code vs ChatGPT: Which Is Better for Building Software?">
+<meta name="twitter:description" content="ChatGPT can write code snippets. Claude Code builds, runs, and ships entire products. Here's a clear comparison for founders and developers in 2026.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/claude-code-vs-chatgpt.html#article",
+  "headline": "Claude Code vs ChatGPT: Which Is Better for Building Software?",
+  "description": "ChatGPT can write code snippets. Claude Code builds, runs, and ships entire products. Here's a clear comparison for founders and developers in 2026.",
+  "url": "https://claudecamp.org/claude-code-vs-chatgpt.html",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "author": {
+    "@type": "Person",
+    "@id": "https://claudecamp.org/about.html#ying",
+    "name": "Ying Goldsmith",
+    "url": "https://claudecamp.org/about.html"
+  },
+  "publisher": { "@id": "https://claudecamp.org/#organization" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between Claude Code and ChatGPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code is a terminal-based autonomous agent that reads your files and runs commands directly on your machine. ChatGPT is a general-purpose AI chat interface where you paste code in and receive suggestions to paste back out. Claude Code executes changes; ChatGPT advises."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can ChatGPT build apps like Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ChatGPT can generate code that you then copy, paste, and run yourself. Claude Code builds the app directly in your project folder — it reads files, writes changes, runs tests, and iterates without you copying anything. For building complete products, Claude Code is substantially faster."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Claude Code the same as Claude on claude.ai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Claude on claude.ai is a chat interface similar to ChatGPT. Claude Code is a separate CLI tool that runs in your terminal, uses the same underlying model, but operates as an autonomous coding agent with direct access to your file system and shell."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is better for a non-technical founder: Claude Code or ChatGPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code. A non-technical founder can describe what they want to build and Claude Code figures out the file structure, writes the code, and runs it. With ChatGPT, the founder still needs to understand what to do with the code they receive."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Claude Code cost compared to ChatGPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code requires Claude Pro ($20/month) or Anthropic API access. ChatGPT Plus costs $20/month with GPT-4o access. Pricing is comparable, but Claude Code and ChatGPT serve fundamentally different use cases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Claude Code use GPT-4?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Claude Code runs on Anthropic's Claude models (Sonnet, Opus, Haiku). It is a separate product from OpenAI's stack entirely. The underlying model determines the quality of code generation, and Claude models are specifically optimised for long-context reasoning and autonomous task execution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do participants at Claude Camp use ChatGPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Camp is built exclusively around Claude Code. The bootcamp philosophy is learning to direct an autonomous agent — not using a chat interface to get code snippets. Participants ship full working products, not collections of pasted code."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Claude Code vs ChatGPT", "item": "https://claudecamp.org/claude-code-vs-chatgpt.html" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --jungle-deep: #060d04; --jungle-mid: #0a1208; --canopy: #0f1e0b;
+  --amber: #f59e0b; --amber-glow: #fbbf24; --amber-dim: #92610a;
+  --text: #f8fafc; --text-muted: rgba(248,250,252,0.55); --text-faint: rgba(248,250,252,0.25);
+  --ease-cinema: cubic-bezier(0.76,0,0.24,1); --col: 680px;
+}
+html, body { width: 100%; background: var(--jungle-deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+nav { position: sticky; top: 0; z-index: 90; background: rgba(6,13,4,0.85); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid rgba(245,158,11,0.1); padding: 0 clamp(1.5rem,6vw,6rem); }
+.nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
+.nav-wordmark:hover { color: var(--amber); }
+.nav-about { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-about:hover { color: var(--text); }
+.nav-cta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s,border-color 0.3s; }
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+.breadcrumb { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+.hero { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; }
+.hero-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.5rem; }
+.hero-lede { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(1rem,1.6vw,1.15rem); line-height: 1.75; color: var(--text-muted); border-left: 2px solid rgba(245,158,11,0.3); padding-left: 1.25rem; margin-bottom: 3rem; }
+article { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 6rem; }
+article h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.5rem,2.8vw,2rem); line-height: 1.2; color: var(--text); margin: 3.5rem 0 1rem; }
+article h3 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 400; font-style: italic; font-size: clamp(1.1rem,1.8vw,1.3rem); color: var(--text-muted); margin: 2rem 0 0.75rem; }
+article p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem; }
+article ul, article ol { margin: 0.5rem 0 1.5rem 0; padding-left: 1.25rem; }
+article li { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 0.4rem; }
+article strong { color: var(--text); font-weight: 400; }
+article code { font-family: 'JetBrains Mono',monospace; font-size: 0.82em; color: var(--amber-glow); background: rgba(245,158,11,0.08); padding: 0.15em 0.4em; border-radius: 2px; }
+.divider { border: none; border-top: 1px solid rgba(245,158,11,0.08); margin: 3rem 0; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-family: 'DM Sans',sans-serif; font-size: clamp(0.85rem,1.2vw,0.95rem); }
+.compare-table th { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.compare-table td { padding: 0.75rem 1rem; color: var(--text-muted); font-weight: 300; border-bottom: 1px solid rgba(248,250,252,0.04); vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { color: var(--text); font-weight: 400; width: 30%; }
+.cta-block { margin: 4rem 0 0; padding: 2.5rem 2rem; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); border-radius: 4px; text-align: center; }
+.cta-block-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.cta-block h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.6rem,3vw,2.2rem); line-height: 1.2; color: var(--text); margin: 0 0 1rem; }
+.cta-block p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.9rem,1.3vw,1rem); color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; }
+.btn-amber { display: inline-block; font-family: 'JetBrains Mono',monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
+.btn-amber:hover { background: var(--amber-glow); }
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.88rem,1.2vw,0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s,border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
+footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem,6vh,5rem) clamp(1.5rem,6vw,6rem); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+.footer-meta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,250,252,0.2); line-height: 2; text-align: right; }
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">Claude Code vs ChatGPT</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Anthropic · Tool Comparison</p>
+  <h1>Claude Code vs ChatGPT</h1>
+  <p class="hero-lede">ChatGPT is a conversation interface that can write code when you ask. Claude Code is a terminal agent that reads your files, runs commands, and ships working software autonomously. Comparing them directly reveals which tool to reach for.</p>
+</div>
+
+<article>
+
+  <h2>What each tool actually does</h2>
+  <p>ChatGPT is a general-purpose chat AI. You open a browser tab, describe what you want, and it writes code in the response window. You then copy that code, open your editor, paste it in, and run it yourself. Every step — copy, paste, execute, debug — is your job. ChatGPT is an advisor. You are still the developer.</p>
+  <p>Claude Code is fundamentally different. It runs in your terminal as an autonomous agent. You tell it what you want to build, and it <strong>reads your actual project files</strong>, writes and edits code directly, runs shell commands, installs dependencies, executes tests, and iterates on errors — all without you copying a single line. Claude Code is not an advisor. It is the developer.</p>
+  <p>This is not a superficial difference in interface. It is a categorical difference in what these tools can accomplish. ChatGPT is optimised for conversation. Claude Code is optimised for execution.</p>
+
+  <hr class="divider">
+
+  <h2>Feature comparison</h2>
+  <table class="compare-table" aria-label="Claude Code vs ChatGPT feature comparison">
+    <thead>
+      <tr><th>Feature</th><th>Claude Code</th><th>ChatGPT</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Runs in terminal</td><td>Yes — native CLI tool</td><td>No — browser or app only</td></tr>
+      <tr><td>Reads real files</td><td>Yes — direct file system access</td><td>No — you must paste code in</td></tr>
+      <tr><td>Executes shell commands</td><td>Yes — runs npm, git, pytest, etc.</td><td>No</td></tr>
+      <tr><td>Writes &amp; edits files directly</td><td>Yes — modifies your codebase in place</td><td>No — outputs text for you to paste</td></tr>
+      <tr><td>Multi-step autonomous tasks</td><td>Yes — plans and executes sequences</td><td>Limited — single-response context</td></tr>
+      <tr><td>Conversational interface</td><td>Yes — in-terminal chat with context</td><td>Yes — primary mode of interaction</td></tr>
+      <tr><td>Coding context window</td><td>200K tokens (full codebase)</td><td>128K tokens (GPT-4o)</td></tr>
+      <tr><td>Best for</td><td>Building, shipping, autonomous coding</td><td>Questions, concepts, quick snippets</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <h2>When ChatGPT wins</h2>
+  <p>ChatGPT is genuinely excellent at what it does. There are real situations where reaching for ChatGPT is the right call:</p>
+  <ul>
+    <li><strong>Quick questions.</strong> "What does this error mean?" or "What's the difference between a list and a tuple?" ChatGPT gives a clear, immediate answer.</li>
+    <li><strong>Explaining concepts.</strong> Understanding how OAuth works, or what a REST API is — conversational explanations are ChatGPT's strength.</li>
+    <li><strong>Generating boilerplate to paste in.</strong> Need a quick HTML form or a CSS reset? ChatGPT produces it in seconds and you paste it where you need it.</li>
+    <li><strong>Staying fully in control.</strong> If you want to review every line before it touches your codebase, ChatGPT's copy-paste workflow enforces that by design.</li>
+    <li><strong>Non-coding tasks.</strong> Drafting emails, summarising documents, writing marketing copy — ChatGPT's generalist nature shines here.</li>
+  </ul>
+  <p>If you are a developer who wants to understand a concept or generate a small isolated snippet, ChatGPT is fast and frictionless. It is a powerful tool for the right job.</p>
+
+  <hr class="divider">
+
+  <h2>When Claude Code wins</h2>
+  <p>Claude Code is the decisive choice the moment the task involves your actual project:</p>
+  <ul>
+    <li><strong>Autonomous multi-step builds.</strong> "Build a user authentication system with email verification" — Claude Code plans the work, creates the files, writes the logic, wires up the routes, and tests that it runs. ChatGPT gives you code to paste.</li>
+    <li><strong>Refactoring large codebases.</strong> Claude Code reads your entire project, understands the structure, and makes consistent changes across dozens of files simultaneously. ChatGPT sees only what you paste.</li>
+    <li><strong>Debugging full-stack errors.</strong> When an error spans your backend, database, and frontend, Claude Code traces the call stack across all your real files. ChatGPT works only with what you copy in — which may not include the file where the actual bug lives.</li>
+    <li><strong>Non-technical founders building from scratch.</strong> A founder with no coding background can describe what they want to build and Claude Code figures out the file structure, chooses appropriate frameworks, writes the code, and runs it. The founder never needs to understand what to do with the code output.</li>
+    <li><strong>Shipping on a deadline.</strong> Speed is the variable. Claude Code collapses the time between "idea" and "running software" because it eliminates the copy-paste cycle entirely.</li>
+  </ul>
+
+  <hr class="divider">
+
+  <h2>The key distinction: paste vs. agent</h2>
+  <p>Everything above comes down to one fundamental difference: <strong>ChatGPT gives you code to paste; Claude Code does the work.</strong></p>
+  <p>With ChatGPT, you are the integration layer. You read the code, decide if it looks right, copy it, find the right place in your editor, paste it, save the file, switch to your terminal, run the command, read the error, go back to ChatGPT, paste the error, read the new suggestion, and repeat. This loop is manageable for a single snippet. It is exhausting for a full product.</p>
+  <p>With Claude Code, you describe what you want and watch it happen. It reads your files, decides where the change needs to go, makes the change, runs the code, sees the error, fixes the error, and confirms it works — all in the same session. You are directing; it is executing.</p>
+  <p>For building real software products, this distinction matters more than any feature on a comparison table. The paste workflow scales to dozens of snippets. The agent workflow scales to entire companies.</p>
+
+  <hr class="divider">
+
+  <h2>Claude Camp and the agent workflow</h2>
+  <p>Claude Camp is built entirely around the agent workflow — not the chat workflow. The bootcamp does not teach participants to use ChatGPT more effectively, generate better prompts, or copy code faster. It teaches them to direct Claude Code the way you would direct a skilled contractor.</p>
+  <p>In a week of residential building in Pai, northern Thailand, participants ship complete working products: web applications, internal tools, MVPs ready for real users. This is possible because Claude Code handles the execution — participants focus on what to build and why, not how to type each line.</p>
+  <p>The shift from chat AI to agent AI is one of the more significant productivity transitions available to founders and developers right now. Most people who try Claude Code after using ChatGPT for coding do not go back. The gap in output per hour is simply too large.</p>
+
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
+      <li><a href="/claude-code-vs-cursor.html">Claude Code vs Cursor →</a></li>
+      <li><a href="/claude-code-vs-github-copilot.html">Claude Code vs GitHub Copilot →</a></li>
+      <li><a href="/claude-code-for-non-technical-founders.html">Claude Code for Non-Technical Founders →</a></li>
+      <li><a href="/build-app-without-coding.html">Build an App Without Coding →</a></li>
+      <li><a href="/claude-code-review.html">Claude Code Review →</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>Learn to build with Claude Code in 7 days</h2>
+    <p>A residential bootcamp on an organic farm in northern Thailand. Cohorts of 7. Accommodation, meals, and instruction included.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

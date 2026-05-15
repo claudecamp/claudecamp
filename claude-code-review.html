@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Review: Honest Assessment After Real Use in 2026</title>
+<meta name="description" content="A real Claude Code review covering what it does well, where it falls short, how it compares to alternatives, and whether it's worth $20/month for founders and developers.">
+<link rel="canonical" href="https://claudecamp.org/claude-code-review.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code Review: Honest Assessment After Real Use in 2026">
+<meta property="og:description" content="A real Claude Code review covering what it does well, where it falls short, how it compares to alternatives, and whether it's worth $20/month for founders and developers.">
+<meta property="og:url" content="https://claudecamp.org/claude-code-review.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code Review: Honest Assessment After Real Use in 2026">
+<meta name="twitter:description" content="A real Claude Code review: what it does well, where it falls short, and whether it's worth $20/month.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/claude-code-review.html#article",
+  "headline": "Claude Code Review: Honest Assessment After Real Use in 2026",
+  "description": "A real Claude Code review covering what it does well, where it falls short, how it compares to alternatives, and whether it's worth $20/month for founders and developers.",
+  "url": "https://claudecamp.org/claude-code-review.html",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "author": {
+    "@type": "Person",
+    "@id": "https://claudecamp.org/about.html#ying",
+    "name": "Ying Goldsmith",
+    "url": "https://claudecamp.org/about.html"
+  },
+  "publisher": { "@id": "https://claudecamp.org/#organization" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Claude Code worth it in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For founders and developers building real products, yes. Claude Code dramatically compresses the time from idea to working software. At $20/month on Claude Pro, the ROI is high for anyone spending more than a few hours per week building. It's not worth it if you primarily want inline autocomplete — use GitHub Copilot or Cursor for that."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the main limitations of Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code doesn't offer real-time inline autocomplete. It can hallucinate on less-documented libraries. Very large codebases can exceed its effective context even with CLAUDE.md. And it's not free. These are real limitations but don't outweigh its capabilities for most users."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very accurate for well-documented stacks (React, Next.js, Supabase, Stripe, Python standard library). Less reliable for less common packages or very recent API changes. Always test the output — Claude Code is a capable implementer, not an infallible one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Claude Code compare to Cursor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cursor is an AI-enhanced code editor with inline suggestions and strong IDE integration. Claude Code is a terminal agent for autonomous multi-step tasks. They're complementary: Cursor for editing flow, Claude Code for executing large tasks. Many developers use both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Claude Code work for beginners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and it's arguably more valuable for beginners than for experienced developers. A beginner with Claude Code can build things that would otherwise require years of learning. The learning curve is directing Claude Code clearly, not understanding the code it produces."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of projects work best with Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web apps, APIs, scripts, internal tools, SaaS products, browser extensions, Telegram bots. Projects with a defined scope and modern tech stacks (JavaScript/TypeScript, Python) get the best results. Claude Code is less reliable for niche frameworks or highly constrained legacy systems."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Claude Camp a good way to learn Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, especially if you want to learn by shipping a real product rather than following tutorials. Claude Camp compresses 7 days of structured building into a format that produces a deployed product by the end of the week. Participants leave with real experience, not just theoretical knowledge."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Claude Code Review", "item": "https://claudecamp.org/claude-code-review.html" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --jungle-deep: #060d04; --jungle-mid: #0a1208; --canopy: #0f1e0b;
+  --amber: #f59e0b; --amber-glow: #fbbf24; --amber-dim: #92610a;
+  --text: #f8fafc; --text-muted: rgba(248,250,252,0.55); --text-faint: rgba(248,250,252,0.25);
+  --ease-cinema: cubic-bezier(0.76,0,0.24,1); --col: 680px;
+}
+html, body { width: 100%; background: var(--jungle-deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+nav { position: sticky; top: 0; z-index: 90; background: rgba(6,13,4,0.85); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid rgba(245,158,11,0.1); padding: 0 clamp(1.5rem,6vw,6rem); }
+.nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
+.nav-wordmark:hover { color: var(--amber); }
+.nav-about { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-about:hover { color: var(--text); }
+.nav-cta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s,border-color 0.3s; }
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+.breadcrumb { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+.hero { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; }
+.hero-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.5rem; }
+.hero-lede { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(1rem,1.6vw,1.15rem); line-height: 1.75; color: var(--text-muted); border-left: 2px solid rgba(245,158,11,0.3); padding-left: 1.25rem; margin-bottom: 3rem; }
+article { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 6rem; }
+article h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.5rem,2.8vw,2rem); line-height: 1.2; color: var(--text); margin: 3.5rem 0 1rem; }
+article h3 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 400; font-style: italic; font-size: clamp(1.1rem,1.8vw,1.3rem); color: var(--text-muted); margin: 2rem 0 0.75rem; }
+article p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem; }
+article ul, article ol { margin: 0.5rem 0 1.5rem 0; padding-left: 1.25rem; }
+article li { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 0.4rem; }
+article strong { color: var(--text); font-weight: 400; }
+article code { font-family: 'JetBrains Mono',monospace; font-size: 0.82em; color: var(--amber-glow); background: rgba(245,158,11,0.08); padding: 0.15em 0.4em; border-radius: 2px; }
+.divider { border: none; border-top: 1px solid rgba(245,158,11,0.08); margin: 3rem 0; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-family: 'DM Sans',sans-serif; font-size: clamp(0.85rem,1.2vw,0.95rem); }
+.compare-table th { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.compare-table td { padding: 0.75rem 1rem; color: var(--text-muted); font-weight: 300; border-bottom: 1px solid rgba(248,250,252,0.04); vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { color: var(--text); font-weight: 400; width: 30%; }
+.cta-block { margin: 4rem 0 0; padding: 2.5rem 2rem; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); border-radius: 4px; text-align: center; }
+.cta-block-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.cta-block h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.6rem,3vw,2.2rem); line-height: 1.2; color: var(--text); margin: 0 0 1rem; }
+.cta-block p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.9rem,1.3vw,1rem); color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; }
+.btn-amber { display: inline-block; font-family: 'JetBrains Mono',monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
+.btn-amber:hover { background: var(--amber-glow); }
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.88rem,1.2vw,0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s,border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
+footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem,6vh,5rem) clamp(1.5rem,6vw,6rem); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+.footer-meta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,250,252,0.2); line-height: 2; text-align: right; }
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">Claude Code Review</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Honest Assessment · 2026</p>
+  <h1>Claude Code Review: What It's Actually Like to Use</h1>
+  <p class="hero-lede">Claude Code is the most capable AI coding agent available in 2026. That's not a marketing claim — it's the conclusion of months of real use. Here's an honest review: what it does well, where it fails, and who should use it.</p>
+</div>
+
+<article>
+
+  <h2>What Claude Code is</h2>
+  <p>Claude Code is an autonomous AI coding agent that runs in your terminal. Unlike a chat interface or an inline autocomplete tool, it operates with genuine autonomy: give it a task, and it reads your files, runs commands, edits code across multiple files, and works through multi-step problems on your behalf.</p>
+  <p>You interact with it through natural language. You describe what you want to build or fix, and Claude Code figures out how to do it. It can explore a codebase it's never seen, understand the architecture, and make targeted changes — often across dozens of files — without you specifying each step. That's the core value proposition, and it's genuinely different from anything that existed before 2024.</p>
+
+  <hr class="divider">
+
+  <h2>What it does genuinely well</h2>
+
+  <h3>Large-scale multi-file edits</h3>
+  <p>This is where Claude Code separates itself from every other tool. When you need to refactor a module that touches twenty files, rename a data model across an entire codebase, or implement a new feature that threads through backend, frontend, and database — Claude Code holds all of that in context and executes it coherently. Most tools fall apart at this scale. Claude Code doesn't.</p>
+
+  <h3>Debugging from error traces</h3>
+  <p>Hand Claude Code an error trace and it works backwards. It reads the stack, locates the relevant source files, traces the execution path, and identifies the root cause — often surfacing issues that aren't obvious from the error message alone. Experienced developers will recognise this as the slow, methodical part of debugging that Claude Code handles well.</p>
+
+  <h3>Greenfield projects</h3>
+  <p>Blank folder to working application is where Claude Code shines brightest. Give it a clear description of what you want to build — the tech stack, the key features, the data model — and it scaffolds the project, writes the code, wires the pieces together, and produces something that runs. The quality is high enough that experienced developers can treat the output as a first draft rather than a prototype.</p>
+
+  <h3>Test generation</h3>
+  <p>Point Claude Code at a module and ask for comprehensive tests. It reads the implementation, understands the edge cases, and writes test suites that cover the obvious paths and a meaningful selection of the non-obvious ones. This is particularly valuable for codebases that have accumulated untested logic — Claude Code can add coverage retroactively without requiring you to explain each function.</p>
+
+  <h3>Natural language precision</h3>
+  <p>You can describe subtle, nuanced requirements and Claude Code understands them. "Make the authentication flow redirect back to the page the user was on, but only if that page requires login, and fall back to the dashboard otherwise" — Claude Code parses this correctly and implements it correctly. The gap between what you describe and what it produces is consistently small.</p>
+
+  <hr class="divider">
+
+  <h2>Where it falls short</h2>
+
+  <h3>No real-time inline autocomplete</h3>
+  <p>Claude Code does not give you suggestions as you type. There is no inline completion, no ghost text, no tab-to-accept. If you spend most of your coding time in an editor and want AI assistance in that flow, Claude Code is not the tool for that. You need Cursor, GitHub Copilot, or a similar editor-integrated product alongside it.</p>
+
+  <h3>Hallucination risk on less common libraries</h3>
+  <p>Claude Code is very reliable for well-documented, widely-used stacks. For less popular packages, niche frameworks, or very recent API changes that postdate its training data, it can produce code that looks plausible but doesn't work. The more obscure the library, the more carefully you need to test the output. This isn't unique to Claude Code — it's a property of all language models — but it's worth being explicit about.</p>
+
+  <h3>Context limits on very large codebases</h3>
+  <p>A <code>CLAUDE.md</code> file helps Claude Code understand your project's conventions and architecture, and it's effective at moderate scale. For very large codebases — millions of lines, hundreds of interacting services — there is a ceiling. Claude Code may lose track of distant dependencies or make changes that are locally correct but globally inconsistent. The practical answer is to scope tasks carefully.</p>
+
+  <h3>It costs money</h3>
+  <p>Claude Code requires either a <strong>Claude Pro subscription at $20/month</strong> or an Anthropic API key with per-token billing. There is no free tier. For most builders this is a non-issue given the ROI, but it is a real limitation for hobbyists on a strict budget or people who want to evaluate it before committing.</p>
+
+  <hr class="divider">
+
+  <h2>How it compares to alternatives</h2>
+
+  <table class="compare-table" aria-label="Claude Code vs alternatives">
+    <thead>
+      <tr><th>Tool</th><th>Best at</th><th>Honest comparison</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cursor</td>
+        <td>Inline editing, IDE flow</td>
+        <td>Cursor is better for editing while you write. Claude Code is better for autonomous multi-step tasks. Most serious developers end up using both — they're complementary, not competing.</td>
+      </tr>
+      <tr>
+        <td>GitHub Copilot</td>
+        <td>Inline autocomplete, suggestions</td>
+        <td>Copilot is faster for autocomplete and deeply integrated into VS Code and JetBrains. Claude Code does things Copilot can't: executing complex tasks, reading entire codebases, running commands. Different category.</td>
+      </tr>
+      <tr>
+        <td>ChatGPT</td>
+        <td>Chat, explanation</td>
+        <td>Fundamentally different tools. ChatGPT answers questions and generates code in a chat window. Claude Code acts autonomously in your actual project. The comparison is a bit like asking whether a conversation is better than a contractor.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <h2>Who it's worth it for</h2>
+  <p><strong>Founders building their own products</strong> — extremely high ROI. Claude Code replaces large amounts of developer time, compresses the feedback loop between idea and working software, and lets non-technical founders build things they couldn't otherwise touch. At $20/month, the economics are straightforward.</p>
+  <p><strong>Developers who want to compress build time</strong> — high ROI. If you're already a competent developer, Claude Code handles the implementation work so you can focus on decisions. You'll ship features faster and write less boilerplate.</p>
+  <p><strong>People who want faster inline autocomplete</strong> — use Cursor or GitHub Copilot instead. Claude Code is not the right tool if what you primarily want is suggestions while you type. The tools above do that job better.</p>
+  <p><strong>Hobbyists building small projects</strong> — yes, if $20/month fits your budget. Claude Code is dramatically better than alternatives for building complete, working things. If the cost works, it's worth it even for small-scale personal projects.</p>
+
+  <hr class="divider">
+
+  <h2>Verdict</h2>
+  <p>Claude Code is the right tool if you want to build real, complete things autonomously. It is not the right tool if you want faster inline autocomplete — that's a different problem with better-suited solutions.</p>
+  <p>After months of real use across multiple projects, the conclusion is consistent: for the task of going from an idea to working, deployed software, Claude Code is the most effective tool available in 2026. The limitations are real but narrow. The capabilities are broad and genuinely useful.</p>
+  <p>For most builders and founders, it's the most useful $20/month they can spend on software.</p>
+
+  <hr class="divider">
+
+  <h2>Claude Code at Claude Camp</h2>
+  <p>The bootcamp at <a href="/">Claude Camp</a> is built on Claude Code because it produces the most dramatic results for the bootcamp's goal: shipping a complete, deployed product in 7 days. Every architectural decision in the curriculum — the tech stack, the project structure, the workflow — is optimised around what Claude Code does best.</p>
+  <p>Participants arrive with an idea and leave with a deployed product. The conclusions in this review aren't theoretical — participants see them arrive in real time, across a week of intensive building on an organic farm in northern Thailand. If you want to form your own opinion about Claude Code through actual use rather than reading about it, that's what the bootcamp is for.</p>
+
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
+      <li><a href="/claude-code-vs-cursor.html">Claude Code vs Cursor →</a></li>
+      <li><a href="/claude-code-vs-github-copilot.html">Claude Code vs GitHub Copilot →</a></li>
+      <li><a href="/claude-code-pricing.html">Claude Code Pricing →</a></li>
+      <li><a href="/claude-code-tips.html">Claude Code Tips &amp; Best Practices →</a></li>
+      <li><a href="/how-to-use-claude-code.html">How to Use Claude Code →</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>See Claude Code in action. Build something real.</h2>
+    <p>A 7-day residential bootcamp on an organic farm in northern Thailand. You arrive with an idea and leave with a deployed product. Cohorts of 7.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

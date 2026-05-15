@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools for Founders: The 2026 Stack That Actually Ships Products</title>
+<meta name="description" content="The AI tools founders actually use to build and launch products in 2026. Claude Code, Supabase, Vercel, Stripe, and a few others. What each does and when to use it.">
+<link rel="canonical" href="https://claudecamp.org/ai-tools-for-founders.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Tools for Founders: The 2026 Stack That Actually Ships Products">
+<meta property="og:description" content="The AI tools founders actually use to build and launch products in 2026. Claude Code, Supabase, Vercel, Stripe, and a few others. What each does and when to use it.">
+<meta property="og:url" content="https://claudecamp.org/ai-tools-for-founders.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Tools for Founders: The 2026 Stack That Actually Ships Products">
+<meta name="twitter:description" content="The AI tools founders actually use to build and launch products in 2026. Claude Code, Supabase, Vercel, Stripe, and a few others.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/ai-tools-for-founders.html#article",
+  "headline": "AI Tools for Founders: The 2026 Stack That Actually Ships Products",
+  "description": "The AI tools founders actually use to build and launch products in 2026. Claude Code, Supabase, Vercel, Stripe, and a few others. What each does and when to use it.",
+  "url": "https://claudecamp.org/ai-tools-for-founders.html",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "author": {
+    "@type": "Person",
+    "@id": "https://claudecamp.org/about.html#ying",
+    "name": "Ying Goldsmith",
+    "url": "https://claudecamp.org/about.html"
+  },
+  "publisher": { "@id": "https://claudecamp.org/#organization" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What AI tools do founders use to build products in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The core stack: Claude Code for implementation (writes and runs code autonomously), Supabase for database and authentication, Vercel or Cloudflare Pages for deployment, and Stripe for payments. Add ChatGPT or Perplexity for research and copy. This covers 90% of what most early-stage founders need."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I build a real product with just Claude Code and free tools?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Claude Code ($20/month Claude Pro), Supabase (free tier), Vercel (free tier), and Stripe (no monthly fee, percentage of revenue) can get you to a paying customer for under $25/month in tooling. Many founders launch on this stack."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best AI coding tool for founders with no coding background?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code. It's designed to read a codebase, understand context, and execute multi-step tasks based on plain English instructions. Unlike inline autocomplete tools (GitHub Copilot, Cursor), Claude Code works even if you have no idea what the code should look like."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a designer to build a product in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not for an MVP. Claude Code can write clean, professional CSS with specific direction (\"make the UI minimal, dark, modern — think Linear or Vercel style\"). A designer adds significant value once you have users and are optimising for conversion, but it's not a prerequisite to launch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should founders use Vercel or Cloudflare Pages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vercel is easier for Next.js projects and has better serverless function support. Cloudflare Pages is better for static sites and Vite apps, with a more generous free tier. If you're unsure, start with Vercel — Claude Code knows it well and will scaffold the deployment config for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Claude Camp teach the full founder tech stack?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Claude Camp covers Claude Code as the primary building tool, but participants also set up Supabase, deploy to Vercel or Cloudflare, and implement Stripe during the week. By the end, participants have touched every layer of the stack in the context of a real product."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
+    { "@type": "ListItem", "position": 2, "name": "AI Tools for Founders", "item": "https://claudecamp.org/ai-tools-for-founders.html" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --jungle-deep: #060d04; --jungle-mid: #0a1208; --canopy: #0f1e0b;
+  --amber: #f59e0b; --amber-glow: #fbbf24; --amber-dim: #92610a;
+  --text: #f8fafc; --text-muted: rgba(248,250,252,0.55); --text-faint: rgba(248,250,252,0.25);
+  --ease-cinema: cubic-bezier(0.76,0,0.24,1); --col: 680px;
+}
+html, body { width: 100%; background: var(--jungle-deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+nav { position: sticky; top: 0; z-index: 90; background: rgba(6,13,4,0.85); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid rgba(245,158,11,0.1); padding: 0 clamp(1.5rem,6vw,6rem); }
+.nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
+.nav-wordmark:hover { color: var(--amber); }
+.nav-about { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-about:hover { color: var(--text); }
+.nav-cta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s,border-color 0.3s; }
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+.breadcrumb { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+.hero { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; }
+.hero-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.5rem; }
+.hero-lede { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(1rem,1.6vw,1.15rem); line-height: 1.75; color: var(--text-muted); border-left: 2px solid rgba(245,158,11,0.3); padding-left: 1.25rem; margin-bottom: 3rem; }
+article { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 6rem; }
+article h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.5rem,2.8vw,2rem); line-height: 1.2; color: var(--text); margin: 3.5rem 0 1rem; }
+article h3 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 400; font-style: italic; font-size: clamp(1.1rem,1.8vw,1.3rem); color: var(--text-muted); margin: 2rem 0 0.75rem; }
+article p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem; }
+article ul, article ol { margin: 0.5rem 0 1.5rem 0; padding-left: 1.25rem; }
+article li { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 0.4rem; }
+article strong { color: var(--text); font-weight: 400; }
+article code { font-family: 'JetBrains Mono',monospace; font-size: 0.82em; color: var(--amber-glow); background: rgba(245,158,11,0.08); padding: 0.15em 0.4em; border-radius: 2px; }
+.divider { border: none; border-top: 1px solid rgba(245,158,11,0.08); margin: 3rem 0; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-family: 'DM Sans',sans-serif; font-size: clamp(0.85rem,1.2vw,0.95rem); }
+.compare-table th { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.compare-table td { padding: 0.75rem 1rem; color: var(--text-muted); font-weight: 300; border-bottom: 1px solid rgba(248,250,252,0.04); vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { color: var(--text); font-weight: 400; width: 30%; }
+.cta-block { margin: 4rem 0 0; padding: 2.5rem 2rem; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); border-radius: 4px; text-align: center; }
+.cta-block-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.cta-block h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.6rem,3vw,2.2rem); line-height: 1.2; color: var(--text); margin: 0 0 1rem; }
+.cta-block p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.9rem,1.3vw,1rem); color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; }
+.btn-amber { display: inline-block; font-family: 'JetBrains Mono',monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
+.btn-amber:hover { background: var(--amber-glow); }
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.88rem,1.2vw,0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s,border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
+footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem,6vh,5rem) clamp(1.5rem,6vw,6rem); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+.footer-meta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,250,252,0.2); line-height: 2; text-align: right; }
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">AI Tools for Founders</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Founder Stack · 2026</p>
+  <h1>AI Tools for Founders: The Stack That Ships</h1>
+  <p class="hero-lede">Most AI tool lists are long and vague. This one is short and specific: the tools that actually matter for a solo founder or small team building software products in 2026, and exactly what role each plays.</p>
+</div>
+
+<article>
+
+  <h2>Claude Code — implementation</h2>
+  <p>This is the centre of the stack. <strong>Claude Code reads your files, writes code, runs commands, and fixes errors</strong> — all from a terminal prompt or IDE extension. It operates on your actual codebase, not in a chat window disconnected from reality.</p>
+  <p>For a non-technical founder, Claude Code replaces a developer for the majority of building tasks. You describe what you want in plain English, and Claude Code figures out how to implement it across your project. For a technical founder, it multiplies output — handling boilerplate, debugging, refactoring, and documentation while you focus on architecture and product decisions.</p>
+  <p>Nothing else in this list is as consequential. The other tools are infrastructure; Claude Code is the builder.</p>
+
+  <hr class="divider">
+
+  <h2>Supabase — database + auth</h2>
+  <p><strong>Supabase is the open-source Firebase alternative</strong> that most serious founders are using in 2026. It gives you a Postgres database, user authentication, file storage, and a clean dashboard — all in one place, with a generous free tier that covers early-stage startups.</p>
+  <p>The reason it belongs in this stack specifically: Claude Code knows Supabase deeply. Ask Claude Code to scaffold authentication, set up a database schema, or write row-level security policies, and it will do it correctly in minutes. The combination of Claude Code's knowledge and Supabase's clean API is genuinely fast.</p>
+  <p>The free tier handles thousands of users and gigabytes of storage. You won't need to upgrade until you have a real business problem.</p>
+
+  <hr class="divider">
+
+  <h2>Vercel / Cloudflare Pages — deployment</h2>
+  <p>Both offer free static and serverless hosting with zero DevOps required. <strong>Connect your GitHub repository, push code, and your site is live.</strong> That is the entire deployment workflow.</p>
+  <p><strong>Vercel</strong> is the better default for Next.js projects. It handles serverless functions, edge routing, and environment variables cleanly, and Claude Code will scaffold the deployment config for you automatically. <strong>Cloudflare Pages</strong> is better for static sites and Vite apps, with a more generous free tier and global edge delivery.</p>
+  <p>Pick one and move on. The difference between them matters less than the time you'd spend building a custom deployment pipeline.</p>
+
+  <hr class="divider">
+
+  <h2>Stripe — payments</h2>
+  <p>Stripe is the standard for SaaS and digital products. No monthly fee — you pay a percentage of revenue only when you make money. <strong>Claude Code can implement Stripe Checkout and subscription billing with a single prompt.</strong></p>
+  <p>Do not build your own payment system. Do not use a lesser-known alternative to save fractions of a percent. Stripe's documentation is excellent, its reliability is proven, and Claude Code can implement it correctly because it has trained on thousands of Stripe integrations. The combination is fast and safe.</p>
+  <p>Stripe also handles tax compliance, fraud detection, and international payments — things that would each be multi-week projects on their own.</p>
+
+  <hr class="divider">
+
+  <h2>Cursor or VS Code — editor</h2>
+  <p>Claude Code runs in the terminal, but you still need an editor to review code, navigate your project, and occasionally make small edits. <strong>VS Code is free</strong> and has an official Claude Code extension. <strong>Cursor</strong> has AI features built in alongside its editor — autocomplete, inline generation, a built-in chat panel.</p>
+  <p>Either works. If you have no preference, start with VS Code and the Claude Code extension — it's the simpler setup. Cursor is worth trying if you want tighter AI integration in the editing experience itself.</p>
+
+  <hr class="divider">
+
+  <h2>Perplexity / ChatGPT — research</h2>
+  <p>These are thinking tools, not building tools. <strong>Use Perplexity for market research, competitive analysis, and quick factual questions.</strong> Use ChatGPT for writing marketing copy, drafting emails, and brainstorming positioning.</p>
+  <p>Neither should be your primary building tool. They are excellent at synthesis and communication; they are not designed to read your codebase and implement features. Keep them in the research and writing lane, and use Claude Code for everything that touches your product.</p>
+
+  <hr class="divider">
+
+  <h2>What you don't need</h2>
+  <p>The tools above cover a complete product. You do not need:</p>
+  <ul>
+    <li><strong>A dedicated DevOps tool.</strong> Vercel and Cloudflare handle deployment. Supabase handles the database. There is no infrastructure layer requiring a separate tool.</li>
+    <li><strong>A design tool.</strong> Claude Code can write clean, professional CSS with specific direction. Tell it the aesthetic you want ("minimal, dark, modern — think Linear or Vercel style") and it will implement it. A designer adds value later, not at launch.</li>
+    <li><strong>A separate project management tool.</strong> Keep a simple list — a text file, a Notion page, a whiteboard. Elaborate project management is a distraction when you're a team of one or two.</li>
+    <li><strong>An SEO plugin.</strong> Write content with FAQPage schema and descriptive structure. Claude Code can add the JSON-LD. That puts you ahead of most sites without any additional tooling.</li>
+  </ul>
+  <p>Every tool you add is a context switch and a subscription. The stack above is already complete. Additions should solve a specific problem you actually have, not a problem you're anticipating.</p>
+
+  <hr class="divider">
+
+  <h2>The founder workflow</h2>
+  <p>Here is how these tools connect in practice, from idea to paying customer:</p>
+  <ol>
+    <li><strong>Define what to build.</strong> Your own judgment, sharpened by Perplexity for market research and competitive analysis. Write a short brief — what the product does, who it's for, what problem it solves.</li>
+    <li><strong>Build it.</strong> Claude Code implements the product against your Supabase backend. You review the code in VS Code or Cursor, give feedback, and iterate.</li>
+    <li><strong>Deploy it.</strong> Push to GitHub. Vercel or Cloudflare Pages auto-deploys. Your product is live.</li>
+    <li><strong>Charge for it.</strong> Stripe Checkout handles payment. Claude Code implements the integration. You copy a webhook endpoint and an API key.</li>
+    <li><strong>Iterate.</strong> Talk to users. Use Perplexity to research the problem space more deeply. Return to Claude Code for the next build cycle.</li>
+  </ol>
+  <p>The entire cycle — from brief to live product — can happen in days for a focused founder. The tools above remove every major technical blocker. What remains is judgment: knowing what to build and who to build it for.</p>
+
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/claude-code-for-non-technical-founders.html">Claude Code for Non-Technical Founders →</a></li>
+      <li><a href="/how-to-build-a-saas-with-ai.html">How to Build a SaaS with AI →</a></li>
+      <li><a href="/build-app-without-coding.html">Build an App Without Coding →</a></li>
+      <li><a href="/how-to-ship-an-mvp-fast.html">How to Ship an MVP Fast →</a></li>
+      <li><a href="/claude-code-pricing.html">Claude Code Pricing →</a></li>
+      <li><a href="/ai-coding-bootcamp.html">What Is an AI Coding Bootcamp? →</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>Use the full stack. Ship a real product.</h2>
+    <p>Claude Camp is a 7-day residential bootcamp where founders build and deploy products using the tools in this guide. Organic farm, canyon views, cohorts of 7.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

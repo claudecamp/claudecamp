@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Tutorial: Get From Zero to Your First Working App</title>
+<meta name="description" content="A practical Claude Code tutorial covering installation, your first prompt, common commands, and how to build a real project from scratch. Step-by-step guide.">
+<link rel="canonical" href="https://claudecamp.org/claude-code-tutorial.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code Tutorial: Get From Zero to Your First Working App">
+<meta property="og:description" content="A practical Claude Code tutorial covering installation, your first prompt, common commands, and how to build a real project from scratch. Step-by-step guide.">
+<meta property="og:url" content="https://claudecamp.org/claude-code-tutorial.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code Tutorial: Get From Zero to Your First Working App">
+<meta name="twitter:description" content="A practical Claude Code tutorial covering installation, your first prompt, common commands, and how to build a real project from scratch.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/claude-code-tutorial.html#article",
+  "headline": "Claude Code Tutorial: Get From Zero to Your First Working App",
+  "description": "A practical Claude Code tutorial covering installation, your first prompt, common commands, and how to build a real project from scratch. Step-by-step guide.",
+  "url": "https://claudecamp.org/claude-code-tutorial.html",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "author": {
+    "@type": "Person",
+    "@id": "https://claudecamp.org/about.html#ying",
+    "name": "Ying Goldsmith",
+    "url": "https://claudecamp.org/about.html"
+  },
+  "publisher": { "@id": "https://claudecamp.org/#organization" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I get started with Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Install Claude Code via npm (npm install -g @anthropic-ai/claude-code), authenticate with your Anthropic account or API key, navigate to your project folder, and run claude. From there you can describe what you want to build in plain English."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to know how to code to use Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Claude Code is designed to be directed in plain English. You describe what you want and Claude Code writes, runs, and iterates on the code. You review the output and give feedback. Many Claude Code users start with zero coding experience."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best first project to build with Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A simple personal website or single-feature web app is ideal. Something with a clear, concrete goal you can describe in one sentence: \"a to-do list app,\" \"a landing page for my business,\" \"a bot that sends me the weather every morning.\" Small scope lets you see the full build cycle quickly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build something with Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A simple web app can be built in under an hour. A more complex SaaS product with authentication, a database, and a payment integration might take 2–5 days of focused iteration. Speed depends on how clearly you can describe the requirements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Claude Code run my code and fix errors automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Claude Code runs your code in the terminal, reads error messages, diagnoses the problem, and applies fixes without you needing to understand the error. This is one of its most powerful features for beginners."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What commands do I need to know for Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The core commands are: claude to start an interactive session, claude -p \"task\" for a one-shot task, /compact to free up context window space, /clear to reset the conversation, and Escape to interrupt a running task. Everything else is plain English."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Claude Camp teach Claude Code from scratch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Claude Camp is structured for participants who are new to Claude Code and, in many cases, new to coding entirely. The bootcamp starts with setup and your first session on day one, and by the end of the week participants have built and deployed a working product."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Claude Code Tutorial", "item": "https://claudecamp.org/claude-code-tutorial.html" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --jungle-deep: #060d04; --jungle-mid: #0a1208; --canopy: #0f1e0b;
+  --amber: #f59e0b; --amber-glow: #fbbf24; --amber-dim: #92610a;
+  --text: #f8fafc; --text-muted: rgba(248,250,252,0.55); --text-faint: rgba(248,250,252,0.25);
+  --ease-cinema: cubic-bezier(0.76,0,0.24,1); --col: 680px;
+}
+html, body { width: 100%; background: var(--jungle-deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+nav { position: sticky; top: 0; z-index: 90; background: rgba(6,13,4,0.85); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid rgba(245,158,11,0.1); padding: 0 clamp(1.5rem,6vw,6rem); }
+.nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
+.nav-wordmark:hover { color: var(--amber); }
+.nav-about { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-about:hover { color: var(--text); }
+.nav-cta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s,border-color 0.3s; }
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+.breadcrumb { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+.hero { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; }
+.hero-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.5rem; }
+.hero-lede { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(1rem,1.6vw,1.15rem); line-height: 1.75; color: var(--text-muted); border-left: 2px solid rgba(245,158,11,0.3); padding-left: 1.25rem; margin-bottom: 3rem; }
+article { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 6rem; }
+article h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.5rem,2.8vw,2rem); line-height: 1.2; color: var(--text); margin: 3.5rem 0 1rem; }
+article h3 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 400; font-style: italic; font-size: clamp(1.1rem,1.8vw,1.3rem); color: var(--text-muted); margin: 2rem 0 0.75rem; }
+article p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem; }
+article ul, article ol { margin: 0.5rem 0 1.5rem 0; padding-left: 1.25rem; }
+article li { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 0.4rem; }
+article strong { color: var(--text); font-weight: 400; }
+article code { font-family: 'JetBrains Mono',monospace; font-size: 0.82em; color: var(--amber-glow); background: rgba(245,158,11,0.08); padding: 0.15em 0.4em; border-radius: 2px; }
+.divider { border: none; border-top: 1px solid rgba(245,158,11,0.08); margin: 3rem 0; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-family: 'DM Sans',sans-serif; font-size: clamp(0.85rem,1.2vw,0.95rem); }
+.compare-table th { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.compare-table td { padding: 0.75rem 1rem; color: var(--text-muted); font-weight: 300; border-bottom: 1px solid rgba(248,250,252,0.04); vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { color: var(--text); font-weight: 400; width: 30%; }
+.cta-block { margin: 4rem 0 0; padding: 2.5rem 2rem; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); border-radius: 4px; text-align: center; }
+.cta-block-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.cta-block h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.6rem,3vw,2.2rem); line-height: 1.2; color: var(--text); margin: 0 0 1rem; }
+.cta-block p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.9rem,1.3vw,1rem); color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; }
+.btn-amber { display: inline-block; font-family: 'JetBrains Mono',monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
+.btn-amber:hover { background: var(--amber-glow); }
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.88rem,1.2vw,0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s,border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
+footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem,6vh,5rem) clamp(1.5rem,6vw,6rem); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+.footer-meta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,250,252,0.2); line-height: 2; text-align: right; }
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">Claude Code Tutorial</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Anthropic · Step-by-Step Guide</p>
+  <h1>Claude Code Tutorial: From Zero to First App</h1>
+  <p class="hero-lede">This tutorial walks you through installing Claude Code, running your first commands, and building a complete working project from scratch — whether you have a technical background or not.</p>
+</div>
+
+<article>
+
+  <h2>What you need before you start</h2>
+  <p>Claude Code has a short prerequisite list. You need one of the following: a <strong>Claude Pro subscription</strong> ($20/month) from Anthropic, or an <strong>Anthropic API key</strong> with a funded account. Either gives you access to the underlying models that Claude Code runs on.</p>
+  <p>Beyond that, you need <strong>Node.js</strong> installed on your machine. If you don't have it, download the LTS version from nodejs.org — the installer takes two minutes. Finally, you need basic comfort with a terminal: being able to open it, navigate to a folder with <code>cd</code>, and run a command. That's the full list. You do not need to know how to write code.</p>
+
+  <hr class="divider">
+
+  <h2>Installing Claude Code</h2>
+  <p>With Node.js installed, open your terminal and run:</p>
+  <p><code>npm install -g @anthropic-ai/claude-code</code></p>
+  <p>This installs Claude Code globally on your machine. Once it completes, run:</p>
+  <p><code>claude</code></p>
+  <p>Claude Code will prompt you to authenticate. If you're on Claude Pro, sign in with your Anthropic account. If you're using an API key, paste it when asked. Authentication stores credentials locally — you only do this once. After that, every project you open can use Claude Code immediately.</p>
+  <p>To confirm the installation worked, you should see a blinking prompt waiting for your first message. You're in.</p>
+
+  <hr class="divider">
+
+  <h2>Your first Claude Code session</h2>
+  <p>Navigate to a folder where you want to build something. If you don't have one, create an empty folder and move into it:</p>
+  <p><code>mkdir my-first-app</code></p>
+  <p>Then start a session:</p>
+  <p><code>claude</code></p>
+  <p>Now type a plain English request. Something like:</p>
+  <p><code>Create a simple web app that shows today's weather for a city I type in.</code></p>
+  <p>Watch what happens next. Claude Code doesn't just write code and dump it — it <strong>plans out loud</strong>, telling you what it's going to build and why, then writes the files one by one, explains what each does, and runs the app to check it works. If it hits an error, it reads the error message and fixes it without you needing to understand what went wrong.</p>
+  <p>When it finishes, it tells you how to open or run what it built. For a web app, that's usually opening a file in your browser or running a local server. The whole process for a small project typically takes under five minutes.</p>
+
+  <hr class="divider">
+
+  <h2>Core commands to know</h2>
+  <p>Claude Code has a handful of commands that cover almost everything you'll do day-to-day. You don't need to memorize a long list.</p>
+
+  <table class="compare-table" aria-label="Core Claude Code commands">
+    <thead>
+      <tr><th>Command</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>claude</code></td><td>Start an interactive session. Best for back-and-forth building where you'll iterate and give feedback.</td></tr>
+      <tr><td><code>claude -p "your task"</code></td><td>One-shot mode. Claude Code runs the task and exits. Good for quick, well-defined jobs.</td></tr>
+      <tr><td><code>/compact</code></td><td>Compresses the conversation context when sessions get long. Keeps Claude Code from losing track of earlier work.</td></tr>
+      <tr><td><code>/clear</code></td><td>Starts a completely fresh conversation. Use this when you're moving to an unrelated task.</td></tr>
+      <tr><td>Escape</td><td>Interrupts a running task mid-execution. Use this if Claude Code goes in a direction you didn't intend.</td></tr>
+    </tbody>
+  </table>
+
+  <p>Everything else is plain English. You don't need special syntax to ask Claude Code to add a feature, change a design, or fix something. Just describe what you want.</p>
+
+  <hr class="divider">
+
+  <h2>Building a real project: a step-by-step example</h2>
+  <p>Let's walk through building a simple task manager web app from a completely blank folder. This is the kind of project that takes under an hour and teaches you the full build loop.</p>
+
+  <h3>Step 1 — Give Claude Code a brief</h3>
+  <p>Start with a clear, concrete description of what you want to end up with:</p>
+  <p><code>Build a task manager web app. It should let me add tasks, mark them as done, and delete them. Store the tasks so they persist when I refresh the page. Use plain HTML, CSS, and JavaScript — no frameworks.</code></p>
+  <p>Claude Code will confirm the plan and start building. It will create an <code>index.html</code> file, a stylesheet, and a JavaScript file that handles the task logic and localStorage persistence.</p>
+
+  <h3>Step 2 — Review and ask for changes</h3>
+  <p>Once it's done, open the app in your browser. If something looks wrong or you want a different style, describe the change:</p>
+  <p><code>The done tasks should have a strikethrough instead of disappearing. And make the add button green.</code></p>
+  <p>Claude Code edits only what needs to change. It doesn't rewrite the whole app.</p>
+
+  <h3>Step 3 — Add a feature</h3>
+  <p>Once the basics work, layer in something new:</p>
+  <p><code>Add the ability to set a due date on each task. Show the date next to the task name and highlight overdue tasks in red.</code></p>
+  <p>Claude Code reads the existing files, understands the structure, and adds the due date feature without breaking what's already there.</p>
+
+  <h3>Step 4 — Ship it</h3>
+  <p><code>How do I put this online so I can share it with someone?</code></p>
+  <p>Claude Code will walk you through the simplest deployment path for what you've built — often a drag-and-drop upload to Netlify or Vercel, both of which have free tiers. Within minutes, your app has a real URL.</p>
+
+  <hr class="divider">
+
+  <h2>Common beginner mistakes</h2>
+  <p>Most early frustrations with Claude Code come from a small set of repeatable patterns. Knowing them in advance saves you time.</p>
+
+  <ul>
+    <li><strong>Prompts that are too vague.</strong> "Make me an app" gives Claude Code nothing to work with. The more concrete your brief — what it does, what it looks like, who uses it — the better the first draft.</li>
+    <li><strong>Not giving Claude Code enough context.</strong> If you're working in an existing project, tell Claude Code what's already there before asking it to add something. It can read your files, but only if you point it in the right direction.</li>
+    <li><strong>Interrupting mid-task.</strong> Claude Code often looks like it's doing something wrong halfway through a task when it's actually in the middle of a logical sequence. Let it finish before judging the output. Use the Escape key only if it's clearly going off-track.</li>
+    <li><strong>Not reading the plan before confirming.</strong> When Claude Code presents a plan and asks for confirmation, read it. This is your chance to catch misunderstandings before any code is written. A two-second check saves ten minutes of reverting.</li>
+  </ul>
+
+  <hr class="divider">
+
+  <h2>What to build next</h2>
+  <p>After your first small project, the best thing you can do is build another one immediately — while the loop is fresh. A few good follow-on projects for beginners:</p>
+
+  <ul>
+    <li><strong>A personal portfolio site</strong> — a single-page site with your bio, projects, and contact details. Design-focused and satisfying to finish.</li>
+    <li><strong>A simple SaaS landing page</strong> — headline, benefit bullets, pricing table, and a waitlist form. A useful template you'll reuse.</li>
+    <li><strong>A Telegram bot</strong> — something that sends you a daily briefing, a weather update, or a reminder. Teaches you API integrations.</li>
+    <li><strong>A data scraper</strong> — pull data from a public website or API and display it in a clean format. A good introduction to working with external data.</li>
+  </ul>
+
+  <p>For structured project ideas and a curated list of what's worth building as a beginner, see the <a href="/claude-code-projects.html">Claude Code projects page</a>.</p>
+
+  <hr class="divider">
+
+  <h2>Learn at Claude Camp</h2>
+  <p>A tutorial can get you started. What it can't give you is the structure of a cohort, daily accountability, and someone experienced to unblock you when you hit a wall at hour three of day two.</p>
+  <p>Claude Camp is a seven-day residential bootcamp in Pai, Thailand, built specifically for people learning to build with Claude Code. The programme is structured so that participants who arrive having never written a line of code leave with a deployed, working product. Most participants ship something by day four.</p>
+  <p>Cohorts are kept small — seven people — so instruction is personal. All meals are included. The setting is an organic farm in the mountains of northern Thailand, which turns out to be a surprisingly good environment for focused building.</p>
+  <p>If you've followed this tutorial and the feeling you want is more of this, just faster and with people alongside you, that's what the bootcamp is for.</p>
+
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
+      <li><a href="/how-to-use-claude-code.html">How to Use Claude Code →</a></li>
+      <li><a href="/claude-code-for-beginners.html">Claude Code for Beginners →</a></li>
+      <li><a href="/claude-code-tips.html">Claude Code Tips &amp; Best Practices →</a></li>
+      <li><a href="/claude-code-projects.html">What to Build with Claude Code →</a></li>
+      <li><a href="/ai-coding-bootcamp.html">What Is an AI Coding Bootcamp? →</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>7 days. One working product. Organic farm in Thailand.</h2>
+    <p>A residential bootcamp teaching you to build and ship with Claude Code. Structured for beginners and founders. Cohorts of 7, all meals included.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Build a SaaS with AI: Step-by-Step for Founders in 2026</title>
+<meta name="description" content="You can build and launch a SaaS product with AI tools without a development team. Here's the realistic step-by-step process using Claude Code and modern tooling.">
+<link rel="canonical" href="https://claudecamp.org/how-to-build-a-saas-with-ai.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Build a SaaS with AI: Step-by-Step for Founders in 2026">
+<meta property="og:description" content="You can build and launch a SaaS product with AI tools without a development team. Here's the realistic step-by-step process using Claude Code and modern tooling.">
+<meta property="og:url" content="https://claudecamp.org/how-to-build-a-saas-with-ai.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Build a SaaS with AI: Step-by-Step for Founders in 2026">
+<meta name="twitter:description" content="You can build and launch a SaaS product with AI tools without a development team. Here's the realistic step-by-step process.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/how-to-build-a-saas-with-ai.html#article",
+  "headline": "How to Build a SaaS with AI: Step-by-Step for Founders in 2026",
+  "description": "You can build and launch a SaaS product with AI tools without a development team. Here's the realistic step-by-step process using Claude Code and modern tooling.",
+  "url": "https://claudecamp.org/how-to-build-a-saas-with-ai.html",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "author": {
+    "@type": "Person",
+    "@id": "https://claudecamp.org/about.html#ying",
+    "name": "Ying Goldsmith",
+    "url": "https://claudecamp.org/about.html"
+  },
+  "publisher": { "@id": "https://claudecamp.org/#organization" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I build a SaaS without coding experience using AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Claude Code handles the implementation — writing files, setting up databases, integrating payments. Your role is defining what to build, testing the result, and directing Claude Code to fix issues. Many non-technical founders have built and launched SaaS products this way in 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What tech stack should I use to build a SaaS with AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For AI-assisted development, use a stack with strong training data: Next.js or Vite + React for the frontend, Supabase for database and authentication, Stripe for payments, and Vercel or Cloudflare Pages for deployment. Claude Code knows these tools deeply and will produce reliable code for them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build a SaaS MVP with Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A functional MVP — user authentication, one core feature, payment integration — takes 3–7 days of focused work. Claude Code dramatically compresses the implementation phase. The main time cost shifts to product decisions, testing, and user research."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost to build a SaaS with AI tools?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tooling costs are minimal: Claude Pro at $20/month, Supabase free tier for early users, Vercel free tier for deployment, Stripe (no fee until revenue). The main cost is your time. A serious founder can get to a paying customer for well under $100 in tooling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the biggest mistake founders make when building a SaaS with AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Starting to build before they have a clear answer to 'who pays for this and why.' AI tools make building fast, which makes it easy to build the wrong thing very quickly. Define your product, target customer, and pricing model before writing a single line of code."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to understand the code Claude Code writes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not deeply, but you should be able to read it well enough to spot obvious problems. Claude Code explains what it's doing as it works. Over time you build intuition for what correct code looks like, even without formal training."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Claude Camp help you build a SaaS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Many participants arrive with a SaaS idea and use the 7-day bootcamp to build and deploy a working v1. The structured format — defined goals, daily iteration, peer feedback — is well-suited to the MVP build process."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
+    { "@type": "ListItem", "position": 2, "name": "How to Build a SaaS with AI", "item": "https://claudecamp.org/how-to-build-a-saas-with-ai.html" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --jungle-deep: #060d04; --jungle-mid: #0a1208; --canopy: #0f1e0b;
+  --amber: #f59e0b; --amber-glow: #fbbf24; --amber-dim: #92610a;
+  --text: #f8fafc; --text-muted: rgba(248,250,252,0.55); --text-faint: rgba(248,250,252,0.25);
+  --ease-cinema: cubic-bezier(0.76,0,0.24,1); --col: 680px;
+}
+html, body { width: 100%; background: var(--jungle-deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+nav { position: sticky; top: 0; z-index: 90; background: rgba(6,13,4,0.85); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid rgba(245,158,11,0.1); padding: 0 clamp(1.5rem,6vw,6rem); }
+.nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
+.nav-wordmark:hover { color: var(--amber); }
+.nav-about { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-about:hover { color: var(--text); }
+.nav-cta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s,border-color 0.3s; }
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+.breadcrumb { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+.hero { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; }
+.hero-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.5rem; }
+.hero-lede { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(1rem,1.6vw,1.15rem); line-height: 1.75; color: var(--text-muted); border-left: 2px solid rgba(245,158,11,0.3); padding-left: 1.25rem; margin-bottom: 3rem; }
+article { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 6rem; }
+article h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.5rem,2.8vw,2rem); line-height: 1.2; color: var(--text); margin: 3.5rem 0 1rem; }
+article h3 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 400; font-style: italic; font-size: clamp(1.1rem,1.8vw,1.3rem); color: var(--text-muted); margin: 2rem 0 0.75rem; }
+article p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem; }
+article ul, article ol { margin: 0.5rem 0 1.5rem 0; padding-left: 1.25rem; }
+article li { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 0.4rem; }
+article strong { color: var(--text); font-weight: 400; }
+article code { font-family: 'JetBrains Mono',monospace; font-size: 0.82em; color: var(--amber-glow); background: rgba(245,158,11,0.08); padding: 0.15em 0.4em; border-radius: 2px; }
+.divider { border: none; border-top: 1px solid rgba(245,158,11,0.08); margin: 3rem 0; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-family: 'DM Sans',sans-serif; font-size: clamp(0.85rem,1.2vw,0.95rem); }
+.compare-table th { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.compare-table td { padding: 0.75rem 1rem; color: var(--text-muted); font-weight: 300; border-bottom: 1px solid rgba(248,250,252,0.04); vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { color: var(--text); font-weight: 400; width: 30%; }
+.cta-block { margin: 4rem 0 0; padding: 2.5rem 2rem; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); border-radius: 4px; text-align: center; }
+.cta-block-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.cta-block h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.6rem,3vw,2.2rem); line-height: 1.2; color: var(--text); margin: 0 0 1rem; }
+.cta-block p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.9rem,1.3vw,1rem); color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; }
+.btn-amber { display: inline-block; font-family: 'JetBrains Mono',monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
+.btn-amber:hover { background: var(--amber-glow); }
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.88rem,1.2vw,0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s,border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
+footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem,6vh,5rem) clamp(1.5rem,6vw,6rem); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+.footer-meta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,250,252,0.2); line-height: 2; text-align: right; }
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">How to Build a SaaS with AI</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">AI Product Building · 2026 Guide</p>
+  <h1>How to Build a SaaS with AI</h1>
+  <p class="hero-lede">Building a SaaS with AI in 2026 is genuinely different from two years ago. Claude Code handles the implementation. Your job is product thinking, positioning, and knowing what to ask for. This is the process.</p>
+</div>
+
+<article>
+
+  <h2>What's actually changed</h2>
+  <p>Two years ago, "building a SaaS" meant either hiring developers or spending months learning to code. Today, AI coding tools handle the full implementation stack: backend logic, frontend UI, database schema, authentication flows, and payment integration. Claude Code can scaffold a working application with user login and Stripe billing in an afternoon.</p>
+  <p>The bottleneck has shifted. It is no longer "can I build this?" The question is now "do I know <strong>what</strong> to build and <strong>for whom</strong>?" Product thinking and positioning are the hard parts. The implementation is the easy part. This is a genuine structural change — and it means founders with domain knowledge and customer understanding have a real advantage they didn't have before.</p>
+
+  <hr class="divider">
+
+  <h2>The SaaS stack AI builds best</h2>
+  <p>Claude Code has deep training data on certain tools and produces reliable, production-quality code for them. The stack below is not the only option, but it is the one that works best with AI-assisted development in 2026:</p>
+  <ul>
+    <li><strong>Frontend:</strong> Next.js or Vite + React — well-documented, widely used, Claude Code knows both deeply</li>
+    <li><strong>Database + auth:</strong> Supabase — PostgreSQL with a clean API, built-in row-level security, and authentication out of the box</li>
+    <li><strong>Payments:</strong> Stripe — the standard for SaaS billing, extensive Claude Code training data, reliable integration</li>
+    <li><strong>Deployment:</strong> Vercel or Cloudflare Pages — one-command deploy, custom domains, free tiers that cover early-stage products</li>
+  </ul>
+  <p>Stick to this stack for your first SaaS. The moment you deviate into newer or more obscure tools, you introduce friction that slows down the AI and slows down you. Win with the boring stack first.</p>
+
+  <hr class="divider">
+
+  <h2>Phase 1: Define before you build</h2>
+  <p>The single biggest mistake founders make with AI-assisted development: they open Claude Code and start building before they can clearly describe who pays for the product and why. AI tools make building so fast that it becomes dangerously easy to build the wrong thing at speed.</p>
+  <p>Before you write a single line of code, write a one-paragraph product brief. It should answer four questions:</p>
+  <ol>
+    <li><strong>What does it do?</strong> One sentence, no jargon.</li>
+    <li><strong>Who is it for?</strong> A specific person in a specific situation, not "small businesses."</li>
+    <li><strong>What do they pay per month?</strong> A real number. Even a guess forces clarity.</li>
+    <li><strong>Why can't they use a spreadsheet?</strong> If they can, reconsider the product.</li>
+  </ol>
+  <p>Give this brief to Claude Code at the start of every session. It sets context and keeps the implementation aligned with the product intention. A good brief is the most valuable thing you bring to the build process.</p>
+
+  <hr class="divider">
+
+  <h2>Phase 2: Scaffold the project</h2>
+  <p>Once you have a clear product brief, let Claude Code set up the boilerplate. Ask it to create the project structure, configure authentication, and build a basic dashboard layout. With the stack above, this takes minutes — not days. You will have a working app with user login and a logged-in view before you've made a single product decision about features.</p>
+  <p>Your job at this stage: review the structure and confirm it matches your mental model. Read through the files Claude Code created. You don't need to understand every line, but you should understand the shape of the project — where user data lives, how authentication works, where the main screens are. This review habit becomes invaluable when something breaks later.</p>
+
+  <hr class="divider">
+
+  <h2>Phase 3: Build feature by feature</h2>
+  <p>Work in small, shippable increments. One feature per session. Give Claude Code a concrete, testable task: "Add the ability for users to upload a CSV and see it displayed as a table." Not "build the data import feature." The more specific the prompt, the better the output.</p>
+  <p>After each feature, test it yourself as a user. Does it work? Does it make sense? Does the flow feel right? Only move to the next feature when the current one is solid. The temptation to keep building before testing is strong — resist it. Bugs compound. A fragile feature you shipped in session three will cause problems in session seven.</p>
+  <p>Keep a running list of what you've built and what you've tested. Claude Code can reference this list to stay oriented across sessions, since each session starts without memory of the previous one.</p>
+
+  <hr class="divider">
+
+  <h2>Phase 4: Payments and launch</h2>
+  <p>Stripe integration is well within Claude Code's capability. Ask it to implement a specific pricing plan using Stripe Checkout — give it the exact price, billing interval, and product name. Claude Code will generate the integration code, the webhook handler to activate user accounts after payment, and the customer portal link for self-serve subscription management.</p>
+  <p>Once payments work, deploy to Vercel with a custom domain. Claude Code can write the deployment configuration. The deploy itself is a single command. You now have a live SaaS product that accepts real payments.</p>
+  <p>This is the moment most AI-assisted founders stall: the product is done but they haven't told anyone about it. Launching is a separate skill from building. Have at least five potential customers identified before you reach Phase 4 — people you've already spoken to who said they'd pay for this.</p>
+
+  <hr class="divider">
+
+  <h2>Realistic timeline</h2>
+  <p>A simple SaaS MVP — user authentication, one core feature, Stripe payments — takes <strong>3–7 days of focused work</strong>. This assumes you have your product brief written before you start and you work in dedicated sessions without distractions. A polished v1 with multiple features, good error handling, and an onboarding flow takes 2–4 weeks.</p>
+
+  <table class="compare-table" aria-label="SaaS build timeline by phase">
+    <thead>
+      <tr><th>Phase</th><th>What you build</th><th>Time</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Define</td><td>Product brief, customer conversations, pricing model</td><td>1–2 days</td></tr>
+      <tr><td>Scaffold</td><td>Project structure, auth, dashboard shell</td><td>Half a day</td></tr>
+      <tr><td>Core feature</td><td>The one thing that delivers the product's value</td><td>1–3 days</td></tr>
+      <tr><td>Payments</td><td>Stripe Checkout, webhooks, customer portal</td><td>Half a day</td></tr>
+      <tr><td>Deploy + launch</td><td>Vercel deploy, domain, first outreach</td><td>1 day</td></tr>
+    </tbody>
+  </table>
+
+  <p>These timelines are not theoretical. They reflect what founders with no prior coding experience have achieved using Claude Code in structured environments. The main variable is how much time you spend defining the product before you start building.</p>
+
+  <hr class="divider">
+
+  <h2>Claude Camp builds SaaS products</h2>
+  <p>Many Claude Camp participants arrive with a SaaS idea they've been sitting on — sometimes for years — because they didn't know how to build it. The 7-day residential format maps well to the MVP build process above: Day 1 is product definition, Days 2–5 are implementation, Day 6 is payments and deployment, Day 7 is review and iteration.</p>
+  <p>Participants leave with a deployed v1 that accepts real payments. The structured format, daily peer feedback, and focused environment make it possible to compress weeks of solo work into a single week. If you have a SaaS idea and want to ship it, this is the fastest path we know of.</p>
+
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/claude-code-for-non-technical-founders.html">Claude Code for Non-Technical Founders →</a></li>
+      <li><a href="/build-app-without-coding.html">Build an App Without Coding →</a></li>
+      <li><a href="/ai-tools-for-founders.html">AI Tools for Founders →</a></li>
+      <li><a href="/how-to-ship-an-mvp-fast.html">How to Ship an MVP Fast →</a></li>
+      <li><a href="/claude-code-projects.html">What to Build with Claude Code →</a></li>
+      <li><a href="/ai-coding-bootcamp.html">What Is an AI Coding Bootcamp? →</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>Build your SaaS MVP in 7 days</h2>
+    <p>A residential bootcamp for founders. You arrive with an idea, you leave with a deployed product. Cohorts of 7, organic farm, all meals included.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

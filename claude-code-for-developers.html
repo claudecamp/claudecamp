@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code for Developers: Advanced Workflows and Real Use Cases</title>
+<meta name="description" content="Experienced developers use Claude Code for refactoring, debugging, test generation, and shipping features faster. Real workflows, advanced tips, and honest trade-offs.">
+<link rel="canonical" href="https://claudecamp.org/claude-code-for-developers.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code for Developers: Advanced Workflows and Real Use Cases">
+<meta property="og:description" content="Experienced developers use Claude Code for refactoring, debugging, test generation, and shipping features faster. Real workflows, advanced tips, and honest trade-offs.">
+<meta property="og:url" content="https://claudecamp.org/claude-code-for-developers.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code for Developers: Advanced Workflows and Real Use Cases">
+<meta name="twitter:description" content="Experienced developers use Claude Code for refactoring, debugging, test generation, and shipping features faster. Real workflows, advanced tips, and honest trade-offs.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/claude-code-for-developers.html#article",
+  "headline": "Claude Code for Developers: Advanced Workflows and Real Use Cases",
+  "description": "Experienced developers use Claude Code for refactoring, debugging, test generation, and shipping features faster. Real workflows, advanced tips, and honest trade-offs.",
+  "url": "https://claudecamp.org/claude-code-for-developers.html",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "author": {
+    "@type": "Person",
+    "@id": "https://claudecamp.org/about.html#ying",
+    "name": "Ying Goldsmith",
+    "url": "https://claudecamp.org/about.html"
+  },
+  "publisher": { "@id": "https://claudecamp.org/#organization" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do experienced developers use Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Experienced developers use Claude Code for large-scale refactors, writing tests for existing code, debugging stack traces across multiple files, migrating codebases between frameworks, and integrating Claude Code into CI/CD pipelines. The key shift is treating Claude Code as an autonomous implementer you direct, not an autocomplete assistant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Claude Code refactor large codebases?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Claude Code can read an entire codebase, understand its structure, and execute a refactor across multiple files simultaneously. For large refactors, it's helpful to give Claude Code a CLAUDE.md file with project conventions so the output matches your existing patterns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I use CLAUDE.md with Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CLAUDE.md is a plain text file you place in your project root. Claude Code reads it at the start of every session. Use it to document: tech stack, code style preferences, testing conventions, commands to run, and anything Claude Code should know about your project. It acts as persistent project context."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Claude Code write unit tests?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and this is one of its strongest use cases for experienced developers. Point Claude Code at a module and say \"write comprehensive unit tests for this file using Jest\" (or your testing framework) and it reads the code, infers the expected behaviour, and writes tests that cover edge cases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Claude Code useful for developers who already know how to code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — often more so than for beginners. Experienced developers can review Claude Code's output critically and direct it precisely. The leverage multiplier is highest when you already understand architecture and can catch errors. Claude Code compresses hours of implementation into minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Claude Code integrate with CI/CD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code can run in headless mode with `claude -p \"task\"` and `--allowedTools` flags, making it scriptable. Developers use it to automatically fix linting errors, generate documentation from changed files, or summarise commits as part of a pipeline."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Claude Code for Developers", "item": "https://claudecamp.org/claude-code-for-developers.html" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --jungle-deep: #060d04; --jungle-mid: #0a1208; --canopy: #0f1e0b;
+  --amber: #f59e0b; --amber-glow: #fbbf24; --amber-dim: #92610a;
+  --text: #f8fafc; --text-muted: rgba(248,250,252,0.55); --text-faint: rgba(248,250,252,0.25);
+  --ease-cinema: cubic-bezier(0.76,0,0.24,1); --col: 680px;
+}
+html, body { width: 100%; background: var(--jungle-deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+nav { position: sticky; top: 0; z-index: 90; background: rgba(6,13,4,0.85); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid rgba(245,158,11,0.1); padding: 0 clamp(1.5rem,6vw,6rem); }
+.nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
+.nav-wordmark:hover { color: var(--amber); }
+.nav-about { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-about:hover { color: var(--text); }
+.nav-cta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s,border-color 0.3s; }
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+.breadcrumb { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+.hero { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; }
+.hero-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.5rem; }
+.hero-lede { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(1rem,1.6vw,1.15rem); line-height: 1.75; color: var(--text-muted); border-left: 2px solid rgba(245,158,11,0.3); padding-left: 1.25rem; margin-bottom: 3rem; }
+article { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 6rem; }
+article h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.5rem,2.8vw,2rem); line-height: 1.2; color: var(--text); margin: 3.5rem 0 1rem; }
+article h3 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 400; font-style: italic; font-size: clamp(1.1rem,1.8vw,1.3rem); color: var(--text-muted); margin: 2rem 0 0.75rem; }
+article p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem; }
+article ul, article ol { margin: 0.5rem 0 1.5rem 0; padding-left: 1.25rem; }
+article li { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 0.4rem; }
+article strong { color: var(--text); font-weight: 400; }
+article code { font-family: 'JetBrains Mono',monospace; font-size: 0.82em; color: var(--amber-glow); background: rgba(245,158,11,0.08); padding: 0.15em 0.4em; border-radius: 2px; }
+.divider { border: none; border-top: 1px solid rgba(245,158,11,0.08); margin: 3rem 0; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-family: 'DM Sans',sans-serif; font-size: clamp(0.85rem,1.2vw,0.95rem); }
+.compare-table th { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.compare-table td { padding: 0.75rem 1rem; color: var(--text-muted); font-weight: 300; border-bottom: 1px solid rgba(248,250,252,0.04); vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { color: var(--text); font-weight: 400; width: 30%; }
+.cta-block { margin: 4rem 0 0; padding: 2.5rem 2rem; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); border-radius: 4px; text-align: center; }
+.cta-block-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.cta-block h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.6rem,3vw,2.2rem); line-height: 1.2; color: var(--text); margin: 0 0 1rem; }
+.cta-block p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.9rem,1.3vw,1rem); color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; }
+.btn-amber { display: inline-block; font-family: 'JetBrains Mono',monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
+.btn-amber:hover { background: var(--amber-glow); }
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.88rem,1.2vw,0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s,border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
+footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem,6vh,5rem) clamp(1.5rem,6vw,6rem); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+.footer-meta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,250,252,0.2); line-height: 2; text-align: right; }
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">Claude Code for Developers</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Anthropic · Developer Workflows</p>
+  <h1>Claude Code for Experienced Developers</h1>
+  <p class="hero-lede">If you already know how to code, Claude Code changes the scale of what one person can ship. This guide covers the workflows, commands, and real use cases that experienced developers get the most leverage from.</p>
+</div>
+
+<article>
+
+  <h2>How experienced developers use Claude Code differently</h2>
+  <p>Claude Code is not autocomplete. If you approach it like Copilot — waiting for it to finish your line — you're leaving most of its capability on the table. Experienced developers use it for tasks that would otherwise take hours: large refactors spanning dozens of files, writing test suites for legacy code that has none, diagnosing production errors from a stack trace, migrating a service from one framework to another, or generating all the boilerplate for a new microservice before writing a single line of business logic.</p>
+  <p>The mental model that unlocks this: <strong>you are the architect, Claude Code is the implementer.</strong> Your job is to understand what needs to be built, articulate it clearly, and review what comes back. Claude Code's job is to do the implementation work — reading your codebase, understanding its patterns, and writing code that fits. The better you are at directing it, the more it scales your output.</p>
+  <p>This is a fundamentally different relationship than autocomplete. You stop filling in blanks and start delegating entire work units. For a developer who already understands architecture and can critically review output, this multiplier is enormous.</p>
+
+  <hr class="divider">
+
+  <h2>High-leverage workflows</h2>
+
+  <h3>Legacy code refactoring</h3>
+  <p>Give Claude Code the file — or the directory — and describe the desired outcome. "Refactor this service to use async/await throughout and remove the callback pattern" or "Extract this God class into three smaller classes following the single-responsibility principle." Claude Code reads the code, understands its structure, rewrites it, and explains the changes it made. For large refactors that would take a developer a full day to do carefully, Claude Code often finishes in minutes. The critical skill is reviewing the output: you catch the edge cases Claude Code might miss, and you decide which changes to keep.</p>
+
+  <h3>Test generation</h3>
+  <p>This is one of Claude Code's strongest use cases for experienced developers. Point it at a module with no test coverage and say: <strong>"Write full unit tests for this file using Jest."</strong> Claude Code reads the implementation, infers the expected behaviour from the code itself, and writes tests that cover the happy path, edge cases, and error conditions. For teams with legacy codebases that accumulated technical debt over years, Claude Code can generate a working test suite in a fraction of the time it would take to write by hand. Always review the tests — Claude Code occasionally infers intent incorrectly — but the starting point it produces is dramatically better than a blank file.</p>
+
+  <h3>Debugging production errors</h3>
+  <p>Paste a stack trace or point Claude Code at your log files and ask it to diagnose the error. Claude Code reads across multiple files simultaneously — the error location, the calling code, the dependencies — and identifies root causes that would take a developer significant time to trace manually. It then proposes a fix and explains its reasoning. For intermittent production errors with complex call stacks, this is one of the highest-leverage uses of the tool.</p>
+
+  <h3>Code review</h3>
+  <p>Ask Claude Code to review a pull request before you merge it. Give it the diff and ask it to flag issues: logic errors, missing error handling, security concerns, performance problems, code style violations. Claude Code reads the changes in context of the surrounding codebase and produces a structured review. It is not a replacement for human code review, but it catches a category of mechanical errors — missing null checks, inconsistent error handling, obvious security mistakes — faster than a human reviewer scanning the same diff.</p>
+
+  <hr class="divider">
+
+  <h2>Advanced commands developers use</h2>
+  <p><strong><code>CLAUDE.md</code></strong> — Place this file in your project root and Claude Code reads it at the start of every session. Use it to document your tech stack, code style preferences, testing conventions, the commands needed to build and test the project, and any architectural decisions Claude Code should be aware of. A good <code>CLAUDE.md</code> means you never have to re-explain your project conventions. It acts as persistent context that keeps output consistent across sessions.</p>
+  <p><strong><code>/model</code></strong> — Switch between Claude Sonnet and Opus mid-session without restarting. Use Sonnet for fast iteration on straightforward tasks; switch to Opus when you need deeper reasoning on a complex architectural problem or a subtle bug that requires careful analysis. The ability to change models mid-session without losing context is an underused feature.</p>
+  <p><strong><code>--allowedTools</code></strong> — When running Claude Code in automated contexts — CI pipelines, scripts, scheduled jobs — this flag restricts which tools Claude Code can use. For a pipeline that should only read files and write a report, you can prevent Claude Code from making any other changes. This is the flag that makes Claude Code safe to run headlessly in production.</p>
+  <p><strong><code>claude -p</code></strong> — The headless prompt flag. Run Claude Code from the command line with a task as a string argument and it executes without an interactive session. This is how you script Claude Code into build pipelines, pre-commit hooks, or any automated workflow. Combined with <code>--allowedTools</code>, it gives you a scriptable AI that operates safely within defined boundaries.</p>
+
+  <hr class="divider">
+
+  <h2>When to trust Claude Code and when not to</h2>
+  <p>Claude Code is a fast, capable implementer — not an infallible one. Knowing where to trust it and where to review carefully is the difference between using it effectively and shipping bugs.</p>
+
+  <table class="compare-table" aria-label="When to trust Claude Code">
+    <thead>
+      <tr><th>Task type</th><th>Trust level</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Greenfield features</td><td>High</td><td>Low risk; easy to review from scratch</td></tr>
+      <tr><td>Test generation</td><td>High</td><td>Review for correctness of inferred intent</td></tr>
+      <tr><td>Documentation</td><td>High</td><td>Rarely introduces bugs; easy to verify</td></tr>
+      <tr><td>Boilerplate &amp; scaffolding</td><td>High</td><td>Mechanical work; straightforward to check</td></tr>
+      <tr><td>Core authentication logic</td><td>Low</td><td>Always review carefully; security-critical</td></tr>
+      <tr><td>Cryptographic code</td><td>Low</td><td>Use battle-tested libraries; never roll your own</td></tr>
+      <tr><td>Database migrations</td><td>Low</td><td>Always review and test on a non-production environment first</td></tr>
+    </tbody>
+  </table>
+
+  <p>The pattern: trust Claude Code for tasks where the cost of a mistake is low and the output is easy to verify. Be careful where correctness is hard to confirm and the blast radius of an error is large. Claude Code does not know your production environment, your data, or your edge cases — you do.</p>
+
+  <hr class="divider">
+
+  <h2>Claude Code in CI/CD</h2>
+  <p>Running Claude Code in headless mode as part of an automated pipeline is a real production pattern that experienced developers are already using. The core mechanic: <code>claude -p "task description" --allowedTools read,write</code> runs Claude Code non-interactively against your codebase and exits when the task is done.</p>
+  <p>Practical examples include: auto-fixing linting errors on every commit before the PR opens, generating a changelog entry from the diff of each release branch, writing inline documentation comments for any new function that is missing them, or summarising what changed in a deployment for a Slack notification. These are tasks that previously required either manual developer time or purpose-built tooling — Claude Code handles them with a one-line pipeline step.</p>
+  <p>The key constraint: use <code>--allowedTools</code> to scope what Claude Code can touch. A pipeline step that should only read and document files has no business making network calls or running arbitrary shell commands. Define the boundary, and Claude Code operates safely within it.</p>
+
+  <hr class="divider">
+
+  <h2>What experienced developers learn at Claude Camp</h2>
+  <p>Claude Camp is not a beginner bootcamp. Many of the people who come already know how to build software — they come to compress project timelines and learn the agent-first workflow in a structured environment with other serious builders.</p>
+  <p>The week focuses on how to direct Claude Code effectively at scale: how to structure a <code>CLAUDE.md</code> that keeps a week-long project on track, how to break large features into tasks Claude Code can execute reliably, how to review AI output quickly without re-reading every line, and how to integrate Claude Code into the development loop so that shipping feels faster than planning used to.</p>
+  <p>A significant number of participants arrive with a side project they have been sitting on for months — something they know how to build in principle but have not had the continuous focused time to execute. Many of them leave with that project deployed. The combination of Claude Code as an implementer, a cohort of builders to think out loud with, and a week with no interruptions is what makes that possible.</p>
+
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
+      <li><a href="/how-to-use-claude-code.html">How to Use Claude Code →</a></li>
+      <li><a href="/claude-code-tips.html">Claude Code Tips &amp; Best Practices →</a></li>
+      <li><a href="/claude-code-vs-github-copilot.html">Claude Code vs GitHub Copilot →</a></li>
+      <li><a href="/claude-code-projects.html">What to Build with Claude Code →</a></li>
+      <li><a href="/how-to-ship-an-mvp-fast.html">How to Ship an MVP Fast →</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>Ship that side project. Finally.</h2>
+    <p>7 days on an organic farm in Pai, Thailand. Structured sessions, a cohort of builders, all meals included. You leave with a deployed product.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

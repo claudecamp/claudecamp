@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Tips: 12 Ways to Get Better Results</title>
+<meta name="description" content="Practical Claude Code tips for getting faster, more accurate results. Covers prompting, context management, CLAUDE.md setup, and common mistakes to avoid.">
+<link rel="canonical" href="https://claudecamp.org/claude-code-tips.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code Tips: 12 Ways to Get Better Results">
+<meta property="og:description" content="Practical Claude Code tips for getting faster, more accurate results. Covers prompting, context management, CLAUDE.md setup, and common mistakes to avoid.">
+<meta property="og:url" content="https://claudecamp.org/claude-code-tips.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code Tips: 12 Ways to Get Better Results">
+<meta name="twitter:description" content="Practical Claude Code tips for getting faster, more accurate results. Covers prompting, context management, CLAUDE.md setup, and common mistakes to avoid.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/claude-code-tips.html#article",
+  "headline": "12 Claude Code Tips That Actually Work",
+  "description": "Practical Claude Code tips for getting faster, more accurate results. Covers prompting, context management, CLAUDE.md setup, and common mistakes to avoid.",
+  "url": "https://claudecamp.org/claude-code-tips.html",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "author": {
+    "@type": "Person",
+    "@id": "https://claudecamp.org/about.html#ying",
+    "name": "Ying Goldsmith",
+    "url": "https://claudecamp.org/about.html"
+  },
+  "publisher": { "@id": "https://claudecamp.org/#organization" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I get better results from Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The biggest leverage points are: write a CLAUDE.md file with project conventions, start each session with a specific single goal, use /compact before context fills up, and give Claude Code references to existing files when asking for consistent styling or patterns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I put in my CLAUDE.md file?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CLAUDE.md should include: your tech stack (framework, database, styling approach), coding conventions (naming patterns, file structure), commands to run the project, what areas not to touch, and any project-specific context Claude Code needs to make good decisions. Keep it under 500 lines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I stop Claude Code from making unexpected changes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Be specific about scope in your prompts. Instead of \"fix the auth flow,\" say \"fix the login form validation in /components/LoginForm.tsx — do not touch other files.\" Claude Code follows scope instructions closely when they are explicit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use Claude Opus or Sonnet in Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use Sonnet (the default) for most implementation tasks — it's fast and accurate. Switch to Opus with /model opus for complex architectural planning, nuanced refactors, or when Sonnet's output isn't quite right. Opus is slower and costs more tokens, but worth it for the right tasks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is /compact in Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "/compact summarises the current conversation to free up context window space. Use it proactively when you've had a long session, before starting a new major task in the same session. Running out of context mid-task causes Claude Code to lose track of earlier decisions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the most common Claude Code mistake beginners make?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Starting with tasks that are too large and too vague. \"Build my app\" gives Claude Code too much freedom. Break tasks into specific, bounded steps with clear success criteria. Once you have something working, iterate."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Claude Code Tips", "item": "https://claudecamp.org/claude-code-tips.html" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --jungle-deep: #060d04; --jungle-mid: #0a1208; --canopy: #0f1e0b;
+  --amber: #f59e0b; --amber-glow: #fbbf24; --amber-dim: #92610a;
+  --text: #f8fafc; --text-muted: rgba(248,250,252,0.55); --text-faint: rgba(248,250,252,0.25);
+  --ease-cinema: cubic-bezier(0.76,0,0.24,1); --col: 680px;
+}
+html, body { width: 100%; background: var(--jungle-deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+nav { position: sticky; top: 0; z-index: 90; background: rgba(6,13,4,0.85); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid rgba(245,158,11,0.1); padding: 0 clamp(1.5rem,6vw,6rem); }
+.nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
+.nav-wordmark:hover { color: var(--amber); }
+.nav-about { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-about:hover { color: var(--text); }
+.nav-cta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s,border-color 0.3s; }
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+.breadcrumb { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+.hero { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; }
+.hero-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.5rem; }
+.hero-lede { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(1rem,1.6vw,1.15rem); line-height: 1.75; color: var(--text-muted); border-left: 2px solid rgba(245,158,11,0.3); padding-left: 1.25rem; margin-bottom: 3rem; }
+article { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 6rem; }
+article h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.5rem,2.8vw,2rem); line-height: 1.2; color: var(--text); margin: 3.5rem 0 1rem; }
+article h3 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 400; font-style: italic; font-size: clamp(1.1rem,1.8vw,1.3rem); color: var(--text-muted); margin: 2rem 0 0.75rem; }
+article p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem; }
+article ul, article ol { margin: 0.5rem 0 1.5rem 0; padding-left: 1.25rem; }
+article li { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 0.4rem; }
+article strong { color: var(--text); font-weight: 400; }
+article code { font-family: 'JetBrains Mono',monospace; font-size: 0.82em; color: var(--amber-glow); background: rgba(245,158,11,0.08); padding: 0.15em 0.4em; border-radius: 2px; }
+.divider { border: none; border-top: 1px solid rgba(245,158,11,0.08); margin: 3rem 0; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-family: 'DM Sans',sans-serif; font-size: clamp(0.85rem,1.2vw,0.95rem); }
+.compare-table th { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.compare-table td { padding: 0.75rem 1rem; color: var(--text-muted); font-weight: 300; border-bottom: 1px solid rgba(248,250,252,0.04); vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { color: var(--text); font-weight: 400; width: 30%; }
+.cta-block { margin: 4rem 0 0; padding: 2.5rem 2rem; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); border-radius: 4px; text-align: center; }
+.cta-block-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.cta-block h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.6rem,3vw,2.2rem); line-height: 1.2; color: var(--text); margin: 0 0 1rem; }
+.cta-block p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.9rem,1.3vw,1rem); color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; }
+.btn-amber { display: inline-block; font-family: 'JetBrains Mono',monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
+.btn-amber:hover { background: var(--amber-glow); }
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.88rem,1.2vw,0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s,border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
+footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem,6vh,5rem) clamp(1.5rem,6vw,6rem); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+.footer-meta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,250,252,0.2); line-height: 2; text-align: right; }
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">Claude Code Tips</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Anthropic · Best Practices</p>
+  <h1>12 Claude Code Tips That Actually Work</h1>
+  <p class="hero-lede">These are the practical techniques that separate people who get stuck from people who ship. Most are simple — the kind of thing you wish someone had told you on day one.</p>
+</div>
+
+<article>
+
+  <h2>Before you start</h2>
+
+  <h3>Tip 1: Write a CLAUDE.md file for every project</h3>
+  <p>Claude Code reads a file called <code>CLAUDE.md</code> at the start of every session. Put your tech stack, coding conventions, commands to run the project, and what not to touch in that file. Without it, Claude Code starts each session cold — it has to rediscover your project structure before it can be useful. With it, the first message is already in context. This single habit probably does more for output quality than anything else on this list.</p>
+  <p>Keep it honest and specific. "We use Tailwind CSS, not custom stylesheets" is far more useful than "we care about good code quality." Under 500 lines is the right target — a CLAUDE.md that is too long starts working against you.</p>
+
+  <h3>Tip 2: Start each session with a clear single goal</h3>
+  <p>"Build the whole app" is not a task — it's a wish. Claude Code works best when the goal for a session is concrete and bounded: <strong>"Add user authentication with email and password using Supabase."</strong> That has a clear start, a clear end, and a way to verify it's done. Vague goals produce vague work. You end up with code that sort of heads in the right direction but isn't actually finished.</p>
+  <p>If the task feels too big to articulate precisely, that's a signal to break it down first. Spend five minutes writing a numbered task list before you open Claude Code. You'll ship faster.</p>
+
+  <h3>Tip 3: Give Claude Code the project structure first</h3>
+  <p>Before handing over a complex task, run <code>claude</code> and say: <em>"Look at the current file structure and tell me what you see."</em> This gives Claude Code an accurate map of your project before it starts writing or editing anything. It catches assumptions early — like Claude Code not knowing you already have an auth module, or assuming you're using a different database. One orienting message at the start saves several correction rounds later.</p>
+
+  <hr class="divider">
+
+  <h2>While working</h2>
+
+  <h3>Tip 4: Use /compact before the context fills up — not after</h3>
+  <p>The <code>/compact</code> command summarises the current conversation to free up context window space. The mistake most people make is waiting until they see warnings or notice Claude Code forgetting earlier decisions. By that point the damage is already happening — you may get incomplete edits or contradictory outputs.</p>
+  <p>Use <code>/compact</code> proactively: before starting a new major task in the same session, or after a long back-and-forth debug cycle. Think of it like saving your work — you do it before you need to, not after something goes wrong.</p>
+
+  <h3>Tip 5: Don't interrupt unless something is clearly wrong</h3>
+  <p>When Claude Code is mid-task — reading files, writing code, running commands — let it finish the step before you redirect it. Interrupting mid-execution often leaves the codebase in a half-edited state that's harder to recover from than whatever the original problem was. If you see something heading the wrong way, <strong>wait for it to pause</strong>, then course-correct. Your instinct to jump in is usually right, but the timing matters.</p>
+
+  <h3>Tip 6: Use follow-up prompts to refine, not restart</h3>
+  <p>Claude Code holds context between messages. Use that. "That's good, but make the button style match the existing components in <code>/components/Button.tsx</code>" is much faster than starting a new session and explaining everything from scratch. Refinement prompts — small, specific, additive — get you to done faster than trying to get everything right in one big prompt. Think of your session as an iterative conversation, not a single-shot request.</p>
+
+  <h3>Tip 7: Ask Claude Code to explain what it's about to do before confirming</h3>
+  <p>Before approving a significant action — especially database changes, file deletions, or refactors that touch many files — ask: <em>"Before you do this, tell me exactly what files you'll change and why."</em> This catches misunderstandings while they're still cheap to fix. If the plan doesn't match your intent, a quick correction now is far less work than reverting changes after the fact. It also helps you learn — you'll start anticipating what Claude Code needs to know upfront.</p>
+
+  <hr class="divider">
+
+  <h2>Getting better outputs</h2>
+
+  <h3>Tip 8: Include examples in your prompts when you have a specific style</h3>
+  <p>Descriptions of style are hard to interpret. Examples are easy. If you want error messages written a certain way, show one: <em>"Write error messages like this: <code>Error: user not found. Check the email and try again.</code>"</em> The same applies to variable naming, comment style, API response shape — anything where "like the rest of the codebase" is too vague. One concrete example is worth a paragraph of instruction.</p>
+
+  <h3>Tip 9: Reference existing files as anchors</h3>
+  <p>"Make this component consistent with <code>/components/Button.tsx</code>" gives Claude Code something concrete to match against. It's not guessing at your design system — it's reading it. This works for styling, component structure, prop naming, error handling patterns, and more. The more you point Claude Code at real examples in your codebase, the less it falls back on generic conventions that may not fit your project.</p>
+
+  <h3>Tip 10: Use Opus for planning, Sonnet for execution</h3>
+  <p>Sonnet is the default model and handles the vast majority of coding tasks well — it's fast, accurate, and cost-efficient. But for genuinely complex work — architectural decisions, nuanced refactors, or situations where Sonnet keeps getting something subtly wrong — switch to Opus with <code>/model opus</code>. Opus is slower and uses more tokens, but its reasoning on hard problems is noticeably better. Switch back to Sonnet once the plan is clear. Use the right tool for each phase.</p>
+
+  <hr class="divider">
+
+  <h2>Avoiding common mistakes</h2>
+
+  <h3>Tip 11: Never say "fix everything"</h3>
+  <p>Asking Claude Code to "fix everything," "clean up the code," or "refactor the app" is an invitation for changes you didn't intend. Claude Code will make decisions you weren't asked for — renaming variables, restructuring files, changing logic that was working fine. Be specific about what to fix and where. <strong>"Fix the login form validation in <code>/components/LoginForm.tsx</code> — do not touch other files"</strong> is the right shape of instruction. Scope is your friend. Explicit scope boundaries are even better.</p>
+  <p>If you do want a broad cleanup, do it in stages. Fix one thing, review it, then move to the next. This keeps you in control of what changed and why, and gives you a clean git history you can actually read.</p>
+
+  <h3>Tip 12: Review database migration files before confirming</h3>
+  <p>Claude Code is genuinely excellent at generating database migrations — the SQL is usually correct and well-structured. But migrations run against production data, and that deserves human eyes. Before confirming any migration, read it fully. Check that it does what you intended, that rollback is possible if needed, and that it won't silently destroy data that looks unused but isn't. A two-minute review of a migration file is cheap insurance. A botched migration on live data is not.</p>
+  <p>The same principle applies to any operation Claude Code proposes that is difficult to reverse — file deletions, environment variable changes, permission modifications. Pause, read, confirm.</p>
+
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/how-to-use-claude-code.html">How to Use Claude Code →</a></li>
+      <li><a href="/claude-code-tutorial.html">Claude Code Tutorial →</a></li>
+      <li><a href="/claude-code-for-beginners.html">Claude Code for Beginners →</a></li>
+      <li><a href="/claude-code-for-developers.html">Claude Code for Developers →</a></li>
+      <li><a href="/claude-code-projects.html">What to Build with Claude Code →</a></li>
+      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>Learn these skills in real time, on a real project</h2>
+    <p>Claude Camp is a 7-day residential bootcamp in Pai, Thailand. You build a product you care about with coaching, a cohort, and no distractions. All meals included.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

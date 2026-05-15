@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code vs GitHub Copilot: Which AI Coding Tool Wins in 2026?</title>
+<meta name="description" content="Claude Code and GitHub Copilot both use AI to write code, but they work very differently. Here's a direct comparison of features, pricing, and real-world use cases.">
+<link rel="canonical" href="https://claudecamp.org/claude-code-vs-github-copilot.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code vs GitHub Copilot: Which AI Coding Tool Wins in 2026?">
+<meta property="og:description" content="Claude Code and GitHub Copilot both use AI to write code, but they work very differently. Here's a direct comparison of features, pricing, and real-world use cases.">
+<meta property="og:url" content="https://claudecamp.org/claude-code-vs-github-copilot.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code vs GitHub Copilot: Which AI Coding Tool Wins in 2026?">
+<meta name="twitter:description" content="Claude Code and GitHub Copilot both use AI to write code, but they work very differently. Here's a direct comparison of features, pricing, and real-world use cases.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://claudecamp.org/claude-code-vs-github-copilot.html#article",
+  "headline": "Claude Code vs GitHub Copilot: Which AI Coding Tool Wins in 2026?",
+  "description": "Claude Code and GitHub Copilot both use AI to write code, but they work very differently. Here's a direct comparison of features, pricing, and real-world use cases.",
+  "url": "https://claudecamp.org/claude-code-vs-github-copilot.html",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15",
+  "author": {
+    "@type": "Person",
+    "@id": "https://claudecamp.org/about.html#ying",
+    "name": "Ying Goldsmith",
+    "url": "https://claudecamp.org/about.html"
+  },
+  "publisher": { "@id": "https://claudecamp.org/#organization" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between Claude Code and GitHub Copilot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code is an autonomous coding agent; Copilot is an inline autocomplete tool. Claude Code reads your entire codebase and executes multi-step tasks; Copilot suggests the next line or block as you type."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Claude Code better than GitHub Copilot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depends on the task. For autonomous multi-step work — rewriting a module, debugging a stack trace, building a feature from scratch — Claude Code is significantly more capable. For fast inline suggestions while typing, Copilot has lower latency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does GitHub Copilot cost compared to Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GitHub Copilot Individual costs $10/month or $100/year. Claude Code requires a Claude Pro subscription at $20/month or Anthropic API pay-per-token access. Both have no per-task fee on their subscription tiers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Claude Code replace GitHub Copilot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For many workflows, yes. Claude Code handles everything Copilot does and far more. The main reason to keep Copilot is its real-time inline autocomplete speed, which Claude Code does not offer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which tool is better for non-technical founders?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Code by a wide margin. Non-technical users can describe what they want in plain English and Claude Code builds it. Copilot is designed for developers who already know what to write."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does GitHub Copilot understand my whole codebase?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GitHub Copilot has some workspace awareness in recent versions but is primarily optimised for local context around your cursor. Claude Code is designed from the ground up to read, reason about, and modify an entire codebase as a unit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Claude Camp use GitHub Copilot or Claude Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude Camp is built around Claude Code. The bootcamp teaches participants to direct an autonomous AI agent to build complete products, not to use inline autocomplete. Participants leave with a shipped product, not just faster typing."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Claude Code vs GitHub Copilot", "item": "https://claudecamp.org/claude-code-vs-github-copilot.html" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --jungle-deep: #060d04; --jungle-mid: #0a1208; --canopy: #0f1e0b;
+  --amber: #f59e0b; --amber-glow: #fbbf24; --amber-dim: #92610a;
+  --text: #f8fafc; --text-muted: rgba(248,250,252,0.55); --text-faint: rgba(248,250,252,0.25);
+  --ease-cinema: cubic-bezier(0.76,0,0.24,1); --col: 680px;
+}
+html, body { width: 100%; background: var(--jungle-deep); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+nav { position: sticky; top: 0; z-index: 90; background: rgba(6,13,4,0.85); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid rgba(245,158,11,0.1); padding: 0 clamp(1.5rem,6vw,6rem); }
+.nav-inner { max-width: 1100px; margin: 0 auto; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; transition: color 0.3s; }
+.nav-wordmark:hover { color: var(--amber); }
+.nav-about { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-about:hover { color: var(--text); }
+.nav-cta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); text-decoration: none; border: 1px solid rgba(245,158,11,0.35); padding: 0.5rem 1rem; border-radius: 2px; transition: background 0.3s,border-color 0.3s; }
+.nav-cta:hover { background: rgba(245,158,11,0.08); border-color: var(--amber); }
+.breadcrumb { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.breadcrumb a { color: rgba(245,158,11,0.45); text-decoration: none; transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { margin: 0 0.5em; }
+.hero { max-width: var(--col); margin: 2.5rem auto 0; padding: 0 1.5rem; }
+.hero-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.hero h1 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(2.2rem,5vw,3.4rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--text); margin-bottom: 1.5rem; }
+.hero-lede { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(1rem,1.6vw,1.15rem); line-height: 1.75; color: var(--text-muted); border-left: 2px solid rgba(245,158,11,0.3); padding-left: 1.25rem; margin-bottom: 3rem; }
+article { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 6rem; }
+article h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.5rem,2.8vw,2rem); line-height: 1.2; color: var(--text); margin: 3.5rem 0 1rem; }
+article h3 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 400; font-style: italic; font-size: clamp(1.1rem,1.8vw,1.3rem); color: var(--text-muted); margin: 2rem 0 0.75rem; }
+article p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem; }
+article ul, article ol { margin: 0.5rem 0 1.5rem 0; padding-left: 1.25rem; }
+article li { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.95rem,1.4vw,1.05rem); line-height: 1.8; color: var(--text-muted); margin-bottom: 0.4rem; }
+article strong { color: var(--text); font-weight: 400; }
+article code { font-family: 'JetBrains Mono',monospace; font-size: 0.82em; color: var(--amber-glow); background: rgba(245,158,11,0.08); padding: 0.15em 0.4em; border-radius: 2px; }
+.divider { border: none; border-top: 1px solid rgba(245,158,11,0.08); margin: 3rem 0; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-family: 'DM Sans',sans-serif; font-size: clamp(0.85rem,1.2vw,0.95rem); }
+.compare-table th { font-family: 'JetBrains Mono',monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(245,158,11,0.2); }
+.compare-table td { padding: 0.75rem 1rem; color: var(--text-muted); font-weight: 300; border-bottom: 1px solid rgba(248,250,252,0.04); vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { color: var(--text); font-weight: 400; width: 30%; }
+.cta-block { margin: 4rem 0 0; padding: 2.5rem 2rem; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.15); border-radius: 4px; text-align: center; }
+.cta-block-eyebrow { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.cta-block h2 { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-size: clamp(1.6rem,3vw,2.2rem); line-height: 1.2; color: var(--text); margin: 0 0 1rem; }
+.cta-block p { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.9rem,1.3vw,1rem); color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; }
+.btn-amber { display: inline-block; font-family: 'JetBrains Mono',monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--jungle-deep); background: var(--amber); padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s var(--ease-cinema); }
+.btn-amber:hover { background: var(--amber-glow); }
+.related-articles { margin: 3rem 0; padding: 1.5rem 2rem; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1); border-radius: 4px; }
+.related-label { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber-dim); margin-bottom: 1rem; }
+.related-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+.related-list li { margin: 0; }
+.related-list a { font-family: 'DM Sans',sans-serif; font-weight: 300; font-size: clamp(0.88rem,1.2vw,0.95rem); color: rgba(245,158,11,0.7); text-decoration: none; border-bottom: 1px solid rgba(245,158,11,0.2); transition: color 0.3s,border-color 0.3s; }
+.related-list a:hover { color: var(--amber); border-color: var(--amber); }
+footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); padding: clamp(3rem,6vh,5rem) clamp(1.5rem,6vw,6rem); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.footer-wordmark { font-family: 'Cormorant Garamond',Georgia,serif; font-weight: 300; font-style: italic; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+.footer-meta { font-family: 'JetBrains Mono',monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,250,252,0.2); line-height: 2; text-align: right; }
+.footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-meta a:hover { color: var(--amber); }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark">Claude Camp</a>
+    <a href="/about.html" class="nav-about">About</a>
+    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+  </div>
+</nav>
+
+<div class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Claude Camp</a>
+  <span aria-hidden="true">→</span>
+  <span aria-current="page">Claude Code vs GitHub Copilot</span>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Anthropic · Head-to-Head Comparison</p>
+  <h1>Claude Code vs GitHub Copilot</h1>
+  <p class="hero-lede">GitHub Copilot autocompletes lines inside your editor. Claude Code reads your whole codebase and executes multi-step tasks autonomously. They are built for different problems — this guide explains which one fits your workflow.</p>
+</div>
+
+<article>
+
+  <h2>The fundamental difference</h2>
+  <p>GitHub Copilot and Claude Code are both AI tools that write code, but they operate at completely different levels of abstraction. <strong>Copilot is an autocomplete assistant.</strong> It lives inside your editor, watches what you type, and suggests the next line or the next block. It is fast, low-latency, and excellent at filling in boilerplate when you already know roughly what you want to write.</p>
+  <p><strong>Claude Code is an autonomous agent.</strong> Rather than sitting next to you and suggesting text, it operates independently: reading your entire codebase, reasoning about what needs to change, writing files, running tests in the terminal, and committing working code. You give it a goal in plain English — "add authentication to this Express app" or "refactor the payment module to use the new API" — and it executes the task start to finish.</p>
+  <p>The practical difference is enormous. Copilot makes you a faster typist. Claude Code makes you a director. With Copilot, you are still writing every function; the AI just reduces keystrokes. With Claude Code, you describe what you need and review the result. For complex tasks, the productivity gap between the two approaches is not marginal — it is measured in hours.</p>
+
+  <hr class="divider">
+
+  <h2>Feature comparison</h2>
+  <table class="compare-table" aria-label="Claude Code vs GitHub Copilot feature comparison">
+    <thead>
+      <tr><th>Feature</th><th>Claude Code</th><th>GitHub Copilot</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Inline suggestions</td>
+        <td>No — Claude Code operates via prompts and tasks, not keystroke-by-keystroke suggestions</td>
+        <td>Yes — real-time autocomplete as you type, ghost text in your editor</td>
+      </tr>
+      <tr>
+        <td>Codebase understanding</td>
+        <td>Full — reads and reasons about your entire repository as a unit</td>
+        <td>Partial — primarily optimised for local context around your cursor; workspace awareness added in recent versions</td>
+      </tr>
+      <tr>
+        <td>Autonomous task execution</td>
+        <td>Yes — plans and executes multi-step tasks without step-by-step guidance</td>
+        <td>No — requires you to direct every step manually</td>
+      </tr>
+      <tr>
+        <td>Terminal &amp; shell access</td>
+        <td>Yes — runs commands, installs packages, executes tests, manages git</td>
+        <td>No — operates only within the editor text</td>
+      </tr>
+      <tr>
+        <td>Multi-file edits</td>
+        <td>Yes — can create, edit, and delete files across the whole project in a single task</td>
+        <td>Limited — Copilot Edits feature handles some multi-file changes but with much less autonomy</td>
+      </tr>
+      <tr>
+        <td>IDE integration</td>
+        <td>CLI-first; VS Code and JetBrains extensions available</td>
+        <td>Native VS Code, JetBrains, Neovim, Visual Studio — very tight editor integration</td>
+      </tr>
+      <tr>
+        <td>Pricing</td>
+        <td>$20/month (Claude Pro) or pay-per-token via Anthropic API</td>
+        <td>$10/month Individual; $19/month Business; often included in GitHub Enterprise</td>
+      </tr>
+      <tr>
+        <td>Best for</td>
+        <td>Building features, debugging, refactoring, non-technical founders, complex tasks</td>
+        <td>Experienced developers who want faster typing with familiar editor tools</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <h2>When GitHub Copilot wins</h2>
+  <p>Copilot is the right tool when speed of inline suggestion matters more than depth of understanding. If you are an experienced developer who knows exactly what you want to write and just needs the repetitive parts filled in quickly, Copilot's low-latency ghost text is genuinely useful — it keeps you in flow without breaking your train of thought.</p>
+  <p>Copilot also wins on IDE integration. If you live inside VS Code or a JetBrains IDE and want AI assistance that feels like a natural extension of your existing workflow, Copilot requires no context switching. For teams already paying for GitHub Enterprise, Copilot is often included at no extra cost, making the economics straightforward.</p>
+  <p>Specific scenarios where Copilot has an edge:</p>
+  <ul>
+    <li>Writing tests for a function you just wrote — Copilot suggests the next test case immediately</li>
+    <li>Filling in repetitive boilerplate (config files, interface implementations, CRUD endpoints)</li>
+    <li>Quick one-liner fixes where you know the solution but don't want to type it</li>
+    <li>Teams with existing GitHub billing where adding Copilot costs nothing additional</li>
+  </ul>
+
+  <hr class="divider">
+
+  <h2>When Claude Code wins</h2>
+  <p>Claude Code is the right tool for any task where you want to describe an outcome and let the AI figure out the implementation. The larger and more complex the task, the wider Claude Code's advantage.</p>
+  <p>"Rewrite this authentication module to use JWTs" is a single Claude Code prompt. It reads the existing module, understands the current approach, writes the new implementation, updates the tests, and fixes any imports that broke. Doing the same thing with Copilot means manually directing every file and every function — Copilot helps you type faster, but you are still doing all the thinking.</p>
+  <p>Claude Code wins decisively in these situations:</p>
+  <ul>
+    <li><strong>Debugging full-stack errors</strong> — Claude Code reads the error, traces it through your codebase, identifies the root cause, and fixes it, often across multiple files</li>
+    <li><strong>Generating entire features from a description</strong> — "add a stripe checkout flow to this app" produces working code, not suggestions for what you should type next</li>
+    <li><strong>Refactoring large modules</strong> — it understands the whole call graph, not just the function you have open</li>
+    <li><strong>Non-technical founders</strong> — if you cannot read code fluently, Copilot's inline suggestions are meaningless. Claude Code lets you describe what you want in plain English and review the result</li>
+    <li><strong>Working with unfamiliar codebases</strong> — Claude Code can onboard itself by reading the project; Copilot just sees what is near your cursor</li>
+  </ul>
+
+  <hr class="divider">
+
+  <h2>Can you use both?</h2>
+  <p>Yes — and many experienced developers do. The tools are complementary rather than mutually exclusive. A common pattern: use Copilot for inline flow while actively writing code, and switch to Claude Code for larger tasks that require understanding the whole system.</p>
+  <p>Think of it this way: Copilot is your co-pilot while you are driving. Claude Code is the engineer you call when the car needs to be rebuilt. Having both available means you can choose the right tool based on task size. Toggling between them adds zero friction — they operate in completely different modes.</p>
+  <p>The main reason to choose one over the other as your primary tool is cost and workflow preference. If your primary constraint is budget, Claude Code at $20/month covers a much wider surface area than Copilot at $10/month. If your primary constraint is disruption to existing editor habits, Copilot's native integration may feel more comfortable while you build familiarity with agentic workflows.</p>
+
+  <hr class="divider">
+
+  <h2>Claude Code at Claude Camp</h2>
+  <p>At <a href="/">Claude Camp</a>, we teach Claude Code — not Copilot. The bootcamp is built around autonomous agent workflows: participants learn to direct Claude Code to plan, build, and ship complete products. That is a fundamentally different skill from learning to use inline autocomplete.</p>
+  <p>The reason is practical: non-technical founders and early-stage builders need to ship working products, not faster typing. Claude Code is the tool that makes that possible at the speed a residential bootcamp demands. By the end of seven days, participants have a deployed product — built and shipped using Claude Code as the primary execution layer. You leave with a product, not just a faster workflow.</p>
+
+  <nav class="related-articles" aria-label="Related guides">
+    <p class="related-label">Related guides</p>
+    <ul class="related-list">
+      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
+      <li><a href="/claude-code-vs-cursor.html">Claude Code vs Cursor →</a></li>
+      <li><a href="/claude-code-vs-chatgpt.html">Claude Code vs ChatGPT →</a></li>
+      <li><a href="/claude-code-pricing.html">Claude Code Pricing →</a></li>
+      <li><a href="/claude-code-for-developers.html">Claude Code for Developers →</a></li>
+      <li><a href="/claude-code-review.html">Claude Code Review →</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta-block">
+    <p class="cta-block-eyebrow">Claude Camp · Pai, Thailand</p>
+    <h2>Build a working product in 7 days</h2>
+    <p>A residential bootcamp on an organic farm in northern Thailand. Learn to direct Claude Code to build and ship real software. Cohorts of 7.</p>
+    <a href="/" class="btn-amber">See Cohort 01 →</a>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-wordmark">Claude Camp</a>
+    <div class="footer-meta">
+      Pai, Thailand · claudecamp.org<br>
+      Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
