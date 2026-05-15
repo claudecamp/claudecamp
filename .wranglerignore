@@ -1,0 +1,5 @@
+node_modules
+worker
+package.json
+package-lock.json
+.git
