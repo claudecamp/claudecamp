@@ -224,9 +224,16 @@ nav.scrolled {
   inset: 0;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
-.hero-photo .photo-label { font-size: 0.65rem; }
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
 
 .hero-overlay {
   position: absolute;
@@ -988,8 +995,11 @@ footer {
 
 <!-- HERO -->
 <section id="hero" aria-label="Hero">
-  <div class="hero-photo photo" style="height:100%;">
-    <span class="photo-label">[PHOTO: Pai Canyon view from open-air terrace — golden hour light across the valley]</span>
+  <div class="hero-photo">
+    <picture>
+      <source media="(max-width: 768px)" srcset="/assets/bamboo-bungalow-mobile.webp">
+      <img src="/assets/bamboo-bungalow.webp" alt="Bamboo bungalow at The View, Pai Canyon, Thailand" fetchpriority="high">
+    </picture>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
