@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The View — Open-Air Bar & Workspace, Pai Canyon, Thailand</title>
+<meta name="description" content="Open-air bar and workspace directly across from Pai Canyon. Coffee and breakfast from 8am. Cold drinks, mountain views, fast wifi. No walls — just the view.">
+<link rel="canonical" href="https://claudecamp.org/the-view.html">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="The View — Open-Air Bar & Workspace, Pai Canyon">
+<meta property="og:description" content="Coffee at sunrise. Work with canyon views. Cold drinks at sunset. Open from 8am — Pai, Thailand.">
+<meta property="og:url" content="https://claudecamp.org/the-view.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The View — Open-Air Bar & Workspace, Pai Canyon">
+<meta name="twitter:description" content="Coffee at sunrise. Work with canyon views. Cold drinks at sunset. Open from 8am — Pai, Thailand.">
+
+<!-- JSON-LD: LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["CafeOrCoffeeShop", "Bar"],
+  "name": "The View",
+  "description": "Open-air bar and workspace with direct views of Pai Canyon. Coffee and breakfast from 8am, cold drinks and cocktails from afternoon. Laptop-friendly, no walls, mountain panorama.",
+  "url": "https://claudecamp.org/the-view.html",
+  "telephone": "+66922864775",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Pai",
+    "addressRegion": "Mae Hong Son",
+    "addressCountry": "TH"
+  },
+  "openingHours": "Mo-Su 08:00-00:00",
+  "servesCuisine": ["Thai", "Breakfast", "Coffee"],
+  "amenityFeature": [
+    {"@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Outdoor Seating", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Canyon Views", "value": true}
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --base:         #060d04;
+  --surface:      #0a1208;
+  --surface-2:    #0f1a0b;
+  --border:       rgba(245,158,11,0.12);
+  --text:         #f4f0e8;
+  --text-muted:   rgba(244,240,232,0.5);
+  --text-faint:   rgba(244,240,232,0.22);
+  --amber:        #f59e0b;
+  --amber-bright: #fbbf24;
+  --amber-dim:    rgba(245,158,11,0.15);
+  --cream:        #fdf6e3;
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-cinema:  cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+html, body {
+  background: var(--base);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── PHOTO PLACEHOLDER ──────────────────────────────────── */
+.photo {
+  background: var(--surface);
+  border: 1.5px dashed var(--amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245,158,11,0.55);
+  line-height: 1.6;
+  pointer-events: none;
+}
+
+/* ── STICKY WHATSAPP ────────────────────────────────────── */
+.wa-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--amber);
+  color: var(--base);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 8px 32px rgba(245,158,11,0.25);
+}
+
+.wa-float:hover {
+  background: var(--amber-bright);
+  transform: translateY(-2px);
+}
+
+.wa-float svg { flex-shrink: 0; }
+
+@media (max-width: 480px) {
+  .wa-float { bottom: 1.25rem; right: 1.25rem; font-size: 0; padding: 0.9rem; border-radius: 50%; }
+  .wa-float svg { width: 22px; height: 22px; }
+}
+
+/* ── NAV ────────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  padding: 0 clamp(1.5rem, 6vw, 5rem);
+  background: rgba(6,13,4,0);
+  transition: background 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+
+nav.scrolled {
+  background: rgba(6,13,4,0.92);
+  backdrop-filter: blur(20px);
+  border-color: var(--border);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  opacity: 0;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta-link {
+  color: var(--amber) !important;
+  border: 1px solid rgba(245,158,11,0.3);
+  padding: 0.45rem 1rem;
+  transition: background 0.2s, border-color 0.2s !important;
+}
+
+.nav-cta-link:hover {
+  background: var(--amber-dim) !important;
+  border-color: var(--amber) !important;
+}
+
+@media (max-width: 768px) {
+  .nav-links { gap: 1.5rem; }
+  .nav-links li:not(:last-child) { display: none; }
+}
+
+/* ── HERO ────────────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.hero-photo .photo-label { font-size: 0.65rem; }
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(6,13,4,0.35) 0%,
+    rgba(6,13,4,0.1) 40%,
+    rgba(6,13,4,0.7) 80%,
+    rgba(6,13,4,1) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(6rem, 12vw, 10rem) clamp(1.5rem, 8vw, 8rem) clamp(4rem, 8vw, 7rem);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  align-self: end;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.hero-eyebrow span { display: block; }
+
+.hero-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.hero-headline span { display: block; }
+
+.hero-sub {
+  font-family: 'Syne', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.7;
+  overflow: hidden;
+}
+
+.hero-sub span { display: block; }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  right: clamp(1.5rem, 8vw, 8rem);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+}
+
+.hero-scroll-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  writing-mode: vertical-rl;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--amber), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.3); opacity: 0.3; }
+}
+
+/* ── TAGLINE STRIP ──────────────────────────────────────── */
+#tagline {
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 8vw, 8rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tagline-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1.8rem, 4.5vw, 3.8rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.tagline-text em {
+  font-style: italic;
+  color: var(--amber);
+}
+
+.tagline-meta {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.tagline-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+/* ── BIG NUMBERS (BRUTALIST MOMENT) ─────────────────────── */
+#numbers {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.numbers-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.number-item {
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+  border-right: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.number-item:last-child { border-right: none; }
+
+.number-item::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--amber);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.number-item:hover::before { transform: scaleX(1); }
+
+.number-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1;
+  color: var(--amber);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.number-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+
+.number-desc {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .numbers-track { grid-template-columns: 1fr; }
+  .number-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .number-item:last-child { border-bottom: none; }
+}
+
+/* ── ARC OF THE DAY ─────────────────────────────────────── */
+#arc {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 8vw, 8rem);
+}
+
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+
+.section-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  max-width: 700px;
+}
+
+.arc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.arc-grid::before {
+  content: '';
+  position: absolute;
+  top: 3.2rem;
+  left: calc(12.5% + 1.5rem);
+  right: calc(12.5% + 1.5rem);
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--amber), transparent);
+  opacity: 0.3;
+}
+
+.arc-item {
+  padding: 0 1.5rem 2rem 0;
+  position: relative;
+}
+
+.arc-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.arc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--amber);
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(245,158,11,0.5);
+}
+
+.arc-photo {
+  height: 180px;
+  margin-bottom: 1.25rem;
+}
+
+.arc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.arc-body {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .arc-grid { grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); }
+  .arc-grid::before { display: none; }
+  .arc-item { background: var(--base); padding: 2rem; }
+}
+
+@media (max-width: 500px) {
+  .arc-grid { grid-template-columns: 1fr; }
+}
+
+/* ── HERO PHOTO SPLIT ───────────────────────────────────── */
+#split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 70vh;
+  max-height: 800px;
+}
+
+.split-photo { height: 100%; min-height: 400px; }
+
+.split-content {
+  background: var(--surface);
+  padding: clamp(3rem, 6vw, 6rem) clamp(2rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.split-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.split-body {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 400px;
+}
+
+.split-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--base);
+  background: var(--amber);
+  padding: 0.85rem 1.75rem;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+  align-self: flex-start;
+}
+
+.split-cta:hover {
+  background: var(--amber-bright);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  #split { grid-template-columns: 1fr; }
+  .split-photo { min-height: 300px; max-height: 350px; }
+}
+
+/* ── AMENITIES ──────────────────────────────────────────── */
+#amenities {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 8vw, 8rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.amenity-card {
+  background: var(--base);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.amenity-card:hover { background: var(--surface); }
+
+.amenity-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.amenity-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.amenity-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 420px) {
+  .amenities-grid { grid-template-columns: 1fr; }
+}
+
+/* ── PHOTO GALLERY ──────────────────────────────────────── */
+#gallery {
+  padding: 0 clamp(1.5rem, 8vw, 8rem) clamp(5rem, 8vw, 7rem);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 280px 280px;
+  gap: 4px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-item { overflow: hidden; }
+.gallery-item.tall { grid-row: span 2; }
+.gallery-item .photo { height: 100%; }
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 220px 220px;
+  }
+  .gallery-item.tall { grid-row: span 1; }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 220px);
+  }
+  .gallery-item:nth-child(n+5) { display: none; }
+}
+
+/* ── SOCIAL PROOF ───────────────────────────────────────── */
+#proof {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 8vw, 8rem);
+  background: var(--surface);
+}
+
+.proof-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.proof-card {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.proof-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  line-height: 0.5;
+  color: var(--amber);
+  opacity: 0.3;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.proof-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.proof-author {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.proof-author strong {
+  display: block;
+  color: var(--amber);
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .proof-grid { grid-template-columns: 1fr; }
+}
+
+/* ── HOURS / FIND US ────────────────────────────────────── */
+#find {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 8vw, 8rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.find-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.find-block-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.25rem;
+}
+
+.hours-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hours-row:last-child { border-bottom: none; }
+
+.hours-day {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.hours-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.hours-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  color: var(--text-faint);
+  margin-top: 1.25rem;
+  line-height: 1.7;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.location-detail {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.location-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.location-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.location-text strong {
+  display: block;
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.wa-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--base);
+  background: var(--amber);
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s;
+  margin-top: 1.5rem;
+}
+
+.wa-button:hover { background: var(--amber-bright); }
+
+@media (max-width: 700px) {
+  .find-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+/* ── CTA FINALE ─────────────────────────────────────────── */
+#cta-final {
+  position: relative;
+  overflow: hidden;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.cta-final-photo {
+  position: absolute;
+  inset: 0;
+}
+
+.cta-final-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(6,13,4,0.92) 0%, rgba(6,13,4,0.6) 100%);
+}
+
+.cta-final-content {
+  position: relative;
+  z-index: 2;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 8vw, 8rem);
+  max-width: 700px;
+}
+
+.cta-final-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.cta-final-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 440px;
+}
+
+.cta-final-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem clamp(1.5rem, 8vw, 8rem);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  text-decoration: none;
+}
+
+.footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  line-height: 1.8;
+  text-align: right;
+}
+
+.footer-meta a {
+  color: rgba(245,158,11,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-meta a:hover { color: var(--amber); }
+
+/* ── REDUCED MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY WHATSAPP -->
+<a href="https://wa.me/66922864775" class="wa-float" aria-label="WhatsApp us">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span>WhatsApp</span>
+</a>
+
+<!-- NAV -->
+<nav id="main-nav" aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="/the-view.html" class="nav-logo">The View</a>
+    <ul class="nav-links">
+      <li><a href="#arc">The Day</a></li>
+      <li><a href="#amenities">What's Here</a></li>
+      <li><a href="#find">Find Us</a></li>
+      <li><a href="https://wa.me/66922864775" class="nav-cta-link">WhatsApp Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-photo photo" style="height:100%;">
+    <span class="photo-label">[PHOTO: Pai Canyon view from open-air terrace — golden hour light across the valley]</span>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow"><span>Pai Canyon · Mae Hong Son · Thailand</span></p>
+    <h1 class="hero-headline">
+      <span>The canyon</span>
+      <span>is the office.</span>
+    </h1>
+    <p class="hero-sub">
+      <span>Open-air bar and workspace — directly across from Pai Canyon.</span>
+      <span>Coffee at sunrise. Work with a view. Cold drinks at sunset.</span>
+    </p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="hero-scroll-label">Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- TAGLINE -->
+<section id="tagline" aria-label="What we are">
+  <p class="tagline-text">
+    No walls. No commute. No reason to stop.<br>
+    Just <em>the view,</em> the work, and the drinks.
+  </p>
+  <div class="tagline-meta">
+    <span class="tagline-badge">Open from 8am daily</span>
+    <span class="tagline-badge">Pai Canyon — across the road</span>
+    <span class="tagline-badge">Coffee · Work · Bar</span>
+    <span class="tagline-badge">Pai, Thailand</span>
+  </div>
+</section>
+
+<!-- BIG NUMBERS -->
+<section id="numbers" aria-label="At a glance">
+  <div class="numbers-track">
+    <div class="number-item">
+      <div class="number-big">8AM</div>
+      <div class="number-label">We open</div>
+      <div class="number-desc">Coffee, breakfast, and a view of the canyon waking up in the morning mist.</div>
+    </div>
+    <div class="number-item">
+      <div class="number-big">0</div>
+      <div class="number-label">Walls</div>
+      <div class="number-desc">Fully open-air. Mountain panorama on every side. Pai Canyon directly opposite.</div>
+    </div>
+    <div class="number-item">
+      <div class="number-big">∞</div>
+      <div class="number-label">Flow state</div>
+      <div class="number-desc">No city noise. No interruptions. Just the jungle, your work, and the views.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ARC OF THE DAY -->
+<section id="arc" aria-label="The arc of a day">
+  <div style="max-width:1200px; margin:0 auto; padding: clamp(5rem,10vw,9rem) clamp(1.5rem,8vw,8rem) 0;">
+    <p class="section-eyebrow">A day here</p>
+    <h2 class="section-headline">Coffee at sunrise.<br>Work until you don't want to stop.<br>Drinks as the canyon goes golden.</h2>
+  </div>
+  <div style="max-width:1200px; margin:0 auto; padding: 0 clamp(1.5rem,8vw,8rem) clamp(5rem,10vw,9rem);">
+    <div class="arc-grid">
+      <div class="arc-item">
+        <div class="arc-time"><span class="arc-dot"></span>8 AM</div>
+        <div class="arc-photo photo">
+          <span class="photo-label">[PHOTO: Morning coffee on the terrace, mist rising over the valley]</span>
+        </div>
+        <div class="arc-title">Coffee & Breakfast</div>
+        <div class="arc-body">Farm-fresh breakfast and proper coffee. The canyon is quiet in the morning. Take your time.</div>
+      </div>
+      <div class="arc-item">
+        <div class="arc-time"><span class="arc-dot"></span>Mid-morning</div>
+        <div class="arc-photo photo">
+          <span class="photo-label">[PHOTO: Laptop on table, Pai Canyon visible behind in morning light]</span>
+        </div>
+        <div class="arc-title">Find Your Spot</div>
+        <div class="arc-body">Open-air seating everywhere. No walls means every table has a view. Settle in and open the laptop.</div>
+      </div>
+      <div class="arc-item">
+        <div class="arc-time"><span class="arc-dot"></span>Afternoon</div>
+        <div class="arc-photo photo">
+          <span class="photo-label">[PHOTO: Open-air seating area, mountains in background, someone working]</span>
+        </div>
+        <div class="arc-title">Deep Work Hours</div>
+        <div class="arc-body">No city noise. No traffic. Just the sounds of the farm and the jungle. Some people don't look up for hours.</div>
+      </div>
+      <div class="arc-item">
+        <div class="arc-time"><span class="arc-dot"></span>Sundown</div>
+        <div class="arc-photo photo">
+          <span class="photo-label">[PHOTO: Evening drinks, Pai Canyon silhouette at golden hour]</span>
+        </div>
+        <div class="arc-title">Sunset Drinks</div>
+        <div class="arc-body">Cold beer, mixed drinks, fresh sodas. The canyon turns amber. There's no better place to end a day's work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT: THE BAR -->
+<section id="split" aria-label="The bar">
+  <div class="split-photo photo">
+    <span class="photo-label">[PHOTO: Open-air bar with mountain and Pai Canyon behind — late afternoon light]</span>
+  </div>
+  <div class="split-content">
+    <p class="section-eyebrow" style="margin-bottom:1rem;">The bar</p>
+    <h2 class="split-headline">Cold drinks.<br>Canyon views.<br>No corkage on the sunset.</h2>
+    <p class="split-body">Ice-cold beers, sodas, and mixed drinks — all with an unobstructed view of Pai Canyon. The bar opens in the afternoon and runs as long as the evening does. Hot springs are directly across the road if you need a reset.</p>
+    <a href="https://wa.me/66922864775" class="split-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Ask us anything
+    </a>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities" aria-label="What's here">
+  <div class="amenities-grid" style="max-width:1200px; margin:clamp(5rem,10vw,9rem) auto; margin-left: clamp(1.5rem,8vw,8rem); margin-right: clamp(1.5rem,8vw,8rem);">
+    <!-- eyebrow row spans full width -->
+  </div>
+  <div id="amenities" style="padding: clamp(5rem,10vw,9rem) clamp(1.5rem,8vw,8rem); max-width:1200px; margin: 0 auto;">
+    <p class="section-eyebrow">What's here</p>
+    <h2 class="section-headline">Everything you need.<br>Nothing in the way.</h2>
+    <div class="amenities-grid">
+      <div class="amenity-card">
+        <span class="amenity-icon">☕</span>
+        <div class="amenity-name">Coffee & Breakfast</div>
+        <div class="amenity-desc">Proper morning coffee and a fresh farm breakfast. Vegetables grown on-site, cooked to order.</div>
+      </div>
+      <div class="amenity-card">
+        <span class="amenity-icon">🏔</span>
+        <div class="amenity-name">Pai Canyon Views</div>
+        <div class="amenity-desc">Open-air, no walls. The canyon is directly across the road — visible from every seat.</div>
+      </div>
+      <div class="amenity-card">
+        <span class="amenity-icon">💻</span>
+        <div class="amenity-name">Laptop Workspace</div>
+        <div class="amenity-desc">Fast wifi, power at every table, comfortable seating. Designed for focused work.</div>
+      </div>
+      <div class="amenity-card">
+        <span class="amenity-icon">🍺</span>
+        <div class="amenity-name">Full Bar</div>
+        <div class="amenity-desc">Cold beers, sodas, mixed drinks. The bar opens in the afternoon and runs into the evening.</div>
+      </div>
+      <div class="amenity-card">
+        <span class="amenity-icon">♨️</span>
+        <div class="amenity-name">Hot Springs</div>
+        <div class="amenity-desc">Natural hot springs directly across the street. The perfect end to a long day at the laptop.</div>
+      </div>
+      <div class="amenity-card">
+        <span class="amenity-icon">🌿</span>
+        <div class="amenity-name">Organic Farm</div>
+        <div class="amenity-desc">We grow more than we eat. Fresh vegetables in every meal — picked that morning.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" aria-label="Photo gallery">
+  <div class="gallery-grid" style="max-width:1200px; margin: 0 auto clamp(5rem,8vw,7rem); padding: 0 clamp(1.5rem,8vw,8rem);">
+    <div class="gallery-item tall">
+      <div class="photo" style="height:100%;">
+        <span class="photo-label">[PHOTO: Full-height — open-air terrace with Pai Canyon panorama]</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="photo" style="height:100%;">
+        <span class="photo-label">[PHOTO: Morning coffee, mist over valley]</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="photo" style="height:100%;">
+        <span class="photo-label">[PHOTO: Bar counter, cold beers, mountains behind]</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="photo" style="height:100%;">
+        <span class="photo-label">[PHOTO: Laptop + canyon view, afternoon light]</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="photo" style="height:100%;">
+        <span class="photo-label">[PHOTO: Breakfast spread, farm vegetables]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section id="proof" aria-label="What people say">
+  <div class="proof-inner">
+    <p class="section-eyebrow">What people say</p>
+    <h2 class="section-headline">The view is the reason<br>people don't leave.</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <span class="proof-quote-mark">"</span>
+        <p class="proof-text">I came for a coffee, stayed for six hours. The canyon view from the workspace is unlike anything I've found in Thailand. Zero distractions, cold beer when I was done.</p>
+        <div class="proof-author">
+          <strong>Marcus T.</strong>
+          Digital nomad · Berlin
+        </div>
+      </div>
+      <div class="proof-card">
+        <span class="proof-quote-mark">"</span>
+        <p class="proof-text">Best working spot in Pai by a long margin. No walls means you're basically sitting in the jungle with a laptop. The hot springs across the road sealed it.</p>
+        <div class="proof-author">
+          <strong>Aiko S.</strong>
+          Remote designer · Tokyo
+        </div>
+      </div>
+      <div class="proof-card">
+        <span class="proof-quote-mark">"</span>
+        <p class="proof-text">Morning coffee with Pai Canyon in the mist, work until afternoon, cold Chang watching the sunset. I came back every day for a week. The farm breakfast alone is worth the trip.</p>
+        <div class="proof-author">
+          <strong>Sara M.</strong>
+          Founder · Amsterdam
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & FIND US -->
+<section id="find" aria-label="Hours and location">
+  <div class="find-grid" style="max-width:1200px; margin:0 auto; padding: clamp(5rem,10vw,9rem) clamp(1.5rem,8vw,8rem);">
+    <div>
+      <p class="section-eyebrow">Hours</p>
+      <h2 class="section-headline" style="margin-bottom:2rem;">Open from 8am,<br>every day.</h2>
+      <div class="find-block-label">Daily schedule</div>
+      <div class="hours-row">
+        <span class="hours-day">Morning</span>
+        <span class="hours-time">Coffee & breakfast from 8am</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">All day</span>
+        <span class="hours-time">Workspace open — canyon views</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Afternoon</span>
+        <span class="hours-time">Bar opens — cold drinks</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Closing</span>
+        <span class="hours-time">Varies by season</span>
+      </div>
+      <div class="hours-note">
+        Hours vary seasonally.<br>
+        Check Google Maps for current hours or WhatsApp us — we'll let you know.
+      </div>
+    </div>
+    <div>
+      <p class="section-eyebrow">Find us</p>
+      <h2 class="section-headline" style="margin-bottom:2rem;">On the outskirts<br>of Pai.</h2>
+      <div class="location-detail">
+        <span class="location-icon">📍</span>
+        <div class="location-text">
+          <strong>Location</strong>
+          Outskirts of Pai, Mae Hong Son, Thailand.<br>
+          Pai Canyon is directly across the road.
+        </div>
+      </div>
+      <div class="location-detail">
+        <span class="location-icon">🛵</span>
+        <div class="location-text">
+          <strong>Getting here</strong>
+          Short scooter ride from Pai town centre.<br>
+          Easy to find — look for the canyon.
+        </div>
+      </div>
+      <div class="location-detail">
+        <span class="location-icon">♨️</span>
+        <div class="location-text">
+          <strong>Nearby</strong>
+          Hot springs directly across the street.<br>
+          Open until late — perfect after-work reset.
+        </div>
+      </div>
+      <a href="https://wa.me/66922864775" class="wa-button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINALE -->
+<section id="cta-final" aria-label="Come visit">
+  <div class="cta-final-photo photo">
+    <span class="photo-label">[PHOTO: Sunset over Pai Canyon — wide shot from the terrace, golden hour]</span>
+  </div>
+  <div class="cta-final-overlay"></div>
+  <div class="cta-final-content">
+    <h2 class="cta-final-headline">Come for the coffee.<br>Stay for the canyon.</h2>
+    <p class="cta-final-sub">Open from 8am. No reservations needed for the workspace or the view. WhatsApp us if you have questions — we'll tell you exactly how to find us.</p>
+    <div class="cta-final-actions">
+      <a href="https://wa.me/66922864775" class="split-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="/the-view.html" class="footer-logo">The View · Pai</a>
+    <div class="footer-meta">
+      Outskirts of Pai, Mae Hong Son, Thailand<br>
+      <a href="https://wa.me/66922864775">WhatsApp +66922864775</a> · Open from 8am<br>
+      <a href="/">claudecamp.org</a> · <a href="/policy.html">Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+const ctx = gsap.context(() => {
+
+  // NAV scroll state
+  const nav = document.getElementById('main-nav');
+  ScrollTrigger.create({
+    start: 'top -60',
+    onUpdate: self => {
+      nav.classList.toggle('scrolled', self.progress > 0);
+    }
+  });
+
+  // Hero reveal on load
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+  tl.to('.nav-logo', { opacity: 1, duration: 0.6, delay: 0.3 })
+    .to('.nav-links a', { opacity: 1, duration: 0.5, stagger: 0.08 }, '-=0.3')
+    .from('.hero-eyebrow span', { yPercent: 110, duration: 0.9, ease: 'power4.out' }, 0.5)
+    .from('.hero-headline span', { yPercent: 105, duration: 1.1, stagger: 0.12, ease: 'power4.out' }, 0.65)
+    .from('.hero-sub span', { yPercent: 100, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' }, 1.0)
+    .to('.hero-scroll', { opacity: 1, duration: 0.6, ease: 'power2.out' }, 1.4);
+
+  // Hero photo parallax
+  gsap.to('.hero-photo', {
+    yPercent: 25,
+    ease: 'none',
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 0.8 }
+  });
+
+  // Tagline
+  gsap.from('#tagline .tagline-text', {
+    opacity: 0, y: 40, duration: 1,
+    scrollTrigger: { trigger: '#tagline', start: 'top 80%', toggleActions: 'play none none none' }
+  });
+
+  gsap.from('#tagline .tagline-badge', {
+    opacity: 0, y: 20, duration: 0.6, stagger: 0.1,
+    scrollTrigger: { trigger: '#tagline .tagline-meta', start: 'top 85%' }
+  });
+
+  // Big numbers
+  gsap.from('.number-item', {
+    opacity: 0, y: 30, duration: 0.8, stagger: 0.15,
+    scrollTrigger: { trigger: '#numbers', start: 'top 75%' }
+  });
+
+  // Arc of the day
+  gsap.from('.arc-item', {
+    opacity: 0, y: 40, duration: 0.8, stagger: 0.15,
+    scrollTrigger: { trigger: '.arc-grid', start: 'top 80%' }
+  });
+
+  // Split section clip-path wipe
+  gsap.from('#split .split-photo', {
+    clipPath: 'inset(0 100% 0 0)',
+    duration: 1.2, ease: 'power3.inOut',
+    scrollTrigger: { trigger: '#split', start: 'top 70%' }
+  });
+
+  gsap.from('#split .split-content > *', {
+    opacity: 0, x: 30, duration: 0.7, stagger: 0.12,
+    scrollTrigger: { trigger: '#split', start: 'top 65%' }
+  });
+
+  // Amenity cards stagger
+  gsap.from('.amenity-card', {
+    opacity: 0, y: 30, duration: 0.7, stagger: 0.08,
+    scrollTrigger: { trigger: '.amenities-grid', start: 'top 80%' }
+  });
+
+  // Gallery items
+  gsap.from('.gallery-item', {
+    opacity: 0, scale: 0.97, duration: 0.8, stagger: 0.1,
+    scrollTrigger: { trigger: '#gallery', start: 'top 80%' }
+  });
+
+  // Social proof
+  gsap.from('.proof-card', {
+    opacity: 0, y: 30, duration: 0.7, stagger: 0.15,
+    scrollTrigger: { trigger: '.proof-grid', start: 'top 80%' }
+  });
+
+  // Hours section
+  gsap.from('.hours-row', {
+    opacity: 0, x: -20, duration: 0.5, stagger: 0.1,
+    scrollTrigger: { trigger: '#find', start: 'top 75%' }
+  });
+
+  gsap.from('.location-detail', {
+    opacity: 0, x: 20, duration: 0.5, stagger: 0.1,
+    scrollTrigger: { trigger: '.location-detail', start: 'top 80%' }
+  });
+
+  // CTA finale
+  gsap.from('.cta-final-headline', {
+    opacity: 0, y: 30, duration: 1,
+    scrollTrigger: { trigger: '#cta-final', start: 'top 70%' }
+  });
+
+  gsap.from('.cta-final-sub, .cta-final-actions', {
+    opacity: 0, y: 20, duration: 0.8, stagger: 0.15,
+    scrollTrigger: { trigger: '#cta-final', start: 'top 65%' }
+  });
+
+  // Floating WhatsApp
+  gsap.from('.wa-float', { opacity: 0, scale: 0.8, duration: 0.5, delay: 2, ease: 'back.out(1.4)' });
+
+});
+</script>
+</body>
+</html>
