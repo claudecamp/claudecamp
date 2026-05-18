@@ -1,3 +1,34 @@
-# Serve static files directly — do not catch-all to index.html
+# Static files — serve directly (must come first)
 /sitemap.xml /sitemap.xml 200
 /robots.txt /robots.txt 200
+
+# www → non-www
+https://www.claudecamp.org/* https://claudecamp.org/:splat 301
+
+# .html → clean URL (prevents Google from seeing duplicate content)
+/index.html / 301
+/about.html /about 301
+/book.html /book 301
+/booked.html /booked 301
+/policy.html /policy 301
+/the-view.html /the-view 301
+/what-is-claude-code.html /what-is-claude-code 301
+/how-to-use-claude-code.html /how-to-use-claude-code 301
+/claude-code-for-beginners.html /claude-code-for-beginners 301
+/claude-code-vs-cursor.html /claude-code-vs-cursor 301
+/claude-code-pricing.html /claude-code-pricing 301
+/claude-code-for-non-technical-founders.html /claude-code-for-non-technical-founders 301
+/claude-code-projects.html /claude-code-projects 301
+/pai-thailand-digital-nomad.html /pai-thailand-digital-nomad 301
+/ai-coding-bootcamp.html /ai-coding-bootcamp 301
+/claude-code-vs-github-copilot.html /claude-code-vs-github-copilot 301
+/claude-code-vs-chatgpt.html /claude-code-vs-chatgpt 301
+/claude-code-tutorial.html /claude-code-tutorial 301
+/claude-code-for-developers.html /claude-code-for-developers 301
+/claude-code-tips.html /claude-code-tips 301
+/how-to-build-a-saas-with-ai.html /how-to-build-a-saas-with-ai 301
+/build-app-without-coding.html /build-app-without-coding 301
+/ai-tools-for-founders.html /ai-tools-for-founders 301
+/pai-thailand-retreat.html /pai-thailand-retreat 301
+/claude-code-review.html /claude-code-review 301
+/how-to-ship-an-mvp-fast.html /how-to-ship-an-mvp-fast 301
