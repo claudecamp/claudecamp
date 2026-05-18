@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Claude Code Tutorial: Get From Zero to Your First Working App">
 <meta property="og:description" content="A practical Claude Code tutorial covering installation, your first prompt, common commands, and how to build a real project from scratch. Step-by-step guide.">
-<meta property="og:url" content="https://claudecamp.org/claude-code-tutorial.html">
+<meta property="og:url" content="https://claudecamp.org/claude-code-tutorial">
 <meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
 <meta property="og:site_name" content="Claude Camp">
 
@@ -24,17 +24,17 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "@id": "https://claudecamp.org/claude-code-tutorial.html#article",
+  "@id": "https://claudecamp.org/claude-code-tutorial#article",
   "headline": "Claude Code Tutorial: Get From Zero to Your First Working App",
   "description": "A practical Claude Code tutorial covering installation, your first prompt, common commands, and how to build a real project from scratch. Step-by-step guide.",
-  "url": "https://claudecamp.org/claude-code-tutorial.html",
+  "url": "https://claudecamp.org/claude-code-tutorial",
   "datePublished": "2026-05-15",
-  "dateModified": "2026-05-15",
+  "dateModified": "2026-05-18",
   "author": {
     "@type": "Person",
-    "@id": "https://claudecamp.org/about.html#ying",
+    "@id": "https://claudecamp.org/about#ying",
     "name": "Ying Goldsmith",
-    "url": "https://claudecamp.org/about.html"
+    "url": "https://claudecamp.org/about"
   },
   "publisher": { "@id": "https://claudecamp.org/#organization" }
 }
@@ -111,7 +111,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
-    { "@type": "ListItem", "position": 2, "name": "Claude Code Tutorial", "item": "https://claudecamp.org/claude-code-tutorial.html" }
+    { "@type": "ListItem", "position": 2, "name": "Claude Code Tutorial", "item": "https://claudecamp.org/claude-code-tutorial" }
   ]
 }
 </script>
@@ -178,15 +178,17 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
 .footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
 .footer-meta a:hover { color: var(--amber); }
 @media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
-</style>
+.article-byline { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); }
+.article-byline a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.article-byline a:hover { color: var(--amber); }</style>
 </head>
 <body>
 
 <nav aria-label="Site navigation">
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claude Camp</a>
-    <a href="/about.html" class="nav-about">About</a>
-    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+    <a href="/about" class="nav-about">About</a>
+    <a href="/book" class="nav-cta">Apply for Cohort 01</a>
   </div>
 </nav>
 
@@ -202,7 +204,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <p class="hero-lede">This tutorial walks you through installing Claude Code, running your first commands, and building a complete working project from scratch — whether you have a technical background or not.</p>
 </div>
 
-<article>
+<div class="article-byline">By <a href="/about">Ying Goldsmith</a> · Updated May 2026</div><article>
 
   <h2>What you need before you start</h2>
   <p>Claude Code has a short prerequisite list. You need one of the following: a <strong>Claude Pro subscription</strong> ($20/month) from Anthropic, or an <strong>Anthropic API key</strong> with a funded account. Either gives you access to the underlying models that Claude Code runs on.</p>
@@ -298,7 +300,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
     <li><strong>A data scraper</strong> — pull data from a public website or API and display it in a clean format. A good introduction to working with external data.</li>
   </ul>
 
-  <p>For structured project ideas and a curated list of what's worth building as a beginner, see the <a href="/claude-code-projects.html">Claude Code projects page</a>.</p>
+  <p>For structured project ideas and a curated list of what's worth building as a beginner, see the <a href="/claude-code-projects">Claude Code projects page</a>.</p>
 
   <hr class="divider">
 
@@ -311,12 +313,12 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <nav class="related-articles" aria-label="Related guides">
     <p class="related-label">Related guides</p>
     <ul class="related-list">
-      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
-      <li><a href="/how-to-use-claude-code.html">How to Use Claude Code →</a></li>
-      <li><a href="/claude-code-for-beginners.html">Claude Code for Beginners →</a></li>
-      <li><a href="/claude-code-tips.html">Claude Code Tips &amp; Best Practices →</a></li>
-      <li><a href="/claude-code-projects.html">What to Build with Claude Code →</a></li>
-      <li><a href="/ai-coding-bootcamp.html">What Is an AI Coding Bootcamp? →</a></li>
+      <li><a href="/what-is-claude-code">What Is Claude Code? →</a></li>
+      <li><a href="/how-to-use-claude-code">How to Use Claude Code →</a></li>
+      <li><a href="/claude-code-for-beginners">Claude Code for Beginners →</a></li>
+      <li><a href="/claude-code-tips">Claude Code Tips &amp; Best Practices →</a></li>
+      <li><a href="/claude-code-projects">What to Build with Claude Code →</a></li>
+      <li><a href="/ai-coding-bootcamp">What Is an AI Coding Bootcamp? →</a></li>
     </ul>
   </nav>
 
@@ -335,7 +337,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
     <div class="footer-meta">
       Pai, Thailand · claudecamp.org<br>
       Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
-      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+      <a href="/policy">Booking &amp; Cancellation Policy</a>
     </div>
   </div>
 </footer>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Book Your Week — Claude Camp">
 <meta property="og:description" content="Reserve your place at Claude Camp — 7-day Claude Code bootcamp in Pai, Thailand. 14 cohorts Oct 2026 – Jan 2027. 7 seats per cohort.">
-<meta property="og:url" content="https://claudecamp.org/book.html">
+<meta property="og:url" content="https://claudecamp.org/book">
 <meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
 <meta property="og:site_name" content="Claude Camp">
 
@@ -30,10 +30,10 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://claudecamp.org/book.html",
+  "@id": "https://claudecamp.org/book",
   "name": "Book Your Week — Claude Camp",
   "description": "Reserve your place at Claude Camp — 7-day Claude Code bootcamp in Pai, Thailand. 14 cohorts Oct 2026 – Jan 2027.",
-  "url": "https://claudecamp.org/book.html",
+  "url": "https://claudecamp.org/book",
   "isPartOf": { "@id": "https://claudecamp.org/#website" }
 }
 </script>
@@ -1012,7 +1012,7 @@ html[dir="rtl"] .booking-form-row textarea {
 
       <label class="booking-commit">
         <input type="checkbox" id="bk-commit" required>
-        <span data-i18n-html="form.policy">I'm committing to this week. A <strong>$420 non-refundable deposit</strong> holds my bed (transferable to a future cohort within 12 months). Balance due 30 days before arrival. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Full policy →</a></span>
+        <span data-i18n-html="form.policy">I'm committing to this week. A <strong>$420 non-refundable deposit</strong> holds my bed (transferable to a future cohort within 12 months). Balance due 30 days before arrival. <a href="/policy" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Full policy →</a></span>
       </label>
 
       <input type="hidden" id="bk-cohort" name="cohort">
@@ -1075,7 +1075,7 @@ html[dir="rtl"] .booking-form-row textarea {
     <div class="booking-modal-success" id="waitlist-success" style="display:none;">
       <div class="check">✓</div>
       <p><strong data-i18n="waitlist.modal.success.title">You're on the list.</strong></p>
-      <p data-i18n-html="waitlist.modal.success.msg">If someone drops out, Sasha will reach out personally. If your dates are flexible, <a href="/book.html" style="color:var(--amber);" onclick="closeWaitlistModal()">other weeks may still be open</a>.</p>
+      <p data-i18n-html="waitlist.modal.success.msg">If someone drops out, Sasha will reach out personally. If your dates are flexible, <a href="/book" style="color:var(--amber);" onclick="closeWaitlistModal()">other weeks may still be open</a>.</p>
     </div>
   </div>
 </div>
@@ -1087,9 +1087,9 @@ html[dir="rtl"] .booking-form-row textarea {
       <div class="footer-wordmark">Claude Camp</div>
       <div class="footer-meta" data-i18n-html="footer.meta">
         Pai, Thailand · claudecamp.org<br>
-        Built by <a href="/about.html">Sasha &amp; Ying Goldsmith</a><br>
+        Built by <a href="/about">Sasha &amp; Ying Goldsmith</a><br>
         Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
-        <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+        <a href="/policy">Booking &amp; Cancellation Policy</a>
       </div>
     </div>
     <div class="footer-right">
@@ -1190,7 +1190,7 @@ const I18N = {
     'waitlist.placeholder': 'your@email.com',
     'waitlist.btn': 'Join the waitlist →',
     'waitlist.small': 'One email when dates lock in. Nothing else.',
-    'footer.meta': 'Pai, Thailand · claudecamp.org<br>Built by <a href="/about.html">Sasha &amp; Ying Goldsmith</a><br>Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">Booking &amp; Cancellation Policy</a>',
+    'footer.meta': 'Pai, Thailand · claudecamp.org<br>Built by <a href="/about">Sasha &amp; Ying Goldsmith</a><br>Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy">Booking &amp; Cancellation Policy</a>',
     'footer.quote': '"The farm hasn\'t changed. The rhythm hasn\'t changed. Ying still cooks breakfast from what she picked an hour ago. The only difference is what you do with the quiet."',
     'waitlist.modal.title': 'Join the waitlist',
     'waitlist.modal.sub': "we'll reach out if a bed opens",
@@ -1236,10 +1236,10 @@ const I18N = {
     'form.buildingPh': '2–3 Sätze. Die Idee, das Tool, der Workflow — was auch immer dich hierher gebracht hat.',
     'form.more': 'Noch etwas? (optional)',
     'form.morePh': 'Ernährungsbedürfnisse, Ankunftszeit, Partner kommt mit usw.',
-    'form.policy': 'Ich verpflichte mich zu dieser Woche. Eine <strong>nicht erstattungsfähige Anzahlung von $420</strong> sichert mein Bett (innerhalb von 12 Monaten auf eine zukünftige Kohorte übertragbar). Restbetrag fällig 30 Tage vor Anreise. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Vollständige Richtlinien →</a>',
+    'form.policy': 'Ich verpflichte mich zu dieser Woche. Eine <strong>nicht erstattungsfähige Anzahlung von $420</strong> sichert mein Bett (innerhalb von 12 Monaten auf eine zukünftige Kohorte übertragbar). Restbetrag fällig 30 Tage vor Anreise. <a href="/policy" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Vollständige Richtlinien →</a>',
     'form.submit': 'Bett reservieren — $420 Anzahlung →',
     'form.fine': 'Ying liest jede Bewerbung persönlich und antwortet innerhalb von 48 Stunden aus Pai. Du erhältst einen Stripe-Link zur Bestätigung mit deiner Anzahlung.',
-    'footer.meta': 'Pai, Thailand · claudecamp.org<br>Fragen? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">Buchungs- &amp; Stornierungsrichtlinien</a>',
+    'footer.meta': 'Pai, Thailand · claudecamp.org<br>Fragen? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy">Buchungs- &amp; Stornierungsrichtlinien</a>',
     'footer.quote': '"Die Farm hat sich nicht verändert. Der Rhythmus hat sich nicht verändert. Ying kocht noch immer das Frühstück aus dem, was sie eine Stunde zuvor gepflückt hat. Der einzige Unterschied ist, was du mit der Stille anfängst."',
     'waitlist.modal.title': 'Auf die Warteliste',
     'waitlist.modal.name': 'Vollständiger Name',
@@ -1284,10 +1284,10 @@ const I18N = {
     'form.buildingPh': '2–3 phrases. L\'idée, l\'outil, le workflow — ce qui t\'a amené ici.',
     'form.more': 'Autre chose ? (facultatif)',
     'form.morePh': 'Régime alimentaire, heure d\'arrivée, partenaire, etc.',
-    'form.policy': 'Je m\'engage pour cette semaine. Un <strong>acompte non remboursable de $420</strong> réserve mon lit (transférable vers une future cohorte dans les 12 mois). Solde dû 30 jours avant l\'arrivée. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Politique complète →</a>',
+    'form.policy': 'Je m\'engage pour cette semaine. Un <strong>acompte non remboursable de $420</strong> réserve mon lit (transférable vers une future cohorte dans les 12 mois). Solde dû 30 jours avant l\'arrivée. <a href="/policy" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Politique complète →</a>',
     'form.submit': 'Réserver mon lit — payer $420 d\'acompte →',
     'form.fine': 'Ying lit chaque candidature personnellement et répond sous 48 heures depuis Pai. Tu recevras un lien Stripe pour confirmer avec ton acompte.',
-    'footer.meta': 'Pai, Thaïlande · claudecamp.org<br>Questions ? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">Conditions de réservation &amp; annulation</a>',
+    'footer.meta': 'Pai, Thaïlande · claudecamp.org<br>Questions ? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy">Conditions de réservation &amp; annulation</a>',
     'footer.quote': '"La ferme n\'a pas changé. Le rythme n\'a pas changé. Ying prépare encore le petit-déjeuner avec ce qu\'elle a cueilli une heure avant. La seule différence, c\'est ce que tu fais avec le calme."',
     'waitlist.modal.title': "Rejoins la liste d'attente",
     'waitlist.modal.name': 'Nom complet',
@@ -1332,10 +1332,10 @@ const I18N = {
     'form.buildingPh': '2–3 משפטים. הרעיון, הכלי, הוורקפלו — מה שהביא אותך לכאן.',
     'form.more': 'משהו נוסף? (אופציונלי)',
     'form.morePh': 'דרישות תזונה, זמן הגעה, פרטנר מצטרף וכו׳.',
-    'form.policy': 'אני מתחייב לשבוע הזה. <strong>הפקדה לא ניתנת להחזר של $420</strong> שומרת את המיטה שלי (ניתנת להעברה למחזור עתידי תוך 12 חודשים). היתרה לתשלום 30 ימים לפני ההגעה. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">מדיניות מלאה →</a>',
+    'form.policy': 'אני מתחייב לשבוע הזה. <strong>הפקדה לא ניתנת להחזר של $420</strong> שומרת את המיטה שלי (ניתנת להעברה למחזור עתידי תוך 12 חודשים). היתרה לתשלום 30 ימים לפני ההגעה. <a href="/policy" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">מדיניות מלאה →</a>',
     'form.submit': '← שריין את המיטה — שלם הפקדה של $420',
     'form.fine': 'סשה קורא כל בקשה אישית ועונה תוך 48 שעות מפאי. תקבל לינק Stripe לאישור עם ההפקדה.',
-    'footer.meta': 'פאי, תאילנד · claudecamp.org<br>שאלות? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">מדיניות הזמנה וביטול</a>',
+    'footer.meta': 'פאי, תאילנד · claudecamp.org<br>שאלות? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy">מדיניות הזמנה וביטול</a>',
     'footer.quote': '"החווה לא השתנתה. הקצב לא השתנה. Ying עדיין מכינה ארוחת בוקר ממה שקטפה לפני שעה. ההבדל היחיד הוא מה שאתה עושה עם השקט."',
     'waitlist.modal.title': 'הצטרף לרשימת ההמתנה',
     'waitlist.modal.name': 'שם מלא',

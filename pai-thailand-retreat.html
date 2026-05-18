@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pai, Thailand Retreat: Why Founders and Developers Go There to Build">
 <meta property="og:description" content="Pai in northern Thailand has quietly become a retreat destination for remote workers and builders. Slower pace, cheap accommodation, organic farms, and serious creative output.">
-<meta property="og:url" content="https://claudecamp.org/pai-thailand-retreat.html">
+<meta property="og:url" content="https://claudecamp.org/pai-thailand-retreat">
 <meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
 <meta property="og:site_name" content="Claude Camp">
 
@@ -24,17 +24,17 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "@id": "https://claudecamp.org/pai-thailand-retreat.html#article",
+  "@id": "https://claudecamp.org/pai-thailand-retreat#article",
   "headline": "Pai, Thailand Retreat: Why Founders and Developers Go There to Build",
   "description": "Pai in northern Thailand has quietly become a retreat destination for remote workers and builders. Slower pace, cheap accommodation, organic farms, and serious creative output.",
-  "url": "https://claudecamp.org/pai-thailand-retreat.html",
+  "url": "https://claudecamp.org/pai-thailand-retreat",
   "datePublished": "2026-05-15",
-  "dateModified": "2026-05-15",
+  "dateModified": "2026-05-18",
   "author": {
     "@type": "Person",
-    "@id": "https://claudecamp.org/about.html#ying",
+    "@id": "https://claudecamp.org/about#ying",
     "name": "Ying Goldsmith",
-    "url": "https://claudecamp.org/about.html"
+    "url": "https://claudecamp.org/about"
   },
   "publisher": { "@id": "https://claudecamp.org/#organization" }
 }
@@ -103,7 +103,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
-    { "@type": "ListItem", "position": 2, "name": "Pai Thailand Retreat", "item": "https://claudecamp.org/pai-thailand-retreat.html" }
+    { "@type": "ListItem", "position": 2, "name": "Pai Thailand Retreat", "item": "https://claudecamp.org/pai-thailand-retreat" }
   ]
 }
 </script>
@@ -170,15 +170,17 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
 .footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
 .footer-meta a:hover { color: var(--amber); }
 @media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
-</style>
+.article-byline { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); }
+.article-byline a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.article-byline a:hover { color: var(--amber); }</style>
 </head>
 <body>
 
 <nav aria-label="Site navigation">
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claude Camp</a>
-    <a href="/about.html" class="nav-about">About</a>
-    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+    <a href="/about" class="nav-about">About</a>
+    <a href="/book" class="nav-cta">Apply for Cohort 01</a>
   </div>
 </nav>
 
@@ -194,7 +196,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <p class="hero-lede">Pai is a small town in the mountains of northern Thailand, 3 hours north of Chiang Mai. It has reliable internet, organic farms, cheap cost of living, and almost nothing to distract you. For builders who want to compress time and ship a product, it has become something of an open secret.</p>
 </div>
 
-<article>
+<div class="article-byline">By <a href="/about">Ying Goldsmith</a> · Updated May 2026</div><article>
 
   <h2>What Pai is actually like</h2>
   <p>Pai has a population of around 7,000 people. It sits in a mountain valley in Mae Hong Son province, surrounded on all sides by jungle-covered hills. Getting there from Chiang Mai means either a 3-hour drive on winding mountain roads — the kind of road that earns its reputation — or a 25-minute flight on a small propeller aircraft.</p>
@@ -265,12 +267,12 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <nav class="related-articles" aria-label="Related guides">
     <p class="related-label">Related guides</p>
     <ul class="related-list">
-      <li><a href="/pai-thailand-digital-nomad.html">Pai as a Digital Nomad Destination →</a></li>
-      <li><a href="/ai-coding-bootcamp.html">What Is an AI Coding Bootcamp? →</a></li>
-      <li><a href="/claude-code-for-non-technical-founders.html">Claude Code for Non-Technical Founders →</a></li>
-      <li><a href="/build-app-without-coding.html">Build an App Without Coding →</a></li>
-      <li><a href="/how-to-ship-an-mvp-fast.html">How to Ship an MVP Fast →</a></li>
-      <li><a href="/about.html">About Claude Camp →</a></li>
+      <li><a href="/pai-thailand-digital-nomad">Pai as a Digital Nomad Destination →</a></li>
+      <li><a href="/ai-coding-bootcamp">What Is an AI Coding Bootcamp? →</a></li>
+      <li><a href="/claude-code-for-non-technical-founders">Claude Code for Non-Technical Founders →</a></li>
+      <li><a href="/build-app-without-coding">Build an App Without Coding →</a></li>
+      <li><a href="/how-to-ship-an-mvp-fast">How to Ship an MVP Fast →</a></li>
+      <li><a href="/about">About Claude Camp →</a></li>
     </ul>
   </nav>
 
@@ -289,7 +291,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
     <div class="footer-meta">
       Pai, Thailand · claudecamp.org<br>
       Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
-      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+      <a href="/policy">Booking &amp; Cancellation Policy</a>
     </div>
   </div>
 </footer>

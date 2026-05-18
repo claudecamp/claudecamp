@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Claude Code for Developers: Advanced Workflows and Real Use Cases">
 <meta property="og:description" content="Experienced developers use Claude Code for refactoring, debugging, test generation, and shipping features faster. Real workflows, advanced tips, and honest trade-offs.">
-<meta property="og:url" content="https://claudecamp.org/claude-code-for-developers.html">
+<meta property="og:url" content="https://claudecamp.org/claude-code-for-developers">
 <meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
 <meta property="og:site_name" content="Claude Camp">
 
@@ -24,17 +24,17 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "@id": "https://claudecamp.org/claude-code-for-developers.html#article",
+  "@id": "https://claudecamp.org/claude-code-for-developers#article",
   "headline": "Claude Code for Developers: Advanced Workflows and Real Use Cases",
   "description": "Experienced developers use Claude Code for refactoring, debugging, test generation, and shipping features faster. Real workflows, advanced tips, and honest trade-offs.",
-  "url": "https://claudecamp.org/claude-code-for-developers.html",
+  "url": "https://claudecamp.org/claude-code-for-developers",
   "datePublished": "2026-05-15",
-  "dateModified": "2026-05-15",
+  "dateModified": "2026-05-18",
   "author": {
     "@type": "Person",
-    "@id": "https://claudecamp.org/about.html#ying",
+    "@id": "https://claudecamp.org/about#ying",
     "name": "Ying Goldsmith",
-    "url": "https://claudecamp.org/about.html"
+    "url": "https://claudecamp.org/about"
   },
   "publisher": { "@id": "https://claudecamp.org/#organization" }
 }
@@ -103,7 +103,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
-    { "@type": "ListItem", "position": 2, "name": "Claude Code for Developers", "item": "https://claudecamp.org/claude-code-for-developers.html" }
+    { "@type": "ListItem", "position": 2, "name": "Claude Code for Developers", "item": "https://claudecamp.org/claude-code-for-developers" }
   ]
 }
 </script>
@@ -170,15 +170,17 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
 .footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
 .footer-meta a:hover { color: var(--amber); }
 @media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
-</style>
+.article-byline { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); }
+.article-byline a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.article-byline a:hover { color: var(--amber); }</style>
 </head>
 <body>
 
 <nav aria-label="Site navigation">
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claude Camp</a>
-    <a href="/about.html" class="nav-about">About</a>
-    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+    <a href="/about" class="nav-about">About</a>
+    <a href="/book" class="nav-cta">Apply for Cohort 01</a>
   </div>
 </nav>
 
@@ -194,7 +196,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <p class="hero-lede">If you already know how to code, Claude Code changes the scale of what one person can ship. This guide covers the workflows, commands, and real use cases that experienced developers get the most leverage from.</p>
 </div>
 
-<article>
+<div class="article-byline">By <a href="/about">Ying Goldsmith</a> · Updated May 2026</div><article>
 
   <h2>How experienced developers use Claude Code differently</h2>
   <p>Claude Code is not autocomplete. If you approach it like Copilot — waiting for it to finish your line — you're leaving most of its capability on the table. Experienced developers use it for tasks that would otherwise take hours: large refactors spanning dozens of files, writing test suites for legacy code that has none, diagnosing production errors from a stack trace, migrating a service from one framework to another, or generating all the boilerplate for a new microservice before writing a single line of business logic.</p>
@@ -264,12 +266,12 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <nav class="related-articles" aria-label="Related guides">
     <p class="related-label">Related guides</p>
     <ul class="related-list">
-      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
-      <li><a href="/how-to-use-claude-code.html">How to Use Claude Code →</a></li>
-      <li><a href="/claude-code-tips.html">Claude Code Tips &amp; Best Practices →</a></li>
-      <li><a href="/claude-code-vs-github-copilot.html">Claude Code vs GitHub Copilot →</a></li>
-      <li><a href="/claude-code-projects.html">What to Build with Claude Code →</a></li>
-      <li><a href="/how-to-ship-an-mvp-fast.html">How to Ship an MVP Fast →</a></li>
+      <li><a href="/what-is-claude-code">What Is Claude Code? →</a></li>
+      <li><a href="/how-to-use-claude-code">How to Use Claude Code →</a></li>
+      <li><a href="/claude-code-tips">Claude Code Tips &amp; Best Practices →</a></li>
+      <li><a href="/claude-code-vs-github-copilot">Claude Code vs GitHub Copilot →</a></li>
+      <li><a href="/claude-code-projects">What to Build with Claude Code →</a></li>
+      <li><a href="/how-to-ship-an-mvp-fast">How to Ship an MVP Fast →</a></li>
     </ul>
   </nav>
 
@@ -288,7 +290,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
     <div class="footer-meta">
       Pai, Thailand · claudecamp.org<br>
       Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
-      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+      <a href="/policy">Booking &amp; Cancellation Policy</a>
     </div>
   </div>
 </footer>

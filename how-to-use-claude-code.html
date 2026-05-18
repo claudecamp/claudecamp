@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Use Claude Code — A Practical Step-by-Step Guide">
 <meta property="og:description" content="Installation, first tasks, CLAUDE.md setup, and the workflows that experienced Claude Code builders use every day.">
-<meta property="og:url" content="https://claudecamp.org/how-to-use-claude-code.html">
+<meta property="og:url" content="https://claudecamp.org/how-to-use-claude-code">
 <meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
 <meta property="og:site_name" content="Claude Camp">
 
@@ -27,17 +27,17 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "@id": "https://claudecamp.org/how-to-use-claude-code.html#article",
+  "@id": "https://claudecamp.org/how-to-use-claude-code#article",
   "headline": "How to Use Claude Code — A Practical Step-by-Step Guide",
   "description": "A practical guide to using Claude Code: installation, your first task, CLAUDE.md setup, and the workflows experienced builders use every day.",
-  "url": "https://claudecamp.org/how-to-use-claude-code.html",
+  "url": "https://claudecamp.org/how-to-use-claude-code",
   "datePublished": "2026-05-14",
-  "dateModified": "2026-05-14",
+  "dateModified": "2026-05-18",
   "author": {
     "@type": "Person",
-    "@id": "https://claudecamp.org/about.html#ying",
+    "@id": "https://claudecamp.org/about#ying",
     "name": "Ying Goldsmith",
-    "url": "https://claudecamp.org/about.html"
+    "url": "https://claudecamp.org/about"
   },
   "publisher": {
     "@id": "https://claudecamp.org/#organization"
@@ -180,7 +180,7 @@
       "@type": "ListItem",
       "position": 2,
       "name": "How to Use Claude Code",
-      "item": "https://claudecamp.org/how-to-use-claude-code.html"
+      "item": "https://claudecamp.org/how-to-use-claude-code"
     }
   ]
 }
@@ -589,15 +589,17 @@ footer {
   .footer-inner { flex-direction: column; align-items: flex-start; }
   .footer-meta { text-align: left; }
 }
-</style>
+.article-byline { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); }
+.article-byline a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.article-byline a:hover { color: var(--amber); }</style>
 </head>
 <body>
 
 <nav aria-label="Site navigation">
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claude Camp</a>
-    <a href="/about.html" class="nav-about">About</a>
-    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+    <a href="/about" class="nav-about">About</a>
+    <a href="/book" class="nav-cta">Apply for Cohort 01</a>
   </div>
 </nav>
 
@@ -613,7 +615,7 @@ footer {
   <p class="hero-lede">Claude Code is Anthropic's agentic coding tool — it runs in your terminal, reads your codebase, and ships code autonomously. This guide covers installation, your first session, and the workflows that experienced builders use to move fast.</p>
 </div>
 
-<article>
+<div class="article-byline">By <a href="/about">Ying Goldsmith</a> · Updated May 2026</div><article>
 
   <h2>Step 1 — Install Claude Code</h2>
   <p>Claude Code installs as a global npm package. You need <strong>Node.js 18 or later</strong> on your machine. Run this in your terminal:</p>
@@ -749,16 +751,16 @@ Current task: adding stripe payment flow to /checkout</code></div>
   <nav class="related-articles" aria-label="Related guides">
     <p class="related-label">Related guides</p>
     <ul class="related-list">
-      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
-      <li><a href="/claude-code-for-beginners.html">Claude Code for Beginners →</a></li>
-      <li><a href="/claude-code-vs-cursor.html">Claude Code vs Cursor →</a></li>
-      <li><a href="/claude-code-pricing.html">Claude Code Pricing →</a></li>
-      <li><a href="/claude-code-for-non-technical-founders.html">Claude Code for Non-Technical Founders →</a></li>
-      <li><a href="/claude-code-projects.html">What People Build with Claude Code →</a></li>
-      <li><a href="/ai-coding-bootcamp.html">What Is an AI Coding Bootcamp? →</a></li>
-      <li><a href="/claude-code-tutorial.html">Claude Code Tutorial →</a></li>
-      <li><a href="/claude-code-tips.html">Claude Code Tips & Best Practices →</a></li>
-      <li><a href="/claude-code-for-developers.html">Claude Code for Developers →</a></li>
+      <li><a href="/what-is-claude-code">What Is Claude Code? →</a></li>
+      <li><a href="/claude-code-for-beginners">Claude Code for Beginners →</a></li>
+      <li><a href="/claude-code-vs-cursor">Claude Code vs Cursor →</a></li>
+      <li><a href="/claude-code-pricing">Claude Code Pricing →</a></li>
+      <li><a href="/claude-code-for-non-technical-founders">Claude Code for Non-Technical Founders →</a></li>
+      <li><a href="/claude-code-projects">What People Build with Claude Code →</a></li>
+      <li><a href="/ai-coding-bootcamp">What Is an AI Coding Bootcamp? →</a></li>
+      <li><a href="/claude-code-tutorial">Claude Code Tutorial →</a></li>
+      <li><a href="/claude-code-tips">Claude Code Tips & Best Practices →</a></li>
+      <li><a href="/claude-code-for-developers">Claude Code for Developers →</a></li>
     </ul>
   </nav>
 
@@ -778,7 +780,7 @@ Current task: adding stripe payment flow to /checkout</code></div>
     <div class="footer-meta">
       Pai, Thailand · claudecamp.org<br>
       Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
-      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+      <a href="/policy">Booking &amp; Cancellation Policy</a>
     </div>
   </div>
 </footer>

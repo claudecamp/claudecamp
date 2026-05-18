@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Claude Code for Non-Technical Founders — Build Without a Developer">
 <meta property="og:description" content="Non-technical founders are using Claude Code to build and launch real products without writing code. Here's what's realistic and how to start.">
-<meta property="og:url" content="https://claudecamp.org/claude-code-for-non-technical-founders.html">
+<meta property="og:url" content="https://claudecamp.org/claude-code-for-non-technical-founders">
 <meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
 <meta property="og:site_name" content="Claude Camp">
 
@@ -24,17 +24,17 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "@id": "https://claudecamp.org/claude-code-for-non-technical-founders.html#article",
+  "@id": "https://claudecamp.org/claude-code-for-non-technical-founders#article",
   "headline": "Claude Code for Non-Technical Founders — Build Without a Developer",
   "description": "Non-technical founders are using Claude Code to build and launch real products without writing code.",
-  "url": "https://claudecamp.org/claude-code-for-non-technical-founders.html",
+  "url": "https://claudecamp.org/claude-code-for-non-technical-founders",
   "datePublished": "2026-05-15",
-  "dateModified": "2026-05-15",
+  "dateModified": "2026-05-18",
   "author": {
     "@type": "Person",
-    "@id": "https://claudecamp.org/about.html#ying",
+    "@id": "https://claudecamp.org/about#ying",
     "name": "Ying Goldsmith",
-    "url": "https://claudecamp.org/about.html"
+    "url": "https://claudecamp.org/about"
   },
   "publisher": { "@id": "https://claudecamp.org/#organization" }
 }
@@ -111,7 +111,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/" },
-    { "@type": "ListItem", "position": 2, "name": "Claude Code for Non-Technical Founders", "item": "https://claudecamp.org/claude-code-for-non-technical-founders.html" }
+    { "@type": "ListItem", "position": 2, "name": "Claude Code for Non-Technical Founders", "item": "https://claudecamp.org/claude-code-for-non-technical-founders" }
   ]
 }
 </script>
@@ -172,15 +172,17 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
 .footer-meta a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
 .footer-meta a:hover { color: var(--amber); }
 @media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
-</style>
+.article-byline { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); }
+.article-byline a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.article-byline a:hover { color: var(--amber); }</style>
 </head>
 <body>
 
 <nav aria-label="Site navigation">
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claude Camp</a>
-    <a href="/about.html" class="nav-about">About</a>
-    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+    <a href="/about" class="nav-about">About</a>
+    <a href="/book" class="nav-cta">Apply for Cohort 01</a>
   </div>
 </nav>
 
@@ -196,7 +198,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <p class="hero-lede">You don't need to know how to code to build a real product with Claude Code. You need a clear idea, the ability to describe what you want, and the patience to review output critically. This guide explains how non-technical founders use Claude Code to ship — and what's realistic.</p>
 </div>
 
-<article>
+<div class="article-byline">By <a href="/about">Ying Goldsmith</a> · Updated May 2026</div><article>
 
   <h2>The shift that made this possible</h2>
   <p>For years, non-technical founders faced the same bottleneck: they had the ideas, the market insight, and the drive, but they couldn't build without hiring a developer. That meant either learning to code (months of time), finding a technical co-founder (often harder than finding product-market fit), or raising money to hire (before having any product to show).</p>
@@ -225,7 +227,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <p>Claude Code amplifies clarity. If you can describe your product in specific terms — what it does, who uses it, what the key screens are, what happens when a user clicks — Claude Code can build it. Vague briefs produce vague results. The founders who get the most out of Claude Code treat it like briefing a talented contractor: the more specific the spec, the better the output.</p>
 
   <h3>2. Node.js installed and a Claude Pro subscription</h3>
-  <p>Node.js is a free download with a standard installer — no technical knowledge required. Once installed, one command gets Claude Code running. A <a href="/claude-code-pricing.html">Claude Pro subscription</a> at $20/month is all you need for model access. Setup takes under an hour.</p>
+  <p>Node.js is a free download with a standard installer — no technical knowledge required. Once installed, one command gets Claude Code running. A <a href="/claude-code-pricing">Claude Pro subscription</a> at $20/month is all you need for model access. Setup takes under an hour.</p>
 
   <h3>3. The ability to test and review output</h3>
   <p>You don't need to understand the code Claude Code writes. You need to be able to open a browser, click through the product it builds, and tell it what's wrong or missing. "The button doesn't do anything when I click it" is sufficient feedback. "The form submits but I don't see a confirmation" is sufficient. You're the product manager, not the engineer.</p>
@@ -264,14 +266,14 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <nav class="related-articles" aria-label="Related guides">
     <p class="related-label">Related guides</p>
     <ul class="related-list">
-      <li><a href="/what-is-claude-code.html">What Is Claude Code? →</a></li>
-      <li><a href="/claude-code-for-beginners.html">Claude Code for Beginners →</a></li>
-      <li><a href="/claude-code-projects.html">What People Build with Claude Code →</a></li>
-      <li><a href="/claude-code-pricing.html">Claude Code Pricing →</a></li>
-      <li><a href="/ai-coding-bootcamp.html">What Is an AI Coding Bootcamp? →</a></li>
-      <li><a href="/build-app-without-coding.html">Build an App Without Coding →</a></li>
-      <li><a href="/how-to-build-a-saas-with-ai.html">How to Build a SaaS with AI →</a></li>
-      <li><a href="/ai-tools-for-founders.html">AI Tools for Founders →</a></li>
+      <li><a href="/what-is-claude-code">What Is Claude Code? →</a></li>
+      <li><a href="/claude-code-for-beginners">Claude Code for Beginners →</a></li>
+      <li><a href="/claude-code-projects">What People Build with Claude Code →</a></li>
+      <li><a href="/claude-code-pricing">Claude Code Pricing →</a></li>
+      <li><a href="/ai-coding-bootcamp">What Is an AI Coding Bootcamp? →</a></li>
+      <li><a href="/build-app-without-coding">Build an App Without Coding →</a></li>
+      <li><a href="/how-to-build-a-saas-with-ai">How to Build a SaaS with AI →</a></li>
+      <li><a href="/ai-tools-for-founders">AI Tools for Founders →</a></li>
     </ul>
   </nav>
 
@@ -290,7 +292,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
     <div class="footer-meta">
       Pai, Thailand · claudecamp.org<br>
       Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
-      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+      <a href="/policy">Booking &amp; Cancellation Policy</a>
     </div>
   </div>
 </footer>

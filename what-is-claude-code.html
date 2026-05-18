@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="What Is Claude Code? Anthropic's AI Coding Tool Explained">
 <meta property="og:description" content="Claude Code is Anthropic's AI coding tool that lets you build real software by describing what you want. Here's how it works, who it's for, and how to start.">
-<meta property="og:url" content="https://claudecamp.org/what-is-claude-code.html">
+<meta property="og:url" content="https://claudecamp.org/what-is-claude-code">
 <meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
 <meta property="og:site_name" content="Claude Camp">
 
@@ -27,17 +27,17 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "@id": "https://claudecamp.org/what-is-claude-code.html#article",
+  "@id": "https://claudecamp.org/what-is-claude-code#article",
   "headline": "What Is Claude Code? Anthropic's AI Coding Tool Explained",
   "description": "Claude Code is Anthropic's AI coding tool that lets you build real software by describing what you want in plain language.",
-  "url": "https://claudecamp.org/what-is-claude-code.html",
+  "url": "https://claudecamp.org/what-is-claude-code",
   "datePublished": "2026-05-13",
-  "dateModified": "2026-05-13",
+  "dateModified": "2026-05-18",
   "author": {
     "@type": "Person",
-    "@id": "https://claudecamp.org/about.html#ying",
+    "@id": "https://claudecamp.org/about#ying",
     "name": "Ying Goldsmith",
-    "url": "https://claudecamp.org/about.html"
+    "url": "https://claudecamp.org/about"
   },
   "publisher": {
     "@id": "https://claudecamp.org/#organization"
@@ -152,7 +152,7 @@
       "@type": "ListItem",
       "position": 2,
       "name": "What Is Claude Code?",
-      "item": "https://claudecamp.org/what-is-claude-code.html"
+      "item": "https://claudecamp.org/what-is-claude-code"
     }
   ]
 }
@@ -525,7 +525,9 @@ footer {
   .footer-inner { flex-direction: column; align-items: flex-start; }
   .footer-meta { text-align: left; }
 }
-</style>
+.article-byline { max-width: var(--col); margin: 0 auto; padding: 0 1.5rem 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint); }
+.article-byline a { color: rgba(245,158,11,0.4); text-decoration: none; transition: color 0.3s; }
+.article-byline a:hover { color: var(--amber); }</style>
 </head>
 <body>
 
@@ -533,8 +535,8 @@ footer {
 <nav aria-label="Site navigation">
   <div class="nav-inner">
     <a href="/" class="nav-wordmark">Claude Camp</a>
-    <a href="/about.html" class="nav-about">About</a>
-    <a href="/#section-cohorts" class="nav-cta">Apply for Cohort 01</a>
+    <a href="/about" class="nav-about">About</a>
+    <a href="/book" class="nav-cta">Apply for Cohort 01</a>
   </div>
 </nav>
 
@@ -553,7 +555,7 @@ footer {
 </div>
 
 <!-- ARTICLE -->
-<article>
+<div class="article-byline">By <a href="/about">Ying Goldsmith</a> · Updated May 2026</div><article>
 
   <h2>The short answer</h2>
   <p>Claude Code is an AI coding tool made by <strong>Anthropic</strong> — the AI safety company that also makes the Claude family of large language models. Unlike a chat interface that generates code snippets you paste manually, Claude Code is an <strong>agentic system</strong>: it runs directly in your terminal (or inside VS Code and JetBrains), reads your entire project, writes files, executes commands, catches errors, and iterates — all without you touching the keyboard between steps.</p>
@@ -678,17 +680,17 @@ footer {
   <nav class="related-articles" aria-label="Related guides">
     <p class="related-label">Related guides</p>
     <ul class="related-list">
-      <li><a href="/how-to-use-claude-code.html">How to Use Claude Code →</a></li>
-      <li><a href="/claude-code-for-beginners.html">Claude Code for Beginners →</a></li>
-      <li><a href="/claude-code-vs-cursor.html">Claude Code vs Cursor →</a></li>
-      <li><a href="/claude-code-pricing.html">Claude Code Pricing →</a></li>
-      <li><a href="/claude-code-for-non-technical-founders.html">Claude Code for Non-Technical Founders →</a></li>
-      <li><a href="/claude-code-projects.html">What People Build with Claude Code →</a></li>
-      <li><a href="/ai-coding-bootcamp.html">What Is an AI Coding Bootcamp? →</a></li>
-      <li><a href="/claude-code-review.html">Claude Code Review →</a></li>
-      <li><a href="/claude-code-tutorial.html">Claude Code Tutorial →</a></li>
-      <li><a href="/claude-code-vs-github-copilot.html">Claude Code vs GitHub Copilot →</a></li>
-      <li><a href="/claude-code-vs-chatgpt.html">Claude Code vs ChatGPT →</a></li>
+      <li><a href="/how-to-use-claude-code">How to Use Claude Code →</a></li>
+      <li><a href="/claude-code-for-beginners">Claude Code for Beginners →</a></li>
+      <li><a href="/claude-code-vs-cursor">Claude Code vs Cursor →</a></li>
+      <li><a href="/claude-code-pricing">Claude Code Pricing →</a></li>
+      <li><a href="/claude-code-for-non-technical-founders">Claude Code for Non-Technical Founders →</a></li>
+      <li><a href="/claude-code-projects">What People Build with Claude Code →</a></li>
+      <li><a href="/ai-coding-bootcamp">What Is an AI Coding Bootcamp? →</a></li>
+      <li><a href="/claude-code-review">Claude Code Review →</a></li>
+      <li><a href="/claude-code-tutorial">Claude Code Tutorial →</a></li>
+      <li><a href="/claude-code-vs-github-copilot">Claude Code vs GitHub Copilot →</a></li>
+      <li><a href="/claude-code-vs-chatgpt">Claude Code vs ChatGPT →</a></li>
     </ul>
   </nav>
 
@@ -709,7 +711,7 @@ footer {
     <div class="footer-meta">
       Pai, Thailand · claudecamp.org<br>
       Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
-      <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+      <a href="/policy">Booking &amp; Cancellation Policy</a>
     </div>
   </div>
 </footer>
