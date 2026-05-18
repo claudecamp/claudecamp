@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Week — Claude Camp</title>
+<meta name="description" content="Reserve your place at Claude Camp — 7-day Claude Code bootcamp in Pai, Thailand. 14 cohorts Oct 2026 – Jan 2027. 7 seats per cohort. Founders and indie hackers.">
+<link rel="canonical" href="https://claudecamp.org/book.html">
+<link rel="icon" href="/assets/og-image.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="/assets/og-image.jpg">
+<meta name="theme-color" content="#060d04">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Book Your Week — Claude Camp">
+<meta property="og:description" content="Reserve your place at Claude Camp — 7-day Claude Code bootcamp in Pai, Thailand. 14 cohorts Oct 2026 – Jan 2027. 7 seats per cohort.">
+<meta property="og:url" content="https://claudecamp.org/book.html">
+<meta property="og:image" content="https://claudecamp.org/assets/og-image.jpg">
+<meta property="og:site_name" content="Claude Camp">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Book Your Week — Claude Camp">
+<meta name="twitter:description" content="Reserve your place at Claude Camp — 7-day Claude Code bootcamp in Pai, Thailand. 7 seats per cohort.">
+<meta name="twitter:image" content="https://claudecamp.org/assets/og-image.jpg">
+
+<!-- JSON-LD: WebPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://claudecamp.org/book.html",
+  "name": "Book Your Week — Claude Camp",
+  "description": "Reserve your place at Claude Camp — 7-day Claude Code bootcamp in Pai, Thailand. 14 cohorts Oct 2026 – Jan 2027.",
+  "url": "https://claudecamp.org/book.html",
+  "isPartOf": { "@id": "https://claudecamp.org/#website" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+/* ─── RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ─── VISUALLY HIDDEN (crawlable) ───────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:root {
+  --jungle-deep:   #060d04;
+  --jungle-mid:    #0a1208;
+  --canopy:        #0f1e0b;
+  --earth:         #1a0d05;
+  --ember:         #2d1208;
+  --amber:         #f59e0b;
+  --amber-glow:    #fbbf24;
+  --amber-dim:     #92610a;
+  --dusk-violet:   #1a0a2e;
+  --text:          #f8fafc;
+  --text-muted:    rgba(248,250,252,0.55);
+  --ease-cinema:   cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow-x: hidden;
+  background: var(--jungle-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── CUSTOM CURSOR ──────────────────────────────────────────── */
+*, *::before, *::after { cursor: none; }
+
+#cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.6);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  will-change: transform;
+  transition: width 0.3s var(--ease-cinema), height 0.3s var(--ease-cinema), border-color 0.3s;
+}
+
+#cursor-ring.hovering {
+  width: 56px; height: 56px;
+  border-color: var(--amber);
+}
+
+/* ─── LOAD OVERLAY ───────────────────────────────────────────── */
+#load-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  clip-path: inset(0% 0% 0% 0%);
+}
+
+#wordmark-load {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--text);
+  letter-spacing: 0.08em;
+  opacity: 0;
+}
+
+/* ─── SCROLL PROGRESS ────────────────────────────────────────── */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--amber), var(--amber-glow));
+  z-index: 9998;
+  will-change: width;
+  transform-origin: left center;
+}
+
+/* ─── STICKY CTA BAR ─────────────────────────────────────────── */
+#sticky-bar {
+  position: fixed;
+  top: 2px; left: 0; right: 0;
+  z-index: 90;
+  background: rgba(3, 8, 5, 0.78);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid rgba(245,158,11,0.12);
+  transform: translateY(0);
+}
+
+.sticky-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 54px;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sticky-bar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.sticky-bar-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 10px rgba(245,158,11,0.7);
+}
+
+.sticky-bar-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.sticky-bar-name .wordmark-dot { color: var(--amber); }
+
+.sticky-bar-eyebrow {
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  margin-left: 0.3rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .sticky-bar-eyebrow { display: none; }
+  .sticky-bar-name { font-size: 0.95rem; }
+  .sticky-bar-inner { height: 48px; padding: 0 1rem; }
+}
+
+/* ─── LANGUAGE PICKER ────────────────────────────────────────── */
+.lang-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 100px;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
+.lang-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  padding: 0.3rem 0.55rem;
+  border-radius: 100px;
+  cursor: none;
+  transition: color 0.2s, background 0.2s;
+}
+.lang-btn:hover { color: var(--text); }
+.lang-btn.active {
+  color: #060d04;
+  background: var(--amber);
+}
+.lang-picker.in-bar {
+  margin-right: 0.6rem;
+  padding: 0.2rem 0.3rem;
+}
+.lang-picker.in-bar .lang-btn {
+  font-size: 0.55rem;
+  padding: 0.25rem 0.45rem;
+}
+@media (max-width: 600px) {
+  .lang-picker.in-bar { display: none; }
+}
+
+/* ─── PAGE HEADER ────────────────────────────────────────────── */
+#book-header {
+  background: var(--jungle-deep);
+  border-bottom: 1px solid rgba(245,158,11,0.08);
+  padding: 6rem clamp(1.5rem, 6vw, 6rem) clamp(3rem, 6vh, 5rem);
+  position: relative;
+}
+
+.book-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.book-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  opacity: 0;
+}
+
+.book-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+.book-headline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  clip-path: inset(0% 0% 100% 0%);
+  will-change: clip-path;
+  margin-bottom: 1.5rem;
+}
+
+.book-sub {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.8;
+  color: rgba(248,250,252,0.82);
+  max-width: 62ch;
+  opacity: 0;
+}
+
+/* ─── SECTION COHORTS ────────────────────────────────────────── */
+#section-cohorts {
+  background: #030704;
+  padding: clamp(1.5rem, 3vh, 2.5rem) clamp(1.5rem, 6vw, 6rem) clamp(5rem, 10vh, 8rem);
+  position: relative;
+  overflow: hidden;
+}
+
+#section-cohorts::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,158,11,0.05) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.cohorts-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cohorts-intro {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.75;
+  color: rgba(248,250,252,0.75);
+  margin-top: 1.2rem;
+  max-width: 60ch;
+  opacity: 0;
+}
+
+.cohorts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: clamp(3rem, 5vh, 4rem);
+}
+
+.cohort-card-main {
+  border: 1px solid rgba(245,158,11,0.18);
+  background: rgba(26,13,5,0.55);
+  padding: 1.8rem 1.6rem;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+  opacity: 1;
+}
+
+.cohort-card-main:hover {
+  border-color: rgba(245,158,11,0.55);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px -8px rgba(245,158,11,0.15);
+}
+.cohort-card-main:active {
+  transform: translateY(-1px);
+  box-shadow: none;
+}
+
+.cohort-card-main.is-full {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cohort-card-main.is-full .cohort-dates-main,
+.cohort-card-main.is-full .cohort-tracks,
+.cohort-card-main.is-full .cohort-price {
+  opacity: 0.45;
+}
+
+.cohort-card-main.is-break {
+  border-color: rgba(248,250,252,0.1);
+  background: rgba(255,255,255,0.02);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 1.6rem;
+}
+
+.cohort-card-main.is-break .cohort-dates-main {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.cohort-card-main.is-break .cohort-break-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(248,250,252,0.4);
+}
+
+.cohort-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+}
+
+.cohort-open-badge {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4ade80;
+  border: 1px solid rgba(74,222,128,0.35);
+  padding: 0.25rem 0.6rem;
+}
+
+.cohort-open-badge.full {
+  color: rgba(248,250,252,0.3);
+  border-color: rgba(248,250,252,0.1);
+}
+
+.cohort-dates-main {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  color: var(--text);
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.cohort-tracks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.cohort-track-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 0.7rem 0.65rem;
+}
+
+.cohort-track-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.cohort-track-avail {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.cohort-dots {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.cohort-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+.cohort-dot.taken {
+  background: rgba(248,250,252,0.12);
+}
+
+.cohort-price {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.cohort-reserve {
+  width: 100%;
+  border: 1px solid var(--amber);
+  background: transparent;
+  color: var(--amber);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cohort-reserve:hover {
+  background: var(--amber);
+  color: #060d04;
+}
+
+.cohort-waitlist {
+  width: 100%;
+  border: 1px solid rgba(248,250,252,0.25);
+  background: transparent;
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cohort-waitlist:hover {
+  border-color: var(--text);
+  color: var(--amber-glow);
+}
+
+.cohort-waiting-count {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 0.6rem;
+  opacity: 0.85;
+}
+
+.cohort-waiting-count strong {
+  color: var(--amber);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ─── BOOKING MODAL ──────────────────────────────────── */
+
+#booking-modal,
+#waitlist-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(3, 8, 5, 0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+#booking-modal.is-open,
+#waitlist-modal.is-open {
+  display: flex;
+}
+
+.booking-modal-card {
+  background: var(--canopy);
+  border: 1px solid rgba(245,158,11,0.25);
+  max-width: 500px;
+  width: 100%;
+  padding: clamp(1.8rem, 4vw, 2.5rem);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.booking-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.3rem 0.5rem;
+}
+
+.booking-modal-close:hover { color: var(--amber); }
+
+.booking-modal-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+}
+
+.booking-modal-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.booking-modal-sub {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+}
+
+.booking-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.booking-form-row label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.booking-form-row input,
+.booking-form-row select,
+.booking-form-row textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(245,158,11,0.18);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.95rem;
+  padding: 0.7rem 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.booking-form-row input:focus,
+.booking-form-row select:focus,
+.booking-form-row textarea:focus {
+  border-color: var(--amber);
+}
+
+.booking-form-row select option {
+  background: var(--canopy);
+  color: var(--text);
+}
+
+.booking-form-row textarea {
+  resize: vertical;
+  min-height: 70px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.booking-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.booking-submit {
+  width: 100%;
+  border: 1px solid var(--amber);
+  background: var(--amber);
+  color: #060d04;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.95rem 1rem;
+  cursor: pointer;
+  margin-top: 0.8rem;
+  transition: opacity 0.2s;
+}
+
+.booking-submit:hover { opacity: 0.88; }
+.booking-submit:disabled { opacity: 0.4; cursor: wait; }
+
+.booking-commit {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  padding: 0.6rem 0;
+  cursor: pointer;
+}
+
+.booking-commit input { margin-top: 0.25rem; flex-shrink: 0; accent-color: var(--amber); }
+.booking-commit strong { color: var(--amber); font-weight: 500; }
+
+.booking-fine-print {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+  line-height: 1.6;
+  margin-top: 0.8rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.booking-status {
+  margin-top: 1rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.booking-status.success { color: #4ade80; }
+.booking-status.error { color: #f87171; }
+
+.booking-modal-success {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.booking-modal-success .check {
+  font-size: 2.5rem;
+  color: #4ade80;
+  margin-bottom: 0.8rem;
+}
+
+.booking-modal-success p {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+
+@media (max-width: 480px) {
+  .booking-form-grid { grid-template-columns: 1fr; }
+  .cohorts-grid { gap: 1rem; }
+}
+
+/* ─── SECTION EYEBROW / HEADLINE ─────────────────────────────── */
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  opacity: 0;
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+.section-headline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  clip-path: inset(0% 0% 100% 0%);
+  will-change: clip-path;
+  margin-bottom: 2rem;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+#footer {
+  background: #030704;
+  border-top: 1px solid rgba(245,158,11,0.08);
+  padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 6rem);
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+}
+
+@media (max-width: 600px) {
+  .footer-inner { grid-template-columns: 1fr; }
+}
+
+.footer-wordmark {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(248,250,252,0.2);
+  line-height: 1.9;
+}
+
+.footer-meta a {
+  color: rgba(245,158,11,0.4);
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: none;
+}
+
+.footer-meta a:hover { color: var(--amber); }
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-quote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+  color: rgba(248,250,252,0.25);
+  line-height: 1.7;
+  max-width: 340px;
+  margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .footer-right { text-align: left; }
+  .footer-quote { margin-left: 0; }
+}
+
+/* ─── HEBREW / RTL ──────────────────────────────────────────── */
+[lang="he"] .book-headline,
+[lang="he"] .section-headline,
+[lang="he"] .booking-modal-title,
+[lang="he"] .sticky-bar-name,
+[lang="he"] .footer-wordmark,
+[lang="he"] #wordmark-load {
+  font-family: 'Frank Ruhl Libre', 'Cormorant Garamond', Georgia, serif;
+  font-style: normal;
+}
+[lang="he"] body,
+[lang="he"] .booking-modal-sub,
+[lang="he"] .nav-link,
+[lang="he"] .lang-btn,
+[lang="he"] .cohort-dates-main,
+[lang="he"] input, [lang="he"] textarea, [lang="he"] select, [lang="he"] button,
+[lang="he"] .section-eyebrow {
+  font-family: 'Heebo', 'DM Sans', system-ui, sans-serif;
+}
+html[dir="rtl"] .sticky-bar-inner,
+html[dir="rtl"] .footer-inner {
+  flex-direction: row-reverse;
+}
+html[dir="rtl"] .booking-form-grid input,
+html[dir="rtl"] .booking-form-grid textarea,
+html[dir="rtl"] .booking-form-grid select,
+html[dir="rtl"] .booking-form-row input,
+html[dir="rtl"] .booking-form-row textarea {
+  text-align: right;
+  direction: rtl;
+}
+</style>
+</head>
+<body>
+
+<!-- LOAD OVERLAY -->
+<div id="load-overlay">
+  <div id="wordmark-load">Claude Camp</div>
+</div>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- STICKY BAR — always visible on this page -->
+<header id="sticky-bar" aria-label="Navigation">
+  <div class="sticky-bar-inner">
+    <a href="/" class="sticky-bar-brand" aria-label="Claude Camp home">
+      <span class="sticky-bar-dot"></span>
+      <span class="sticky-bar-name">Claude<span class="wordmark-dot">·</span>Camp</span>
+      <span class="sticky-bar-eyebrow" data-i18n="sticky.eyebrow">Pai · Oct 2026</span>
+    </a>
+    <div class="lang-picker in-bar" data-lang-picker></div>
+  </div>
+</header>
+
+<!-- ─── PAGE HEADER ──────────────────────────────────────────── -->
+<header id="book-header">
+  <div class="book-header-inner">
+    <p class="book-eyebrow" data-i18n="cohorts.eyebrow">10 — Reserve</p>
+    <h1 class="book-headline">This is not a course you watch.<br>It is a week you live.</h1>
+    <p class="book-sub">You came here because you have something to build. Seven days in the hills of northern Thailand is long enough to ship it — from first commit to live URL — with six other people doing exactly the same thing, in the same room. Some guests stay for nine. They describe the last two days, after launch, as the ones that surprised them most.</p>
+  </div>
+</header>
+
+<!-- ─── SECTION — COHORTS ────────────────────────────────────── -->
+<section id="section-cohorts" aria-label="Reserve Your Week">
+  <div class="cohorts-inner">
+    <p class="cohorts-intro">Seven seats. Seven people who are done waiting to ship. That's the size where everyone knows everyone's project by day two, and the late-night conversations are actually useful. A deposit holds your place — the balance isn't due until 30 days before you arrive.</p>
+    <p class="cohorts-intro" style="margin-top: 0.9rem; padding: 1rem 1.2rem; border-left: 2px solid rgba(245,158,11,0.35); background: rgba(245,158,11,0.04);">Cohort 01 is the founding class. As a founding member, you get the lowest rate this program will ever offer, you help shape how it runs, and your feedback is how the next seven people get a better experience.</p>
+
+    <div class="cohorts-grid" id="cohorts-grid">
+      <!-- Cohort cards injected by JS below for maintainability -->
+    </div>
+  </div>
+</section>
+
+<!-- Booking modal (opens when a cohort card's Reserve button is clicked) -->
+<div id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+  <div class="booking-modal-card">
+    <button class="booking-modal-close" type="button" aria-label="Close" onclick="closeBookingModal()">×</button>
+    <p class="booking-modal-eyebrow" id="booking-modal-eyebrow">Cohort 01</p>
+    <h2 class="booking-modal-title" id="booking-modal-title" data-i18n="form.title">Reserve your bed</h2>
+    <p class="booking-modal-sub" id="booking-modal-sub">Oct 4 – 11, 2026 · 7 days · all-inclusive</p>
+
+    <form id="booking-form" onsubmit="submitBooking(event)" novalidate>
+      <div class="booking-form-grid">
+        <div class="booking-form-row">
+          <label for="bk-name" data-i18n="form.name">Full name</label>
+          <input id="bk-name" name="name" type="text" required>
+        </div>
+        <div class="booking-form-row">
+          <label for="bk-email" data-i18n="form.email">Email</label>
+          <input id="bk-email" name="email" type="email" required>
+        </div>
+      </div>
+
+      <div class="booking-form-grid">
+        <div class="booking-form-row">
+          <label for="bk-phone" data-i18n-html="form.phone">WhatsApp <span style="color:var(--amber);">*</span></label>
+          <input id="bk-phone" name="phone" type="tel" required placeholder="+1 555 / +66 ...">
+        </div>
+        <div class="booking-form-row">
+          <label for="bk-country" data-i18n="form.country">Flying from</label>
+          <input id="bk-country" name="country" type="text" required placeholder="Country" data-i18n-attr="placeholder:form.countryPh">
+        </div>
+      </div>
+
+      <div class="booking-form-grid">
+        <div class="booking-form-row">
+          <label for="bk-track" data-i18n="form.track">Track</label>
+          <select id="bk-track" name="track" required>
+            <option value="beginner" data-i18n="form.trackBeginner">Beginner — $1,490</option>
+            <option value="builder" data-i18n="form.trackBuilder">Builder — $1,490</option>
+          </select>
+        </div>
+        <div class="booking-form-row">
+          <label for="bk-tier" data-i18n="form.tier">Tier</label>
+          <select id="bk-tier" name="tier" required>
+            <option value="standard" data-i18n="form.tierStandard">Standard — $1,490 (transfer optional)</option>
+            <option value="premium" data-i18n="form.tierPremium">Premium — $1,990 (transfer + 1:1)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="booking-form-row">
+        <label for="bk-building" data-i18n-html="form.building">What are you trying to build or learn? <span style="color:var(--amber);">*</span></label>
+        <textarea id="bk-building" name="building" rows="2" required placeholder="2–3 sentences. The idea, the tool, the workflow — whatever brought you here." data-i18n-attr="placeholder:form.buildingPh"></textarea>
+      </div>
+
+      <div class="booking-form-row">
+        <label for="bk-message" data-i18n="form.more">Anything else? (optional)</label>
+        <textarea id="bk-message" name="message" rows="2" placeholder="Dietary needs, arrival timing, partner joining, etc." data-i18n-attr="placeholder:form.morePh"></textarea>
+      </div>
+
+      <label class="booking-commit">
+        <input type="checkbox" id="bk-commit" required>
+        <span data-i18n-html="form.policy">I'm committing to this week. A <strong>$420 non-refundable deposit</strong> holds my bed (transferable to a future cohort within 12 months). Balance due 30 days before arrival. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Full policy →</a></span>
+      </label>
+
+      <input type="hidden" id="bk-cohort" name="cohort">
+
+      <button type="submit" class="booking-submit" id="booking-submit-btn" data-i18n="form.submit">Reserve my bed — pay $420 deposit →</button>
+      <p class="booking-status" id="booking-status"></p>
+      <p class="booking-fine-print" data-i18n="form.fine">Ying reads every application personally and replies within 48 hours from Pai. You'll get a Stripe link to confirm with your deposit.</p>
+    </form>
+
+    <div class="booking-modal-success" id="booking-success" style="display:none;">
+      <div class="check">✓</div>
+      <p><strong data-i18n="form.success.title">Application received.</strong></p>
+      <p data-i18n="form.success.msg">Sasha will read this personally and reply within 48 hours from Pai with a Stripe link to confirm your bed with the deposit.</p>
+      <p style="font-size:0.78rem; opacity:0.7;" data-i18n-html="form.success.urgent">Anything urgent? <a href="https://wa.me/66922864775" style="color:var(--amber);">WhatsApp +66 92 286 4775</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Cohort waitlist modal (opens when a Full cohort's "Join waitlist" is clicked) -->
+<div id="waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-modal-title">
+  <div class="booking-modal-card">
+    <button class="booking-modal-close" type="button" aria-label="Close" onclick="closeWaitlistModal()">×</button>
+    <p class="booking-modal-eyebrow" id="waitlist-modal-eyebrow">Cohort 01</p>
+    <h2 class="booking-modal-title" id="waitlist-modal-title" data-i18n="waitlist.modal.title">Join the waitlist</h2>
+    <p class="booking-modal-sub" id="waitlist-modal-sub">Oct 4 – 9, 2026 · we'll reach out if a bed opens</p>
+
+    <form id="waitlist-form" onsubmit="submitWaitlist(event)" novalidate>
+      <div class="booking-form-grid">
+        <div class="booking-form-row">
+          <label for="wl-name" data-i18n="waitlist.modal.name">Full name</label>
+          <input id="wl-name" name="name" type="text" required>
+        </div>
+        <div class="booking-form-row">
+          <label for="wl-email" data-i18n="waitlist.modal.email">Email</label>
+          <input id="wl-email" name="email" type="email" required>
+        </div>
+      </div>
+      <div class="booking-form-grid">
+        <div class="booking-form-row">
+          <label for="wl-phone" data-i18n="waitlist.modal.phone">WhatsApp</label>
+          <input id="wl-phone" name="phone" type="tel" placeholder="+1 / +66 ...">
+        </div>
+        <div class="booking-form-row">
+          <label for="wl-country" data-i18n="waitlist.modal.country">Flying from</label>
+          <input id="wl-country" name="country" type="text" placeholder="Country">
+        </div>
+      </div>
+      <div class="booking-form-row">
+        <label for="wl-message" data-i18n="waitlist.modal.message">A note for Sasha (optional)</label>
+        <textarea id="wl-message" name="message" rows="2" placeholder="Flexible on other weeks? What are you hoping to build? Anything else?" data-i18n-attr="placeholder:waitlist.modal.messagePh"></textarea>
+      </div>
+
+      <input type="hidden" id="wl-cohort" name="cohort">
+
+      <button type="submit" class="booking-submit" id="waitlist-submit-btn" data-i18n="waitlist.modal.submit">Add me to the waitlist →</button>
+      <p class="booking-status" id="waitlist-status"></p>
+      <p class="booking-fine-print" data-i18n="waitlist.modal.fine">No deposit, no commitment. If a bed opens, Sasha will reach out personally on WhatsApp or email — first come, first served.</p>
+    </form>
+
+    <div class="booking-modal-success" id="waitlist-success" style="display:none;">
+      <div class="check">✓</div>
+      <p><strong data-i18n="waitlist.modal.success.title">You're on the list.</strong></p>
+      <p data-i18n-html="waitlist.modal.success.msg">If someone drops out, Sasha will reach out personally. If your dates are flexible, <a href="/book.html" style="color:var(--amber);" onclick="closeWaitlistModal()">other weeks may still be open</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<footer id="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-wordmark">Claude Camp</div>
+      <div class="footer-meta" data-i18n-html="footer.meta">
+        Pai, Thailand · claudecamp.org<br>
+        Built by <a href="/about.html">Sasha &amp; Ying Goldsmith</a><br>
+        Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
+        <a href="/policy.html">Booking &amp; Cancellation Policy</a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <p class="footer-quote" data-i18n="footer.quote">"The farm hasn't changed. The rhythm hasn't changed. Ying still cooks breakfast from what she picked an hour ago. The only difference is what you do with the quiet."</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   CLAUDE CAMP — BOOK.HTML
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── i18n: 4-language conversion-path translation ─────────── */
+const I18N = {
+  en: {
+    'nav.tracks': 'Tracks', 'nav.pricing': 'Pricing', 'nav.book': 'Book', 'nav.about': 'About',
+    'sticky.eyebrow': 'Pai · Oct 2026', 'sticky.cta': 'Reserve a bed →',
+    'hero.badge': 'FROM $1,490 / WEEK · 14 COHORTS · OCT 2026 – JAN 2027',
+    'hero.eyebrow': '01 — Mae Hong Son, Thailand',
+    'hero.line1': 'Wake up in the jungle.',
+    'hero.line2': 'Build your company with AI.',
+    'hero.line3': 'Launch before you leave.',
+    'hero.tagline': '7-day Claude Code bootcamp + retreat in Pai, Thailand.',
+    'hero.ctaPrimary': 'Reserve your week',
+    'hero.ctaSecondary': 'Explore tracks',
+    'hero.scroll': 'Scroll',
+    'audio.toggle': 'Hear the jungle',
+    'promise.eyebrow': 'The Promise',
+    'promise.headline': 'A place to <em>land</em>. A week to <em>ship</em>.',
+    'day.eyebrow': '02 — The Rhythm',
+    'day.headline': 'Seven days have a shape. This is it.',
+    'tracks.eyebrow': '03 — Tracks',
+    'tracks.headline': 'Where are you starting from?',
+    'place.eyebrow': '04 — Pai, Thailand',
+    'place.headline': '7km from town.<br>A world away.',
+    'excursions.eyebrow': '05 — Excursions',
+    'excursions.headline': "Five moments you'll carry home.",
+    'excursions.swipe': 'Swipe to explore all five',
+    'pricing.eyebrow': '06 — Invest',
+    'pricing.headline': 'Seven days. One decision.',
+    'pricing.note': 'Founding cohort pricing — the lowest this will ever be. 14 cohorts running weekly, Oct 2026 – Jan 2027. Seven beds per cohort.',
+    'pricing.standard.tier': 'Standard',
+    'pricing.standard.period': 'per week · room, board, curriculum',
+    'pricing.standard.f1': 'Seven days in your bungalow — accommodation fully included',
+    'pricing.standard.f2': 'All meals: organic farm produce and hill-tribe meat, cooked by Ying daily',
+    'pricing.standard.f3': "Morning yoga (optional, but you'll go)",
+    'pricing.standard.f4': 'Hot springs every afternoon',
+    'pricing.standard.f5': 'All excursions included — canyon, cave, cooking, the full Pai circuit',
+    'pricing.standard.f6': 'Full Claude Code program — guided sessions throughout the week',
+    'pricing.standard.f7': 'Airport transfer +$140 round-trip <span class="pricing-addon-note">— or take the $6 minivan, we\'ll send the link</span>',
+    'pricing.premium.tier': 'Premium',
+    'pricing.premium.period': 'per week · door-to-door, fully handled',
+    'pricing.premium.f1': 'Everything in Standard',
+    'pricing.premium.f2': 'Private airport transfer both ways — door to bungalow, handled',
+    'pricing.premium.f3': 'Daily 1-on-1 session — your product, your blockers, your roadmap',
+    'pricing.premium.f4': 'Priority track placement — first pick on project focus and session pairings',
+    'pricing.premium.f5': 'Extended post-camp review — Sasha looks at your build after you leave and tells you exactly what to do next',
+    'pricing.pickWeek': 'Pick your week',
+    'pricing.honest': "There's a $6 shared minivan from Chiang Mai airport (Aya Service) — we'll send the booking link and tell the driver where to drop you. The $140 transfer is for when you'd rather not think about it.",
+    'hosts.eyebrow': '07 — Your Hosts',
+    'hosts.headline': 'Ying.',
+    'prep.eyebrow': '08 — Before You Arrive',
+    'prep.headline': "Three things. That's it.",
+    'prep.intro': 'Two take ten minutes. One you already have. Everything else gets handled on Day 1.',
+    'travel.eyebrow': '09 — Getting Here',
+    'travel.headline': 'Seven hundred curves,<br>then stillness.',
+    'cohorts.eyebrow': '10 — Reserve',
+    'cohorts.headline': 'Claim your week.',
+    'cohorts.intro': 'Sunday arrival, Saturday departure — seven days of focused building in the hills. Then two days for Ying to reset before the next cohort lands. Availability below is live and honest: a bed marked taken is gone.',
+    'cohorts.intro2': 'Seven seats per cohort. Deliberately. A small deposit holds your spot — first come, first confirmed.',
+    'cohort.open': 'Open', 'cohort.full': 'Full',
+    'cohort.beginner': 'Beginner', 'cohort.builder': 'Builder',
+    'cohort.available': 'available',
+    'cohort.price': '$1,490 – $1,990 · 7 days all-inclusive',
+    'cohort.reserve': 'Reserve your spot',
+    'cohort.joinWaitlist': 'Join the waitlist',
+    'form.title': 'Reserve your bed',
+    'form.allInclusive': '7 days · all-inclusive',
+    'form.name': 'Full name', 'form.email': 'Email',
+    'form.phone': 'WhatsApp <span style="color:var(--amber);">*</span>',
+    'form.country': 'Flying from', 'form.countryPh': 'Country',
+    'form.track': 'Track',
+    'form.trackBeginner': 'Beginner — $1,490', 'form.trackBuilder': 'Builder — $1,490',
+    'form.tier': 'Tier',
+    'form.tierStandard': 'Standard — $1,490 (transfer optional)',
+    'form.tierPremium': 'Premium — $1,990 (transfer + 1:1)',
+    'form.building': 'What are you trying to build or learn? <span style="color:var(--amber);">*</span>',
+    'form.buildingPh': '2–3 sentences. The idea, the tool, the workflow — whatever brought you here.',
+    'form.more': 'Anything else? (optional)',
+    'form.morePh': 'Dietary needs, arrival timing, partner joining, etc.',
+    'form.policy': "I'm committing to this week. A <strong>$420 non-refundable deposit</strong> holds my bed (transferable to a future cohort within 12 months). Balance due 30 days before arrival. <a href=\"/policy.html\" target=\"_blank\" style=\"color:inherit;opacity:0.6;text-underline-offset:2px;\">Full policy →</a>",
+    'form.submit': 'Reserve my bed — pay $420 deposit →',
+    'form.fine': "Ying reads every application personally and replies within 48 hours from Pai. You'll get a Stripe link to confirm with your deposit.",
+    'waitlist.eyebrow': '11 — Or join the waitlist',
+    'waitlist.headline': 'Not ready yet?',
+    'waitlist.sub': "Leave your email and we'll let you know when new cohorts open. No spam — one email when there's something real to share.",
+    'waitlist.placeholder': 'your@email.com',
+    'waitlist.btn': 'Join the waitlist →',
+    'waitlist.small': 'One email when dates lock in. Nothing else.',
+    'footer.meta': 'Pai, Thailand · claudecamp.org<br>Built by <a href="/about.html">Sasha &amp; Ying Goldsmith</a><br>Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">Booking &amp; Cancellation Policy</a>',
+    'footer.quote': '"The farm hasn\'t changed. The rhythm hasn\'t changed. Ying still cooks breakfast from what she picked an hour ago. The only difference is what you do with the quiet."',
+    'waitlist.modal.title': 'Join the waitlist',
+    'waitlist.modal.sub': "we'll reach out if a bed opens",
+    'waitlist.modal.name': 'Full name',
+    'waitlist.modal.email': 'Email',
+    'waitlist.modal.phone': 'WhatsApp',
+    'waitlist.modal.country': 'Flying from',
+    'waitlist.modal.message': 'A note for Sasha (optional)',
+    'waitlist.modal.messagePh': 'Flexible on other weeks? What are you hoping to build? Anything else?',
+    'waitlist.modal.submit': 'Add me to the waitlist →',
+    'waitlist.modal.fine': 'No deposit, no commitment. If a bed opens, Sasha will reach out personally on WhatsApp or email — first come, first served.',
+    'waitlist.modal.success.title': "You're on the list.",
+    'waitlist.modal.success.msg': 'If someone drops out, Sasha will reach out personally. If your dates are flexible, other weeks may still be open.',
+    'form.success.title': 'Application received.',
+    'form.success.msg': 'Sasha will read this personally and reply within 48 hours from Pai with a Stripe link to confirm your bed with the deposit.',
+    'form.success.urgent': 'Anything urgent? <a href="https://wa.me/66922864775" style="color:var(--amber);">WhatsApp +66 92 286 4775</a>',
+    'waiting.one': 'person waiting', 'waiting.few': 'waiting', 'waiting.several': 'several', 'waiting.many': 'many',
+  },
+  de: {
+    'nav.tracks': 'Tracks', 'nav.pricing': 'Preise', 'nav.book': 'Buchen', 'nav.about': 'Über uns',
+    'sticky.eyebrow': 'Pai · Okt 2026', 'sticky.cta': 'Bett sichern →',
+    'cohorts.eyebrow': '10 — Reservieren',
+    'cohorts.headline': 'Hol dir deine Woche.',
+    'cohorts.intro': 'Anreise Sonntag, Abreise Samstag — sieben Tage fokussiertes Bauen in den Bergen. Danach zwei Tage Reset für Ying, bevor die nächste Kohorte landet. Verfügbarkeit unten ist live und ehrlich: Ein als belegt markiertes Bett ist weg.',
+    'cohorts.intro2': 'Sieben Plätze pro Kohorte. Bewusst. Eine kleine Anzahlung sichert deinen Platz — wer zuerst kommt, wird zuerst bestätigt.',
+    'cohort.open': 'Frei', 'cohort.full': 'Voll',
+    'cohort.beginner': 'Beginner', 'cohort.builder': 'Builder',
+    'cohort.available': 'verfügbar',
+    'cohort.price': '$1.490 – $1.990 · 7 Tage all-inclusive',
+    'cohort.reserve': 'Platz sichern',
+    'cohort.joinWaitlist': 'Auf die Warteliste',
+    'form.title': 'Bett reservieren',
+    'form.allInclusive': '7 Tage · all-inclusive',
+    'form.name': 'Vollständiger Name', 'form.email': 'E-Mail',
+    'form.phone': 'WhatsApp <span style="color:var(--amber);">*</span>',
+    'form.country': 'Abflugland', 'form.countryPh': 'Land',
+    'form.track': 'Track',
+    'form.trackBeginner': 'Beginner — $1.490', 'form.trackBuilder': 'Builder — $1.490',
+    'form.tier': 'Tarif',
+    'form.tierStandard': 'Standard — $1.490 (Transfer optional)',
+    'form.tierPremium': 'Premium — $1.990 (Transfer + 1:1)',
+    'form.building': 'Was möchtest du bauen oder lernen? <span style="color:var(--amber);">*</span>',
+    'form.buildingPh': '2–3 Sätze. Die Idee, das Tool, der Workflow — was auch immer dich hierher gebracht hat.',
+    'form.more': 'Noch etwas? (optional)',
+    'form.morePh': 'Ernährungsbedürfnisse, Ankunftszeit, Partner kommt mit usw.',
+    'form.policy': 'Ich verpflichte mich zu dieser Woche. Eine <strong>nicht erstattungsfähige Anzahlung von $420</strong> sichert mein Bett (innerhalb von 12 Monaten auf eine zukünftige Kohorte übertragbar). Restbetrag fällig 30 Tage vor Anreise. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Vollständige Richtlinien →</a>',
+    'form.submit': 'Bett reservieren — $420 Anzahlung →',
+    'form.fine': 'Ying liest jede Bewerbung persönlich und antwortet innerhalb von 48 Stunden aus Pai. Du erhältst einen Stripe-Link zur Bestätigung mit deiner Anzahlung.',
+    'footer.meta': 'Pai, Thailand · claudecamp.org<br>Fragen? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">Buchungs- &amp; Stornierungsrichtlinien</a>',
+    'footer.quote': '"Die Farm hat sich nicht verändert. Der Rhythmus hat sich nicht verändert. Ying kocht noch immer das Frühstück aus dem, was sie eine Stunde zuvor gepflückt hat. Der einzige Unterschied ist, was du mit der Stille anfängst."',
+    'waitlist.modal.title': 'Auf die Warteliste',
+    'waitlist.modal.name': 'Vollständiger Name',
+    'waitlist.modal.email': 'E-Mail',
+    'waitlist.modal.phone': 'WhatsApp',
+    'waitlist.modal.country': 'Abflugland',
+    'waitlist.modal.message': 'Eine Nachricht für Sasha (optional)',
+    'waitlist.modal.messagePh': 'Flexibel bei anderen Wochen? Was möchtest du bauen? Noch etwas?',
+    'waitlist.modal.submit': 'Auf die Warteliste setzen →',
+    'waitlist.modal.fine': 'Keine Anzahlung, keine Verpflichtung. Wenn ein Bett frei wird, meldet Sasha sich persönlich.',
+    'waitlist.modal.success.title': 'Du bist auf der Liste.',
+    'waitlist.modal.success.msg': 'Wenn jemand absagt, meldet Sasha sich persönlich. Wenn du bei den Daten flexibel bist, könnten andere Wochen noch offen sein.',
+    'form.success.title': 'Bewerbung erhalten.',
+    'form.success.msg': 'Sasha liest das persönlich und antwortet innerhalb von 48 Stunden aus Pai mit einem Stripe-Link.',
+    'form.success.urgent': 'Etwas Dringendes? <a href="https://wa.me/66922864775" style="color:var(--amber);">WhatsApp +66 92 286 4775</a>',
+    'waiting.one': 'Person wartet', 'waiting.few': 'warten', 'waiting.several': 'mehrere', 'waiting.many': 'viele',
+  },
+  fr: {
+    'nav.tracks': 'Tracks', 'nav.pricing': 'Tarifs', 'nav.book': 'Réserver', 'nav.about': 'À propos',
+    'sticky.eyebrow': 'Pai · Oct 2026', 'sticky.cta': 'Réserver un lit →',
+    'cohorts.eyebrow': '10 — Réserver',
+    'cohorts.headline': 'Prends ta semaine.',
+    'cohorts.intro': "Arrivée dimanche, départ samedi — sept jours de construction concentrée dans les collines. Puis deux jours pour que Ying se ressource avant l'arrivée de la prochaine cohorte. La disponibilité ci-dessous est en temps réel et honnête : un lit marqué pris est parti.",
+    'cohorts.intro2': 'Sept places par cohorte. Délibérément. Un petit acompte réserve ta place — premier arrivé, premier confirmé.',
+    'cohort.open': 'Disponible', 'cohort.full': 'Complet',
+    'cohort.beginner': 'Débutant', 'cohort.builder': 'Builder',
+    'cohort.available': 'disponibles',
+    'cohort.price': '$1 490 – $1 990 · 7 jours tout inclus',
+    'cohort.reserve': 'Réserver ma place',
+    'cohort.joinWaitlist': "Rejoindre la liste d'attente",
+    'form.title': 'Réserver mon lit',
+    'form.allInclusive': '7 jours · tout inclus',
+    'form.name': 'Nom complet', 'form.email': 'Email',
+    'form.phone': 'WhatsApp <span style="color:var(--amber);">*</span>',
+    'form.country': 'Tu voles depuis', 'form.countryPh': 'Pays',
+    'form.track': 'Parcours',
+    'form.trackBeginner': 'Débutant — $1 490', 'form.trackBuilder': 'Builder — $1 490',
+    'form.tier': 'Formule',
+    'form.tierStandard': 'Standard — $1 490 (transfert optionnel)',
+    'form.tierPremium': 'Premium — $1 990 (transfert + 1:1)',
+    'form.building': 'Que veux-tu construire ou apprendre ? <span style="color:var(--amber);">*</span>',
+    'form.buildingPh': '2–3 phrases. L\'idée, l\'outil, le workflow — ce qui t\'a amené ici.',
+    'form.more': 'Autre chose ? (facultatif)',
+    'form.morePh': 'Régime alimentaire, heure d\'arrivée, partenaire, etc.',
+    'form.policy': 'Je m\'engage pour cette semaine. Un <strong>acompte non remboursable de $420</strong> réserve mon lit (transférable vers une future cohorte dans les 12 mois). Solde dû 30 jours avant l\'arrivée. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Politique complète →</a>',
+    'form.submit': 'Réserver mon lit — payer $420 d\'acompte →',
+    'form.fine': 'Ying lit chaque candidature personnellement et répond sous 48 heures depuis Pai. Tu recevras un lien Stripe pour confirmer avec ton acompte.',
+    'footer.meta': 'Pai, Thaïlande · claudecamp.org<br>Questions ? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">Conditions de réservation &amp; annulation</a>',
+    'footer.quote': '"La ferme n\'a pas changé. Le rythme n\'a pas changé. Ying prépare encore le petit-déjeuner avec ce qu\'elle a cueilli une heure avant. La seule différence, c\'est ce que tu fais avec le calme."',
+    'waitlist.modal.title': "Rejoins la liste d'attente",
+    'waitlist.modal.name': 'Nom complet',
+    'waitlist.modal.email': 'Email',
+    'waitlist.modal.phone': 'WhatsApp',
+    'waitlist.modal.country': 'Tu voles depuis',
+    'waitlist.modal.message': 'Un mot pour Sasha (facultatif)',
+    'waitlist.modal.messagePh': "Flexible sur d'autres semaines ? Qu'espères-tu construire ?",
+    'waitlist.modal.submit': "Ajoute-moi à la liste d'attente →",
+    'waitlist.modal.fine': 'Pas de dépôt, aucun engagement. Si une place se libère, Sasha te contactera personnellement.',
+    'waitlist.modal.success.title': 'Tu es sur la liste.',
+    'waitlist.modal.success.msg': "Si quelqu'un se désiste, Sasha te contactera personnellement.",
+    'form.success.title': 'Candidature reçue.',
+    'form.success.msg': "Sasha lira ceci personnellement et répondra dans les 48 heures depuis Pai avec un lien Stripe.",
+    'form.success.urgent': "Quelque chose d'urgent ? <a href=\"https://wa.me/66922864775\" style=\"color:var(--amber);\">WhatsApp +66 92 286 4775</a>",
+    'waiting.one': 'personne en attente', 'waiting.few': 'en attente', 'waiting.several': 'plusieurs', 'waiting.many': 'beaucoup',
+  },
+  he: {
+    'nav.tracks': 'מסלולים', 'nav.pricing': 'מחירים', 'nav.book': 'הזמנה', 'nav.about': 'אודות',
+    'sticky.eyebrow': 'פאי · אוקטובר 2026', 'sticky.cta': '← שריין מיטה',
+    'cohorts.eyebrow': '10 — שריין',
+    'cohorts.headline': 'תפוס את השבוע שלך.',
+    'cohorts.intro': 'הגעה ביום ראשון, יציאה ביום שבת — שבעה ימים של בנייה ממוקדת בהרים. אחר כך יומיים שיינג מתאוששת לפני שהמחזור הבא נוחת. הזמינות למטה היא חיה וכנה: מיטה מסומנת תפוסה היא תפוסה.',
+    'cohorts.intro2': 'שבע מקומות במחזור. במכוון. הפקדה קטנה שומרת את המקום שלך — הראשון שמגיע, הראשון שמאושר.',
+    'cohort.open': 'פנוי', 'cohort.full': 'מלא',
+    'cohort.beginner': 'מתחיל', 'cohort.builder': 'בילדר',
+    'cohort.available': 'פנויות',
+    'cohort.price': '$1,490 – $1,990 · 7 ימים הכל כלול',
+    'cohort.reserve': 'שריין מקום',
+    'cohort.joinWaitlist': 'הצטרף לרשימת המתנה',
+    'form.title': 'שריין מיטה',
+    'form.allInclusive': '7 ימים · הכל כלול',
+    'form.name': 'שם מלא', 'form.email': 'אימייל',
+    'form.phone': 'WhatsApp <span style="color:var(--amber);">*</span>',
+    'form.country': 'טס מ', 'form.countryPh': 'מדינה',
+    'form.track': 'מסלול',
+    'form.trackBeginner': 'מתחיל — $1,490', 'form.trackBuilder': 'בילדר — $1,490',
+    'form.tier': 'דרגה',
+    'form.tierStandard': 'סטנדרט — $1,490 (הסעה אופציונלית)',
+    'form.tierPremium': 'פרימיום — $1,990 (הסעה + 1:1)',
+    'form.building': 'מה אתה מנסה לבנות או ללמוד? <span style="color:var(--amber);">*</span>',
+    'form.buildingPh': '2–3 משפטים. הרעיון, הכלי, הוורקפלו — מה שהביא אותך לכאן.',
+    'form.more': 'משהו נוסף? (אופציונלי)',
+    'form.morePh': 'דרישות תזונה, זמן הגעה, פרטנר מצטרף וכו׳.',
+    'form.policy': 'אני מתחייב לשבוע הזה. <strong>הפקדה לא ניתנת להחזר של $420</strong> שומרת את המיטה שלי (ניתנת להעברה למחזור עתידי תוך 12 חודשים). היתרה לתשלום 30 ימים לפני ההגעה. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">מדיניות מלאה →</a>',
+    'form.submit': '← שריין את המיטה — שלם הפקדה של $420',
+    'form.fine': 'סשה קורא כל בקשה אישית ועונה תוך 48 שעות מפאי. תקבל לינק Stripe לאישור עם ההפקדה.',
+    'footer.meta': 'פאי, תאילנד · claudecamp.org<br>שאלות? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br><a href="/policy.html">מדיניות הזמנה וביטול</a>',
+    'footer.quote': '"החווה לא השתנתה. הקצב לא השתנה. Ying עדיין מכינה ארוחת בוקר ממה שקטפה לפני שעה. ההבדל היחיד הוא מה שאתה עושה עם השקט."',
+    'waitlist.modal.title': 'הצטרף לרשימת ההמתנה',
+    'waitlist.modal.name': 'שם מלא',
+    'waitlist.modal.email': 'אימייל',
+    'waitlist.modal.phone': 'WhatsApp',
+    'waitlist.modal.country': 'טס מאיפה',
+    'waitlist.modal.message': 'הערה ל-Sasha (אופציונלי)',
+    'waitlist.modal.messagePh': 'גמיש בשבועות אחרים? מה אתה מקווה לבנות?',
+    'waitlist.modal.submit': 'הוסף אותי לרשימת ההמתנה ←',
+    'waitlist.modal.fine': 'ללא פיקדון, ללא התחייבות. אם מיטה מתפנה, Sasha יפנה אליך אישית.',
+    'waitlist.modal.success.title': 'אתה ברשימה.',
+    'waitlist.modal.success.msg': 'אם מישהו יוצא, Sasha יפנה אליך אישית.',
+    'form.success.title': 'הבקשה התקבלה.',
+    'form.success.msg': 'Sasha יקרא את זה אישית ויחזור תוך 48 שעות מ-Pai עם קישור Stripe.',
+    'form.success.urgent': 'משהו דחוף? <a href="https://wa.me/66922864775" style="color:var(--amber);">WhatsApp +66 92 286 4775</a>',
+    'waiting.one': 'אדם ממתין', 'waiting.few': 'ממתינים', 'waiting.several': 'כמה', 'waiting.many': 'רבים',
+  },
+};
+
+(function initI18n() {
+  const SUPPORTED = ['en', 'de', 'fr', 'he'];
+  const STORAGE_KEY = 'claudecamp.lang';
+
+  function detect() {
+    try {
+      const url = new URLSearchParams(location.search).get('lang');
+      if (url && SUPPORTED.includes(url)) return url;
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored && SUPPORTED.includes(stored)) return stored;
+      const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+      if (SUPPORTED.includes(nav)) return nav;
+    } catch {}
+    return 'en';
+  }
+
+  let currentLang = detect();
+  window.__t = (key) => (I18N[currentLang] && I18N[currentLang][key]) || (I18N.en[key]) || key;
+
+  function applyTranslations() {
+    const dict = I18N[currentLang] || I18N.en;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const v = dict[key]; if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      const v = dict[key]; if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+      const spec = el.getAttribute('data-i18n-attr');
+      spec.split(',').forEach(pair => {
+        const [attr, key] = pair.split(':').map(s => s.trim());
+        const v = dict[key]; if (v != null) el.setAttribute(attr, v);
+      });
+    });
+    // Re-render dynamic availability strings
+    document.querySelectorAll('.cohort-track-avail').forEach(el => {
+      const left = el.dataset.availLeft, total = el.dataset.availTotal;
+      if (left != null && total != null) {
+        el.textContent = `${left} / ${total} ${dict['cohort.available'] || 'available'}`;
+      }
+    });
+  }
+  window.__applyI18n = applyTranslations;
+
+  function setLang(lang) {
+    if (!SUPPORTED.includes(lang)) return;
+    currentLang = lang;
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
+    const html = document.documentElement;
+    html.lang = lang;
+    html.dir = (lang === 'he') ? 'rtl' : 'ltr';
+    applyTranslations();
+    renderPickers();
+  }
+  window.__setLang = setLang;
+  window.__getLang = () => currentLang;
+
+  function renderPickers() {
+    const labels = { en: 'EN', de: 'DE', fr: 'FR', he: 'עב' };
+    document.querySelectorAll('[data-lang-picker]').forEach(picker => {
+      picker.innerHTML = SUPPORTED.map(l =>
+        `<button type="button" class="lang-btn ${l === currentLang ? 'active' : ''}" data-lang="${l}">${labels[l]}</button>`
+      ).join('');
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.lang-btn');
+    if (btn && btn.dataset.lang) setLang(btn.dataset.lang);
+  });
+
+  // Initial pass — synchronous so animations operate on translated text
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = (currentLang === 'he') ? 'rtl' : 'ltr';
+  applyTranslations();
+  renderPickers();
+})();
+
+/* ── GSAP load sequence ─────────────────────────────────────── */
+gsap.registerPlugin(ScrollTrigger);
+
+(function initLoadSequence() {
+  const overlay  = document.getElementById('load-overlay');
+  const wordmark = document.getElementById('wordmark-load');
+  const ease = 'cubic-bezier(0.76, 0, 0.24, 1)';
+
+  const safetyTimer = setTimeout(() => {
+    if (overlay) overlay.style.display = 'none';
+  }, 4000);
+
+  const tl = gsap.timeline({
+    defaults: { ease },
+    onComplete: () => { clearTimeout(safetyTimer); },
+  });
+
+  tl.to(wordmark, { opacity: 1, duration: 0.4, ease: 'power2.out' }, 0.1);
+  tl.fromTo(overlay,
+    { clipPath: 'inset(0% 0% 0% 0%)' },
+    { clipPath: 'inset(0% 0% 100% 0%)', duration: 0.95, ease, onComplete: () => { overlay.style.display = 'none'; } },
+    0.55
+  );
+  tl.to('.book-eyebrow', { opacity: 1, duration: 0.6, ease: 'power2.out' }, 1.1);
+  tl.to('.book-headline', { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.9, ease }, 1.25);
+  tl.to('.book-sub', { opacity: 1, duration: 0.6, ease: 'power2.out' }, 1.55);
+})();
+
+/* ── Scroll progress bar ────────────────────────────────────── */
+(function initScrollProgress() {
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY || document.documentElement.scrollTop;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (bar) bar.style.width = (scrolled / max * 100) + '%';
+  }, { passive: true });
+})();
+
+/* ── Cursor ─────────────────────────────────────────────────── */
+(function initCursor() {
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+
+  let mx = -100, my = -100;
+  let rx = -100, ry = -100;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX;
+    my = e.clientY;
+    gsap.set(dot, { x: mx, y: my });
+  });
+
+  (function lerpRing() {
+    rx += (mx - rx) * 0.09;
+    ry += (my - ry) * 0.09;
+    gsap.set(ring, { x: rx, y: ry });
+    requestAnimationFrame(lerpRing);
+  })();
+
+  function updateInteractives() {
+    document.querySelectorAll('a, button, [role="button"], input').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+    });
+  }
+  updateInteractives();
+})();
+
+/* ── Cohorts scroll animations ──────────────────────────────── */
+(function initScrollAnimations() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.section-eyebrow, .cohorts-intro').forEach(el => el.style.opacity = '1');
+    document.querySelectorAll('.section-headline').forEach(el => el.style.clipPath = 'none');
+    return;
+  }
+
+  const ease = 'cubic-bezier(0.76, 0, 0.24, 1)';
+
+  function revealOnScroll(el, vars) {
+    if (!el) return;
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 80%',
+      once: true,
+      onEnter: () => gsap.to(el, { duration: 0.9, ease, ...vars }),
+    });
+  }
+
+  const cohortsEyebrow  = document.querySelector('#section-cohorts .section-eyebrow');
+  const cohortsHeadline = document.querySelector('#section-cohorts .section-headline');
+  const cohortsIntros   = document.querySelectorAll('.cohorts-intro');
+
+  revealOnScroll(cohortsEyebrow,  { opacity: 1 });
+  revealOnScroll(cohortsHeadline, { clipPath: 'inset(0% 0% 0% 0%)' });
+  cohortsIntros.forEach((el, i) => {
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => gsap.to(el, { opacity: 1, duration: 0.7, ease: 'power2.out', delay: i * 0.1 }),
+    });
+  });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   COHORT CALENDAR + BOOKING — wired to live Worker + Resend
+   ══════════════════════════════════════════════════════════════ */
+
+const WORKER_URL = 'https://claudecamp-bookings.oasistikibarpai.workers.dev';
+const BEDS_PER_TRACK = { beginner: 4, builder: 3 };
+
+// Each cohort: arrive Sunday → depart Friday (5-night program, Mon–Fri build days).
+// Sat + Sun are free buffer days — guests welcome to linger at no charge, hosts rest.
+const COHORTS = [
+  { id: 'oct-04-2026', label: 'Cohort 01', dates: 'Oct 4 – 9, 2026' },
+  { id: 'oct-11-2026', label: 'Cohort 02', dates: 'Oct 11 – 16, 2026' },
+  { id: 'oct-18-2026', label: 'Cohort 03', dates: 'Oct 18 – 23, 2026' },
+  { id: 'oct-25-2026', label: 'Cohort 04', dates: 'Oct 25 – 30, 2026' },
+  { id: 'nov-01-2026', label: 'Cohort 05', dates: 'Nov 1 – 6, 2026' },
+  { id: 'nov-08-2026', label: 'Cohort 06', dates: 'Nov 8 – 13, 2026' },
+  { id: 'nov-15-2026', label: 'Cohort 07', dates: 'Nov 15 – 20, 2026' },
+  { id: 'nov-22-2026', label: 'Cohort 08', dates: 'Nov 22 – 27, 2026' },
+  { id: 'nov-29-2026', label: 'Cohort 09', dates: 'Nov 29 – Dec 4, 2026' },
+  { id: 'dec-06-2026', label: 'Cohort 10', dates: 'Dec 6 – 11, 2026' },
+  { id: 'dec-13-2026', label: 'Cohort 11', dates: 'Dec 13 – 18, 2026' },
+  { id: 'break', isBreak: true, dates: 'Dec 19 – Jan 9', note: 'Christmas + New Year — farm rests' },
+  { id: 'jan-10-2027', label: 'Cohort 12', dates: 'Jan 10 – 15, 2027' },
+  { id: 'jan-17-2027', label: 'Cohort 13', dates: 'Jan 17 – 22, 2027' },
+  { id: 'jan-24-2027', label: 'Cohort 14', dates: 'Jan 24 – 29, 2027' },
+];
+
+function renderCohorts() {
+  const grid = document.getElementById('cohorts-grid');
+  if (!grid) return;
+  grid.innerHTML = COHORTS.map(c => {
+    if (c.isBreak) {
+      return `
+        <div class="cohort-card-main is-break">
+          <div class="cohort-dates-main">🎄 ${c.dates}</div>
+          <div class="cohort-break-note">${c.note}</div>
+        </div>`;
+    }
+    return `
+      <div class="cohort-card-main" data-cohort="${c.id}" data-label="${c.label}" data-dates="${c.dates}" onclick="openBookingModal('${c.id}', '${c.label}', '${c.dates}')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openBookingModal('${c.id}','${c.label}','${c.dates}')" style="cursor:pointer;">
+        <div class="cohort-badge">${c.label}</div>
+        <div class="cohort-open-badge" id="badge-${c.id}" data-i18n="cohort.open">Open</div>
+        <div class="cohort-dates-main">${c.dates}</div>
+        <div class="cohort-tracks">
+          <div class="cohort-track-item">
+            <div class="cohort-track-label" data-i18n="cohort.beginner">Beginner</div>
+            <div class="cohort-track-avail" id="avail-${c.id}-beginner" data-avail-total="${BEDS_PER_TRACK.beginner}" data-avail-left="${BEDS_PER_TRACK.beginner}">${BEDS_PER_TRACK.beginner} / ${BEDS_PER_TRACK.beginner} available</div>
+            <div class="cohort-dots" id="dots-${c.id}-beginner">${'<span class="cohort-dot"></span>'.repeat(BEDS_PER_TRACK.beginner)}</div>
+          </div>
+          <div class="cohort-track-item">
+            <div class="cohort-track-label" data-i18n="cohort.builder">Builder</div>
+            <div class="cohort-track-avail" id="avail-${c.id}-builder" data-avail-total="${BEDS_PER_TRACK.builder}" data-avail-left="${BEDS_PER_TRACK.builder}">${BEDS_PER_TRACK.builder} / ${BEDS_PER_TRACK.builder} available</div>
+            <div class="cohort-dots" id="dots-${c.id}-builder">${'<span class="cohort-dot"></span>'.repeat(BEDS_PER_TRACK.builder)}</div>
+          </div>
+        </div>
+        <div class="cohort-price" data-i18n="cohort.price">$1,490 – $1,990 · 7 days all-inclusive</div>
+        <div class="cohort-cta-slot" id="cta-${c.id}">
+          <button type="button" class="cohort-reserve" onclick="event.stopPropagation();openBookingModal('${c.id}', '${c.label}', '${c.dates}')">
+            <span data-i18n="cohort.reserve">Reserve your spot</span><span>→</span>
+          </button>
+        </div>
+        <p class="cohort-waiting-count" id="waiting-${c.id}" style="display:none;"></p>
+      </div>`;
+  }).join('');
+  if (window.__applyI18n) window.__applyI18n();
+}
+
+function bucketWaitingCount(n) {
+  if (n <= 0) return null;
+  const t = window.__t || (k => k);
+  if (n === 1) return `<strong>1</strong> ${t('waiting.one')}`;
+  if (n <= 3) return `<strong>${n}</strong> ${t('waiting.few')}`;
+  if (n <= 6) return `<strong>${t('waiting.several')}</strong> ${t('waiting.few')}`;
+  return `<strong>${t('waiting.many')}</strong> ${t('waiting.few')}`;
+}
+
+async function loadCohortAvailability() {
+  const cohorts = COHORTS.filter(c => !c.isBreak);
+  for (const cohort of cohorts) {
+    try {
+      const res = await fetch(`${WORKER_URL}/api/availability?cohort=${cohort.id}`);
+      if (!res.ok) continue;
+      const data = await res.json();
+      const taken = data.taken_beds || [];
+      const beginnerTaken = taken.filter(b => b.includes('beginner')).length;
+      const builderTaken  = taken.filter(b => b.includes('builder')).length;
+      updateTrack(cohort.id, 'beginner', BEDS_PER_TRACK.beginner, beginnerTaken);
+      updateTrack(cohort.id, 'builder',  BEDS_PER_TRACK.builder,  builderTaken);
+      const badge = document.getElementById(`badge-${cohort.id}`);
+      const card  = document.querySelector(`[data-cohort="${cohort.id}"]`);
+      const full  = beginnerTaken + builderTaken >= BEDS_PER_TRACK.beginner + BEDS_PER_TRACK.builder;
+
+      if (full && badge && card) {
+        badge.textContent = (window.__t && window.__t('cohort.full')) || 'Full';
+        badge.setAttribute('data-i18n', 'cohort.full');
+        badge.classList.add('full');
+        card.classList.add('is-full');
+        swapToWaitlist(cohort);
+      }
+      if (card) card.dataset.takenBeds = JSON.stringify(taken);
+    } catch (err) { /* network fail — leave defaults */ }
+  }
+}
+
+async function swapToWaitlist(cohort) {
+  const slot = document.getElementById(`cta-${cohort.id}`);
+  if (slot) {
+    slot.innerHTML = `
+      <button type="button" class="cohort-waitlist" onclick="event.stopPropagation();openWaitlistModal('${cohort.id}', '${cohort.label}', '${cohort.dates}')">
+        <span data-i18n="cohort.joinWaitlist">Join the waitlist</span><span>→</span>
+      </button>`;
+    if (window.__applyI18n) window.__applyI18n();
+  }
+  // Also rewire the card-level onclick to open waitlist instead of booking
+  const card = document.querySelector(`[data-cohort="${cohort.id}"]`);
+  if (card) {
+    card.onclick = () => openWaitlistModal(cohort.id, cohort.label, cohort.dates);
+  }
+  try {
+    const res = await fetch(`${WORKER_URL}/api/waitlist-count?cohort=${cohort.id}`);
+    if (!res.ok) return;
+    const { count } = await res.json();
+    const label = bucketWaitingCount(count);
+    const el = document.getElementById(`waiting-${cohort.id}`);
+    if (label && el) {
+      el.innerHTML = label;
+      el.style.display = 'block';
+    }
+  } catch {}
+}
+
+function updateTrack(cohortId, track, total, taken) {
+  const avail = total - taken;
+  const availEl = document.getElementById(`avail-${cohortId}-${track}`);
+  const dotsEl  = document.getElementById(`dots-${cohortId}-${track}`);
+  if (availEl) {
+    availEl.dataset.availLeft = avail;
+    availEl.dataset.availTotal = total;
+    const word = (window.__t && window.__t('cohort.available')) || 'available';
+    availEl.textContent = `${avail} / ${total} ${word}`;
+  }
+  if (dotsEl) {
+    dotsEl.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'cohort-dot' + (i < taken ? ' taken' : '');
+      dotsEl.appendChild(dot);
+    }
+  }
+}
+
+/* ── Booking modal ──────────────────────────────────────────── */
+
+function openBookingModal(cohortId, cohortLabel, cohortDates) {
+  document.getElementById('booking-modal-eyebrow').textContent = cohortLabel;
+  const allInc = (window.__t && window.__t('form.allInclusive')) || '7 days · all-inclusive';
+  document.getElementById('booking-modal-sub').textContent = `${cohortDates} · ${allInc}`;
+  document.getElementById('bk-cohort').value = cohortId;
+  document.getElementById('booking-form').style.display = '';
+  document.getElementById('booking-success').style.display = 'none';
+  document.getElementById('booking-status').textContent = '';
+  document.getElementById('booking-status').className = 'booking-status';
+  document.getElementById('booking-modal').classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBookingModal() {
+  document.getElementById('booking-modal').classList.remove('is-open');
+  document.body.style.overflow = '';
+  document.getElementById('booking-form').reset();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (document.getElementById('booking-modal').classList.contains('is-open')) closeBookingModal();
+  if (document.getElementById('waitlist-modal').classList.contains('is-open')) closeWaitlistModal();
+});
+
+document.getElementById('booking-modal').addEventListener('click', e => {
+  if (e.target.id === 'booking-modal') closeBookingModal();
+});
+
+function pickAvailableBed(cohortId, track) {
+  const card = document.querySelector(`[data-cohort="${cohortId}"]`);
+  const taken = card && card.dataset.takenBeds ? JSON.parse(card.dataset.takenBeds) : [];
+  const total = BEDS_PER_TRACK[track];
+  for (let i = 1; i <= total; i++) {
+    const bedId = `${track}-${i}`;
+    if (!taken.includes(bedId)) return bedId;
+  }
+  return null;
+}
+
+async function submitBooking(e) {
+  e.preventDefault();
+  const status = document.getElementById('booking-status');
+  const btn    = document.getElementById('booking-submit-btn');
+  const data = {
+    name:     document.getElementById('bk-name').value.trim(),
+    email:    document.getElementById('bk-email').value.trim(),
+    phone:    document.getElementById('bk-phone').value.trim(),
+    country:  document.getElementById('bk-country').value.trim(),
+    track:    document.getElementById('bk-track').value,
+    tier:     document.getElementById('bk-tier').value,
+    cohort:   document.getElementById('bk-cohort').value,
+    building: document.getElementById('bk-building').value.trim(),
+    message:  document.getElementById('bk-message').value.trim(),
+    committed: document.getElementById('bk-commit').checked ? 1 : 0,
+  };
+  data.bed_id = pickAvailableBed(data.cohort, data.track);
+  if (!data.bed_id) {
+    status.textContent = 'Sorry — that track is full for this week. Try another week.';
+    status.className = 'booking-status error';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Reserving...';
+  status.textContent = '';
+  status.className = 'booking-status';
+
+  try {
+    const res = await fetch(`${WORKER_URL}/api/booking`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (!res.ok || result.error) {
+      throw new Error(result.error || 'Booking failed. Try again or WhatsApp us.');
+    }
+
+    if (result.checkoutUrl) {
+      btn.textContent = 'Redirecting to payment...';
+      window.location.href = result.checkoutUrl;
+    } else {
+      document.getElementById('booking-form').style.display = 'none';
+      document.getElementById('booking-success').style.display = '';
+      loadCohortAvailability();
+    }
+  } catch (err) {
+    status.textContent = err.message;
+    status.className = 'booking-status error';
+    btn.disabled = false;
+    btn.textContent = (window.__t && window.__t('form.submit')) || 'Reserve my bed — pay $420 deposit →';
+  }
+}
+
+/* ── Waitlist modal ─────────────────────────────────────────── */
+
+function openWaitlistModal(cohortId, cohortLabel, cohortDates) {
+  document.getElementById('waitlist-modal-eyebrow').textContent = cohortLabel;
+  document.getElementById('waitlist-modal-sub').textContent = `${cohortDates} · we'll reach out if a bed opens`;
+  document.getElementById('wl-cohort').value = cohortId;
+  document.getElementById('waitlist-form').style.display = '';
+  document.getElementById('waitlist-success').style.display = 'none';
+  document.getElementById('waitlist-status').textContent = '';
+  document.getElementById('waitlist-status').className = 'booking-status';
+  document.getElementById('waitlist-modal').classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeWaitlistModal() {
+  document.getElementById('waitlist-modal').classList.remove('is-open');
+  document.body.style.overflow = '';
+  document.getElementById('waitlist-form').reset();
+}
+
+document.getElementById('waitlist-modal').addEventListener('click', e => {
+  if (e.target.id === 'waitlist-modal') closeWaitlistModal();
+});
+
+async function submitWaitlist(e) {
+  e.preventDefault();
+  const status = document.getElementById('waitlist-status');
+  const btn    = document.getElementById('waitlist-submit-btn');
+  const data = {
+    name:    document.getElementById('wl-name').value.trim(),
+    email:   document.getElementById('wl-email').value.trim(),
+    phone:   document.getElementById('wl-phone').value.trim(),
+    country: document.getElementById('wl-country').value.trim(),
+    message: document.getElementById('wl-message').value.trim(),
+    cohort:  document.getElementById('wl-cohort').value,
+  };
+
+  btn.disabled = true;
+  btn.textContent = 'Adding you...';
+
+  try {
+    const res = await fetch(`${WORKER_URL}/api/waitlist`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (!res.ok || result.error) throw new Error(result.error || 'Could not add you. Try WhatsApp.');
+    document.getElementById('waitlist-form').style.display = 'none';
+    document.getElementById('waitlist-success').style.display = '';
+    loadCohortAvailability();
+  } catch (err) {
+    status.textContent = err.message;
+    status.className = 'booking-status error';
+    btn.disabled = false;
+    btn.textContent = 'Add me to the waitlist →';
+  }
+}
+
+/* ── Boot calendar ──────────────────────────────────────────── */
+renderCohorts();
+loadCohortAvailability();
+</script>
+</body>
+</html>

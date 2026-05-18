@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="9EOLRKiBWzNYHUOJkp9mCUfONiAhaJFcYQqlfx_0OdY" />
 <title>Claude Camp — Claude Code Bootcamp in Pai, Thailand</title>
 <meta name="description" content="Build and launch your app in 7 days using Claude Code. Immersive AI coding bootcamp + retreat in Pai, Thailand. 7 seats per cohort. Founders & indie hackers.">
 <link rel="canonical" href="https://claudecamp.org/">
@@ -105,7 +106,7 @@
     "priceCurrency": "USD",
     "price": "1490",
     "availability": "https://schema.org/InStock",
-    "url": "https://claudecamp.org/#section-cohorts",
+    "url": "https://claudecamp.org/book.html",
     "validFrom": "2025-01-01"
   },
   "maximumAttendeeCapacity": 7,
@@ -459,11 +460,18 @@ html, body {
 
 .bg-layer {
   position: absolute;
-  inset: -8%;
-  width: 116%; height: 116%;
-  top: -8%; left: -8%;
+  inset: -20%;
+  width: 140%; height: 140%;
+  top: -20%; left: -20%;
   will-change: transform;
 }
+
+/* Ken Burns lives on an inner element so GSAP can own #bg-photo's transform */
+.bg-photo-ken {
+  width: 100%; height: 100%;
+  animation: bg-photo-kb 36s ease-in-out infinite;
+}
+.bg-photo-ken picture { display: block; width: 100%; height: 100%; }
 
 #bg-photo { z-index: 0; }
 
@@ -880,6 +888,74 @@ html, body {
   }
 }
 
+/* ─── ORIGIN SECTION ─────────────────────────────────────────── */
+#section-origin {
+  padding: clamp(4rem, 9vh, 7rem) clamp(1.5rem, 6vw, 6rem);
+  background: var(--jungle-mid);
+  border-top: 1px solid rgba(245,158,11,0.07);
+  border-bottom: 1px solid rgba(245,158,11,0.07);
+}
+
+.origin-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.origin-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8em;
+}
+
+.origin-eyebrow::before,
+.origin-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--amber);
+}
+
+.origin-quote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  line-height: 1.6;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin: 0 0 1.8rem;
+  border: none;
+  padding: 0;
+}
+
+.origin-attr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.origin-attr a {
+  color: rgba(245,158,11,0.6);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245,158,11,0.25);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.origin-attr a:hover {
+  color: var(--amber);
+  border-color: var(--amber);
+}
+
 .hero-cta-row {
   display: flex;
   align-items: center;
@@ -1021,7 +1097,7 @@ html, body {
   100% { transform: scale(1.0) translate(0%, 0%); }
 }
 
-#bg-photo { animation: bg-photo-kb 36s ease-in-out infinite; }
+/* bg-photo-kb now runs on .bg-photo-ken inner element — GSAP owns #bg-photo transform */
 #bg-1     { animation: ken-burns-1 28s ease-in-out infinite; }
 #bg-3     { animation: ken-burns-2 34s ease-in-out infinite; }
 #bg-4     { animation: ken-burns-3 22s ease-in-out infinite; }
@@ -3224,7 +3300,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
       <span class="sticky-bar-eyebrow" data-i18n="sticky.eyebrow">Pai · Oct 2026</span>
     </a>
     <div class="lang-picker in-bar" data-lang-picker></div>
-    <a href="#section-cohorts" class="sticky-bar-cta" data-i18n="sticky.cta">Reserve a bed →</a>
+    <a href="/book.html" class="sticky-bar-cta" data-i18n="sticky.cta">Reserve a bed →</a>
   </div>
 </header>
 
@@ -3243,7 +3319,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
   <div class="rail-dot" data-target="section-hosts"><span class="rail-dot-label">Hosts</span><span class="rail-dot-pip"></span></div>
   <div class="rail-dot" data-target="section-prep"><span class="rail-dot-label">Prep</span><span class="rail-dot-pip"></span></div>
   <div class="rail-dot" data-target="section-travel"><span class="rail-dot-label">Getting Here</span><span class="rail-dot-pip"></span></div>
-  <div class="rail-dot" data-target="section-cohorts"><span class="rail-dot-label">Reserve</span><span class="rail-dot-pip"></span></div>
+
 </nav>
 
 <!-- ─── SEO H1 (visually hidden, crawlable) ───────────────── -->
@@ -3254,11 +3330,13 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
 
   <!-- Layer 0 — Real photograph -->
   <div class="bg-layer" id="bg-photo" aria-hidden="true">
-    <picture>
-      <source media="(max-width: 768px)" srcset="assets/bamboo-bungalow-mobile.webp" type="image/webp">
-      <source srcset="assets/bamboo-bungalow.webp" type="image/webp">
-      <img src="assets/bamboo-bungalow.webp" alt="" role="presentation" draggable="false" fetchpriority="high">
-    </picture>
+    <div class="bg-photo-ken">
+      <picture>
+        <source media="(max-width: 768px)" srcset="assets/bamboo-bungalow-mobile.webp" type="image/webp">
+        <source srcset="assets/bamboo-bungalow.webp" type="image/webp">
+        <img src="assets/bamboo-bungalow.webp" alt="" role="presentation" draggable="false" fetchpriority="high">
+      </picture>
+    </div>
   </div>
 
   <!-- Layer 1 — Deep jungle multiply grade -->
@@ -3303,7 +3381,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
   <nav id="site-nav-right" aria-label="Primary navigation">
     <a href="#section-tracks" class="nav-link" data-i18n="nav.tracks">Tracks</a>
     <a href="#section-pricing" class="nav-link" data-i18n="nav.pricing">Pricing</a>
-    <a href="#section-cohorts" class="nav-link" data-i18n="nav.book">Book</a>
+    <a href="/book.html" class="nav-link" data-i18n="nav.book">Book</a>
     <a href="/about.html" class="nav-link" data-i18n="nav.about">About</a>
     <div class="lang-picker" data-lang-picker></div>
   </nav>
@@ -3335,7 +3413,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
 
 
     <div class="hero-cta-row">
-      <a href="#section-cohorts" class="btn-primary" aria-label="Reserve your week at Claude Camp">
+      <a href="/book.html" class="btn-primary" aria-label="Reserve your week at Claude Camp">
         <span data-i18n="hero.ctaPrimary">Reserve your week</span>
         <span class="arrow" aria-hidden="true">→</span>
       </a>
@@ -3397,6 +3475,19 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION — ORIGIN
+     ═══════════════════════════════════════════════════════════ -->
+<section id="section-origin" aria-label="Why this exists">
+  <div class="origin-inner">
+    <p class="origin-eyebrow">Why this exists</p>
+    <blockquote class="origin-quote">
+      "Nine days. First app. No coding background. I was staying at Ying's farm outside Pai with a project I'd been putting off for years. Nothing pulling me away — no city errands, no commute, just jungle sounds and the work. I shipped a working, deployed website by day nine. When I got back to the city I couldn't replicate it. So I stopped trying to, and built the camp instead."
+    </blockquote>
+    <p class="origin-attr">— Sasha Goldsmith, founder &nbsp;·&nbsp; <a href="/about.html">Full story →</a></p>
   </div>
 </section>
 
@@ -3480,7 +3571,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
           <li data-i18n="tracks.a.f3">No coding background needed. No exceptions required.</li>
           <li data-i18n="tracks.a.f4">Four founders maximum — you will not fall through the cracks</li>
         </ul>
-        <a href="#section-cohorts" class="btn-primary">
+        <a href="/book.html" class="btn-primary">
           <span data-i18n="hero.ctaPrimary">Reserve your week</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
@@ -3497,7 +3588,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
           <li data-i18n="tracks.b.f3">Arrive with a real project — leave with it further than you thought possible</li>
           <li data-i18n="tracks.b.f4">Three seats only — feedback is personal and direct</li>
         </ul>
-        <a href="#section-cohorts" class="btn-primary">
+        <a href="/book.html" class="btn-primary">
           <span data-i18n="hero.ctaPrimary">Reserve your week</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
@@ -3689,7 +3780,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
           <li data-i18n="pricing.standard.f6">Full Claude Code program — guided sessions throughout the week</li>
           <li class="pricing-addon" data-i18n-html="pricing.standard.f7">Airport transfer +$140 round-trip <span class="pricing-addon-note">— or take the $6 minivan, we'll send the link</span></li>
         </ul>
-        <a href="#section-cohorts" class="btn-primary">
+        <a href="/book.html" class="btn-primary">
           <span data-i18n="pricing.pickWeek">Pick your week</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
@@ -3706,7 +3797,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
           <li data-i18n="pricing.premium.f4">Priority track placement — first pick on project focus and session pairings</li>
           <li data-i18n="pricing.premium.f5">Extended post-camp review — Sasha looks at your build after you leave and tells you exactly what to do next</li>
         </ul>
-        <a href="#section-cohorts" class="btn-primary">
+        <a href="/book.html" class="btn-primary">
           <span data-i18n="pricing.pickWeek">Pick your week</span>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
@@ -3880,147 +3971,6 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
 <!-- ═══════════════════════════════════════════════════════════
      SECTION — RESERVE YOUR WEEK
      ═══════════════════════════════════════════════════════════ -->
-<section id="section-cohorts" aria-label="Reserve Your Week">
-  <div class="cohorts-inner">
-    <p class="section-eyebrow" data-i18n="cohorts.eyebrow">10 — Reserve</p>
-    <h2 class="section-headline" data-i18n="cohorts.headline">Claim your week.</h2>
-    <p class="cohorts-intro" data-i18n="cohorts.intro">Sunday arrival, Saturday departure — seven days of focused building in the hills. Then two days for Sasha and Ying to reset before the next cohort lands. Availability below is live and honest: a bed marked taken is gone.</p>
-    <p class="cohorts-intro" style="margin-top: 0.6rem; opacity: 0.75; font-style: italic;" data-i18n="cohorts.intro2">Seven seats per cohort. Deliberately. A small deposit holds your spot — first come, first confirmed.</p>
-
-    <div class="cohorts-grid" id="cohorts-grid">
-      <!-- Cohort cards injected by JS below for maintainability -->
-    </div>
-  </div>
-</section>
-
-<!-- Booking modal (opens when a cohort card's Reserve button is clicked) -->
-<div id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
-  <div class="booking-modal-card">
-    <button class="booking-modal-close" type="button" aria-label="Close" onclick="closeBookingModal()">×</button>
-    <p class="booking-modal-eyebrow" id="booking-modal-eyebrow">Cohort 01</p>
-    <h3 class="booking-modal-title" id="booking-modal-title" data-i18n="form.title">Reserve your bed</h3>
-    <p class="booking-modal-sub" id="booking-modal-sub">Oct 4 – 11, 2026 · 7 days · all-inclusive</p>
-
-    <form id="booking-form" onsubmit="submitBooking(event)" novalidate>
-      <div class="booking-form-grid">
-        <div class="booking-form-row">
-          <label for="bk-name" data-i18n="form.name">Full name</label>
-          <input id="bk-name" name="name" type="text" required>
-        </div>
-        <div class="booking-form-row">
-          <label for="bk-email" data-i18n="form.email">Email</label>
-          <input id="bk-email" name="email" type="email" required>
-        </div>
-      </div>
-
-      <div class="booking-form-grid">
-        <div class="booking-form-row">
-          <label for="bk-phone" data-i18n-html="form.phone">WhatsApp <span style="color:var(--amber);">*</span></label>
-          <input id="bk-phone" name="phone" type="tel" required placeholder="+1 555 / +66 ...">
-        </div>
-        <div class="booking-form-row">
-          <label for="bk-country" data-i18n="form.country">Flying from</label>
-          <input id="bk-country" name="country" type="text" required placeholder="Country" data-i18n-attr="placeholder:form.countryPh">
-        </div>
-      </div>
-
-      <div class="booking-form-grid">
-        <div class="booking-form-row">
-          <label for="bk-track" data-i18n="form.track">Track</label>
-          <select id="bk-track" name="track" required>
-            <option value="beginner" data-i18n="form.trackBeginner">Beginner — $1,490</option>
-            <option value="builder" data-i18n="form.trackBuilder">Builder — $1,490</option>
-          </select>
-        </div>
-        <div class="booking-form-row">
-          <label for="bk-tier" data-i18n="form.tier">Tier</label>
-          <select id="bk-tier" name="tier" required>
-            <option value="standard" data-i18n="form.tierStandard">Standard — $1,490 (transfer optional)</option>
-            <option value="premium" data-i18n="form.tierPremium">Premium — $1,990 (transfer + 1:1)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="booking-form-row">
-        <label for="bk-building" data-i18n-html="form.building">What are you trying to build or learn? <span style="color:var(--amber);">*</span></label>
-        <textarea id="bk-building" name="building" rows="2" required placeholder="2–3 sentences. The idea, the tool, the workflow — whatever brought you here." data-i18n-attr="placeholder:form.buildingPh"></textarea>
-      </div>
-
-      <div class="booking-form-row">
-        <label for="bk-message" data-i18n="form.more">Anything else? (optional)</label>
-        <textarea id="bk-message" name="message" rows="2" placeholder="Dietary needs, arrival timing, partner joining, etc." data-i18n-attr="placeholder:form.morePh"></textarea>
-      </div>
-
-      <label class="booking-commit">
-        <input type="checkbox" id="bk-commit" required>
-        <span data-i18n-html="form.policy">I'm committing to this week. A <strong>$420 non-refundable deposit</strong> holds my bed (transferable to a future cohort within 12 months). Balance due 30 days before arrival. <a href="/policy.html" target="_blank" style="color:inherit;opacity:0.6;text-underline-offset:2px;">Full policy →</a></span>
-      </label>
-
-      <input type="hidden" id="bk-cohort" name="cohort">
-
-      <button type="submit" class="booking-submit" id="booking-submit-btn" data-i18n="form.submit">Reserve my bed — pay $420 deposit →</button>
-      <p class="booking-status" id="booking-status"></p>
-      <p class="booking-fine-print" data-i18n="form.fine">Ying reads every application personally and replies within 48 hours from Pai. You'll get a Stripe link to confirm with your deposit.</p>
-    </form>
-
-    <div class="booking-modal-success" id="booking-success" style="display:none;">
-      <div class="check">✓</div>
-      <p><strong data-i18n="form.success.title">Application received.</strong></p>
-      <p data-i18n="form.success.msg">Sasha will read this personally and reply within 48 hours from Pai with a Stripe link to confirm your bed with the deposit.</p>
-      <p style="font-size:0.78rem; opacity:0.7;" data-i18n-html="form.success.urgent">Anything urgent? <a href="https://wa.me/66922864775" style="color:var(--amber);">WhatsApp +66 92 286 4775</a></p>
-    </div>
-  </div>
-</div>
-
-<!-- Cohort waitlist modal (opens when a Full cohort's "Join waitlist" is clicked) -->
-<div id="waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-modal-title">
-  <div class="booking-modal-card">
-    <button class="booking-modal-close" type="button" aria-label="Close" onclick="closeWaitlistModal()">×</button>
-    <p class="booking-modal-eyebrow" id="waitlist-modal-eyebrow">Cohort 01</p>
-    <h3 class="booking-modal-title" id="waitlist-modal-title" data-i18n="waitlist.modal.title">Join the waitlist</h3>
-    <p class="booking-modal-sub" id="waitlist-modal-sub">Oct 4 – 9, 2026 · we'll reach out if a bed opens</p>
-
-    <form id="waitlist-form" onsubmit="submitWaitlist(event)" novalidate>
-      <div class="booking-form-grid">
-        <div class="booking-form-row">
-          <label for="wl-name" data-i18n="waitlist.modal.name">Full name</label>
-          <input id="wl-name" name="name" type="text" required>
-        </div>
-        <div class="booking-form-row">
-          <label for="wl-email" data-i18n="waitlist.modal.email">Email</label>
-          <input id="wl-email" name="email" type="email" required>
-        </div>
-      </div>
-      <div class="booking-form-grid">
-        <div class="booking-form-row">
-          <label for="wl-phone" data-i18n="waitlist.modal.phone">WhatsApp</label>
-          <input id="wl-phone" name="phone" type="tel" placeholder="+1 / +66 ...">
-        </div>
-        <div class="booking-form-row">
-          <label for="wl-country" data-i18n="waitlist.modal.country">Flying from</label>
-          <input id="wl-country" name="country" type="text" placeholder="Country">
-        </div>
-      </div>
-      <div class="booking-form-row">
-        <label for="wl-message" data-i18n="waitlist.modal.message">A note for Sasha (optional)</label>
-        <textarea id="wl-message" name="message" rows="2" placeholder="Flexible on other weeks? What are you hoping to build? Anything else?" data-i18n-attr="placeholder:waitlist.modal.messagePh"></textarea>
-      </div>
-
-      <input type="hidden" id="wl-cohort" name="cohort">
-
-      <button type="submit" class="booking-submit" id="waitlist-submit-btn" data-i18n="waitlist.modal.submit">Add me to the waitlist →</button>
-      <p class="booking-status" id="waitlist-status"></p>
-      <p class="booking-fine-print" data-i18n="waitlist.modal.fine">No deposit, no commitment. If a bed opens, Sasha will reach out personally on WhatsApp or email — first come, first served.</p>
-    </form>
-
-    <div class="booking-modal-success" id="waitlist-success" style="display:none;">
-      <div class="check">✓</div>
-      <p><strong data-i18n="waitlist.modal.success.title">You're on the list.</strong></p>
-      <p data-i18n-html="waitlist.modal.success.msg">If someone drops out, Sasha will reach out personally. If your dates are flexible, <a href="#section-cohorts" style="color:var(--amber);" onclick="closeWaitlistModal()">other weeks may still be open</a>.</p>
-    </div>
-  </div>
-</div>
-
 <!-- ═══════════════════════════════════════════════════════════
      SECTION — WAITLIST (fallback)
      ═══════════════════════════════════════════════════════════ -->
@@ -4119,6 +4069,7 @@ html[dir="rtl"] #site-nav-right { right: auto; left: clamp(1.5rem, 4vw, 3rem); }
       <div class="footer-wordmark">Claude Camp</div>
       <div class="footer-meta" data-i18n-html="footer.meta">
         Pai, Thailand · claudecamp.org<br>
+        Built by <a href="/about.html">Sasha &amp; Ying Goldsmith</a><br>
         Questions? <a href="https://wa.me/66922864775">WhatsApp +66922864775</a><br>
         <a href="/policy.html">Booking &amp; Cancellation Policy</a>
       </div>
@@ -5254,11 +5205,11 @@ gsap.registerPlugin(ScrollTrigger);
 /* ── Mouse parallax ────────────────────────────────────────────── */
 (function initParallax() {
   const layers = [
-    { el: document.getElementById('bg-photo'), depth: 0.010 },
-    { el: document.getElementById('bg-1'),     depth: 0.012 },
-    { el: document.getElementById('bg-2'),     depth: 0.022 },
-    { el: document.getElementById('bg-3'),     depth: 0.035 },
-    { el: document.getElementById('bg-4'),     depth: 0.018 },
+    { el: document.getElementById('bg-photo'), depth: 0.022 },
+    { el: document.getElementById('bg-1'),     depth: 0.026 },
+    { el: document.getElementById('bg-2'),     depth: 0.042 },
+    { el: document.getElementById('bg-3'),     depth: 0.058 },
+    { el: document.getElementById('bg-4'),     depth: 0.034 },
   ];
 
   let targetX = 0, targetY = 0;
@@ -5286,6 +5237,47 @@ gsap.registerPlugin(ScrollTrigger);
   })();
 })();
 
+/* ── Scroll parallax ────────────────────────────────────────────── */
+(function initScrollParallax() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  /* Photo drifts slower than the page — creates genuine depth */
+  gsap.to('#bg-photo', {
+    y: '13%',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 0.6,
+    }
+  });
+
+  /* Gradient overlays at their own rates — adds layer depth */
+  gsap.to(['#bg-2', '#bg-3'], {
+    y: '7%',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 0.6,
+    }
+  });
+
+  /* Hero text rises slightly faster — floats in front of the scene */
+  gsap.to('#hero-content', {
+    y: '-5%',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: '70% top',
+      scrub: 0.6,
+    }
+  });
+})();
+
 /* ── Load sequence ─────────────────────────────────────────────── */
 (function initLoadSequence() {
   const overlay    = document.getElementById('load-overlay');
@@ -5308,27 +5300,26 @@ gsap.registerPlugin(ScrollTrigger);
     const revealEl = (sel) => { const el = document.querySelector(sel); if (el) { el.style.opacity = '1'; el.style.clipPath = 'none'; } };
     revealEl('.hero-tagline'); revealEl('.hero-eyebrow'); revealEl('.hero-cta-row');
     revealEl('#site-wordmark'); revealEl('#site-nav-right'); revealEl('.pricing-badge'); revealEl('#scroll-hint');
-  }, 8000);
+  }, 4000);
 
   const tl = gsap.timeline({
     defaults: { ease },
     onComplete: () => { clearTimeout(safetyTimer); clearTimeout(window._fullRevealTimer); },
   });
 
-  tl.to(wordmark, { opacity: 1, duration: 0.9, ease: 'power2.out' }, 0.3);
-  tl.to(wordmark, { scale: 1.04, duration: 0.7, ease: 'power1.inOut', yoyo: true, repeat: 1 }, 1.0);
+  tl.to(wordmark, { opacity: 1, duration: 0.4, ease: 'power2.out' }, 0.1);
   tl.fromTo(overlay,
     { clipPath: 'inset(0% 0% 0% 0%)' },
-    { clipPath: 'inset(0% 0% 0% 100%)', duration: 1.2, ease, onComplete: () => { overlay.style.display = 'none'; } },
-    2.2
+    { clipPath: 'inset(0% 0% 100% 0%)', duration: 0.95, ease, onComplete: () => { overlay.style.display = 'none'; } },
+    0.65
   );
-  tl.to([topWmark, topNav, priceBadge], { opacity: 1, duration: 0.8, stagger: 0.08, ease: 'power2.out' }, 3.0);
-  tl.to(eyebrow,   { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 3.15);
-  tl.to(headlines, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, stagger: 0.14, ease }, 3.35);
-  tl.to(tagline,   { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease }, 3.85);
-  tl.to(body,      { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease }, 4.05);
-  tl.to(ctaRow,    { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 4.3);
-  tl.to(scrollH,   { opacity: 1, duration: 0.6, ease: 'power2.out' }, 4.7);
+  tl.to([topWmark, topNav, priceBadge], { opacity: 1, duration: 0.6, stagger: 0.06, ease: 'power2.out' }, 1.2);
+  tl.to(eyebrow,   { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.3);
+  tl.to(headlines, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, stagger: 0.1, ease }, 1.45);
+  tl.to(tagline,   { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.6, ease }, 1.8);
+  tl.to(body,      { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.6, ease }, 1.95);
+  tl.to(ctaRow,    { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 2.1);
+  tl.to(scrollH,   { opacity: 1, duration: 0.5, ease: 'power2.out' }, 2.4);
 
   gsap.set(eyebrow, { y: 8 });
   gsap.set(ctaRow,  { y: 12 });
@@ -5671,313 +5662,9 @@ function handleWaitlist(e) {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   COHORT CALENDAR + BOOKING — wired to live Worker + Resend
+   COHORT CALENDAR — moved to /book.html
+   Booking/waitlist modals and cohort grid are on book.html.
    ══════════════════════════════════════════════════════════════ */
-
-const WORKER_URL = 'https://claudecamp-bookings.oasistikibarpai.workers.dev';
-const BEDS_PER_TRACK = { beginner: 4, builder: 3 };
-
-// Each cohort: arrive Sunday → depart Friday (5-night program, Mon–Fri build days).
-// Sat + Sun are free buffer days — guests welcome to linger at no charge, hosts rest.
-const COHORTS = [
-  { id: 'oct-04-2026', label: 'Cohort 01', dates: 'Oct 4 – 9, 2026' },
-  { id: 'oct-11-2026', label: 'Cohort 02', dates: 'Oct 11 – 16, 2026' },
-  { id: 'oct-18-2026', label: 'Cohort 03', dates: 'Oct 18 – 23, 2026' },
-  { id: 'oct-25-2026', label: 'Cohort 04', dates: 'Oct 25 – 30, 2026' },
-  { id: 'nov-01-2026', label: 'Cohort 05', dates: 'Nov 1 – 6, 2026' },
-  { id: 'nov-08-2026', label: 'Cohort 06', dates: 'Nov 8 – 13, 2026' },
-  { id: 'nov-15-2026', label: 'Cohort 07', dates: 'Nov 15 – 20, 2026' },
-  { id: 'nov-22-2026', label: 'Cohort 08', dates: 'Nov 22 – 27, 2026' },
-  { id: 'nov-29-2026', label: 'Cohort 09', dates: 'Nov 29 – Dec 4, 2026' },
-  { id: 'dec-06-2026', label: 'Cohort 10', dates: 'Dec 6 – 11, 2026' },
-  { id: 'dec-13-2026', label: 'Cohort 11', dates: 'Dec 13 – 18, 2026' },
-  { id: 'break', isBreak: true, dates: 'Dec 19 – Jan 9', note: 'Christmas + New Year — farm rests' },
-  { id: 'jan-10-2027', label: 'Cohort 12', dates: 'Jan 10 – 15, 2027' },
-  { id: 'jan-17-2027', label: 'Cohort 13', dates: 'Jan 17 – 22, 2027' },
-  { id: 'jan-24-2027', label: 'Cohort 14', dates: 'Jan 24 – 29, 2027' },
-];
-
-function renderCohorts() {
-  const grid = document.getElementById('cohorts-grid');
-  if (!grid) return;
-  grid.innerHTML = COHORTS.map(c => {
-    if (c.isBreak) {
-      return `
-        <div class="cohort-card-main is-break">
-          <div class="cohort-dates-main">🎄 ${c.dates}</div>
-          <div class="cohort-break-note">${c.note}</div>
-        </div>`;
-    }
-    return `
-      <div class="cohort-card-main" data-cohort="${c.id}" data-label="${c.label}" data-dates="${c.dates}">
-        <div class="cohort-badge">${c.label}</div>
-        <div class="cohort-open-badge" id="badge-${c.id}" data-i18n="cohort.open">Open</div>
-        <div class="cohort-dates-main">${c.dates}</div>
-        <div class="cohort-tracks">
-          <div class="cohort-track-item">
-            <div class="cohort-track-label" data-i18n="cohort.beginner">Beginner</div>
-            <div class="cohort-track-avail" id="avail-${c.id}-beginner" data-avail-total="${BEDS_PER_TRACK.beginner}" data-avail-left="${BEDS_PER_TRACK.beginner}">${BEDS_PER_TRACK.beginner} / ${BEDS_PER_TRACK.beginner} available</div>
-            <div class="cohort-dots" id="dots-${c.id}-beginner">${'<span class="cohort-dot"></span>'.repeat(BEDS_PER_TRACK.beginner)}</div>
-          </div>
-          <div class="cohort-track-item">
-            <div class="cohort-track-label" data-i18n="cohort.builder">Builder</div>
-            <div class="cohort-track-avail" id="avail-${c.id}-builder" data-avail-total="${BEDS_PER_TRACK.builder}" data-avail-left="${BEDS_PER_TRACK.builder}">${BEDS_PER_TRACK.builder} / ${BEDS_PER_TRACK.builder} available</div>
-            <div class="cohort-dots" id="dots-${c.id}-builder">${'<span class="cohort-dot"></span>'.repeat(BEDS_PER_TRACK.builder)}</div>
-          </div>
-        </div>
-        <div class="cohort-price" data-i18n="cohort.price">$1,490 – $1,990 · 7 days all-inclusive</div>
-        <div class="cohort-cta-slot" id="cta-${c.id}">
-          <button type="button" class="cohort-reserve" onclick="openBookingModal('${c.id}', '${c.label}', '${c.dates}')">
-            <span data-i18n="cohort.reserve">Reserve your spot</span><span>→</span>
-          </button>
-        </div>
-        <p class="cohort-waiting-count" id="waiting-${c.id}" style="display:none;"></p>
-      </div>`;
-  }).join('');
-  if (window.__applyI18n) window.__applyI18n();
-}
-
-function bucketWaitingCount(n) {
-  if (n <= 0) return null;
-  const t = window.__t || (k => k);
-  if (n === 1) return `<strong>1</strong> ${t('waiting.one')}`;
-  if (n <= 3) return `<strong>${n}</strong> ${t('waiting.few')}`;
-  if (n <= 6) return `<strong>${t('waiting.several')}</strong> ${t('waiting.few')}`;
-  return `<strong>${t('waiting.many')}</strong> ${t('waiting.few')}`;
-}
-
-async function loadCohortAvailability() {
-  const cohorts = COHORTS.filter(c => !c.isBreak);
-  for (const cohort of cohorts) {
-    try {
-      const res = await fetch(`${WORKER_URL}/api/availability?cohort=${cohort.id}`);
-      if (!res.ok) continue;
-      const data = await res.json();
-      const taken = data.taken_beds || [];
-      const beginnerTaken = taken.filter(b => b.includes('beginner')).length;
-      const builderTaken  = taken.filter(b => b.includes('builder')).length;
-      updateTrack(cohort.id, 'beginner', BEDS_PER_TRACK.beginner, beginnerTaken);
-      updateTrack(cohort.id, 'builder',  BEDS_PER_TRACK.builder,  builderTaken);
-      const badge = document.getElementById(`badge-${cohort.id}`);
-      const card  = document.querySelector(`[data-cohort="${cohort.id}"]`);
-      const full  = beginnerTaken + builderTaken >= BEDS_PER_TRACK.beginner + BEDS_PER_TRACK.builder;
-
-      if (full && badge && card) {
-        badge.textContent = (window.__t && window.__t('cohort.full')) || 'Full';
-        badge.setAttribute('data-i18n', 'cohort.full');
-        badge.classList.add('full');
-        card.classList.add('is-full');
-        swapToWaitlist(cohort);
-      }
-      // Store taken beds on the card for the modal to pick next bed
-      if (card) card.dataset.takenBeds = JSON.stringify(taken);
-    } catch (err) { /* network fail — leave defaults */ }
-  }
-}
-
-async function swapToWaitlist(cohort) {
-  const slot = document.getElementById(`cta-${cohort.id}`);
-  if (slot) {
-    slot.innerHTML = `
-      <button type="button" class="cohort-waitlist" onclick="openWaitlistModal('${cohort.id}', '${cohort.label}', '${cohort.dates}')">
-        <span data-i18n="cohort.joinWaitlist">Join the waitlist</span><span>→</span>
-      </button>`;
-    if (window.__applyI18n) window.__applyI18n();
-  }
-  try {
-    const res = await fetch(`${WORKER_URL}/api/waitlist-count?cohort=${cohort.id}`);
-    if (!res.ok) return;
-    const { count } = await res.json();
-    const label = bucketWaitingCount(count);
-    const el = document.getElementById(`waiting-${cohort.id}`);
-    if (label && el) {
-      el.innerHTML = label;
-      el.style.display = 'block';
-    }
-  } catch {}
-}
-
-function updateTrack(cohortId, track, total, taken) {
-  const avail = total - taken;
-  const availEl = document.getElementById(`avail-${cohortId}-${track}`);
-  const dotsEl  = document.getElementById(`dots-${cohortId}-${track}`);
-  if (availEl) {
-    availEl.dataset.availLeft = avail;
-    availEl.dataset.availTotal = total;
-    const word = (window.__t && window.__t('cohort.available')) || 'available';
-    availEl.textContent = `${avail} / ${total} ${word}`;
-  }
-  if (dotsEl) {
-    dotsEl.innerHTML = '';
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement('span');
-      dot.className = 'cohort-dot' + (i < taken ? ' taken' : '');
-      dotsEl.appendChild(dot);
-    }
-  }
-}
-
-/* ── Booking modal ───────────────────────────────────────────── */
-
-function openBookingModal(cohortId, cohortLabel, cohortDates) {
-  document.getElementById('booking-modal-eyebrow').textContent = cohortLabel;
-  const allInc = (window.__t && window.__t('form.allInclusive')) || '7 days · all-inclusive';
-  document.getElementById('booking-modal-sub').textContent = `${cohortDates} · ${allInc}`;
-  document.getElementById('bk-cohort').value = cohortId;
-  document.getElementById('booking-form').style.display = '';
-  document.getElementById('booking-success').style.display = 'none';
-  document.getElementById('booking-status').textContent = '';
-  document.getElementById('booking-status').className = 'booking-status';
-  document.getElementById('booking-modal').classList.add('is-open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeBookingModal() {
-  document.getElementById('booking-modal').classList.remove('is-open');
-  document.body.style.overflow = '';
-  document.getElementById('booking-form').reset();
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key !== 'Escape') return;
-  if (document.getElementById('booking-modal').classList.contains('is-open')) closeBookingModal();
-  if (document.getElementById('waitlist-modal').classList.contains('is-open')) closeWaitlistModal();
-});
-
-document.getElementById('booking-modal').addEventListener('click', e => {
-  if (e.target.id === 'booking-modal') closeBookingModal();
-});
-
-function pickAvailableBed(cohortId, track) {
-  const card = document.querySelector(`[data-cohort="${cohortId}"]`);
-  const taken = card && card.dataset.takenBeds ? JSON.parse(card.dataset.takenBeds) : [];
-  const total = BEDS_PER_TRACK[track];
-  for (let i = 1; i <= total; i++) {
-    const bedId = `${track}-${i}`;
-    if (!taken.includes(bedId)) return bedId;
-  }
-  return null;
-}
-
-async function submitBooking(e) {
-  e.preventDefault();
-  const status = document.getElementById('booking-status');
-  const btn    = document.getElementById('booking-submit-btn');
-  const data = {
-    name:     document.getElementById('bk-name').value.trim(),
-    email:    document.getElementById('bk-email').value.trim(),
-    phone:    document.getElementById('bk-phone').value.trim(),
-    country:  document.getElementById('bk-country').value.trim(),
-    track:    document.getElementById('bk-track').value,
-    tier:     document.getElementById('bk-tier').value,
-    cohort:   document.getElementById('bk-cohort').value,
-    building: document.getElementById('bk-building').value.trim(),
-    message:  document.getElementById('bk-message').value.trim(),
-    committed: document.getElementById('bk-commit').checked ? 1 : 0,
-  };
-  data.bed_id = pickAvailableBed(data.cohort, data.track);
-  if (!data.bed_id) {
-    status.textContent = 'Sorry — that track is full for this week. Try another week.';
-    status.className = 'booking-status error';
-    return;
-  }
-
-  btn.disabled = true;
-  btn.textContent = 'Reserving...';
-  status.textContent = '';
-  status.className = 'booking-status';
-
-  try {
-    const res = await fetch(`${WORKER_URL}/api/booking`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    const result = await res.json();
-    if (!res.ok || result.error) {
-      throw new Error(result.error || 'Booking failed. Try again or WhatsApp us.');
-    }
-
-    if (result.checkoutUrl) {
-      // Stripe configured — redirect to Checkout for $420 deposit
-      btn.textContent = 'Redirecting to payment...';
-      window.location.href = result.checkoutUrl;
-    } else {
-      // Stripe not yet configured — show inline success (manual Stripe link flow)
-      document.getElementById('booking-form').style.display = 'none';
-      document.getElementById('booking-success').style.display = '';
-      loadCohortAvailability();
-    }
-  } catch (err) {
-    status.textContent = err.message;
-    status.className = 'booking-status error';
-    btn.disabled = false;
-    btn.textContent = (window.__t && window.__t('form.submit')) || 'Reserve my bed — pay $420 deposit →';
-  }
-}
-
-/* ── Waitlist modal ──────────────────────────────────────────── */
-
-function openWaitlistModal(cohortId, cohortLabel, cohortDates) {
-  document.getElementById('waitlist-modal-eyebrow').textContent = cohortLabel;
-  document.getElementById('waitlist-modal-sub').textContent = `${cohortDates} · we'll reach out if a bed opens`;
-  document.getElementById('wl-cohort').value = cohortId;
-  document.getElementById('waitlist-form').style.display = '';
-  document.getElementById('waitlist-success').style.display = 'none';
-  document.getElementById('waitlist-status').textContent = '';
-  document.getElementById('waitlist-status').className = 'booking-status';
-  document.getElementById('waitlist-modal').classList.add('is-open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeWaitlistModal() {
-  document.getElementById('waitlist-modal').classList.remove('is-open');
-  document.body.style.overflow = '';
-  document.getElementById('waitlist-form').reset();
-}
-
-document.getElementById('waitlist-modal').addEventListener('click', e => {
-  if (e.target.id === 'waitlist-modal') closeWaitlistModal();
-});
-
-async function submitWaitlist(e) {
-  e.preventDefault();
-  const status = document.getElementById('waitlist-status');
-  const btn    = document.getElementById('waitlist-submit-btn');
-  const data = {
-    name:    document.getElementById('wl-name').value.trim(),
-    email:   document.getElementById('wl-email').value.trim(),
-    phone:   document.getElementById('wl-phone').value.trim(),
-    country: document.getElementById('wl-country').value.trim(),
-    message: document.getElementById('wl-message').value.trim(),
-    cohort:  document.getElementById('wl-cohort').value,
-  };
-
-  btn.disabled = true;
-  btn.textContent = 'Adding you...';
-
-  try {
-    const res = await fetch(`${WORKER_URL}/api/waitlist`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    const result = await res.json();
-    if (!res.ok || result.error) throw new Error(result.error || 'Could not add you. Try WhatsApp.');
-    document.getElementById('waitlist-form').style.display = 'none';
-    document.getElementById('waitlist-success').style.display = '';
-    loadCohortAvailability(); // refresh waitlist counts
-  } catch (err) {
-    status.textContent = err.message;
-    status.className = 'booking-status error';
-    btn.disabled = false;
-    btn.textContent = 'Add me to the waitlist →';
-  }
-}
-
-/* ── Boot calendar ───────────────────────────────────────────── */
-renderCohorts();
-loadCohortAvailability();
 
 /* ── Jungle ambient audio — autoplay on first interaction, gapless Web Audio loop ── */
 (function initJungleAudio() {
