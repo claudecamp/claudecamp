@@ -618,6 +618,7 @@ footer {
 <div class="article-byline">By <a href="/about">Ying Goldsmith</a> · Updated May 2026</div><article>
 
   <h2>Step 1 — Install Claude Code</h2>
+  <p>Install Claude Code globally with npm — you need Node.js 18 or later and a Claude Pro subscription ($20/month). One command installs the tool; one more authenticates it. The entire setup takes under ten minutes and works on Mac, Linux, or Windows via WSL.</p>
   <p>Claude Code installs as a global npm package. You need <strong>Node.js 18 or later</strong> on your machine. Run this in your terminal:</p>
   <div class="code-block"><code>npm install -g @anthropic-ai/claude-code</code></div>
   <p>Once installed, verify it worked:</p>
@@ -632,6 +633,7 @@ footer {
   <hr class="divider">
 
   <h2>Step 2 — Start your first session</h2>
+  <p>Run <code>claude</code> inside any project directory to open an interactive session. Claude Code can see your files, shell, and git history from that point. Start with a small, specific task to get a feel for how it reads your project and presents diffs before applying changes.</p>
   <p>Navigate to any project directory and run:</p>
   <div class="code-block"><code>claude</code></div>
   <p>Claude Code opens an interactive session in your terminal. You're now talking directly to Claude with full access to your project files, shell, and git history.</p>
@@ -662,7 +664,7 @@ Current task: adding stripe payment flow to /checkout</code></div>
   <hr class="divider">
 
   <h2>Step 4 — Learn to frame tasks well</h2>
-  <p>The quality of Claude Code's output is directly proportional to the quality of your instructions. This is the skill that separates fast builders from frustrated ones.</p>
+  <p>The quality of Claude Code's output is directly proportional to the precision of your instructions. Specify the library, the data layer, the success state, and any edge cases upfront. Vague briefs produce vague results; specific briefs produce working code in fewer iterations.</p>
 
   <h3>Vague vs specific</h3>
   <p><strong>Vague:</strong> "Add authentication"<br>
@@ -683,7 +685,7 @@ Current task: adding stripe payment flow to /checkout</code></div>
   <hr class="divider">
 
   <h2>Step 5 — Review every diff</h2>
-  <p>Claude Code shows you exactly what it changed before applying. Get into the habit of reading every diff, every time. This one habit catches the vast majority of errors before they compound into something harder to fix.</p>
+  <p>Claude Code shows you exactly what it changed before applying. Read every diff, every time — this single habit catches the vast majority of errors before they compound. If something looks wrong, press Escape to interrupt, revert with <code>git checkout .</code>, and give a more precise instruction.</p>
   <p>If something looks wrong, press <strong>Escape</strong> to interrupt, revert with <code>git checkout .</code>, and give a more specific instruction. If the change is partially right, describe what's still wrong and let Claude Code continue from that point.</p>
 
   <div class="tip-box">
@@ -694,6 +696,7 @@ Current task: adding stripe payment flow to /checkout</code></div>
   <hr class="divider">
 
   <h2>Useful Claude Code commands</h2>
+  <p>Claude Code includes built-in slash commands for managing context, memory, and session state. The most important ones to learn early are <code>/clear</code> for resetting context between tasks, <code>/compact</code> for freeing up context space, and Escape for interrupting mid-task.</p>
   <p>Beyond just typing tasks, Claude Code has a few built-in commands worth knowing:</p>
   <ul>
     <li><code>/help</code> — list all available slash commands</li>
@@ -707,6 +710,7 @@ Current task: adding stripe payment flow to /checkout</code></div>
   <hr class="divider">
 
   <h2>Common mistakes and how to avoid them</h2>
+  <p>The most common Claude Code mistakes are working outside git, giving tasks that are too large in scope, skipping diff reviews, omitting a CLAUDE.md on bigger projects, and ignoring test failures. Each is easy to avoid once you know to watch for it.</p>
   <ul>
     <li><strong>Working outside git.</strong> Always initialise a git repo before starting. It's your undo button. Claude Code without git is Claude Code without a safety net.</li>
     <li><strong>Too-large tasks.</strong> If a task touches more than 5–6 files, it's usually too big. Break it down.</li>

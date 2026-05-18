@@ -199,6 +199,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
 <div class="article-byline">By <a href="/about">Ying Goldsmith</a> · Updated May 2026</div><article>
 
   <h2>Before you start</h2>
+  <p>The three most impactful things to do before opening Claude Code: write a CLAUDE.md file with your project's stack and conventions, define a single concrete goal for the session, and orient Claude Code on your current file structure. These three steps eliminate the most common causes of wasted sessions.</p>
 
   <h3>Tip 1: Write a CLAUDE.md file for every project</h3>
   <p>Claude Code reads a file called <code>CLAUDE.md</code> at the start of every session. Put your tech stack, coding conventions, commands to run the project, and what not to touch in that file. Without it, Claude Code starts each session cold — it has to rediscover your project structure before it can be useful. With it, the first message is already in context. This single habit probably does more for output quality than anything else on this list.</p>
@@ -214,6 +215,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>While working</h2>
+  <p>The four habits that matter most during an active Claude Code session: use <code>/compact</code> proactively before context fills up, don't interrupt mid-execution unless something is clearly wrong, refine with follow-up prompts rather than restarting, and ask Claude Code to explain its plan before you confirm significant changes.</p>
 
   <h3>Tip 4: Use /compact before the context fills up — not after</h3>
   <p>The <code>/compact</code> command summarises the current conversation to free up context window space. The mistake most people make is waiting until they see warnings or notice Claude Code forgetting earlier decisions. By that point the damage is already happening — you may get incomplete edits or contradictory outputs.</p>
@@ -231,6 +233,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>Getting better outputs</h2>
+  <p>Three techniques that consistently improve Claude Code output quality: include a concrete example when you have a specific style in mind, reference existing files as anchors rather than describing style in abstract terms, and switch to Opus for genuinely complex reasoning while using Sonnet for standard execution tasks.</p>
 
   <h3>Tip 8: Include examples in your prompts when you have a specific style</h3>
   <p>Descriptions of style are hard to interpret. Examples are easy. If you want error messages written a certain way, show one: <em>"Write error messages like this: <code>Error: user not found. Check the email and try again.</code>"</em> The same applies to variable naming, comment style, API response shape — anything where "like the rest of the codebase" is too vague. One concrete example is worth a paragraph of instruction.</p>
@@ -244,6 +247,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>Avoiding common mistakes</h2>
+  <p>The two most costly Claude Code mistakes are giving it scope that is too broad — "fix everything," "clean up the code" — and confirming database migrations without reading them fully. Both are easy to avoid with explicit scope boundaries and a brief review habit before any irreversible action.</p>
 
   <h3>Tip 11: Never say "fix everything"</h3>
   <p>Asking Claude Code to "fix everything," "clean up the code," or "refactor the app" is an invitation for changes you didn't intend. Claude Code will make decisions you weren't asked for — renaming variables, restructuring files, changing logic that was working fine. Be specific about what to fix and where. <strong>"Fix the login form validation in <code>/components/LoginForm.tsx</code> — do not touch other files"</strong> is the right shape of instruction. Scope is your friend. Explicit scope boundaries are even better.</p>

@@ -199,6 +199,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
 <div class="article-byline">By <a href="/about">Ying Goldsmith</a> · Updated May 2026</div><article>
 
   <h2>How experienced developers use Claude Code differently</h2>
+  <p>Experienced developers use Claude Code as an implementer for tasks that would otherwise take hours — large refactors spanning dozens of files, test suite generation for legacy code, production error diagnosis from a stack trace, and full microservice scaffolding. The mental model: you are the architect, Claude Code is the implementer.</p>
   <p>Claude Code is not autocomplete. If you approach it like Copilot — waiting for it to finish your line — you're leaving most of its capability on the table. Experienced developers use it for tasks that would otherwise take hours: large refactors spanning dozens of files, writing test suites for legacy code that has none, diagnosing production errors from a stack trace, migrating a service from one framework to another, or generating all the boilerplate for a new microservice before writing a single line of business logic.</p>
   <p>The mental model that unlocks this: <strong>you are the architect, Claude Code is the implementer.</strong> Your job is to understand what needs to be built, articulate it clearly, and review what comes back. Claude Code's job is to do the implementation work — reading your codebase, understanding its patterns, and writing code that fits. The better you are at directing it, the more it scales your output.</p>
   <p>This is a fundamentally different relationship than autocomplete. You stop filling in blanks and start delegating entire work units. For a developer who already understands architecture and can critically review output, this multiplier is enormous.</p>
@@ -206,6 +207,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>High-leverage workflows</h2>
+  <p>The highest-leverage Claude Code workflows for experienced developers are legacy code refactoring, test generation for untested modules, production error diagnosis from stack traces, and automated code review before merges. Each offloads hours of mechanical work while keeping you in control of architectural decisions.</p>
 
   <h3>Legacy code refactoring</h3>
   <p>Give Claude Code the file — or the directory — and describe the desired outcome. "Refactor this service to use async/await throughout and remove the callback pattern" or "Extract this God class into three smaller classes following the single-responsibility principle." Claude Code reads the code, understands its structure, rewrites it, and explains the changes it made. For large refactors that would take a developer a full day to do carefully, Claude Code often finishes in minutes. The critical skill is reviewing the output: you catch the edge cases Claude Code might miss, and you decide which changes to keep.</p>
@@ -222,6 +224,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>Advanced commands developers use</h2>
+  <p>The advanced Claude Code features experienced developers rely on are <code>CLAUDE.md</code> for persistent project context, <code>/model</code> to switch between Sonnet and Opus mid-session, <code>--allowedTools</code> to restrict capabilities in automated contexts, and <code>claude -p</code> for headless pipeline integration. Together they enable Claude Code to operate safely in CI/CD without interactive supervision.</p>
   <p><strong><code>CLAUDE.md</code></strong> — Place this file in your project root and Claude Code reads it at the start of every session. Use it to document your tech stack, code style preferences, testing conventions, the commands needed to build and test the project, and any architectural decisions Claude Code should be aware of. A good <code>CLAUDE.md</code> means you never have to re-explain your project conventions. It acts as persistent context that keeps output consistent across sessions.</p>
   <p><strong><code>/model</code></strong> — Switch between Claude Sonnet and Opus mid-session without restarting. Use Sonnet for fast iteration on straightforward tasks; switch to Opus when you need deeper reasoning on a complex architectural problem or a subtle bug that requires careful analysis. The ability to change models mid-session without losing context is an underused feature.</p>
   <p><strong><code>--allowedTools</code></strong> — When running Claude Code in automated contexts — CI pipelines, scripts, scheduled jobs — this flag restricts which tools Claude Code can use. For a pipeline that should only read files and write a report, you can prevent Claude Code from making any other changes. This is the flag that makes Claude Code safe to run headlessly in production.</p>
@@ -230,8 +233,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>When to trust Claude Code and when not to</h2>
-  <p>Claude Code is a fast, capable implementer — not an infallible one. Knowing where to trust it and where to review carefully is the difference between using it effectively and shipping bugs.</p>
-
+  <p>Trust Claude Code on greenfield features, test generation, documentation, and boilerplate — tasks where mistakes are easy to spot and the blast radius is low. Review carefully on authentication logic, cryptographic code, and database migrations, where correctness is hard to verify and errors are expensive.</p>
   <table class="compare-table" aria-label="When to trust Claude Code">
     <thead>
       <tr><th>Task type</th><th>Trust level</th><th>Notes</th></tr>

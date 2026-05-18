@@ -558,13 +558,14 @@ footer {
 <div class="article-byline">By <a href="/about">Ying Goldsmith</a> · Updated May 2026</div><article>
 
   <h2>The short answer</h2>
-  <p>Claude Code is an AI coding tool made by <strong>Anthropic</strong> — the AI safety company that also makes the Claude family of large language models. Unlike a chat interface that generates code snippets you paste manually, Claude Code is an <strong>agentic system</strong>: it runs directly in your terminal (or inside VS Code and JetBrains), reads your entire project, writes files, executes commands, catches errors, and iterates — all without you touching the keyboard between steps.</p>
-  <p>You describe a task in plain English. Claude Code plans it, implements it, runs tests, fixes what breaks, and reports back when it's done.</p>
+  <p>Claude Code is an AI coding tool made by <strong>Anthropic</strong> that runs in your terminal, reads your entire project, writes files, executes commands, catches errors, and iterates autonomously. Unlike a chat interface, it is an agentic system — you describe a task in plain English and it implements it end-to-end without you touching the keyboard between steps.</p>
+  <p>It works inside VS Code and JetBrains too, not just the terminal. Claude Code plans each task, runs tests, fixes what breaks, and reports back when it's done — keeping you focused on what to build, not how.</p>
 
   <hr class="divider">
 
   <h2>How Claude Code works</h2>
-  <p>Claude Code has direct access to your file system, shell, and editor. When you give it a task, it typically:</p>
+  <p>Claude Code has direct access to your file system, shell, and editor. It reads context from your codebase, plans the change, executes it across multiple files, runs tests to verify the result, and reports what it changed — all in one autonomous loop you can interrupt or redirect at any point.</p>
+  <p>When you give it a task, it typically:</p>
   <ol>
     <li><strong>Reads context</strong> — scans relevant files, config, and recent git history</li>
     <li><strong>Plans the change</strong> — outlines what it will do before writing a line</li>
@@ -581,6 +582,7 @@ footer {
   <hr class="divider">
 
   <h2>Claude Code vs other AI coding tools</h2>
+  <p>Claude Code is an autonomous terminal agent — it executes tasks across your whole codebase. Chat tools like ChatGPT generate snippets you paste manually. Inline tools like GitHub Copilot complete code as you type. Claude Code occupies a different category: it plans and implements multi-step changes end-to-end.</p>
   <table class="compare-table" aria-label="Claude Code vs other tools">
     <thead>
       <tr>
@@ -617,12 +619,13 @@ footer {
   <hr class="divider">
 
   <h2>Who is Claude Code for?</h2>
-  <p>Claude Code is used across a wide range: experienced engineers who want to move faster, product managers who want to prototype without a developer queue, and first-time builders who have an idea but no prior coding background.</p>
+  <p>Claude Code is for anyone who wants to build working software — from experienced engineers who want to move faster, to product managers prototyping without a developer queue, to first-time builders with no prior coding background. The floor is lower than any previous tool; the ceiling is as high as your engineering context allows.</p>
   <p>The non-technical case is real. Claude Code can take a plain-English product brief and produce a deployed web app — handling routing, database setup, authentication, and UI — without the person running it understanding the implementation. The ceiling is higher with engineering context, but the floor is lower than any previous tool.</p>
 
   <hr class="divider">
 
   <h2>How to get started with Claude Code</h2>
+  <p>Getting started requires Node.js 18+ and a Claude Pro subscription ($20/month). Install the tool via npm, run <code>claude</code> inside any project directory, authenticate with your Anthropic account, and type your first task in plain English. The whole setup takes under ten minutes.</p>
   <p>You need two things: <strong>Node.js 18+</strong> and a <strong>Claude Pro subscription</strong> ($20/month from Anthropic). Then:</p>
   <ol>
     <li>Install via npm: <code>npm install -g @anthropic-ai/claude-code</code></li>
@@ -647,6 +650,7 @@ footer {
   <hr class="divider">
 
   <h2>Real-world use cases</h2>
+  <p>Claude Code is used to build SaaS tools, internal business dashboards, landing pages with checkout, APIs, automations, and personal projects. The common thread is that it handles the full implementation cycle — not just code generation — so the bottleneck shifts from writing code to making product decisions.</p>
   <p>Here is what people actually build with Claude Code in practice:</p>
   <ul>
     <li><strong>SaaS tools</strong> — subscription apps with Stripe payments, user accounts, and dashboards, built in days not months</li>
@@ -660,6 +664,7 @@ footer {
   <hr class="divider">
 
   <h2>Tips for getting the most out of Claude Code</h2>
+  <p>Claude Code produces better results when you give it specific scope, review every diff before it applies, break large goals into sequential tasks, and maintain a CLAUDE.md file with project context. Treat it like a skilled contractor: precise briefs produce precise work.</p>
   <p>Claude Code is most effective when you treat it like a skilled contractor, not a magic box:</p>
   <ul>
     <li><strong>Be specific about scope.</strong> "Build a login system" is harder to execute well than "Add email/password authentication using NextAuth, store sessions in the existing Postgres database, redirect to /dashboard on success."</li>

@@ -206,6 +206,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>What you can realistically build</h2>
+  <p>Non-technical founders using Claude Code regularly ship web apps with user accounts and databases, landing pages with payment integration, Telegram bots, internal admin tools, and simple SaaS products with subscription billing. The iteration loop is fastest for web apps — start there before attempting native mobile or real-time features at scale.</p>
   <p>The category of things a non-technical person can ship with Claude Code is larger than most people expect. What works well:</p>
   <ul>
     <li><strong>Web apps with databases</strong> — user accounts, stored data, dashboards, forms, CRUD interfaces</li>
@@ -221,7 +222,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>The skills that actually matter</h2>
-  <p>Forget syntax. The skills that determine how well you'll build without coding are the same skills that determine how well you communicate and think about products.</p>
+  <p>The skills that determine how well you build without coding are clear writing, product thinking, and the patience to test and iterate. Syntax is irrelevant. The clearer you can describe what you want, who it's for, and what done looks like, the better Claude Code performs.</p>
   <p><strong>Clear writing.</strong> Claude Code performs in direct proportion to how precisely you describe what you want. "A web app where users can log in and track their habits" is a starting point. "A web app where users sign up with email, create named habits with a daily target, check them off each day, and see a 30-day streak calendar" is a brief. The second produces a much better first build.</p>
   <p><strong>Product thinking.</strong> Who is this for? What problem does it solve? What does the user do first, second, third? What happens when something goes wrong? Answering these questions before you start — and updating them as you go — is what separates products that ship from ideas that stall.</p>
   <p><strong>Patience to test and iterate.</strong> The first version will not be the final version. Testing, finding gaps, and feeding that feedback back to Claude Code is the job. Non-technical founders who move fast through this loop ship products. Those who expect perfection from a single prompt do not.</p>
@@ -229,6 +230,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>How to start: your first session with Claude Code</h2>
+  <p>Install Claude Code via npm, open an empty folder in your terminal, run <code>claude</code>, and describe your idea — starting with the simplest possible version. The technical setup takes ten minutes. Your first session goal is a working prototype with one core feature you can open in a browser and click through.</p>
   <p>Install Claude Code from the Anthropic CLI. Open a new empty folder on your computer. Open your terminal in that folder and run <code>claude</code>. That's the technical part — it takes about ten minutes.</p>
   <p>Then say: <em>"I want to build [your idea]. Let's start with the simplest possible version."</em> That last sentence is important. Claude Code will ask you clarifying questions before it starts — answer them honestly. The more you invest in this clarification phase, the better your first build will be.</p>
   <p>Your first session goal is not a finished product. It's a working prototype with one core feature that you can open in a browser, click through, and understand. From there, every session adds and refines. Most non-technical founders are surprised by how much is possible in a single afternoon.</p>
@@ -236,14 +238,14 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>The mindset shift: product director, not programmer</h2>
-  <p>The biggest adjustment non-technical founders report is not technical — it's psychological. You are not learning to code. You are not becoming a programmer. You are learning to direct.</p>
+  <p>You are not learning to code — you are learning to direct. Think in user stories: describe what a user does, why they do it, and what a successful outcome looks like. Claude Code translates precise product briefs into working implementations. The better you get at writing them, the faster and better it performs.</p>
   <p>Think in user stories. "As a user, I want to be able to reset my password by email so that I don't get locked out of my account." That sentence tells Claude Code almost everything it needs to implement a password reset flow. It's not a technical brief — it's a product brief. Claude Code translates it into working code.</p>
   <p>The better you get at writing user stories, defining edge cases, and articulating what "done" looks like for each feature, the faster and better Claude Code performs. This is a skill that improves quickly with practice, and it transfers directly to every other part of running a product — talking to users, writing specs, reviewing work from future collaborators.</p>
 
   <hr class="divider">
 
   <h2>What still breaks without technical knowledge</h2>
-  <p>Honest accounting matters here. There are categories where the absence of technical knowledge creates real risk, and knowing what they are lets you navigate them deliberately.</p>
+  <p>Three areas where the absence of technical knowledge creates real risk: debugging non-obvious errors that Claude Code can't resolve autonomously, architectural decisions with long-term scaling consequences, and security implications around user data and authentication. Knowing these in advance lets you navigate them deliberately rather than discover them at the worst moment.</p>
   <p><strong>Debugging non-obvious errors.</strong> Claude Code handles most errors autonomously. But occasionally something breaks in a way that requires understanding what the error message means. In these cases, paste the error into Claude Code and ask it to explain what went wrong and fix it. This works most of the time. When it doesn't, asking "what is the simplest way to solve this without the approach that's failing" often unlocks a path forward.</p>
   <p><strong>Architectural decisions.</strong> Early choices about how data is structured and how the system is organised have long-term consequences. Claude Code makes reasonable defaults, but a decision that's fine for 100 users may be wrong for 10,000. Ask Claude Code to explain its approach before you start building anything that will need to scale. It will tell you the tradeoffs.</p>
   <p><strong>Security implications.</strong> Without technical knowledge you may not recognise when a feature creates a security hole. Claude Code tends toward conservative, secure choices by default — but you should ask it to explain anything that involves user data, payments, or authentication. Ask explicitly: "Is there anything here I should know about from a security standpoint?" It will answer honestly.</p>

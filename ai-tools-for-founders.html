@@ -213,14 +213,14 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>Vercel / Cloudflare Pages — deployment</h2>
-  <p>Both offer free static and serverless hosting with zero DevOps required. <strong>Connect your GitHub repository, push code, and your site is live.</strong> That is the entire deployment workflow.</p>
+  <p>Both offer free hosting with zero DevOps required — connect your GitHub repository, push code, and your site is live. Vercel is the better default for Next.js; Cloudflare Pages is better for static sites and Vite apps with a more generous free tier. Pick one and move on.</p>
   <p><strong>Vercel</strong> is the better default for Next.js projects. It handles serverless functions, edge routing, and environment variables cleanly, and Claude Code will scaffold the deployment config for you automatically. <strong>Cloudflare Pages</strong> is better for static sites and Vite apps, with a more generous free tier and global edge delivery.</p>
   <p>Pick one and move on. The difference between them matters less than the time you'd spend building a custom deployment pipeline.</p>
 
   <hr class="divider">
 
   <h2>Stripe — payments</h2>
-  <p>Stripe is the standard for SaaS and digital products. No monthly fee — you pay a percentage of revenue only when you make money. <strong>Claude Code can implement Stripe Checkout and subscription billing with a single prompt.</strong></p>
+  <p>Stripe is the standard for SaaS payments — no monthly fee, just a percentage of revenue. Claude Code can implement Stripe Checkout and subscription billing with a single prompt, correctly, because it has trained on thousands of Stripe integrations. Don't build your own payment system; don't use a lesser-known alternative.</p>
   <p>Do not build your own payment system. Do not use a lesser-known alternative to save fractions of a percent. Stripe's documentation is excellent, its reliability is proven, and Claude Code can implement it correctly because it has trained on thousands of Stripe integrations. The combination is fast and safe.</p>
   <p>Stripe also handles tax compliance, fraud detection, and international payments — things that would each be multi-week projects on their own.</p>
 
@@ -233,12 +233,13 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>Perplexity / ChatGPT — research</h2>
-  <p>These are thinking tools, not building tools. <strong>Use Perplexity for market research, competitive analysis, and quick factual questions.</strong> Use ChatGPT for writing marketing copy, drafting emails, and brainstorming positioning.</p>
+  <p>Perplexity and ChatGPT are thinking and writing tools, not building tools. Use Perplexity for market research and competitive analysis; use ChatGPT for drafting copy and brainstorming positioning. Neither should touch your codebase — that's Claude Code's job.</p>
   <p>Neither should be your primary building tool. They are excellent at synthesis and communication; they are not designed to read your codebase and implement features. Keep them in the research and writing lane, and use Claude Code for everything that touches your product.</p>
 
   <hr class="divider">
 
   <h2>What you don't need</h2>
+  <p>The five tools above cover a complete product. You do not need a dedicated DevOps tool, a design tool for launch, a separate project management system, or an SEO plugin. Every addition is a context switch and a subscription — add tools only when you have a specific problem they solve.</p>
   <p>The tools above cover a complete product. You do not need:</p>
   <ul>
     <li><strong>A dedicated DevOps tool.</strong> Vercel and Cloudflare handle deployment. Supabase handles the database. There is no infrastructure layer requiring a separate tool.</li>
@@ -251,6 +252,7 @@ footer { background: #030704; border-top: 1px solid rgba(245,158,11,0.08); paddi
   <hr class="divider">
 
   <h2>The founder workflow</h2>
+  <p>From idea to paying customer: define what to build using Perplexity for research, implement it with Claude Code against a Supabase backend, deploy to Vercel or Cloudflare Pages from GitHub, add Stripe for payments, then iterate based on user feedback. The entire cycle can happen in days for a focused founder.</p>
   <p>Here is how these tools connect in practice, from idea to paying customer:</p>
   <ol>
     <li><strong>Define what to build.</strong> Your own judgment, sharpened by Perplexity for market research and competitive analysis. Write a short brief — what the product does, who it's for, what problem it solves.</li>
