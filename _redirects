@@ -5,6 +5,32 @@
 # www → non-www
 https://www.claudecamp.org/* https://claudecamp.org/:splat 301
 
+# Trailing slash → canonical clean URL (prevents Cloudflare trailing-slash duplicates)
+/about/ /about 301
+/book/ /book 301
+/the-view/ /the-view 301
+/policy/ /policy 301
+/what-is-claude-code/ /what-is-claude-code 301
+/how-to-use-claude-code/ /how-to-use-claude-code 301
+/claude-code-for-beginners/ /claude-code-for-beginners 301
+/claude-code-vs-cursor/ /claude-code-vs-cursor 301
+/claude-code-pricing/ /claude-code-pricing 301
+/claude-code-for-non-technical-founders/ /claude-code-for-non-technical-founders 301
+/claude-code-projects/ /claude-code-projects 301
+/pai-thailand-digital-nomad/ /pai-thailand-digital-nomad 301
+/ai-coding-bootcamp/ /ai-coding-bootcamp 301
+/claude-code-vs-github-copilot/ /claude-code-vs-github-copilot 301
+/claude-code-vs-chatgpt/ /claude-code-vs-chatgpt 301
+/claude-code-tutorial/ /claude-code-tutorial 301
+/claude-code-for-developers/ /claude-code-for-developers 301
+/claude-code-tips/ /claude-code-tips 301
+/how-to-build-a-saas-with-ai/ /how-to-build-a-saas-with-ai 301
+/build-app-without-coding/ /build-app-without-coding 301
+/ai-tools-for-founders/ /ai-tools-for-founders 301
+/pai-thailand-retreat/ /pai-thailand-retreat 301
+/claude-code-review/ /claude-code-review 301
+/how-to-ship-an-mvp-fast/ /how-to-ship-an-mvp-fast 301
+
 # .html → clean URL (prevents Google from seeing duplicate content)
 /index.html / 301
 /about.html /about 301

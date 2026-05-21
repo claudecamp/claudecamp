@@ -2,16 +2,33 @@ User-agent: *
 Allow: /
 Disallow: /booked.html
 
+# OpenAI — OAI-SearchBot = ChatGPT live search (111:1 crawl-to-refer ratio — sends real traffic)
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity — 21.87 sources per response, highest citation volume
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI
 User-agent: Google-Extended
 Allow: /
 
-User-agent: PerplexityBot
+# Bing — powers 87% of ChatGPT knowledge backbone
+User-agent: Bingbot
 Allow: /
 
 Sitemap: https://claudecamp.org/sitemap.xml
