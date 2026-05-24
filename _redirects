@@ -2,6 +2,9 @@
 /sitemap.xml /sitemap.xml 200
 /robots.txt /robots.txt 200
 
+# pages.dev → canonical domain (prevents Cloudflare preview domain being indexed as duplicate)
+https://claudecamp.pages.dev/* https://claudecamp.org/:splat 301
+
 # www → non-www
 https://www.claudecamp.org/* https://claudecamp.org/:splat 301
 

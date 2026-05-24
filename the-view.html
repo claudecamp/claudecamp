@@ -43,6 +43,53 @@
 }
 </script>
 
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Claude Camp", "item": "https://claudecamp.org/"},
+    {"@type": "ListItem", "position": 2, "name": "The View", "item": "https://claudecamp.org/the-view"}
+  ]
+}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is The View in Pai, Thailand?",
+      "acceptedAnswer": {"@type": "Answer", "text": "The View is an open-air bar and workspace directly across from Pai Canyon in Mae Hong Son Province, Thailand. It opens at 8am for coffee and breakfast, and serves cold drinks and cocktails from the afternoon. There are no walls — every seat has a panoramic canyon and mountain view."}
+    },
+    {
+      "@type": "Question",
+      "name": "Is The View good for remote work?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. The View is designed for focused remote work: fast WiFi, power at every table, comfortable outdoor seating, and no city noise. The canyon view and mountain air make it one of the best workspaces in Pai for deep work sessions."}
+    },
+    {
+      "@type": "Question",
+      "name": "What are the opening hours at The View?",
+      "acceptedAnswer": {"@type": "Answer", "text": "The View opens daily at 8am. Coffee and breakfast are served from 8am; the bar opens in the afternoon and runs into the evening."}
+    },
+    {
+      "@type": "Question",
+      "name": "Where is The View located in Pai?",
+      "acceptedAnswer": {"@type": "Answer", "text": "The View is on the Hot Springs Road on the outskirts of Pai, directly across from Pai Canyon. Natural hot springs are across the street. WhatsApp +66922864775 for directions."}
+    },
+    {
+      "@type": "Question",
+      "name": "Is The View part of Claude Camp?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. The View is the open-air bar and workspace on the Claude Camp farm property in Pai. Claude Camp is a 7-day AI coding bootcamp and retreat. The View is open to the public independently — no need to be a camp participant."}
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -1300,6 +1347,34 @@ footer {
         WhatsApp us
       </a>
     </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" aria-label="Frequently asked questions" style="padding:clamp(4rem,8vw,7rem) clamp(1.5rem,8vw,8rem);max-width:1200px;margin:0 auto;">
+  <p style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,158,11,0.7);margin-bottom:1.5rem;">FAQ</p>
+  <h2 style="font-family:'Syne',system-ui,sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:#f4f0e8;margin-bottom:2.5rem;">Common questions</h2>
+  <div style="display:grid;gap:0;max-width:720px;">
+    <details style="border-top:1px solid rgba(245,158,11,0.12);padding:1.25rem 0;">
+      <summary style="font-family:'Syne',system-ui,sans-serif;font-size:0.95rem;font-weight:600;color:#f4f0e8;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">What is The View in Pai?</summary>
+      <p style="margin-top:0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.8rem;line-height:1.75;color:rgba(244,240,232,0.65);">An open-air bar and workspace directly across from Pai Canyon. No walls — every seat has a panoramic canyon and mountain view. Coffee and breakfast from 8am, cold drinks and cocktails from the afternoon.</p>
+    </details>
+    <details style="border-top:1px solid rgba(245,158,11,0.12);padding:1.25rem 0;">
+      <summary style="font-family:'Syne',system-ui,sans-serif;font-size:0.95rem;font-weight:600;color:#f4f0e8;cursor:pointer;list-style:none;">Is The View good for remote work?</summary>
+      <p style="margin-top:0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.8rem;line-height:1.75;color:rgba(244,240,232,0.65);">It's designed for it. Fast WiFi, power at every table, and no city noise. The canyon view turns out to be good for focus — some people don't look up for hours.</p>
+    </details>
+    <details style="border-top:1px solid rgba(245,158,11,0.12);padding:1.25rem 0;">
+      <summary style="font-family:'Syne',system-ui,sans-serif;font-size:0.95rem;font-weight:600;color:#f4f0e8;cursor:pointer;list-style:none;">What are the opening hours?</summary>
+      <p style="margin-top:0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.8rem;line-height:1.75;color:rgba(244,240,232,0.65);">Open daily from 8am. Coffee and breakfast from opening; the bar from the afternoon into the evening. WhatsApp us if you're coming late and want to confirm.</p>
+    </details>
+    <details style="border-top:1px solid rgba(245,158,11,0.12);padding:1.25rem 0;">
+      <summary style="font-family:'Syne',system-ui,sans-serif;font-size:0.95rem;font-weight:600;color:#f4f0e8;cursor:pointer;list-style:none;">Where is The View?</summary>
+      <p style="margin-top:0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.8rem;line-height:1.75;color:rgba(244,240,232,0.65);">Hot Springs Road, outskirts of Pai — directly across from Pai Canyon. Natural hot springs are across the street. WhatsApp <a href="https://wa.me/66922864775" style="color:rgba(245,158,11,0.75);">+66922864775</a> for directions.</p>
+    </details>
+    <details style="border-top:1px solid rgba(245,158,11,0.12);border-bottom:1px solid rgba(245,158,11,0.12);padding:1.25rem 0;">
+      <summary style="font-family:'Syne',system-ui,sans-serif;font-size:0.95rem;font-weight:600;color:#f4f0e8;cursor:pointer;list-style:none;">Is this part of Claude Camp?</summary>
+      <p style="margin-top:0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.8rem;line-height:1.75;color:rgba(244,240,232,0.65);">Yes — The View is the open-air bar and workspace on the <a href="/" style="color:rgba(245,158,11,0.75);">Claude Camp</a> farm. Claude Camp is a 7-day AI coding bootcamp in Pai. The View is open to the public independently — no need to be a camp participant.</p>
+    </details>
   </div>
 </section>
 
